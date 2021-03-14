@@ -1,8 +1,8 @@
-
+# 时间分辨率上的合并
 import rasterio
 import os
 import shutil
-from work.Asia.筛选栅格数据 import select_date
+from 筛选栅格数据 import select_date
 
 
 def merge_data(file_list, path_file, out):

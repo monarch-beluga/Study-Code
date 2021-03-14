@@ -1,17 +1,14 @@
-
-import pandas as pd
+#
 import rasterio
 import os
 import numpy as np
 from concurrent.futures.process import ProcessPoolExecutor
 from concurrent.futures.thread import ThreadPoolExecutor
 
-from work.Asia.筛选栅格数据 import select_date
+from 筛选栅格数据 import select_date
 
 paths = ["E:/public/Central_Asia/MOD11A2-Interpolation/", r'E:/public/Central_Asia/MOD13A2-Interpolation/']
-# paths = [r"E:/Centarl/LST_MERGE/03_04/", r'E:/Centarl/NDVI/03_04/']
 outpath = "E:/public/Central_Asia/extremum/05-06/"
-# outpath = "E:/Centarl/LST-NDVI/03-04/"
 time_start = "2000"
 time_end = "2016"
 select_moth = ["05-01", "07-01"]

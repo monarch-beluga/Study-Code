@@ -19,6 +19,7 @@
 Provides functionality for event series analysis.
 """
 
+
 import numpy as np
 
 

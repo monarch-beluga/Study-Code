@@ -1,11 +1,10 @@
-
+# 数据的缺失值处理，这个时计算 极端时件 前的操作
 import pandas as pd
 import rasterio
 import os
 import numpy as np
-from concurrent.futures.process import ProcessPoolExecutor
 from concurrent.futures.thread import ThreadPoolExecutor
-from work.Asia.筛选栅格数据 import select_date
+from 筛选栅格数据 import select_date
 
 outpath = r'E:/public/Central_Asia/MOD13A2-Interpolation/'
 path = r"E:/public/Central_Asia/MOD13A2-tichu/"

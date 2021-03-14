@@ -1,3 +1,4 @@
+# 最终的ECA处理
 import eca as eca
 from concurrent.futures.thread import ThreadPoolExecutor
 from glob import glob
@@ -14,16 +15,7 @@ time_end = "2016"
 select_moth = ["05-01", "07-01"]
 path_judgments = ["E:/public/Central_Asia/extremum/05-06/LST_Day_1km/", "E:/public/Central_Asia/extremum/05-06/NDVI/"]
 out_files = [r'LST_min.tif', r'LST_max.tif']
-# N = 1000
 st = time.time()
-
-# def Eca(dataA, dataB):
-#     if ((np.isnan(dataA).sum() + np.isnan(dataB).sum()) > 0) \
-#     or (len(dataA[data1A == 1]) != len(dataB[dataB == 1])) or \
-#             (len(dataA[dataA == 1]) < len(dataA)/10):
-#         return np.nan
-#     ECA_da = eca.ECA(dataA, dataB, delT=0)
-#     return ECA_da[0]
 
 
 def Eca(dataA, dataB, dataC):
@@ -88,22 +80,6 @@ def process_data(judgment_src, files_src, win):
             # data3 = np.hstack([data3, temp])
         j += 1
     return data1, data2
-
-
-# def ECA_data(judgment_src_s, files_src_s, profile):
-#     height = profile.data['height']
-#     width = profile.data['width']
-#     data1_min, data1_max = process_data(judgment_src_s[0], files_src_s[0])
-#     data2_min, data2_max = process_data(judgment_src_s[1], files_src_s[1])
-#     print("data-----end")
-#     with ThreadPoolExecutor(max_workers=20) as worker:
-#         min1 = np.array([-i for i in worker.map(Eca, data1_min, data2_min)]).reshape(height, width)
-#         min2 = np.array([i for i in worker.map(Eca, data1_min, data2_max)]).reshape(height, width)
-#         max1 = np.array([-i for i in worker.map(Eca, data1_max, data2_min)]).reshape(height, width)
-#         max2 = np.array([i for i in worker.map(Eca, data1_max, data2_max)]).reshape(height, width)
-#     data_W = [min1, min2, max1, max2]
-#     print("ECA-----end")
-#     return data_W
 
 
 def open_src():

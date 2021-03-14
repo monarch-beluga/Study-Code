@@ -1,8 +1,8 @@
+# 剔除NDVI < 0.05的数据
 import rasterio
-import numpy as np
 import os
 from concurrent.futures.thread import ThreadPoolExecutor
-from work.Asia.筛选栅格数据 import select_date
+from 筛选栅格数据 import select_date
 
 
 time_start = "2000"
