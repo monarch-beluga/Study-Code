@@ -6,7 +6,7 @@ void Menu();						// 菜单界面函数
 void Menu_select();					// 菜单界面选择函数
 void Print_student(int i);			// 按顺序表数字打印学生信息函数
 void Print_students();				// 打印所有学生信息函数
-int Lookup(char num[]);			// 按学号查询学生顺序表数字
+int Lookup(char num[]);				// 按学号查询学生顺序表数字
 void Lookup_student();				// 按学号打印学生信息
 void Modify_student();				// 修改学生信息
 void Add_student();					// 添加学生信息
@@ -77,11 +77,15 @@ void Menu_select()
 		case 5:Delect_student();break;
 		case 0:Exit_system();
 	}
+	// 按下后继续
 	system("pause");
+	// 执行完一次选择后重新回到菜单界面
 	Menu();
 }
+
 void Print_student(int i)
 { 
+	// 按顺序表的位置打印单个学生信息
 	printf("姓名:%s\n",Students.elem[i].name);
 	printf("学号:%s\n",Students.elem[i].num); 
 	printf("专业班级:%s\n",Students.elem[i].classname); 
@@ -90,6 +94,7 @@ void Print_student(int i)
 void Print_students()
 {
 	int i = 0;
+	// 循环打印多个学生信息
 	while(i < Students.length)
 	{
 		printf("\t学生%d\n",i+1);
@@ -98,7 +103,8 @@ void Print_students()
 		i++;
 	}
 }
-int Lookup(char num[])
+
+int Lookup(char num[])							// 按学号查找对应学生在顺序表的位置
 {
 	int i = 0;
 	while(i < Students.length)
@@ -118,19 +124,20 @@ void Lookup_student()
 	printf("请输入需要查询的学号:\n");
 	scanf("%s",num);
 	i = Lookup(num);
-	if (i < Students.length)
+	if (i < Students.length)				// 查找成功则打印该学生信息
 		Print_student(i);
-	else
+	else									// 学号错误
 		printf("查找错误，没有该学生学号。");
 }
+
 void Modify_student()
 {
 	int i;
 	char num[13];
 	printf("请输入需要修改学生的学号:\n");
 	scanf("%s",num);
-	i = Lookup(num);
-	if (i < Students.length)
+	i = Lookup(num);						// 修改学生信息前先要查询学生位置
+	if (i < Students.length)				// 如果该学号存在执行修改
 	{
 		Print_student(i);
 		printf("请输入修改后学生名字:\n");
@@ -141,15 +148,17 @@ void Modify_student()
 		scanf("%s",Students.elem[i].num);
 		printf("请输入修改后学生成绩:\n");
 		scanf("%d",&Students.elem[i].score);
-		save++;
-	}
+		save++;								// 表示学生信息顺序表修改过一次，sava大于0则在退出程序时会将顺序表重新写入文件
+	}										// 不存在则提醒
 	else
 		printf("查找错误，没有该学生学号。");
 }
+
 void Add_student()
 {
 	int i;
-	ElemType student;
+	ElemType student;						// 声明学生结构体用于添加学生
+	// 输入学生信息
 	printf("请输入学生名字:\n");
 	scanf("%s",student.name);
 	printf("请输入学生专业班级:\n");
@@ -158,6 +167,7 @@ void Add_student()
 	scanf("%s",student.num);
 	printf("请输入学生成绩:\n");
 	scanf("%d",&student.score);
+	// 判断学生学号是否与之前的学号重复
 	i = Lookup(student.num);
 	if (i < Students.length)
 		printf("添加失败，该学号已存在\n");
@@ -168,10 +178,12 @@ void Add_student()
 		save++;
 	}
 }
+
 void Delect_student()
 {
 	int i;
 	int flag;
+	// 按学号查找需要删除的学生信息
 	char num[13];
 	printf("请输入需要删除学生的学号:\n");
 	scanf("%s",num);
@@ -187,23 +199,25 @@ void Delect_student()
 			Students.elem[i] = Students.elem[i+1];
 			Students.length--;
 			printf("删除成功！！\n");
+			save++;
 		}
-		save++;
 	}
 	else
 		printf("查找错误，没有该学生学号。");
 }
+
 void Exit_system()
 {
-	if(save != 0)
+	if(save != 0)						// 判断顺序表是否发生改变
 		SaveInFile();
-	exit(0);
+	exit(0);							// 退出程序
 }
+
 void SaveInFile()
 {
 	int i = 0;
-	FILE *f = fopen("Students.txt","w");
-	while(i < Students.length)
+	FILE *f = fopen("Students.txt","w");							// 使用相对路径建立文件
+	while(i < Students.length)										// 循环写出学生信息
 	{
 		fprintf(f, "%s\t", Students.elem[i].name);
 		fprintf(f, "%s\t", Students.elem[i].num);
@@ -211,5 +225,5 @@ void SaveInFile()
 		fprintf(f, "%d\n", Students.elem[i].score);
 		i++;
 	}
-	fclose(f);
+	fclose(f);														// 关闭文件
 }
