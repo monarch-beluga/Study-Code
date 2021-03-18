@@ -18,9 +18,9 @@ method ：提交方式    post  |  get
         maxlength: 最大字符数
         size：文本框长度
 -->
-    <p>名字：<input type="text" name="username" value="Monarch" maxlength="7" size="30"></p>
+    <p>名字：<input type="text" name="username" value="Monarch" maxlength="7" size="30" placeholder="请输入用户名"></p>
 <!--    密码输入框 ： input type="password"   输入具有保护性-->
-    <p>密码：<input type="password" name="pwd"/></p>
+    <p>密码：<input type="password" name="pwd" required/></p>
 
 
 <!--    单选框标签: input type="radio"
@@ -113,7 +113,20 @@ method ：提交方式    post  |  get
     <p>搜索：
         <input type="search" name="search" value="google">
     </p>
-    
+
+
+<!--    增强鼠标可用性-->
+<!--    label for="id"-->
+    <p>
+        <label for="mark">点我试试</label>
+        <input type="text" id="mark">
+    </p>
+
+
+    <p>自定义邮箱：
+        <input type="text" name="diymail" pattern="*@*">
+    </p>
+
     
     
 </form>
