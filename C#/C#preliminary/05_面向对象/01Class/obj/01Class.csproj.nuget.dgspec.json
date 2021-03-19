@@ -13,13 +13,19 @@
         "packagesPath": "C:\\Users\\Monarch\\.nuget\\packages\\",
         "outputPath": "E:\\Study\\Projects\\C#\\C#preliminary\\05_面向对象\\01Class\\obj\\",
         "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "E:\\Study\\Visual Studio\\Visual Studio Shared\\NuGetPackages"
+        ],
         "configFilePaths": [
-          "C:\\Users\\Monarch\\AppData\\Roaming\\NuGet\\NuGet.Config"
+          "C:\\Users\\Monarch\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
           "net5.0"
         ],
         "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
