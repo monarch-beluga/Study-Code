@@ -1,9 +1,7 @@
-import time
+s = input()
+d = 0
+while s:
+    d = d + 2 ** (len(s)-1) * int(s[0])
+    s = s[1:]
 
-a = time.strftime("%Y-%m-%d %H:%M:%S", time.localtime())
-b = '''git add --all
-git commit -m "%s"
-git push origin master
-pause''' % a
-with open(r"E:\Study-notes\自动提交.bat", "w") as f:
-    f.write(b)
+print(d)
