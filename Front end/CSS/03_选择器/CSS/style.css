@@ -20,3 +20,8 @@ h1{
     margin-inline-start: 0px;
     margin-inline-end: 0px;
 }
+/*id选择器：id必须保证全局唯一*/
+#test2{
+    color: #de84e8;
+    font-size: 3rem;
+}
