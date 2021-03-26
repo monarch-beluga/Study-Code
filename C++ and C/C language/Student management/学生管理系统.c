@@ -9,8 +9,10 @@ void Print_students();				// 打印所有学生信息函数
 int Lookup(char num[]);				// 按学号查询学生顺序表数字
 void Lookup_student();				// 按学号打印学生信息
 void Modify_student();				// 修改学生信息
+ElemType Add();						// 学生信息输入
 void Add_student();					// 添加学生信息
 void Delect_student();				// 删除学生信息
+void Insert_student();				// 插入学生信息
 void Exit_system();					// 退出系统
 void SaveInFile();					// 将学生信息输出到文件中保存
 
@@ -57,6 +59,7 @@ void Menu()
 	printf("*\t3-修改学生数据\t\t*\n");
 	printf("*\t4-添加一个学生信息\t*\n");
 	printf("*\t5-删除一个学生信息\t*\n");
+	printf("*\t6-插入一个学生信息\t*\n");
 	printf("*\t0-退出系统\t\t*\n");
 	printf("*********************************\n");
 	// 菜单选择
@@ -73,8 +76,9 @@ void Menu_select()
 		case 1:Print_students();break;
 		case 2:Lookup_student();break;
 		case 3:Modify_student();break;
-		case 4:Add_student();break;
+		case 4:Add_student(Students.length);break;
 		case 5:Delect_student();break;
+		case 6:Insert_student();break;
 		case 0:Exit_system();
 	}
 	// 按下后继续
@@ -154,7 +158,7 @@ void Modify_student()
 		printf("查找错误，没有该学生学号。");
 }
 
-void Add_student()
+ElemType Add()
 {
 	int i;
 	ElemType student;						// 声明学生结构体用于添加学生
@@ -163,20 +167,28 @@ void Add_student()
 	scanf("%s",student.name);
 	printf("请输入学生专业班级:\n");
 	scanf("%s",student.classname);
-	printf("请输入学生学号:\n");
-	scanf("%s",student.num);
+	while(1)
+	{
+		printf("请输入学生学号:\n");
+		scanf("%s",student.num);
+		// 判断学生学号是否与之前的学号重复
+		i = Lookup(student.num);
+		if (i < Students.length)
+			printf("添加失败，该学号已存在\n");
+		else
+			break;
+	}
 	printf("请输入学生成绩:\n");
 	scanf("%d",&student.score);
-	// 判断学生学号是否与之前的学号重复
-	i = Lookup(student.num);
-	if (i < Students.length)
-		printf("添加失败，该学号已存在\n");
-	else
-	{
-		Students.elem[Students.length] = student;
-		Students.length++;
-		save++;
-	}
+	return student;
+}
+
+void Add_student()
+{
+	// 往顺序表最后面插入学生信息
+	Students.elem[Students.length] = Add();
+	Students.length++;
+	save++;
 }
 
 void Delect_student()
@@ -204,6 +216,28 @@ void Delect_student()
 	}
 	else
 		printf("查找错误，没有该学生学号。");
+}
+
+void Insert_student()
+{
+	int position;
+	ElemType student;
+	ElemType temp;
+	while(1)
+	{
+		printf("当前学生人数为%d,请输入需要插入的位置:\n", Students.length);
+		scanf("%d", &position);
+		if(position > Students.length || position < 1)
+			printf("位置不和法，请输入1~%d中的数字:\n", Students.length+1);
+		else
+			break;
+	}
+	student = Add();					// 获取学生信息
+	for (int i = Students.length; i >= position; --i)		// 调整顺序表
+		Students.elem[i] = Students.elem[i-1];
+	Students.elem[position-1] = student;
+	Students.length++;
+	save++;
 }
 
 void Exit_system()
