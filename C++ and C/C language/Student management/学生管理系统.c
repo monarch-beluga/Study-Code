@@ -127,7 +127,7 @@ void Lookup_student()
 	if (i < Students.length)				// 查找成功则打印该学生信息
 		Print_student(i);
 	else									// 学号错误
-		printf("查找错误，没有该学生学号。");
+		printf("查找错误，没有该学生学号。\n");
 }
 
 void Modify_student()
