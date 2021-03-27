@@ -16,7 +16,7 @@
     <style>
         h1{
             color: red;
-            text-align: center;             /*文本居中*/
+            text-align: center;             /*文本水平居中*/
         }
         .p1{
             color: rgb(0, 255, 255);
@@ -39,6 +39,10 @@
         }
         .l3{
             text-decoration: overline;     /*上划线*/
+        }
+        /*文本图片水平对齐: 要选中两种类型的元素来对齐*/
+        .p4 img,span{
+            vertical-align: middle;
         }
     </style>
 
@@ -64,10 +68,10 @@
     不要说参军，就连住店的资格都没有。受尽歧视的蛮吉和蛮大人决定，混上那艘即将启程去消灭魁拔的巨型战舰，
     直接挑战魁拔，用热血换取至高的荣誉。</p>
 
-<p>
-    一代情圣
+<p class="p4">
+    <span>一代情圣</span>
     <img src="images/a.png" alt="莎士比亚"/>
-    莎士比亚
+    <span>莎士比亚</span>
 </p>
 <p class="p3">I have searched a thousand years,<br>
     And I have cried a thousand tears.<br>
