@@ -1,0 +1,41 @@
+.demo a{
+    float: left;
+    display: block;
+    height: 50px;
+    width: 50px;
+    border-radius: 10px;
+    background: #2700ff;
+    text-align: center;
+    color: red;
+    text-decoration: none;
+    margin-right: 5px;
+    font: bold 20px/50px Arial;
+}
+/*
+元素名称[属性名称]{}
+元素名称[属性名=属性值(正则)]{}
+= : 绝对等于
+*= : 包含于
+^= : 以这个开头
+$= : 以这个结尾
+*/
+/*a中含有id的元素*/
+a[id]{
+    background: yellow;
+}
+/*a中id=first的元素*/
+a[id=first]{
+    background: green;
+}
+/*class中包含inks的属性*/
+a[class*=links]{
+    background: #de84e8;
+}
+/*href中以http开头的元素*/
+a[href^=http]{
+    background: #3cbda6;
+}
+/*href中以pdf结尾的元素*/
+a[href$=pdf]{
+    background: #a13d30;
+}
