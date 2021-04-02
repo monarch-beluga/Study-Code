@@ -1,7 +1,7 @@
-#include <iostream>
+#include<iostream>
 using namespace std;
 
 int main()
 {
-	printf("你好\n");
+	cout << "请输入中心点坐标：\n";
 }
