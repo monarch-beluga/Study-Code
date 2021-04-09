@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>iterator</title>
+</head>
+<body>
+
+<script>
+    'use strict';
+    let arr = [3, 4, 5];
+    for (let i in arr)          // 获得索引
+        console.log(i);
+    console.log('===========');
+    for (let i of arr)          // 获得值，可支持map和set
+        console.log(i);
+    let map = new Map([['tom', 100], ['jack', 90], ['hhh', 80]]);
+    console.log('===========');
+    for (let i of map)
+        console.log(i);
+    console.log('===========');
+    let set = new Set([3, 1, 2, 1, 2]);
+    for (let i of set)
+        console.log(i);
+    console.log('===========');
+</script>
+
+</body>
+</html>

@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>定义函数</title>
+    <style>
+        h1{
+            color: #59e753;
+        }
+    </style>
+</head>
+<body>
+
+
+<script>
+    'use strict'
+    // let abs = function (x){
+    //     if (x >= 0)
+    //         return x;
+    //     else
+    //         return -x;
+    // }
+    function abs(x){
+        if (x >= 0)
+            return x;
+        else
+            return -x;
+    }
+    console.log(abs());         // NaN
+    console.log(abs(1));        // 1
+    console.log(abs(-1));       // 1
+</script>
+
+</body>
+</html>
