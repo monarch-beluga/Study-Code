@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>多参数问题</title>
+</head>
+<body>
+
+<script>
+    function aaa(a, b){
+        console.log('a==>'+a);
+        console.log('b==>'+b);
+        if (arguments.length > 2)           // arguments获取所有参数
+            for (let i of arguments)
+                console.log(i);
+    }
+    function bbb(a, b, ...rest){            // rest获取多余参数
+        console.log('a==>'+a);
+        console.log('b==>'+b);
+        console.log(rest);
+    }
+</script>
+
+</body>
+</html>

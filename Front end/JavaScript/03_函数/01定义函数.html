@@ -20,15 +20,17 @@
     //     else
     //         return -x;
     // }
-    function abs(x){
+    function abs(x) {
+        if (typeof x !== 'number')
+            throw 'Not a number';
         if (x >= 0)
             return x;
         else
             return -x;
     }
-    console.log(abs());         // NaN
     console.log(abs(1));        // 1
     console.log(abs(-1));       // 1
+    // console.log(abs());         // 异常
 </script>
 
 </body>

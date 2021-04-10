@@ -1,10 +1,8 @@
+
 import numpy as np
 import pandas as pd
 import pwlf
-from piecewise.regressor import piecewise
-from sklearn.linear_model import LinearRegression, TheilSenRegressor
-from sklearn.metrics import r2_score
-from sklearn.feature_selection import f_regression
+from numpy import piecewise
 import matplotlib.pyplot as plt
 import matplotlib
 

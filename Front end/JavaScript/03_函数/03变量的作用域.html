@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>变量的作用域</title>
+</head>
+<body>
+
+<script>
+    'use strict';
+
+    function a(){
+        let x = 1;
+        function b(){
+            let x = 'A';
+            console.log('internal==>'+x);
+        }
+        b();
+        console.log('external==>'+x);
+    }
+    a();
+</script>
+
+</body>
+</html>

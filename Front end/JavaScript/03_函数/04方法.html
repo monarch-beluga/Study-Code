@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>方法</title>
+</head>
+<body>
+
+<script>
+    'use strict';
+
+    // let Monarch = {
+    //     name: '白鲸',
+    //     bitrh: 2001,
+    //     age:function (){
+    //         let now = new Date().getFullYear();     // 获取当前年份
+    //         return now - this.bitrh;
+    //     }
+    // }
+    // console.log(Monarch.age());         // 20
+
+    function getAge(){
+        let now = new Date().getFullYear();     // 获取当前年份
+        return now - this.bitrh;
+    }
+    let Monarch = {
+        name: '白鲸',
+        bitrh: 2001,
+        age: getAge
+    }
+    //Uncaught TypeError: Cannot read property 'bitrh' of undefined
+    // console.log(getAge());     // 函数中存在this,无法指向
+    // apply将函数指向指定对象,apply(对象,参数列表)
+    console.log(getAge.apply(Monarch, []))      // 20
+</script>
+
+</body>
+</html>
