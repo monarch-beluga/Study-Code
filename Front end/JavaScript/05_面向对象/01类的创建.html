@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>类的创建</title>
+</head>
+<body>
+
+<script>
+    'use strict';
+
+    function Student(name) {
+        this.name = name;
+        this.hello = function (){
+            console.log('Hello');
+        }
+    }
+
+    let xiaoming = new Student('小明');
+    console.log(xiaoming.name);     // 小明
+    xiaoming.hello();               // Hello
+</script>
+
+</body>
+</html>

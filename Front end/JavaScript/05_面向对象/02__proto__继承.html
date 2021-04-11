@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>__proto__</title>
+</head>
+<body>
+
+<script>
+    'use strict';
+
+    let Student = {             // 原版,类似与父类
+        name: 'Monarch',
+        age: 18,
+        run: function (){
+            console.log(this.name + '正在跑步');
+        }
+    };
+
+    let xiaoming = {            // 子版
+        name: '小明'
+    };
+
+    xiaoming.__proto__ = Student;       // 类似与继承
+
+    xiaoming.run();         // 小明正在跑步
+    console.log(xiaoming.age);      // 18
+    console.log(xiaoming);
+    /*name: "小明"
+    __proto__:
+        age: 18
+    name: "Monarch"
+    run: ƒ ()*/
+
+</script>
+
+</body>
+</html>
