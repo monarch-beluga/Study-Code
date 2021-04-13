@@ -3,8 +3,7 @@ int main()
 {
 	int i=2;
 	float s=1;
-	do				//œ»÷¥––”Ôæ‰£¨‘Ÿ≈–∂œ
-	{
+	do{
 		s += 1.0/i;
 		i += 2;
 	}while(i <= 50);
