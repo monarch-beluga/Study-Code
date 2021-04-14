@@ -84,7 +84,7 @@ int main()
 			case 0:
 			if(save)
 			{
-				f = fopen("Patients.txt","w");
+				f = fopen("Patients.txt","w");			// 输出
 				p = pHead->next;
 				while(p)
 				{
@@ -135,13 +135,13 @@ LinkList CreateList(void)  //尾插法建立带头节点的病患信息表
 	f = fopen("Patients.txt","r");
 	if (f)					// 判断文件是否存在
 	{
-		while(1)				// 循环读取信息，判断文件读取是否结束
+		while(1)				// 循环读取信息
 		{
 			// 文件读取
 			p = (LNode*)malloc(sizeof(LNode));
 			fscanf(f, "%s\t%s\t%s\t%s\t%s", p->data.num, p->data.name,
 					p->data.sex, p->data.phone, p->data.addr);
-			if (!feof(f))
+			if (!feof(f))			// 判断文件读取是否结束
 				InsertNode(pHead,p);
 			else
 				break;
@@ -158,7 +158,7 @@ void InsertNode(LinkList head, LNode* p) //在head指向的链表中插入节点
 	p1 = head;
 	while(p1)
 	{
-		if (p1->next == NULL)
+		if (p1->next == NULL)			// 尾部插入
 		{
 			p->next = p1->next;
 			p1->next = p;
@@ -167,13 +167,13 @@ void InsertNode(LinkList head, LNode* p) //在head指向的链表中插入节点
 		}
 		else
 		{
-			if (!strcmp(p->data.num, p1->next->data.num))
+			if (!strcmp(p->data.num, p1->next->data.num))			// 判断编号是否唯一
 			{
-				printf("编号(%s)已存在，0-取消插入  1-替换节点:\n", p1->next->data.num);
+				printf("编号(%s)已存在，0-取消插入  1-替换节点:\n", p1->next->data.num);	
 				scanf("%d", &flag);
-				if(flag == 0)
+				if(flag == 0)				// 取消插入
 					printf("已取消插入\n");
-				else
+				else						// 用新的数据替换原来的数据
 				{
 					p->next = p1->next->next;
 					p1->next = p;
@@ -189,7 +189,7 @@ LNode* ListFind(LinkList head) //查找
 {
 	char i[5];
 	LNode* p;
-	printf("请输入需要查询的节点编号:\n");
+	printf("请输入需要查询的节点编号:\n");			// 按编号查找
 	scanf("%s", i);
 	p = head;
 	while(p)
@@ -207,7 +207,7 @@ void DeleteNode(LinkList head)
 	int i,j=0,flag;
 	while(1)
 	{
-		printf("请输入需要删除节点的位置:\n");
+		printf("请输入需要删除节点的位置:\n");		// 按节点位置删除
 		scanf("%d", &i);
 		if (i > 0)
 			break;
@@ -218,7 +218,7 @@ void DeleteNode(LinkList head)
 	{
 		if(p)
 		{
-			if (j == i)
+			if (j == i)		// 查找到节点后确认是否删除
 			{
 				printf("*编号（4） 姓名（8） 性别 电话（11） 地址（31） *\n");
 				printf("---------------------------------------------\n");
@@ -255,7 +255,7 @@ void PrintList(LinkList head)
 	p = head->next;
 	printf("*编号（4） 姓名（8） 性别 电话（11） 地址（31） *\n");
 	printf("---------------------------------------------\n");
-	while(p)
+	while(p)			// 循环输出节点信息
 	{
 		printf("%s\t%s\t%s\t%s\t%s\n",p->data.num,p->data.name,
                    p->data.sex,p->data.phone,p->data.addr);
