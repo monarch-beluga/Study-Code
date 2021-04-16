@@ -31,7 +31,7 @@ def check_file_status(filepath, filesize):
 if len(sys.argv) < 2 and not 'RDAPSWD' in os.environ:
     try:
         import getpass
-        input_pass = getpass.getpass()
+        input_pass = input()
     except:
         try:
             input_pass = input()
