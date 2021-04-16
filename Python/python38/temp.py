@@ -28,7 +28,7 @@ file_url = 'Python/jupyter-notebook/geemap/创建分割面板图和可视化GEE�
 path_url = 'https://notebooks.gesis.org/binder/v2/gh/monarch-beluga/Study-Code/master?filepath='
 file_name = os.path.split(file)[-1]
 url = path_url + urllib.parse.quote(file_url)
-s2 = ['<a href="{}" target="_blank">\n'.format(url),
+s2 = ['<a href="{}" target="_parent">\n'.format(url),
       '<img src="https://notebooks.gesis.org/binder/badge_logo.svg" alt="launch binder"/>\n',
       '</a>']
 with open(file, 'r', encoding='utf-8') as f:
