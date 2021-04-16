@@ -1,33 +1,47 @@
 
-# 3. 求圆周率π
-i = 1
-j = 1
-pai = 0
-while 1:
-    if 1 / j > 10e-6:
-        pai += (1 / j) * i
-        j += 2
-        i = -i
-    else:
-        pai *= 4
-        break
-print("π = {}".format(pai))
+import json
+import re
+from glob import glob
+import urllib.parse
+import os
 
-# 6.
-from random import randint
-
-nums = [randint(1, 100) for i in range(100)]
-odd_nums = [i for i in nums if (i % 2 != 0)]
-
-# 12.
-Sum = 0
-for i in range(1, 100, 2):
-    Sum += i * (i + 1)
-print(Sum)
-
-# 14.
-s = input("请输入字符串：")
-if s == s[::-1]:
-    print("是回文字符串。")
-else:
-    print("不是回文字符串。")
+# Dir = ['Geometry、Feature、FeatureCollection/', 'Image/', 'ImageCollection/', 'Join/', '机器学习/']
+# path = r'E:/Study-tool/Git/projects/Geemap_Tutorials/'
+# Dir = glob(path + '*')
+# Dir.remove(glob(path + '*.*')[0])
+# for d in Dir:
+#     for file in glob(d+'*.ipynb'):
+#         with open(file, 'r', encoding='utf-8') as f:
+#             s = f.read()
+#         d1 = json.loads(s)
+#         s1 = d1['cells'][0]['source'][0]
+#         url = re.findall('\((.*?)\)', s1, re.S)[1]
+#         s2 = ['<a href="{}" target="_parent">\n'.format(url),
+#               '<img src="https://notebooks.gesis.org/binder/badge_logo.svg" alt="launch binder"/>\n',
+#               '</a>']
+#         d1['cells'][0]['source'] = s2
+#         str1 = '\n ' + json.dumps(d1, sort_keys=True, indent=1, separators=(',', ':'))
+#         with open(file, 'w',encoding='utf-8') as f:
+#             f.write(str1)
+file = r'E:/Study/Projects/Python/jupyter-notebook/geemap/创建分割面板图和可视化GEE数据.ipynb'
+file_url = 'Python/jupyter-notebook/geemap/创建分割面板图和可视化GEE数据.ipynb'
+path_url = 'https://notebooks.gesis.org/binder/v2/gh/monarch-beluga/Study-Code/master?filepath='
+file_name = os.path.split(file)[-1]
+url = path_url + urllib.parse.quote(file_url)
+s2 = ['<a href="{}" target="_blank">\n'.format(url),
+      '<img src="https://notebooks.gesis.org/binder/badge_logo.svg" alt="launch binder"/>\n',
+      '</a>']
+with open(file, 'r', encoding='utf-8') as f:
+    s = f.read()
+d1 = json.loads(s)
+cell = {
+    "cell_type": "markdown",
+    "metadata": {
+        "collapsed": False
+    },
+    "source": s2
+}
+d1['cells'].insert(0, cell)
+str1 = json.dumps(d1, sort_keys=True, indent=1, separators=(',', ':'))
+with open(file, 'w', encoding='utf-8') as f:
+    f.write(str1)
