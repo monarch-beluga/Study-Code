@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>更新节点</title>
+
+    <style>
+        button{
+            margin: 5px;
+            background: #46c1ea;
+            color: white;
+            border: 0;
+            padding: 0;
+            width: 100px;
+            height: 40px;
+            font: bolder 13px 楷体;
+        }
+        button:focus{
+            outline:0;
+        }
+        button:hover{
+            margin: 0;
+            width: 110px;
+            height: 50px;
+            font-size: 15px;
+        }
+    </style>
+
+</head>
+<body>
+
+<div id="father">
+    <h1>标题一</h1>
+    <p id="p1">p1</p>
+    <p id="p2">p2</p>
+    <p class="p3">p3</p>
+    <button id="button" onclick="button_click()">点击更新节点</button>
+</div>
+
+<script>
+    'use strict';
+
+    let p1 = document.getElementById('p1');
+    let p2 = document.getElementById('p2');
+    let p3 = document.getElementsByClassName('p3');
+    let button = document.getElementById('button');
+    function button_click() {
+        // 操作节点内容
+        p1.innerText = 'p1更新节点';
+        p2.innerHTML = '<strong>p2更新节点</strong>';
+        p3[0].innerHTML = '<a href="01获得Dom节点.html" target="_blank">点击跳转</a>';
+
+        // 操作节点CSS
+        p1.style.color = 'red';
+        button.style.background = '#e9504a'
+        button.disabled = "disabled"
+    }
+    // let button = document.getElementById('button');
+    // button.onclick = button_click;
+
+</script>
+
+</body>
+</html>

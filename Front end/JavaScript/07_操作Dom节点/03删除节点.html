@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>删除节点</title>
+
+    <style>
+        button{
+            margin: 5px;
+            background: #46c1ea;
+            color: white;
+            border: 0;
+            padding: 0;
+            width: 100px;
+            height: 40px;
+            font: bolder 13px 楷体;
+        }
+        button:focus{
+            outline:0;
+        }
+        button:hover{
+            margin: 0;
+            width: 110px;
+            height: 50px;
+            font-size: 15px;
+        }
+    </style>
+
+</head>
+<body>
+
+<div id="father">
+    <h1>标题一</h1>
+    <p id="p1">p1</p>
+    <p id="p2">p2</p>
+    <button id="button" onclick="button_click()">点击删除</button>
+</div>
+
+<script>
+    'use strict';
+
+    let p = document.getElementsByTagName('p');
+    // 询价删除节点
+    function button_click(){
+        let length = p.length
+        for (let i = 0; i <  length; i++){
+            p[0].remove();
+        }
+    }
+    // let button = document.getElementById('button');
+    // button.onclick = button_click;
+
+</script>
+
+</body>
+</html>

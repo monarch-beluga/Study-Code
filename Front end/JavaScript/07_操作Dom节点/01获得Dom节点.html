@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>获得Dom节点</title>
+</head>
+<body>
+
+<div id="father">
+    <h1>标题一</h1>
+    <p id="p1">p1</p>
+    <p class="p2">p2</p>
+</div>
+
+
+<script>
+    let h1 = document.getElementsByTagName('h1');       // 标签选择器,返回节点列表
+    let p1 = document.getElementById('p1');             // id选择器
+    let p2 = document.getElementsByClassName('p2');     // class选择器，返回节点列表
+
+    let father = document.getElementById('father');
+
+    // 读写
+    father.children;                    // 获取所有子节点
+    father.firstElementChild            // 第一个字节点
+    father.lastElementChild             // 最后一个子节点
+    // 只读
+    father.childNodes                   // 所有节点
+    father.firstChild                   // 第一个字节点，包含空白符
+    father.lastChild                    // 最后一个子节点，包含空白符
+
+    father.childElementCount            // 子节点数
+
+
+</script>
+</body>
+</html>

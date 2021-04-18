@@ -2,6 +2,7 @@
 #include <stdio.h>
 #include <string.h>
 #include <stdlib.h>
+#include<setjmp.h>
 #include<windows.h>
 typedef struct
 {	char num[5];   //编号 
@@ -17,6 +18,7 @@ typedef struct node
 }LNode,*LinkList;
 LinkList pHead;
 LNode *p;
+jmp_buf mark;
 int save = 0;
 //函数声明
 int menu_select();
@@ -117,11 +119,13 @@ int menu_select()
 	printf("=================================\n");
 	for(;;)
 	{
-		scanf("%d",&sn);
+		sn = setjmp(mark);
+		if (!scanf("%d",&sn))
+			longjmp(mark, -1);
 		if(sn<0||sn>5)
-		   printf("\n\t 输入错误，重选 0-5");
-        else
-           break;
+			printf("\n\t 输入错误，重选 0-5");
+	    else
+	    	break;
 	}
 	system("cls");
 	return sn;
