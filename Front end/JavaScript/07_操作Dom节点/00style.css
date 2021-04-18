@@ -1,0 +1,19 @@
+button{
+    margin: 5px;
+    background: #46c1ea;
+    color: white;
+    border: 0;
+    padding: 0;
+    width: 100px;
+    height: 40px;
+    font: bolder 13px 楷体;
+}
+button:focus{
+    outline:0;
+}
+button:hover{
+    margin: 0;
+    width: 110px;
+    height: 50px;
+    font-size: 15px;
+}
