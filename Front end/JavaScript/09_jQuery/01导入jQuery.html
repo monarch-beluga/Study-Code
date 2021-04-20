@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>导入jQuery</title>
+    <!--cdn导入-->
+    <script src="https://cdn.bootcdn.net/ajax/libs/jquery/3.6.0/jquery.js"></script>
+</head>
+<body>
+<!--
+公式：$(selector).action()
+-->
+
+<a href="#" id="test-jquery">点我</a>
+
+<script>
+    $('#test-jquery').click(function (){       // 绑定事件
+        alert('hello,jquery');
+    });
+</script>
+
+</body>
+</html>

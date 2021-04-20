@@ -1,0 +1,1156 @@
+{
+	"auto_complete":
+	{
+		"selected_items":
+		[
+			[
+				"i",
+				"input"
+			],
+			[
+				"ma",
+				"mark"
+			],
+			[
+				"p",
+				"printf\tprintf …"
+			],
+			[
+				"ph",
+				"phone"
+			],
+			[
+				"n",
+				"num"
+			],
+			[
+				"L",
+				"LNode"
+			],
+			[
+				"inc",
+				"include"
+			],
+			[
+				"h",
+				"head"
+			],
+			[
+				"m",
+				"malloc"
+			],
+			[
+				"S",
+				"Students"
+			],
+			[
+				"size",
+				"sizeof"
+			],
+			[
+				"M",
+				"Menu"
+			],
+			[
+				"u",
+				"UTF-8"
+			],
+			[
+				"ios",
+				"iostream\tstandard header"
+			],
+			[
+				"fp",
+				"fp"
+			],
+			[
+				"t",
+				"t"
+			],
+			[
+				"e",
+				"else"
+			],
+			[
+				"s",
+				"score"
+			],
+			[
+				"c",
+				"classname"
+			],
+			[
+				"w",
+				"while"
+			],
+			[
+				"f",
+				"flag"
+			],
+			[
+				"b",
+				"break"
+			],
+			[
+				"el",
+				"else"
+			]
+		]
+	},
+	"buffers":
+	[
+		{
+			"contents": "#include<stdio.h>\n#include<windows.h>\n\nint main()\n{\n\tchar a;\n\twhile(1)\n\t{\n\t\ta = getchar();\n\t\tif (a>'0'&&a<'5')\n\t\t{\n\t\t\tprintf(\"%c\", a);\n\t\t\tbreak;\n\t\t}\n\t\telse if(a != '\\n')\n\t\t\tprintf(\"重新输入\\n\");\n\t}\n\treturn 0;\n}",
+			"file": "C language/Single list/temp.c",
+			"file_size": 228,
+			"file_write_time": 132632402586925172,
+			"settings":
+			{
+				"buffer_size": 206,
+				"encoding": "Western (Windows 1252)",
+				"line_ending": "Windows",
+				"scratch": true
+			}
+		}
+	],
+	"build_system": "",
+	"build_system_choices":
+	[
+		[
+			[
+				[
+					"Packages/C++/C Single File.sublime-build",
+					""
+				],
+				[
+					"Packages/C++/C Single File.sublime-build",
+					"Compile"
+				],
+				[
+					"Packages/C++/C Single File.sublime-build",
+					"Compilation"
+				],
+				[
+					"Packages/C++/C Single File.sublime-build",
+					"Debug"
+				],
+				[
+					"Packages/C++/C Single File.sublime-build",
+					"Run"
+				]
+			],
+			[
+				"Packages/C++/C Single File.sublime-build",
+				"Run"
+			]
+		],
+		[
+			[
+				[
+					"Packages/C++/C Single File.sublime-build",
+					""
+				],
+				[
+					"Packages/C++/C Single File.sublime-build",
+					"Compile"
+				],
+				[
+					"Packages/C++/C Single File.sublime-build",
+					"Debug"
+				],
+				[
+					"Packages/C++/C Single File.sublime-build",
+					"Run"
+				]
+			],
+			[
+				"Packages/C++/C Single File.sublime-build",
+				"Run"
+			]
+		],
+		[
+			[
+				[
+					"Packages/C++/C Single File.sublime-build",
+					""
+				],
+				[
+					"Packages/C++/C Single File.sublime-build",
+					"Compile"
+				],
+				[
+					"Packages/C++/C Single File.sublime-build",
+					"Run"
+				]
+			],
+			[
+				"Packages/C++/C Single File.sublime-build",
+				"Run"
+			]
+		],
+		[
+			[
+				[
+					"Packages/C++/C Single File.sublime-build",
+					""
+				],
+				[
+					"Packages/C++/C Single File.sublime-build",
+					"Run"
+				]
+			],
+			[
+				"Packages/C++/C Single File.sublime-build",
+				"Run"
+			]
+		],
+		[
+			[
+				[
+					"Packages/C++/C Single File.sublime-build",
+					""
+				],
+				[
+					"Packages/C++/C Single File.sublime-build",
+					"Run"
+				],
+				[
+					"Packages/User/C Run.sublime-build",
+					""
+				],
+				[
+					"Packages/User/C Run.sublime-build",
+					"C Build and Run"
+				]
+			],
+			[
+				"Packages/C++/C Single File.sublime-build",
+				"Run"
+			]
+		],
+		[
+			[
+				[
+					"Packages/C++/C Single File.sublime-build",
+					""
+				],
+				[
+					"Packages/C++/C Single File.sublime-build",
+					"Run"
+				],
+				[
+					"Packages/User/C Run.sublime-build",
+					""
+				],
+				[
+					"Packages/User/C Run.sublime-build",
+					"C Build and Run"
+				],
+				[
+					"Packages/User/C Run.sublime-build",
+					"C temp"
+				]
+			],
+			[
+				"Packages/User/C Run.sublime-build",
+				"C Build and Run"
+			]
+		],
+		[
+			[
+				[
+					"Packages/C++/C Single File.sublime-build",
+					""
+				],
+				[
+					"Packages/C++/C Single File.sublime-build",
+					"Run"
+				],
+				[
+					"Packages/User/C-build.sublime-build",
+					""
+				],
+				[
+					"Packages/User/C-build.sublime-build",
+					"Run"
+				],
+				[
+					"Packages/User/C-build.sublime-build",
+					"RunInCommand"
+				]
+			],
+			[
+				"Packages/User/C-build.sublime-build",
+				"Run"
+			]
+		],
+		[
+			[
+				[
+					"Packages/C++/C Single File.sublime-build",
+					""
+				],
+				[
+					"Packages/C++/C Single File.sublime-build",
+					"Run"
+				],
+				[
+					"Packages/User/C.sublime-build",
+					""
+				],
+				[
+					"Packages/User/C.sublime-build",
+					"C Build and Run"
+				]
+			],
+			[
+				"Packages/User/C.sublime-build",
+				""
+			]
+		],
+		[
+			[
+				[
+					"Packages/C++/C Single File.sublime-build",
+					""
+				],
+				[
+					"Packages/C++/C Single File.sublime-build",
+					"Run"
+				],
+				[
+					"Packages/User/C.sublime-build",
+					""
+				],
+				[
+					"Packages/User/C.sublime-build",
+					"Run in sublime"
+				],
+				[
+					"Packages/User/C.sublime-build",
+					"CMD Run"
+				]
+			],
+			[
+				"Packages/User/C.sublime-build",
+				"CMD Run"
+			]
+		],
+		[
+			[
+				[
+					"Packages/C++/C++ Single File.sublime-build",
+					""
+				],
+				[
+					"Packages/C++/C++ Single File.sublime-build",
+					"Compile"
+				],
+				[
+					"Packages/C++/C++ Single File.sublime-build",
+					"Compilation"
+				],
+				[
+					"Packages/C++/C++ Single File.sublime-build",
+					"Debug"
+				],
+				[
+					"Packages/C++/C++ Single File.sublime-build",
+					"Run"
+				]
+			],
+			[
+				"Packages/C++/C++ Single File.sublime-build",
+				""
+			]
+		],
+		[
+			[
+				[
+					"Packages/C++/C++ Single File.sublime-build",
+					""
+				],
+				[
+					"Packages/C++/C++ Single File.sublime-build",
+					"Compile"
+				],
+				[
+					"Packages/C++/C++ Single File.sublime-build",
+					"Debug"
+				],
+				[
+					"Packages/C++/C++ Single File.sublime-build",
+					"Run"
+				]
+			],
+			[
+				"Packages/C++/C++ Single File.sublime-build",
+				"Run"
+			]
+		],
+		[
+			[
+				[
+					"Packages/C++/C++ Single File.sublime-build",
+					""
+				],
+				[
+					"Packages/C++/C++ Single File.sublime-build",
+					"Compile"
+				],
+				[
+					"Packages/C++/C++ Single File.sublime-build",
+					"Run"
+				]
+			],
+			[
+				"Packages/C++/C++ Single File.sublime-build",
+				"Run"
+			]
+		],
+		[
+			[
+				[
+					"Packages/C++/C++ Single File.sublime-build",
+					""
+				],
+				[
+					"Packages/C++/C++ Single File.sublime-build",
+					"Run"
+				]
+			],
+			[
+				"Packages/C++/C++ Single File.sublime-build",
+				"Run"
+			]
+		],
+		[
+			[
+				[
+					"Packages/C++/C++ Single File.sublime-build",
+					""
+				],
+				[
+					"Packages/C++/C++ Single File.sublime-build",
+					"Run"
+				],
+				[
+					"Packages/User/C++ Run.sublime-build",
+					""
+				],
+				[
+					"Packages/User/C++ Run.sublime-build",
+					"C++ Build and Run"
+				]
+			],
+			[
+				"Packages/C++/C++ Single File.sublime-build",
+				"Run"
+			]
+		],
+		[
+			[
+				[
+					"Packages/C++/C++ Single File.sublime-build",
+					""
+				],
+				[
+					"Packages/C++/C++ Single File.sublime-build",
+					"Run"
+				],
+				[
+					"Packages/User/C++-build.sublime-build",
+					""
+				],
+				[
+					"Packages/User/C++-build.sublime-build",
+					"C++ Build and Run"
+				]
+			],
+			[
+				"Packages/User/C++-build.sublime-build",
+				""
+			]
+		],
+		[
+			[
+				[
+					"Packages/C++/C++ Single File.sublime-build",
+					""
+				],
+				[
+					"Packages/C++/C++ Single File.sublime-build",
+					"Run"
+				],
+				[
+					"Packages/User/C++-build.sublime-build",
+					""
+				],
+				[
+					"Packages/User/C++-build.sublime-build",
+					"C++ Run in CMD"
+				],
+				[
+					"Packages/User/C++-build.sublime-build",
+					"Build and Run in sublime"
+				],
+				[
+					"Packages/User/C++-build.sublime-build",
+					"Build and Run in CMD Run"
+				]
+			],
+			[
+				"Packages/User/C++-build.sublime-build",
+				"C++ Run in CMD"
+			]
+		],
+		[
+			[
+				[
+					"Packages/C++/C++ Single File.sublime-build",
+					""
+				],
+				[
+					"Packages/C++/C++ Single File.sublime-build",
+					"Run"
+				],
+				[
+					"Packages/User/C++-build.sublime-build",
+					""
+				],
+				[
+					"Packages/User/C++-build.sublime-build",
+					"C++ Run in sublime"
+				],
+				[
+					"Packages/User/C++-build.sublime-build",
+					"C++ Run in CMD"
+				],
+				[
+					"Packages/User/C++-build.sublime-build",
+					"Build and Run in sublime"
+				],
+				[
+					"Packages/User/C++-build.sublime-build",
+					"Build and Run in CMD Run"
+				]
+			],
+			[
+				"Packages/User/C++-build.sublime-build",
+				"C++ Run in sublime"
+			]
+		],
+		[
+			[
+				[
+					"Packages/C++/C++ Single File.sublime-build",
+					""
+				],
+				[
+					"Packages/C++/C++ Single File.sublime-build",
+					"Run"
+				],
+				[
+					"Packages/User/C++.sublime-build",
+					""
+				]
+			],
+			[
+				"Packages/User/C++.sublime-build",
+				""
+			]
+		],
+		[
+			[
+				[
+					"Packages/C++/C++ Single File.sublime-build",
+					""
+				],
+				[
+					"Packages/C++/C++ Single File.sublime-build",
+					"Run"
+				],
+				[
+					"Packages/User/C++.sublime-build",
+					""
+				],
+				[
+					"Packages/User/C++.sublime-build",
+					"Run in sublime"
+				],
+				[
+					"Packages/User/C++.sublime-build",
+					"CMD Run"
+				]
+			],
+			[
+				"Packages/User/C++.sublime-build",
+				""
+			]
+		],
+		[
+			[
+				[
+					"Packages/C++/C++ Single File.sublime-build",
+					""
+				],
+				[
+					"Packages/C++/C++ Single File.sublime-build",
+					"Run"
+				],
+				[
+					"Packages/User/untitled.sublime-build",
+					""
+				],
+				[
+					"Packages/User/untitled.sublime-build",
+					"Run in sublime"
+				],
+				[
+					"Packages/User/untitled.sublime-build",
+					"CMD Run"
+				]
+			],
+			[
+				"Packages/User/untitled.sublime-build",
+				"CMD Run"
+			]
+		]
+	],
+	"build_varint": "",
+	"command_palette":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+			[
+				"pa",
+				"PackageResourceViewer: Open Resource"
+			],
+			[
+				"Package Control: ",
+				"Package Control: Install Package"
+			],
+			[
+				"set",
+				"Set Syntax: C"
+			],
+			[
+				"",
+				"PackageResourceViewer: Open Resource"
+			],
+			[
+				"v",
+				"View: Toggle Menu"
+			],
+			[
+				"rem",
+				"Package Control: Remove Package"
+			],
+			[
+				"pac",
+				"PackageResourceViewer: Open Resource"
+			],
+			[
+				"packageR",
+				"PackageResourceViewer: Open Resource"
+			],
+			[
+				"Package Resource Viewer",
+				"PackageResourceViewer: Open Resource"
+			],
+			[
+				"remove",
+				"Package Control: Remove Package"
+			],
+			[
+				"in",
+				"Package Control: Install Package"
+			],
+			[
+				"Package Control: install Package",
+				"Package Control: Install Package"
+			],
+			[
+				"intal",
+				"Install Package Control"
+			]
+		],
+		"width": 0.0
+	},
+	"console":
+	{
+		"height": 212.0,
+		"history":
+		[
+		]
+	},
+	"distraction_free":
+	{
+		"menu_visible": true,
+		"show_minimap": false,
+		"show_open_files": false,
+		"show_tabs": false,
+		"side_bar_visible": false,
+		"status_bar_visible": false
+	},
+	"expanded_folders":
+	[
+		"/E/Study/Projects/C++ and C",
+		"/E/Study/Projects/C++ and C/C language",
+		"/E/Study/Projects/C++ and C/C language/Single list"
+	],
+	"file_history":
+	[
+		"/E/Study/Projects/C++ and C/C language/Single list/病患信息系统.c",
+		"/C/Users/Monarch/AppData/Roaming/Sublime Text 3/Packages/User/C and C++.sublime-project",
+		"/C/Users/Monarch/AppData/Roaming/Sublime Text 3/Packages/User/Preferences.sublime-settings",
+		"/C/Users/Monarch/AppData/Roaming/Sublime Text 3/Packages/Default/Preferences.sublime-settings",
+		"/E/Study/Projects/C++ and C/C language/Single list/temp.c",
+		"/E/Study-notes/Front end/JavaScript/06_操作BOM对象.md",
+		"/E/Study/Projects/C++ and C/C基础/do_while.cpp",
+		"/C/Users/Monarch/AppData/Roaming/Sublime Text 3/Packages/Default File Type/default_file_type.sublime-settings",
+		"/E/Study/Projects/C++ and C/C基础/extern用法.cpp",
+		"/C/Users/Monarch/AppData/Roaming/Sublime Text 3/Packages/C++/C++ Single File.sublime-build",
+		"/C/Users/Monarch/AppData/Roaming/Sublime Text 3/Packages/C++/C Single File.sublime-build",
+		"/E/Study/Projects/C++ and C/C++基础/学习/temp.cpp",
+		"/E/Study/Projects/C++ and C/C language/Single list/Patients.txt",
+		"/E/Study/Projects/C++ and C/C基础/do while.cpp",
+		"/C/Users/Monarch/AppData/Roaming/Sublime Text 3/Packages/C++/C Standard Includes.sublime-completions",
+		"/E/Study/Projects/C++ and C/C基础/建立链表.cpp",
+		"/E/Study/Projects/C++ and C/C基础/链表的基本操作.cpp",
+		"/E/Study/Projects/C++ and C/C基础/动态分配储存函数.cpp",
+		"/E/Study/Projects/C++ and C/C基础/密码输入.cpp",
+		"/E/Study/Projects/C++ and C/C基础/顺序表.cpp",
+		"/E/Study/Projects/C++ and C/C language/Sequence table/Students.txt",
+		"/E/Study/Projects/C++ and C/C language/Sequence table/学生管理系统.c",
+		"/E/Study/Projects/C++ and C/C基础/while循环初步.cpp",
+		"/C/Users/Monarch/AppData/Roaming/Sublime Text 3/Packages/ConvertToUTF8/ConvertToUTF8.sublime-settings",
+		"/E/Study/Projects/C++ and C/C基础/指针函数.cpp",
+		"/E/Study/Projects/C++ and C/C基础/strcmp和strcpy.cpp",
+		"/E/Study/Projects/C++ and C/C基础/求圆周率.cpp",
+		"/E/Study/Projects/C++ and C/C基础/赋值、逗号表达式.cpp",
+		"/E/Study/Projects/C++ and C/C基础/二维数组与指针.cpp",
+		"/E/Study/Projects/C++ and C/C基础/冒泡排序.cpp",
+		"/E/Study/Projects/C++ and C/C language/Single list/hello.cpp",
+		"/F/file/study/Data structure/Sequence table/学生管理系统.c",
+		"/E/Study/Projects/C++ and C/C language/Sequence table/学生类型.h",
+		"/F/file/study/Data_structure/Student_management/学生类型.h",
+		"/F/file/study/Data_structure/Student_management/学生管理系统.c",
+		"/C/Users/Monarch/AppData/Roaming/Sublime Text 3/Packages/Color Scheme - Default/Monokai.sublime-color-scheme",
+		"/E/Study/Projects/C++ and C/C++基础/学习/角星坐标计算.cpp",
+		"/E/Study/Projects/C++ and C/C基础/IDW.h",
+		"/E/Study/Projects/C++ and C/C language/Student management/学生类型.h",
+		"/E/Study/Projects/C++ and C/C基础/typedef用法.cpp",
+		"/E/Study/Projects/C++ and C/C基础/共同体.cpp",
+		"/E/Study/Projects/C++ and C/C language/Student management/temp.c",
+		"/E/Study/Projects/C++ and C/C language/Student management/刘强.txt",
+		"/E/Study/Projects/C++ and C/C language/Student management/Students - 副本.txt",
+		"/E/Study/Projects/C++ and C/C language/Student management/123.txt",
+		"/E/Study/Projects/C++ and C/C language/Student management/学生管理系统.c",
+		"/E/Study/Projects/C++ and C/C language/Student management/Students.txt",
+		"/E/Study/Projects/自动提交/automatic.py",
+		"/E/Study/Projects/C++ and C/C language/Student management/学生类型 - 副本.h",
+		"/E/Study/Projects/C++ and C/C language/Student management/实验2.c",
+		"/E/Study/Projects/C++ and C/C++基础/学习/exercise6.cpp",
+		"/C/Users/Monarch/AppData/Roaming/Sublime Text 3/Packages/User/C++ Run.sublime-build",
+		"/C/Users/Monarch/AppData/Roaming/Sublime Text 3/Packages/User/C Run.sublime-build",
+		"/E/Study/Projects/C++ and C/C language/Student management/student.txt",
+		"/F/file/study/data structure/Student management/学生类型.h",
+		"/C/Users/Monarch/AppData/Roaming/Sublime Text 3/Packages/Material Theme/Material-Theme-Darker.sublime-theme",
+		"/C/Users/Monarch/AppData/Roaming/Sublime Text 3/Packages/Predawn Monokai/Predawn Monokai.tmTheme",
+		"/C/Users/Monarch/AppData/Roaming/Sublime Text 3/Packages/Color Scheme - Default/Mariana.sublime-color-scheme",
+		"/C/Users/Monarch/AppData/Roaming/Sublime Text 3/Packages/RainbowBrackets/README.md",
+		"/E/Study/Projects/C++ and C/C language/Student management/Student.h",
+		"/E/Study/Projects/自动提交/automatic.cpp",
+		"/E/Study/Projects/C++ and C/hello.cpp",
+		"/E/Study/Projects/C++ and C/temp.c",
+		"/C/Users/Monarch/AppData/Roaming/Sublime Text 3/Packages/User/C.sublime-build",
+		"/C/Users/Monarch/AppData/Roaming/Sublime Text 3/Packages/User/C++-build.sublime-build",
+		"/C/Users/Monarch/AppData/Roaming/Sublime Text 3/Packages/User/C++.sublime-build",
+		"/E/Study/Projects/C++ and C/Hello.c",
+		"/E/Study/Projects/C++ and C/hello.c",
+		"/E/Study/Projects/C++ and C/C基础/for循环.cpp",
+		"/E/Study/Projects/C++ and C/Hello.cpp",
+		"/E/Study/Projects/C++ and C/C基础/二维数组的应用.cpp",
+		"/E/Study/Projects/C++ and C/C基础/switch语句.cpp",
+		"/E/Study/Projects/C++ and C/C基础/static用法.cpp",
+		"/C/Users/Monarch/AppData/Roaming/Sublime Text 3/Packages/User/C-build.sublime-build",
+		"/E/Study-tool/Typora/EasyBlogImage/垃圾清理.bat",
+		"/E/Study/Projects/C++ and C/C++基础/文件/数值相减.cpp",
+		"/E/Study/Projects/C++ and C/C基础/小程序.h",
+		"/E/Study/Projects/C++ and C/C基础/贪吃蛇.cpp",
+		"/C/Users/Monarch/AppData/Roaming/Sublime Text 3/Packages/User/ConvertToUTF8.sublime-settings",
+		"/C/Users/Monarch/AppData/Roaming/Sublime Text 3/Packages/User/SublimeTextTrans.sublime-settings",
+		"/C/Users/Monarch/AppData/Roaming/Sublime Text 3/Packages/SublimeTextTrans/SublimeTextTrans.sublime-settings",
+		"/E/Study/Projects/C++ and C/C基础/IDW.cpp",
+		"/E/Study/Projects/C++ and C/C基础/关系运算符.cpp",
+		"/E/Study/Projects/C++ and C/C基础/printf的格式控制符.cpp"
+	],
+	"find":
+	{
+		"height": 28.0
+	},
+	"find_in_files":
+	{
+		"height": 167.0,
+		"where_history":
+		[
+		]
+	},
+	"find_state":
+	{
+		"case_sensitive": false,
+		"find_history":
+		[
+		],
+		"highlight": true,
+		"in_selection": false,
+		"preserve_case": false,
+		"regex": false,
+		"replace_history":
+		[
+		],
+		"reverse": false,
+		"show_context": true,
+		"use_buffer2": true,
+		"whole_word": false,
+		"wrap": true
+	},
+	"groups":
+	[
+		{
+			"selected": 0,
+			"sheets":
+			[
+				{
+					"buffer": 0,
+					"file": "C language/Single list/temp.c",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 206,
+						"regions":
+						{
+							"rb_level0":
+							{
+								"flags": 272,
+								"regions":
+								[
+									[
+										47,
+										48
+									],
+									[
+										48,
+										49
+									],
+									[
+										50,
+										51
+									],
+									[
+										205,
+										206
+									]
+								],
+								"scope": "level0.rb"
+							},
+							"rb_level1":
+							{
+								"flags": 272,
+								"regions":
+								[
+									[
+										67,
+										68
+									],
+									[
+										69,
+										70
+									],
+									[
+										72,
+										73
+									],
+									[
+										192,
+										193
+									]
+								],
+								"scope": "level1.rb"
+							},
+							"rb_level2":
+							{
+								"flags": 272,
+								"regions":
+								[
+									[
+										87,
+										88
+									],
+									[
+										88,
+										89
+									],
+									[
+										96,
+										97
+									],
+									[
+										109,
+										110
+									],
+									[
+										113,
+										114
+									],
+									[
+										147,
+										148
+									],
+									[
+										158,
+										159
+									],
+									[
+										168,
+										169
+									],
+									[
+										179,
+										180
+									],
+									[
+										188,
+										189
+									]
+								],
+								"scope": "level2.rb"
+							},
+							"rb_level3":
+							{
+								"flags": 272,
+								"regions":
+								[
+									[
+										124,
+										125
+									],
+									[
+										132,
+										133
+									]
+								],
+								"scope": "level3.rb"
+							}
+						},
+						"selection":
+						[
+							[
+								70,
+								70
+							]
+						],
+						"settings":
+						{
+							"bracket_highlighter.busy": false,
+							"bracket_highlighter.locations":
+							{
+								"close":
+								{
+									"1":
+									[
+										69,
+										70
+									]
+								},
+								"icon":
+								{
+									"1":
+									[
+										"Packages/BracketHighlighter/icons/round_bracket.png",
+										"region.yellowish"
+									]
+								},
+								"open":
+								{
+									"1":
+									[
+										67,
+										68
+									]
+								},
+								"unmatched":
+								{
+								}
+							},
+							"bracket_highlighter.regions":
+							[
+								"bh_c_define",
+								"bh_c_define_center",
+								"bh_c_define_open",
+								"bh_c_define_close",
+								"bh_c_define_content",
+								"bh_curly",
+								"bh_curly_center",
+								"bh_curly_open",
+								"bh_curly_close",
+								"bh_curly_content",
+								"bh_single_quote",
+								"bh_single_quote_center",
+								"bh_single_quote_open",
+								"bh_single_quote_close",
+								"bh_single_quote_content",
+								"bh_double_quote",
+								"bh_double_quote_center",
+								"bh_double_quote_open",
+								"bh_double_quote_close",
+								"bh_double_quote_content",
+								"bh_regex",
+								"bh_regex_center",
+								"bh_regex_open",
+								"bh_regex_close",
+								"bh_regex_content",
+								"bh_square",
+								"bh_square_center",
+								"bh_square_open",
+								"bh_square_close",
+								"bh_square_content",
+								"bh_angle",
+								"bh_angle_center",
+								"bh_angle_open",
+								"bh_angle_close",
+								"bh_angle_content",
+								"bh_round",
+								"bh_round_center",
+								"bh_round_open",
+								"bh_round_close",
+								"bh_round_content",
+								"bh_tag",
+								"bh_tag_center",
+								"bh_tag_open",
+								"bh_tag_close",
+								"bh_tag_content",
+								"bh_unmatched",
+								"bh_unmatched_center",
+								"bh_unmatched_open",
+								"bh_unmatched_close",
+								"bh_unmatched_content",
+								"bh_default",
+								"bh_default_center",
+								"bh_default_open",
+								"bh_default_close",
+								"bh_default_content"
+							],
+							"color_scheme": "Packages/Color Scheme - Default/Monokai.sublime-color-scheme",
+							"in_converting": true,
+							"is_init_dirty_state": false,
+							"origin_content": "#include<stdio.h>\n#include<windows.h>\n\nint main()\n{\n\tchar a;\n\twhile(1)\n\t{\n\t\ta = getchar();\n\t\tif (a>'0'&&a<'5')\n\t\t{\n\t\t\tprintf(\"%c\", a);\n\t\t\tbreak;\n\t\t}\n\t\telse if(a != '\\n')\n\t\t\tprintf(\"重新输入\\n\");\n\t}\n\treturn 0;\n}",
+							"origin_encoding": "GBK",
+							"rb_syntax": "json",
+							"syntax": "Packages/C++/C.sublime-syntax",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 0,
+					"type": "text"
+				}
+			]
+		}
+	],
+	"incremental_find":
+	{
+		"height": 28.0
+	},
+	"input":
+	{
+		"height": 73.0
+	},
+	"layout":
+	{
+		"cells":
+		[
+			[
+				0,
+				0,
+				1,
+				1
+			]
+		],
+		"cols":
+		[
+			0.0,
+			1.0
+		],
+		"rows":
+		[
+			0.0,
+			1.0
+		]
+	},
+	"menu_visible": true,
+	"output.exec":
+	{
+		"height": 128.0
+	},
+	"output.find_results":
+	{
+		"height": 0.0
+	},
+	"pinned_build_system": "",
+	"project": "C and C++.sublime-project",
+	"replace":
+	{
+		"height": 52.0
+	},
+	"save_all_on_build": true,
+	"select_file":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"select_project":
+	{
+		"height": 500.0,
+		"last_filter": "",
+		"selected_items":
+		[
+			[
+				"",
+				"E:\\Study\\Projects\\C++ and C\\C-C++.sublime-workspace"
+			]
+		],
+		"width": 380.0
+	},
+	"select_symbol":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"selected_group": 0,
+	"settings":
+	{
+	},
+	"show_minimap": true,
+	"show_open_files": false,
+	"show_tabs": true,
+	"side_bar_visible": true,
+	"side_bar_width": 217.0,
+	"status_bar_visible": true,
+	"template_settings":
+	{
+	}
+}
