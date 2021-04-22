@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>操作DOM</title>
+    <script src="https://cdn.bootcdn.net/ajax/libs/jquery/3.6.0/jquery.js"></script>
+</head>
+<body>
+
+<ul id="test">
+    <li class="js">JavaScript</li>
+    <li id="python">Python</li>
+</ul>
+
+<script>
+    // 节点文本操作
+    let li = $('#test li[id=python]');      // 选择器
+    li.text();          // 获得值
+    // li.text('设置值');          // 设置值
+    li.html();                  // 获得值
+    // li.html('设置值');                  // 设置值
+
+    // CSS操作
+    li.css('color','red');           // 单个CSS属性
+    li.css({'color':'blue', 'font-size':'20px'});       // 多个属性
+
+    // 元素显示隐藏
+    li.hide();      // 隐藏
+    li.show();      // 显示
+</script>
+
+</body>
+</html>

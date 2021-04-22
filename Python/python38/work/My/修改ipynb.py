@@ -21,7 +21,7 @@ for d in Dir:
               '</a>']
         d1['cells'][0]['source'] = s2
         str1 = '\n ' + json.dumps(d1, sort_keys=True, indent=1, separators=(',', ':'))
-        with open(file, 'w',encoding='utf-8') as f:
+        with open(file, 'w',  encoding='utf-8') as f:
             f.write(str1)
 
 

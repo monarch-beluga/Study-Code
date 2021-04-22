@@ -1,14 +1,30 @@
 
-from work.My.为ipynb添加binder import add_binder
-from glob import glob
+# 3. 求圆周率π
+i = 1
+j = 1
+pai = 0
+while 1 / j > 10e-6:
+    pai += (1 / j) * i
+    j += 2
+    i = -i
+pai *= 4
+print("π = {}".format(pai))
 
-location_repository = 'E:/Study/Study-Code/'
-git_repository = 'Study-Code'
-binder = 'https://notebooks.gesis.org/binder/v2/gh/'
-Branch = 'master'
+# 6.
+from random import randint
 
-path = r'E:/Study/Study-Code/Python/jupyter-notebook/geemap/'
+nums = [randint(1, 100) for i in range(100)]
+odd_nums = [i for i in nums if (i % 2 != 0)]
 
-files = glob(path+'*.ipynb')
+# 12.
+Sum = 0
+for i in range(1, 100, 2):
+    Sum += i * (i + 1)
+print(Sum)
 
-add_binder(files[7])
+# 14.
+s = input("请输入字符串：")
+if s == s[::-1]:
+    print("是回文字符串。")
+else:
+    print("不是回文字符串。")
