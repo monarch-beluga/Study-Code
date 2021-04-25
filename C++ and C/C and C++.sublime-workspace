@@ -4,6 +4,14 @@
 		"selected_items":
 		[
 			[
+				"L",
+				"List"
+			],
+			[
+				"re",
+				"reverse"
+			],
+			[
 				"i",
 				"input"
 			],
@@ -22,10 +30,6 @@
 			[
 				"n",
 				"num"
-			],
-			[
-				"L",
-				"LNode"
 			],
 			[
 				"inc",
@@ -100,13 +104,14 @@
 	"buffers":
 	[
 		{
-			"contents": "#include<stdio.h>\n#include<windows.h>\n\nint main()\n{\n\tchar a;\n\twhile(1)\n\t{\n\t\ta = getchar();\n\t\tif (a>'0'&&a<'5')\n\t\t{\n\t\t\tprintf(\"%c\", a);\n\t\t\tbreak;\n\t\t}\n\t\telse if(a != '\\n')\n\t\t\tprintf(\"重新输入\\n\");\n\t}\n\treturn 0;\n}",
-			"file": "C language/Single list/temp.c",
-			"file_size": 228,
-			"file_write_time": 132632402586925172,
+			"contents": "#include <stdio.h>\n#define MaxSize 100 \n\ntypedef struct{             \n\tint data[MaxSize];\n\tint length;\n}SqList;\n\n// 顺序表反转\nvoid reverse(SqList *L)\n{\n\tint i, temp;\n\tfor (i = 0; i < L->length/2; ++i)\n\t{\n\t\ttemp = L->data[i];\n\t\tL->data[i] = L->data[L->length-i-1];\n\t\tL->data[L->length-i-1] = temp;\n\t}\n}\n\n// 2.5顺序表添加\nvoid add(SqList *L, int p)\n{\n\tint i = L->length;\n\tfor (; p < L->data[i-1]; i--)\n\t\tL->data[i] = L->data[i-1];\n\tL->data[i] = p;\n\tL->length++;\n}\n\nSqList List;\n\nint main()\n{\n\tint i;\n\t// 顺序表初始化\n\tfor (i = 0; i < 5; ++i)\n\t{\n\t\tList.data[i] = i*2;\n\t\tList.length++;\n\t}\n\t// 原表输出\n\tprintf(\"原顺序表\\n\");\n\tfor (i = 0; i < List.length; ++i)\n\t\tprintf(\"%d \", List.data[i]);\n\t// 顺序表反转\n\treverse(&List);\n\tprintf(\"\\n反转后顺序表\\n\");\n\tfor (i = 0; i < List.length; ++i)\n\t\tprintf(\"%d \", List.data[i]);\n\treverse(&List);\t\t\t// 重新反转\n\t// 顺序表添加\n\tadd(&List, 6);\n\tprintf(\"\\n添加后顺序表\\n\");\n\tfor (i = 0; i < List.length; ++i)\n\t\tprintf(\"%d \", List.data[i]);\n\treturn 0;\n}\n",
+			"file": "C language/Sequence table/练习1.c",
+			"file_size": 1043,
+			"file_write_time": 132638330728142323,
 			"settings":
 			{
-				"buffer_size": 206,
+				"buffer_size": 935,
+				"encoding": "Western (Windows 1252)",
 				"line_ending": "Windows",
 				"scratch": true
 			}
@@ -696,24 +701,24 @@
 	},
 	"expanded_folders":
 	[
-		"/E/Study/Projects/C++ and C",
-		"/E/Study/Projects/C++ and C/C language",
-		"/E/Study/Projects/C++ and C/C language/Single list"
+		"/E/Study/Projects/C++ and C"
 	],
 	"file_history":
 	[
-		"/F/file/study/remote sensing/25/fushedingbiao.exp",
+		"/E/Study/Projects/C++ and C/C language/Sequence table/学生管理系统.c",
 		"/E/Study/Projects/C++ and C/C language/Single list/病患信息系统.c",
+		"/E/Study/Projects/C++ and C/C language/Sequence table/Students.txt",
+		"/C/Users/Monarch/AppData/Roaming/Sublime Text 3/Packages/C++/C Single File.sublime-build",
+		"/E/Study/Projects/C++ and C/C language/Single list/temp.c",
+		"/F/file/study/remote sensing/25/fushedingbiao.exp",
 		"/C/Users/Monarch/AppData/Roaming/Sublime Text 3/Packages/User/C and C++.sublime-project",
 		"/C/Users/Monarch/AppData/Roaming/Sublime Text 3/Packages/User/Preferences.sublime-settings",
 		"/C/Users/Monarch/AppData/Roaming/Sublime Text 3/Packages/Default/Preferences.sublime-settings",
-		"/E/Study/Projects/C++ and C/C language/Single list/temp.c",
 		"/E/Study-notes/Front end/JavaScript/06_操作BOM对象.md",
 		"/E/Study/Projects/C++ and C/C基础/do_while.cpp",
 		"/C/Users/Monarch/AppData/Roaming/Sublime Text 3/Packages/Default File Type/default_file_type.sublime-settings",
 		"/E/Study/Projects/C++ and C/C基础/extern用法.cpp",
 		"/C/Users/Monarch/AppData/Roaming/Sublime Text 3/Packages/C++/C++ Single File.sublime-build",
-		"/C/Users/Monarch/AppData/Roaming/Sublime Text 3/Packages/C++/C Single File.sublime-build",
 		"/E/Study/Projects/C++ and C/C++基础/学习/temp.cpp",
 		"/E/Study/Projects/C++ and C/C language/Single list/Patients.txt",
 		"/E/Study/Projects/C++ and C/C基础/do while.cpp",
@@ -723,8 +728,6 @@
 		"/E/Study/Projects/C++ and C/C基础/动态分配储存函数.cpp",
 		"/E/Study/Projects/C++ and C/C基础/密码输入.cpp",
 		"/E/Study/Projects/C++ and C/C基础/顺序表.cpp",
-		"/E/Study/Projects/C++ and C/C language/Sequence table/Students.txt",
-		"/E/Study/Projects/C++ and C/C language/Sequence table/学生管理系统.c",
 		"/E/Study/Projects/C++ and C/C基础/while循环初步.cpp",
 		"/C/Users/Monarch/AppData/Roaming/Sublime Text 3/Packages/ConvertToUTF8/ConvertToUTF8.sublime-settings",
 		"/E/Study/Projects/C++ and C/C基础/指针函数.cpp",
@@ -790,7 +793,7 @@
 	],
 	"find":
 	{
-		"height": 28.0
+		"height": 85.0
 	},
 	"find_in_files":
 	{
@@ -804,6 +807,10 @@
 		"case_sensitive": false,
 		"find_history":
 		[
+			");\n",
+			"elem",
+			".",
+			"L"
 		],
 		"highlight": true,
 		"in_selection": false,
@@ -811,6 +818,9 @@
 		"regex": false,
 		"replace_history":
 		[
+			"data",
+			"->",
+			"*L"
 		],
 		"reverse": false,
 		"show_context": true,
@@ -826,11 +836,11 @@
 			[
 				{
 					"buffer": 0,
-					"file": "C language/Single list/temp.c",
+					"file": "C language/Sequence table/练习1.c",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 206,
+						"buffer_size": 935,
 						"regions":
 						{
 							"rb_level0":
@@ -839,20 +849,60 @@
 								"regions":
 								[
 									[
-										47,
-										48
+										55,
+										56
 									],
 									[
-										48,
-										49
+										103,
+										104
 									],
 									[
-										50,
-										51
+										134,
+										135
 									],
 									[
-										205,
-										206
+										144,
+										145
+									],
+									[
+										146,
+										147
+									],
+									[
+										296,
+										297
+									],
+									[
+										319,
+										320
+									],
+									[
+										336,
+										337
+									],
+									[
+										338,
+										339
+									],
+									[
+										451,
+										452
+									],
+									[
+										476,
+										477
+									],
+									[
+										477,
+										478
+									],
+									[
+										479,
+										480
+									],
+									[
+										933,
+										934
 									]
 								],
 								"scope": "level0.rb"
@@ -863,20 +913,172 @@
 								"regions":
 								[
 									[
-										67,
-										68
+										79,
+										80
 									],
 									[
-										69,
-										70
+										87,
+										88
 									],
 									[
-										72,
-										73
+										167,
+										168
 									],
 									[
-										192,
-										193
+										195,
+										196
+									],
+									[
+										198,
+										199
+									],
+									[
+										294,
+										295
+									],
+									[
+										365,
+										366
+									],
+									[
+										389,
+										390
+									],
+									[
+										400,
+										401
+									],
+									[
+										402,
+										403
+									],
+									[
+										413,
+										414
+									],
+									[
+										417,
+										418
+									],
+									[
+										428,
+										429
+									],
+									[
+										430,
+										431
+									],
+									[
+										505,
+										506
+									],
+									[
+										523,
+										524
+									],
+									[
+										526,
+										527
+									],
+									[
+										568,
+										569
+									],
+									[
+										586,
+										587
+									],
+									[
+										595,
+										596
+									],
+									[
+										603,
+										604
+									],
+									[
+										631,
+										632
+									],
+									[
+										641,
+										642
+									],
+									[
+										661,
+										662
+									],
+									[
+										682,
+										683
+									],
+									[
+										688,
+										689
+									],
+									[
+										698,
+										699
+									],
+									[
+										711,
+										712
+									],
+									[
+										719,
+										720
+									],
+									[
+										747,
+										748
+									],
+									[
+										757,
+										758
+									],
+									[
+										777,
+										778
+									],
+									[
+										788,
+										789
+									],
+									[
+										794,
+										795
+									],
+									[
+										821,
+										822
+									],
+									[
+										830,
+										831
+									],
+									[
+										840,
+										841
+									],
+									[
+										853,
+										854
+									],
+									[
+										861,
+										862
+									],
+									[
+										889,
+										890
+									],
+									[
+										899,
+										900
+									],
+									[
+										919,
+										920
 									]
 								],
 								"scope": "level1.rb"
@@ -887,70 +1089,86 @@
 								"regions":
 								[
 									[
-										87,
-										88
+										216,
+										217
 									],
 									[
-										88,
-										89
+										218,
+										219
 									],
 									[
-										96,
-										97
+										230,
+										231
 									],
 									[
-										109,
-										110
+										232,
+										233
 									],
 									[
-										113,
-										114
+										243,
+										244
 									],
 									[
-										147,
-										148
+										257,
+										258
 									],
 									[
-										158,
-										159
+										269,
+										270
 									],
 									[
-										168,
-										169
+										283,
+										284
 									],
 									[
-										179,
-										180
+										379,
+										380
 									],
 									[
-										188,
-										189
+										383,
+										384
+									],
+									[
+										539,
+										540
+									],
+									[
+										541,
+										542
+									],
+									[
+										658,
+										659
+									],
+									[
+										660,
+										661
+									],
+									[
+										774,
+										775
+									],
+									[
+										776,
+										777
+									],
+									[
+										916,
+										917
+									],
+									[
+										918,
+										919
 									]
 								],
 								"scope": "level2.rb"
-							},
-							"rb_level3":
-							{
-								"flags": 272,
-								"regions":
-								[
-									[
-										124,
-										125
-									],
-									[
-										132,
-										133
-									]
-								],
-								"scope": "level3.rb"
 							}
 						},
 						"selection":
 						[
 							[
-								90,
-								90
+								578,
+								578
 							]
 						],
 						"settings":
@@ -962,8 +1180,8 @@
 								{
 									"1":
 									[
-										192,
-										193
+										933,
+										934
 									]
 								},
 								"icon":
@@ -978,8 +1196,8 @@
 								{
 									"1":
 									[
-										72,
-										73
+										479,
+										480
 									]
 								},
 								"unmatched":
@@ -988,21 +1206,21 @@
 							},
 							"bracket_highlighter.regions":
 							[
-								"bh_tag",
-								"bh_tag_center",
-								"bh_tag_open",
-								"bh_tag_close",
-								"bh_tag_content",
 								"bh_default",
 								"bh_default_center",
 								"bh_default_open",
 								"bh_default_close",
 								"bh_default_content",
-								"bh_curly",
-								"bh_curly_center",
-								"bh_curly_open",
-								"bh_curly_close",
-								"bh_curly_content",
+								"bh_square",
+								"bh_square_center",
+								"bh_square_open",
+								"bh_square_close",
+								"bh_square_content",
+								"bh_double_quote",
+								"bh_double_quote_center",
+								"bh_double_quote_open",
+								"bh_double_quote_close",
+								"bh_double_quote_content",
 								"bh_angle",
 								"bh_angle_center",
 								"bh_angle_open",
@@ -1013,48 +1231,48 @@
 								"bh_c_define_open",
 								"bh_c_define_close",
 								"bh_c_define_content",
-								"bh_square",
-								"bh_square_center",
-								"bh_square_open",
-								"bh_square_close",
-								"bh_square_content",
+								"bh_curly",
+								"bh_curly_center",
+								"bh_curly_open",
+								"bh_curly_close",
+								"bh_curly_content",
 								"bh_regex",
 								"bh_regex_center",
 								"bh_regex_open",
 								"bh_regex_close",
 								"bh_regex_content",
-								"bh_single_quote",
-								"bh_single_quote_center",
-								"bh_single_quote_open",
-								"bh_single_quote_close",
-								"bh_single_quote_content",
-								"bh_unmatched",
-								"bh_unmatched_center",
-								"bh_unmatched_open",
-								"bh_unmatched_close",
-								"bh_unmatched_content",
 								"bh_round",
 								"bh_round_center",
 								"bh_round_open",
 								"bh_round_close",
 								"bh_round_content",
-								"bh_double_quote",
-								"bh_double_quote_center",
-								"bh_double_quote_open",
-								"bh_double_quote_close",
-								"bh_double_quote_content"
+								"bh_unmatched",
+								"bh_unmatched_center",
+								"bh_unmatched_open",
+								"bh_unmatched_close",
+								"bh_unmatched_content",
+								"bh_single_quote",
+								"bh_single_quote_center",
+								"bh_single_quote_open",
+								"bh_single_quote_close",
+								"bh_single_quote_content",
+								"bh_tag",
+								"bh_tag_center",
+								"bh_tag_open",
+								"bh_tag_close",
+								"bh_tag_content"
 							],
-							"color_scheme": "Packages/Color Scheme - Default/Monokai.sublime-color-scheme",
+							"force_encoding": "GBK",
 							"in_converting": true,
-							"is_init_dirty_state": false,
-							"origin_content": "#include<stdio.h>\n#include<windows.h>\n\nint main()\n{\n\tchar a;\n\twhile(1)\n\t{\n\t\ta = getchar();\n\t\tif (a>'0'&&a<'5')\n\t\t{\n\t\t\tprintf(\"%c\", a);\n\t\t\tbreak;\n\t\t}\n\t\telse if(a != '\\n')\n\t\t\tprintf(\"重新输入\\n\");\n\t}\n\treturn 0;\n}",
-							"origin_encoding": "GBK",
+							"origin_content": "#include <stdio.h>\n#define MaxSize 100 \n\ntypedef struct{             \n\tint elem[MaxSize];\n\tint length;\n}SqList;\n\nvoid reverse(SqList L)\n{\n\tint i, temp;\n\tfor (i = 0; i < L.length/2; ++i)\n\t{\n\t\ttemp = L.elem[i];\n\t\tL.elem[i] = L.elem[L.length-i-1];\n\t\tL.elem[L.length-i-1] = temp;\n\t}\n}\n\n\nSqList List;\n\nint main()\n{\n\tint i;\n\tfor (i = 0; i < 5; ++i)\n\t{\n\t\tList.elem[i] = i;\n\t\tList.length++;\n\t}\n\tprintf(\"原顺序表\\n\");\n\tfor (i = 0; i < List.length; ++i)\n\t\tprintf(\"%d->\", List.elem[i]);\n\treverse(List);\n\tprintf(\"\\n反转后顺序表\\n\");\n\tfor (i = 0; i < List.length; ++i)\n\t\tprintf(\"%d->\", List.elem[i]);\n\treturn 0;\n} ",
+							"origin_encoding": "GB2312",
 							"rb_syntax": "json",
+							"revert_to_scratch": true,
 							"syntax": "Packages/C++/C.sublime-syntax",
 							"translate_tabs_to_spaces": false
 						},
 						"translation.x": 0.0,
-						"translation.y": 0.0,
+						"translation.y": 571.0,
 						"zoom_level": 1.0
 					},
 					"stack_index": 0,
@@ -1106,7 +1324,7 @@
 	"project": "C and C++.sublime-project",
 	"replace":
 	{
-		"height": 52.0
+		"height": 144.0
 	},
 	"save_all_on_build": true,
 	"select_file":
