@@ -4,12 +4,56 @@
 		"selected_items":
 		[
 			[
-				"L",
-				"List"
+				"Ne",
+				"NewtonSolvingEquations"
+			],
+			[
+				"ti",
+				"time_t"
+			],
+			[
+				"stdli",
+				"cstdlib\tstandard header"
+			],
+			[
+				"se",
+				"set_next"
+			],
+			[
+				"get",
+				"get_next"
+			],
+			[
+				"pr",
+				"prev"
+			],
+			[
+				"ge",
+				"get_next"
+			],
+			[
+				"g",
+				"get_data"
+			],
+			[
+				"f",
+				"fibonacci_num"
 			],
 			[
 				"re",
-				"reverse"
+				"return"
+			],
+			[
+				"Fib",
+				"FibonacciNum"
+			],
+			[
+				"p",
+				"prve"
+			],
+			[
+				"L",
+				"List"
 			],
 			[
 				"i",
@@ -18,10 +62,6 @@
 			[
 				"ma",
 				"mark"
-			],
-			[
-				"p",
-				"printf\tprintf …"
 			],
 			[
 				"ph",
@@ -88,10 +128,6 @@
 				"while"
 			],
 			[
-				"f",
-				"flag"
-			],
-			[
 				"b",
 				"break"
 			],
@@ -103,6 +139,15 @@
 	},
 	"buffers":
 	[
+		{
+			"file": "Algorithm/03_newton_iteration.cc",
+			"settings":
+			{
+				"buffer_size": 1614,
+				"encoding": "UTF-8",
+				"line_ending": "Windows"
+			}
+		},
 		{
 			"contents": "#include <stdio.h>\n#define MaxSize 100 \n\ntypedef struct{             \n\tint data[MaxSize];\n\tint length;\n}SqList;\n\n// 顺序表反转\nvoid reverse(SqList *L)\n{\n\tint i, temp;\n\tfor (i = 0; i < L->length/2; ++i)\n\t{\n\t\ttemp = L->data[i];\n\t\tL->data[i] = L->data[L->length-i-1];\n\t\tL->data[L->length-i-1] = temp;\n\t}\n}\n\n// 2.5顺序表添加\nvoid add(SqList *L, int p)\n{\n\tint i = L->length;\n\tfor (; p < L->data[i-1]; i--)\n\t\tL->data[i] = L->data[i-1];\n\tL->data[i] = p;\n\tL->length++;\n}\n\nSqList List;\n\nint main()\n{\n\tint i;\n\t// 顺序表初始化\n\tfor (i = 0; i < 5; ++i)\n\t{\n\t\tList.data[i] = i*2;\n\t\tList.length++;\n\t}\n\t// 原表输出\n\tprintf(\"原顺序表\\n\");\n\tfor (i = 0; i < List.length; ++i)\n\t\tprintf(\"%d \", List.data[i]);\n\t// 顺序表反转\n\treverse(&List);\n\tprintf(\"\\n反转后顺序表\\n\");\n\tfor (i = 0; i < List.length; ++i)\n\t\tprintf(\"%d \", List.data[i]);\n\treverse(&List);\t\t\t// 重新反转\n\t// 顺序表添加\n\tadd(&List, 6);\n\tprintf(\"\\n添加后顺序表\\n\");\n\tfor (i = 0; i < List.length; ++i)\n\t\tprintf(\"%d \", List.data[i]);\n\treturn 0;\n}\n",
 			"file": "C language/Sequence table/练习1.c",
@@ -365,7 +410,7 @@
 			],
 			[
 				"Packages/C++/C++ Single File.sublime-build",
-				""
+				"Run"
 			]
 		],
 		[
@@ -630,7 +675,7 @@
 		[
 			[
 				"pa",
-				"PackageResourceViewer: Open Resource"
+				"Package Control: Remove Package"
 			],
 			[
 				"Package Control: ",
@@ -701,13 +746,47 @@
 	},
 	"expanded_folders":
 	[
-		"/E/Study/Projects/C++ and C"
+		"/E/Study/Projects/C++ and C",
+		"/E/Study/Projects/C++ and C/C language",
+		"/E/Study/Projects/C++ and C/C language/Sequence table"
 	],
 	"file_history":
 	[
-		"/E/Study/Projects/C++ and C/C language/Sequence table/学生管理系统.c",
-		"/E/Study/Projects/C++ and C/C language/Single list/病患信息系统.c",
+		"/E/Study/Projects/C++ and C/C language/Sequence table/temp.c",
+		"/F/队列3.c",
+		"/E/Study/Projects/C++ and C/C language/Sequence table/学生类型.h",
+		"/E/Study/Projects/C++ and C/C language/Sequence table/顺序栈.c",
+		"/E/Study/Projects/C++ and C/C language/Sequence table/队列.c",
+		"/F/队列2.c",
+		"/F/队列1.c",
 		"/E/Study/Projects/C++ and C/C language/Sequence table/Students.txt",
+		"/E/Study/Projects/C++ and C/C language/Sequence table/练习1.c",
+		"/F/file/study/Data structure/Sequence table/队列.c",
+		"/F/file/study/Data structure/Sequence table/顺序栈.c",
+		"/E/Study/Projects/C++ and C/Algorithm/02_linked_list_reversal.cc",
+		"/E/Study/Projects/C++ and C/Algorithm/01_fibonacci_sequence.cc",
+		"/E/Study/Projects/mysql/ForeignKey.sql",
+		"/C/Users/Monarch/AppData/Roaming/Sublime Text 3/Packages/User/SublimeTextTrans.sublime-settings",
+		"/C/Users/Monarch/AppData/Roaming/Sublime Text 3/Packages/SublimeTextTrans/SublimeTrans.py",
+		"/C/Users/Monarch/AppData/Roaming/Sublime Text 3/Packages/SublimeTextTrans/SublimeTextTrans.sublime-settings",
+		"/C/Users/Monarch/AppData/Roaming/Sublime Text 3/Packages/SublimeTextTrans/.no-sublime-package",
+		"/C/Users/Monarch/AppData/Roaming/Sublime Text 3/Packages/SublimeTextTrans/Context.sublime-menu",
+		"/C/Users/Monarch/AppData/Roaming/Sublime Text 3/Packages/SublimeTextTrans/Default (Windows).sublime-keymap",
+		"/C/Users/Monarch/AppData/Roaming/Sublime Text 3/Packages/SublimeTextTrans/Main.sublime-menu",
+		"/C/Users/Monarch/AppData/Roaming/Sublime Text 3/Packages/SublimeTextTrans/SublimeTextTrans.message",
+		"/C/Users/Monarch/AppData/Roaming/Sublime Text 3/Packages/PackageResourceViewer/PackageResourceViewer.sublime-settings",
+		"/C/Users/Monarch/AppData/Roaming/Sublime Text 3/Packages/C++/C++.sublime-syntax",
+		"/E/Study/Projects/C++ and C/Algorithm/03_newton_iteration.cpp",
+		"/E/Study/Projects/C++ and C/Algorithm/03_newton_iteration.cc",
+		"/E/Study/Projects/C++ and C/Algorithm/02_linked_list_reversal.cpp",
+		"/E/Study/Projects/C++ and C/C language/Sequence table/学生管理系统.c",
+		"/F/temp/juchi.cpp",
+		"/F/temp/juchi.c",
+		"/E/Study/Projects/C++ and C/C++/temp.cpp",
+		"/E/Study/Projects/C++ and C/C++基础/学习/十七章/8-2.cpp",
+		"/E/Study/Projects/C++ and C/C++基础/学习/期中考试/exp1-1.cpp",
+		"/C/Users/Monarch/AppData/Roaming/Sublime Text 3/Packages/C++/C++ Single File.sublime-build",
+		"/E/Study/Projects/C++ and C/C language/Single list/病患信息系统.c",
 		"/C/Users/Monarch/AppData/Roaming/Sublime Text 3/Packages/C++/C Single File.sublime-build",
 		"/E/Study/Projects/C++ and C/C language/Single list/temp.c",
 		"/F/file/study/remote sensing/25/fushedingbiao.exp",
@@ -718,7 +797,6 @@
 		"/E/Study/Projects/C++ and C/C基础/do_while.cpp",
 		"/C/Users/Monarch/AppData/Roaming/Sublime Text 3/Packages/Default File Type/default_file_type.sublime-settings",
 		"/E/Study/Projects/C++ and C/C基础/extern用法.cpp",
-		"/C/Users/Monarch/AppData/Roaming/Sublime Text 3/Packages/C++/C++ Single File.sublime-build",
 		"/E/Study/Projects/C++ and C/C++基础/学习/temp.cpp",
 		"/E/Study/Projects/C++ and C/C language/Single list/Patients.txt",
 		"/E/Study/Projects/C++ and C/C基础/do while.cpp",
@@ -738,7 +816,6 @@
 		"/E/Study/Projects/C++ and C/C基础/冒泡排序.cpp",
 		"/E/Study/Projects/C++ and C/C language/Single list/hello.cpp",
 		"/F/file/study/Data structure/Sequence table/学生管理系统.c",
-		"/E/Study/Projects/C++ and C/C language/Sequence table/学生类型.h",
 		"/F/file/study/Data_structure/Student_management/学生类型.h",
 		"/F/file/study/Data_structure/Student_management/学生管理系统.c",
 		"/C/Users/Monarch/AppData/Roaming/Sublime Text 3/Packages/Color Scheme - Default/Monokai.sublime-color-scheme",
@@ -785,19 +862,17 @@
 		"/E/Study/Projects/C++ and C/C基础/小程序.h",
 		"/E/Study/Projects/C++ and C/C基础/贪吃蛇.cpp",
 		"/C/Users/Monarch/AppData/Roaming/Sublime Text 3/Packages/User/ConvertToUTF8.sublime-settings",
-		"/C/Users/Monarch/AppData/Roaming/Sublime Text 3/Packages/User/SublimeTextTrans.sublime-settings",
-		"/C/Users/Monarch/AppData/Roaming/Sublime Text 3/Packages/SublimeTextTrans/SublimeTextTrans.sublime-settings",
 		"/E/Study/Projects/C++ and C/C基础/IDW.cpp",
 		"/E/Study/Projects/C++ and C/C基础/关系运算符.cpp",
 		"/E/Study/Projects/C++ and C/C基础/printf的格式控制符.cpp"
 	],
 	"find":
 	{
-		"height": 85.0
+		"height": 31.0
 	},
 	"find_in_files":
 	{
-		"height": 167.0,
+		"height": 181.0,
 		"where_history":
 		[
 		]
@@ -807,6 +882,14 @@
 		"case_sensitive": false,
 		"find_history":
 		[
+			"Person",
+			"empty",
+			"InitQueue",
+			"x",
+			"fibonacci_n",
+			"];\n",
+			"prve",
+			"std::",
 			");\n",
 			"elem",
 			".",
@@ -818,6 +901,11 @@
 		"regex": false,
 		"replace_history":
 		[
+			"DataType",
+			"i",
+			"curr",
+			"init",
+			"",
 			"data",
 			"->",
 			"*L"
@@ -831,11 +919,349 @@
 	"groups":
 	[
 		{
-			"selected": 0,
+			"selected": 1,
 			"sheets":
 			[
 				{
 					"buffer": 0,
+					"file": "Algorithm/03_newton_iteration.cc",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 1614,
+						"regions":
+						{
+							"rb_level0":
+							{
+								"flags": 272,
+								"regions":
+								[
+									[
+										131,
+										132
+									],
+									[
+										139,
+										140
+									],
+									[
+										206,
+										207
+									],
+									[
+										217,
+										218
+									],
+									[
+										229,
+										230
+									],
+									[
+										230,
+										231
+									],
+									[
+										232,
+										233
+									],
+									[
+										690,
+										691
+									],
+									[
+										708,
+										709
+									],
+									[
+										716,
+										717
+									],
+									[
+										718,
+										719
+									],
+									[
+										967,
+										968
+									],
+									[
+										1390,
+										1391
+									],
+									[
+										1401,
+										1402
+									],
+									[
+										1403,
+										1404
+									],
+									[
+										1611,
+										1612
+									]
+								],
+								"scope": "level0.rb"
+							},
+							"rb_level1":
+							{
+								"flags": 272,
+								"regions":
+								[
+									[
+										350,
+										351
+									],
+									[
+										354,
+										355
+									],
+									[
+										603,
+										604
+									],
+									[
+										608,
+										609
+									],
+									[
+										724,
+										725
+									],
+									[
+										732,
+										733
+									],
+									[
+										755,
+										756
+									],
+									[
+										763,
+										764
+									],
+									[
+										784,
+										785
+									],
+									[
+										965,
+										966
+									],
+									[
+										1441,
+										1442
+									],
+									[
+										1473,
+										1474
+									],
+									[
+										1476,
+										1477
+									],
+									[
+										1596,
+										1597
+									]
+								],
+								"scope": "level1.rb"
+							},
+							"rb_level2":
+							{
+								"flags": 272,
+								"regions":
+								[
+									[
+										814,
+										815
+									],
+									[
+										833,
+										834
+									],
+									[
+										837,
+										838
+									],
+									[
+										943,
+										944
+									],
+									[
+										954,
+										955
+									],
+									[
+										958,
+										959
+									],
+									[
+										1445,
+										1446
+									],
+									[
+										1451,
+										1452
+									],
+									[
+										1501,
+										1502
+									],
+									[
+										1519,
+										1520
+									],
+									[
+										1523,
+										1524
+									],
+									[
+										1537,
+										1538
+									]
+								],
+								"scope": "level2.rb"
+							},
+							"rb_level3":
+							{
+								"flags": 272,
+								"regions":
+								[
+									[
+										815,
+										816
+									],
+									[
+										819,
+										820
+									],
+									[
+										827,
+										828
+									],
+									[
+										831,
+										832
+									],
+									[
+										860,
+										861
+									],
+									[
+										872,
+										873
+									],
+									[
+										876,
+										877
+									],
+									[
+										882,
+										883
+									]
+								],
+								"scope": "level3.rb"
+							}
+						},
+						"selection":
+						[
+							[
+								1205,
+								1205
+							]
+						],
+						"settings":
+						{
+							"bracket_highlighter.busy": false,
+							"bracket_highlighter.locations":
+							{
+								"close":
+								{
+								},
+								"icon":
+								{
+								},
+								"open":
+								{
+								},
+								"unmatched":
+								{
+								}
+							},
+							"bracket_highlighter.regions":
+							[
+								"bh_square",
+								"bh_square_center",
+								"bh_square_open",
+								"bh_square_close",
+								"bh_square_content",
+								"bh_default",
+								"bh_default_center",
+								"bh_default_open",
+								"bh_default_close",
+								"bh_default_content",
+								"bh_curly",
+								"bh_curly_center",
+								"bh_curly_open",
+								"bh_curly_close",
+								"bh_curly_content",
+								"bh_c_define",
+								"bh_c_define_center",
+								"bh_c_define_open",
+								"bh_c_define_close",
+								"bh_c_define_content",
+								"bh_single_quote",
+								"bh_single_quote_center",
+								"bh_single_quote_open",
+								"bh_single_quote_close",
+								"bh_single_quote_content",
+								"bh_regex",
+								"bh_regex_center",
+								"bh_regex_open",
+								"bh_regex_close",
+								"bh_regex_content",
+								"bh_double_quote",
+								"bh_double_quote_center",
+								"bh_double_quote_open",
+								"bh_double_quote_close",
+								"bh_double_quote_content",
+								"bh_round",
+								"bh_round_center",
+								"bh_round_open",
+								"bh_round_close",
+								"bh_round_content",
+								"bh_tag",
+								"bh_tag_center",
+								"bh_tag_open",
+								"bh_tag_close",
+								"bh_tag_content",
+								"bh_angle",
+								"bh_angle_center",
+								"bh_angle_open",
+								"bh_angle_close",
+								"bh_angle_content",
+								"bh_unmatched",
+								"bh_unmatched_center",
+								"bh_unmatched_open",
+								"bh_unmatched_close",
+								"bh_unmatched_content"
+							],
+							"color_scheme": "Packages/Color Scheme - Default/Monokai.sublime-color-scheme",
+							"is_init_dirty_state": false,
+							"origin_encoding": "ASCII",
+							"rb_syntax": "json",
+							"syntax": "Packages/C++/C++.sublime-syntax"
+						},
+						"translation.x": 0.0,
+						"translation.y": 66.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 1,
+					"type": "text"
+				},
+				{
+					"buffer": 1,
 					"file": "C language/Sequence table/练习1.c",
 					"semi_transient": false,
 					"settings":
@@ -1167,8 +1593,8 @@
 						"selection":
 						[
 							[
-								578,
-								578
+								0,
+								0
 							]
 						],
 						"settings":
@@ -1178,27 +1604,12 @@
 							{
 								"close":
 								{
-									"1":
-									[
-										933,
-										934
-									]
 								},
 								"icon":
 								{
-									"1":
-									[
-										"Packages/BracketHighlighter/icons/curly_bracket.png",
-										"region.purplish"
-									]
 								},
 								"open":
 								{
-									"1":
-									[
-										479,
-										480
-									]
 								},
 								"unmatched":
 								{
@@ -1206,73 +1617,71 @@
 							},
 							"bracket_highlighter.regions":
 							[
-								"bh_default",
-								"bh_default_center",
-								"bh_default_open",
-								"bh_default_close",
-								"bh_default_content",
 								"bh_square",
 								"bh_square_center",
 								"bh_square_open",
 								"bh_square_close",
 								"bh_square_content",
-								"bh_double_quote",
-								"bh_double_quote_center",
-								"bh_double_quote_open",
-								"bh_double_quote_close",
-								"bh_double_quote_content",
-								"bh_angle",
-								"bh_angle_center",
-								"bh_angle_open",
-								"bh_angle_close",
-								"bh_angle_content",
-								"bh_c_define",
-								"bh_c_define_center",
-								"bh_c_define_open",
-								"bh_c_define_close",
-								"bh_c_define_content",
+								"bh_default",
+								"bh_default_center",
+								"bh_default_open",
+								"bh_default_close",
+								"bh_default_content",
 								"bh_curly",
 								"bh_curly_center",
 								"bh_curly_open",
 								"bh_curly_close",
 								"bh_curly_content",
-								"bh_regex",
-								"bh_regex_center",
-								"bh_regex_open",
-								"bh_regex_close",
-								"bh_regex_content",
-								"bh_round",
-								"bh_round_center",
-								"bh_round_open",
-								"bh_round_close",
-								"bh_round_content",
-								"bh_unmatched",
-								"bh_unmatched_center",
-								"bh_unmatched_open",
-								"bh_unmatched_close",
-								"bh_unmatched_content",
+								"bh_c_define",
+								"bh_c_define_center",
+								"bh_c_define_open",
+								"bh_c_define_close",
+								"bh_c_define_content",
 								"bh_single_quote",
 								"bh_single_quote_center",
 								"bh_single_quote_open",
 								"bh_single_quote_close",
 								"bh_single_quote_content",
+								"bh_regex",
+								"bh_regex_center",
+								"bh_regex_open",
+								"bh_regex_close",
+								"bh_regex_content",
+								"bh_double_quote",
+								"bh_double_quote_center",
+								"bh_double_quote_open",
+								"bh_double_quote_close",
+								"bh_double_quote_content",
+								"bh_round",
+								"bh_round_center",
+								"bh_round_open",
+								"bh_round_close",
+								"bh_round_content",
 								"bh_tag",
 								"bh_tag_center",
 								"bh_tag_open",
 								"bh_tag_close",
-								"bh_tag_content"
+								"bh_tag_content",
+								"bh_angle",
+								"bh_angle_center",
+								"bh_angle_open",
+								"bh_angle_close",
+								"bh_angle_content",
+								"bh_unmatched",
+								"bh_unmatched_center",
+								"bh_unmatched_open",
+								"bh_unmatched_close",
+								"bh_unmatched_content"
 							],
-							"force_encoding": "GBK",
 							"in_converting": true,
-							"origin_content": "#include <stdio.h>\n#define MaxSize 100 \n\ntypedef struct{             \n\tint elem[MaxSize];\n\tint length;\n}SqList;\n\nvoid reverse(SqList L)\n{\n\tint i, temp;\n\tfor (i = 0; i < L.length/2; ++i)\n\t{\n\t\ttemp = L.elem[i];\n\t\tL.elem[i] = L.elem[L.length-i-1];\n\t\tL.elem[L.length-i-1] = temp;\n\t}\n}\n\n\nSqList List;\n\nint main()\n{\n\tint i;\n\tfor (i = 0; i < 5; ++i)\n\t{\n\t\tList.elem[i] = i;\n\t\tList.length++;\n\t}\n\tprintf(\"原顺序表\\n\");\n\tfor (i = 0; i < List.length; ++i)\n\t\tprintf(\"%d->\", List.elem[i]);\n\treverse(List);\n\tprintf(\"\\n反转后顺序表\\n\");\n\tfor (i = 0; i < List.length; ++i)\n\t\tprintf(\"%d->\", List.elem[i]);\n\treturn 0;\n} ",
-							"origin_encoding": "GB2312",
+							"origin_content": "#include <stdio.h>\n#define MaxSize 100 \n\ntypedef struct{             \n\tint data[MaxSize];\n\tint length;\n}SqList;\n\n// 顺序表反转\nvoid reverse(SqList *L)\n{\n\tint i, temp;\n\tfor (i = 0; i < L->length/2; ++i)\n\t{\n\t\ttemp = L->data[i];\n\t\tL->data[i] = L->data[L->length-i-1];\n\t\tL->data[L->length-i-1] = temp;\n\t}\n}\n\n// 2.5顺序表添加\nvoid add(SqList *L, int p)\n{\n\tint i = L->length;\n\tfor (; p < L->data[i-1]; i--)\n\t\tL->data[i] = L->data[i-1];\n\tL->data[i] = p;\n\tL->length++;\n}\n\nSqList List;\n\nint main()\n{\n\tint i;\n\t// 顺序表初始化\n\tfor (i = 0; i < 5; ++i)\n\t{\n\t\tList.data[i] = i*2;\n\t\tList.length++;\n\t}\n\t// 原表输出\n\tprintf(\"原顺序表\\n\");\n\tfor (i = 0; i < List.length; ++i)\n\t\tprintf(\"%d \", List.data[i]);\n\t// 顺序表反转\n\treverse(&List);\n\tprintf(\"\\n反转后顺序表\\n\");\n\tfor (i = 0; i < List.length; ++i)\n\t\tprintf(\"%d \", List.data[i]);\n\treverse(&List);\t\t\t// 重新反转\n\t// 顺序表添加\n\tadd(&List, 6);\n\tprintf(\"\\n添加后顺序表\\n\");\n\tfor (i = 0; i < List.length; ++i)\n\t\tprintf(\"%d \", List.data[i]);\n\treturn 0;\n}\n",
+							"origin_encoding": "GBK",
 							"rb_syntax": "json",
-							"revert_to_scratch": true,
 							"syntax": "Packages/C++/C.sublime-syntax",
 							"translate_tabs_to_spaces": false
 						},
 						"translation.x": 0.0,
-						"translation.y": 571.0,
+						"translation.y": 330.0,
 						"zoom_level": 1.0
 					},
 					"stack_index": 0,
@@ -1283,7 +1692,7 @@
 	],
 	"incremental_find":
 	{
-		"height": 28.0
+		"height": 31.0
 	},
 	"input":
 	{
@@ -1314,7 +1723,7 @@
 	"menu_visible": true,
 	"output.exec":
 	{
-		"height": 128.0
+		"height": 144.0
 	},
 	"output.find_results":
 	{
@@ -1324,7 +1733,7 @@
 	"project": "C and C++.sublime-project",
 	"replace":
 	{
-		"height": 144.0
+		"height": 58.0
 	},
 	"save_all_on_build": true,
 	"select_file":
