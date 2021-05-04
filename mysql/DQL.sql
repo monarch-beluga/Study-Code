@@ -25,7 +25,7 @@ values
 (1000,5,'2013-11-12 16:00:00',70),
 (1000,9,'2013-11-11 09:00:00',68),
 (1000,13,'2013-11-13 16:00:00',98),
-(1000,57,'2013-11-14 16:00:00',58),
+(1000,17,'2013-11-14 16:00:00',58),
 (1001,1,'2013-11-11 16:00:00',83),
 (1001,5,'2013-11-12 16:00:00',78),
 (1001,9,'2013-11-11 09:00:00',80),
@@ -122,8 +122,8 @@ values
 (16,'数据库结构-4',130,4),
 (17,'C#基础',130,1);
 */
-
------------- 指定简单查询 -----------
+/*
+-- --------- 指定简单查询 -----------
 -- 查询整张表
 select * from student;
 select * from result;
@@ -144,9 +144,10 @@ select distinct StudentNo from result;
 select StudentNo, StudentResult+1 as 提分后 from result;
 
 -- sql 语句不区分大小写
-
------- where 条件子句 ----------
---- 逻辑运算符
+*/
+/*
+-- ------- where 条件子句 ----------
+-- --- 逻辑运算符
 -- 查询学生成绩在[95,100]之间的学生
 select studentno, studentresult from result where studentresult<=100 and studentresult>=95;
 
@@ -154,12 +155,139 @@ select studentno, studentresult from result where studentresult<=100 and student
 select studentno, studentresult from result where studentno != 1000; -- 1
 select studentno, studentresult from result where not studentno = 1000;   -- 2
 
---- 模糊查询
+-- --- 模糊查询
 -- 查询在北京的同学：like  %匹配多个字符，_匹配一个字符
 select studentno, studentname, address from student where address like '%北京%';
 
 -- 查询姓名为张三、李四、王五的学员: in   
 select studentno, studentname from student where studentname in ('张三', '李四', '王五');
+*/
+/*
+-- ---------- 联表查询 join ----------
+-- --- 查询参加了考试的同学(学号，姓名，科目编号，分数)
+-- inner join
+select s.studentNo, studentname, subjectno, studentresult			-- 查询字段
+from student as s				-- 设置别名
+inner join result as r			-- 连接方法
+where s.studentno = r.studentno;		-- 确定交叉点并判断
+
+-- right join
+select s.studentNo, studentname, subjectno, studentresult
+from student as s
+inner join result as r
+on s.studentno = r.studentno;
+
+-- left join
+select s.studentNo, studentname, subjectno, studentresult
+from student as s
+left join result as r
+on s.studentno = r.studentno;
+
+-- --- 查询参加了考试的学生的学号，姓名，科目名，分数 (三表联合)
+select s.studentno, studentname, subjectname, studentresult
+from student as s
+inner join result as r
+on s.studentno = r.studentno
+inner join subject as sub
+on sub.subjectno = r.subjectno;
+*/
+
+/*
+-- --------- 自连接 -----------
+-- --- 表与数据
+create table category (
+	categoryid int(10) unsigned not null auto_increment comment '主题id',
+	pid int(10) not null comment '父id',
+	categoryname varchar(50) not null comment '主题名字',
+	primary key (categoryid)
+)engine = innodb auto_increment=2 charset=utf8;
+
+insert into category (pid, categoryname)
+values
+(1, '信息技术'),
+(1, '软件开发'),
+(3, '数据库'),
+(1, '美术设计'),
+(3, 'web开发'),
+(5, 'ps技术'),
+(2, '办公信息');
+*/
+/*
+select l.categoryname as '父类', r.categoryname as '子类'
+from category as l
+inner join category as r			-- 自己与自己连接
+on l.categoryid = r.pid;
+-- +----------+----------+
+-- | 父类     | 子类     |
+-- +----------+----------+
+-- | 软件开发 | 数据库   |
+-- | 软件开发 | web开发  |
+-- | 美术设计 | ps技术   |
+-- | 信息技术 | 办公信息 |
+-- +----------+----------+
+*/
+/*
+-- --- 练习：查找学生学号，姓名，年级名
+select studentno, studentname, gradename
+from student as s
+inner join grade as g
+on g.gradeid = s.gradeid;
+*/
+/*
+-- =========== 分页 limit 和 排序 order by =============
+-- --- 排序：升序 asc , 降序, desc
+select s.studentno, studentname, subjectname, studentresult
+from student as s
+inner join result as r
+on s.studentno = r.studentno
+inner join subject as sub
+on sub.subjectno = r.subjectno
+where subjectname = 'C#基础'
+order by studentresult desc;			-- 降序
+*/
+/*
+-- --- 多级排序：先以学号排序，再以学科名称排序
+select s.studentno, studentname, subjectname, studentresult
+from student as s
+inner join result as r
+on s.studentno = r.studentno
+inner join subject as sub
+on sub.subjectno = r.subjectno
+order by studentno asc, subjectname asc;		-- 多条排序字段用逗号分隔
+*/
+/*
+-- --- 分页：下面以每个学员为一页，即一页5个数据
+-- 查看所有
+select s.studentno, studentname, subjectname, studentresult
+from student as s
+inner join result as r
+on s.studentno = r.studentno
+inner join subject as sub
+on sub.subjectno = r.subjectno
+order by studentno asc, subjectname asc;
+-- 查看第一个
+select s.studentno, studentname, subjectname, studentresult
+from student as s
+inner join result as r
+on s.studentno = r.studentno
+inner join subject as sub
+on sub.subjectno = r.subjectno
+order by studentno asc
+limit 0,5;						-- 显示第一页
+-- 查看第二个
+select s.studentno, studentname, subjectname, studentresult
+from student as s
+inner join result as r
+on s.studentno = r.studentno
+inner join subject as sub
+on sub.subjectno = r.subjectno
+order by studentno asc
+limit 5,5;						-- 显示第二页
+
+
+
+
+
 
 
 
