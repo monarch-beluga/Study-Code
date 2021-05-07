@@ -283,11 +283,111 @@ inner join subject as sub
 on sub.subjectno = r.subjectno
 order by studentno asc
 limit 5,5;						-- 显示第二页
+*/
+/*
+-- ========= 子查询 ==========
+-- --- 查询'C#基础'分数不小于80分的学生的学号和姓名
+-- 1.使用联表
+select distinct s.studentno, studentname
+from student as s
+inner join result as r
+on s.studentno = r.studentno
+inner join subject as sub
+on sub.subjectno = r.subjectno
+where subjectname = 'C#基础' and studentresult > 80;
+-- 2.使用子查询
+select distinct studentno, studentname 
+from student 
+where studentno in (
+	select studentno 
+	from result 
+	where studentresult > 80 and subjectno = (
+		select subjectno 
+		from subject
+		where subjectname = 'C#基础'
+	)
+);
+*/
+/*
+-- ========== 常用函数 ==========
+-- 数学运算
+select abs(-8);    -- 绝对值  8
+select ceiling(9.4);    -- 向上取整  10
+select floor(9.4);    -- 向下取整   9
+select rand();			-- 返回一个 0 ~ 1之间的随机数
+select sign(10);		-- 判断一个数的符号   0返回0  负数返回-1 正数返回1
 
+-- 字符串函数
+select char_length('脚踏实地，方能背负苍天');   -- 返回字符串长度
+select concat('I ', 'love ', 'you!');			-- 拼接	
+select insert('111111', 2, 0, '222');			-- 122211111
+select insert('111111', 2, 4, '222');			-- 12221
+-- select insert(字符串, 插入位置, 要替换的字符数, 字符串)
+select lower('Monarch');			-- 转小写
+select upper('monarch');			-- 转大写
+select instr('monarch', 'c');		-- 返回第一次匹配的索引   6
+select replace('2211241241', '4', '0');			-- 替换      2211201201
+select substr('monarch', 2, 4);		-- 返回指定子字符串  (源字符串, 截取位置, 截取长度) onar
+select reverse('123456');			-- 反转字符串   654321
 
+-- 时间和日期函数
+select current_date();  		-- 获取当前日期   YYYY-mm-dd
+select curdate();				-- 同上
+select now();					-- 获取当前日期与时间   YYYY-MM-DD hh:mm:ss
+select localtime();				-- 同上
+select curtime();				-- 获取当前时间		hh:mm:ss
+*/
+/*
+-- =========== 聚合函数 =============
+-- 都能够统计表中的数据，想查询一个表中有多少个记录就用这个
+select count(studentname) from student;			-- 指定字段，会忽略null值
+select count(*) from student;				-- 不会忽略null， 本质计算行数
+select count(1) from result;				-- 不会忽略null
 
+select sum(studentresult) as 总和,
+avg(studentresult) as 平均分,
+max(studentresult) as 最高分,
+min(studentresult) as 最低分
+from result;
 
+-- 查询不用科目的平均分，最高分，最低分
+-- 核心：根据不用的课程分组
+select subjectname as 课程名称,
+avg(studentresult) as 平均分,
+max(studentresult) as 最高分,
+min(studentresult) as 最低分
+from result as r
+inner join subject as sub
+on r.subjectno = sub.subjectno
+group by subjectname  		-- 通过什么来分组
+having 平均分 > 80;			-- 过滤
+*/
 
+/*
+-- ============ 测试 MD5 加密 ============
+create table if not exists testmd5 (
+	id int(4) not null,
+	name varchar(20) not null,
+	pwd varchar(50) not null,
+	primary key (id)
+) engine = innodb charset = utf8;
 
+-- 插入数据
+insert into testmd5 (id, name, pwd)
+values
+(1, '张三', '123456'),
+(2, '李四', '123456'),
+(3, '王五', '123456');
 
+-- 加密
+-- update testmd5 set pwd = md5(pwd) where id = 1;    -- 加密
+-- update testmd5 set pwd = md5(pwd);					-- 加密全部
+
+-- 实际操作时在插入数据时加密
+insert into testmd5 
+values
+(4, '小明', md5('1234567'));
+-- 查询时也使用md5进行查询
+select * from testmd5 where pwd = md5('1234567');
+*/
 
