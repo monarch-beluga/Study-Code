@@ -164,9 +164,22 @@
 				"encoding": "UTF-8",
 				"line_ending": "Windows"
 			}
+		},
+		{
+			"contents": "#include <stdio.h>\n\ntypedef struct\n{\n\tchar chs[100];\n\tint length;\n}List;\n\nList L;\n\nint main()\n{\n\tint i;\n\tchar ch; \n\tprintf(\"输入字符, 回车结束：\\n\");\n\twhile((ch = getchar()) != '\\n')      // 读取控制台输入的字符，判断回车结束 \n\t{\n\t\tL.chs[L.length] = ch;\n\t\tL.length++;\n\t};\n\tprintf(\"输出：\\n\");\n\twhile(L.length > 0)\n\t{\n\t\tprintf(\"%c\", L.chs[L.length-1]);\t\t// 出栈 ：先入后出 \n\t\tL.length--;\n\t}\n\treturn 0;\n}",
+			"file": "/F/file/study/Data structure/Sequence table/顺序栈.c",
+			"file_size": 429,
+			"file_write_time": 130051634840000000,
+			"settings":
+			{
+				"buffer_size": 366,
+				"encoding": "Western (Windows 1252)",
+				"line_ending": "Windows",
+				"scratch": true
+			}
 		}
 	],
-	"build_system": "Packages/C++/C++ Single File.sublime-build",
+	"build_system": "Packages/C++/C Single File.sublime-build",
 	"build_system_choices":
 	[
 		[
@@ -194,7 +207,7 @@
 			],
 			[
 				"Packages/C++/C Single File.sublime-build",
-				""
+				"Run"
 			]
 		],
 		[
@@ -670,7 +683,7 @@
 			]
 		]
 	],
-	"build_varint": "",
+	"build_varint": "Run",
 	"command_palette":
 	{
 		"height": 0.0,
@@ -930,7 +943,7 @@
 	"groups":
 	[
 		{
-			"selected": 1,
+			"selected": 2,
 			"sheets":
 			[
 				{
@@ -1129,6 +1142,7 @@
 								"bh_tag_close",
 								"bh_tag_content"
 							],
+							"is_init_dirty_state": false,
 							"origin_encoding": "ASCII",
 							"rb_syntax": "json",
 							"syntax": "Packages/C++/C++.sublime-syntax",
@@ -1138,7 +1152,7 @@
 						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 1,
+					"stack_index": 2,
 					"type": "text"
 				},
 				{
@@ -1273,8 +1287,270 @@
 								"bh_tag_close",
 								"bh_tag_content"
 							],
+							"is_init_dirty_state": false,
 							"rb_syntax": "json",
 							"syntax": "Packages/C++/C++.sublime-syntax",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 1,
+					"type": "text"
+				},
+				{
+					"buffer": 2,
+					"file": "/F/file/study/Data structure/Sequence table/顺序栈.c",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 366,
+						"regions":
+						{
+							"rb_level0":
+							{
+								"flags": 272,
+								"regions":
+								[
+									[
+										35,
+										36
+									],
+									[
+										66,
+										67
+									],
+									[
+										91,
+										92
+									],
+									[
+										92,
+										93
+									],
+									[
+										94,
+										95
+									],
+									[
+										365,
+										366
+									]
+								],
+								"scope": "level0.rb"
+							},
+							"rb_level1":
+							{
+								"flags": 272,
+								"regions":
+								[
+									[
+										46,
+										47
+									],
+									[
+										50,
+										51
+									],
+									[
+										122,
+										123
+									],
+									[
+										138,
+										139
+									],
+									[
+										147,
+										148
+									],
+									[
+										172,
+										173
+									],
+									[
+										202,
+										203
+									],
+									[
+										243,
+										244
+									],
+									[
+										253,
+										254
+									],
+									[
+										261,
+										262
+									],
+									[
+										270,
+										271
+									],
+									[
+										283,
+										284
+									],
+									[
+										286,
+										287
+									],
+									[
+										352,
+										353
+									]
+								],
+								"scope": "level1.rb"
+							},
+							"rb_level2":
+							{
+								"flags": 272,
+								"regions":
+								[
+									[
+										148,
+										149
+									],
+									[
+										163,
+										164
+									],
+									[
+										211,
+										212
+									],
+									[
+										220,
+										221
+									],
+									[
+										296,
+										297
+									],
+									[
+										320,
+										321
+									]
+								],
+								"scope": "level2.rb"
+							},
+							"rb_level3":
+							{
+								"flags": 272,
+								"regions":
+								[
+									[
+										161,
+										162
+									],
+									[
+										162,
+										163
+									],
+									[
+										308,
+										309
+									],
+									[
+										319,
+										320
+									]
+								],
+								"scope": "level3.rb"
+							}
+						},
+						"selection":
+						[
+							[
+								82,
+								82
+							]
+						],
+						"settings":
+						{
+							"bracket_highlighter.busy": false,
+							"bracket_highlighter.locations":
+							{
+								"close":
+								{
+								},
+								"icon":
+								{
+								},
+								"open":
+								{
+								},
+								"unmatched":
+								{
+								}
+							},
+							"bracket_highlighter.regions":
+							[
+								"bh_c_define",
+								"bh_c_define_center",
+								"bh_c_define_open",
+								"bh_c_define_close",
+								"bh_c_define_content",
+								"bh_regex",
+								"bh_regex_center",
+								"bh_regex_open",
+								"bh_regex_close",
+								"bh_regex_content",
+								"bh_single_quote",
+								"bh_single_quote_center",
+								"bh_single_quote_open",
+								"bh_single_quote_close",
+								"bh_single_quote_content",
+								"bh_curly",
+								"bh_curly_center",
+								"bh_curly_open",
+								"bh_curly_close",
+								"bh_curly_content",
+								"bh_double_quote",
+								"bh_double_quote_center",
+								"bh_double_quote_open",
+								"bh_double_quote_close",
+								"bh_double_quote_content",
+								"bh_tag",
+								"bh_tag_center",
+								"bh_tag_open",
+								"bh_tag_close",
+								"bh_tag_content",
+								"bh_angle",
+								"bh_angle_center",
+								"bh_angle_open",
+								"bh_angle_close",
+								"bh_angle_content",
+								"bh_round",
+								"bh_round_center",
+								"bh_round_open",
+								"bh_round_close",
+								"bh_round_content",
+								"bh_default",
+								"bh_default_center",
+								"bh_default_open",
+								"bh_default_close",
+								"bh_default_content",
+								"bh_unmatched",
+								"bh_unmatched_center",
+								"bh_unmatched_open",
+								"bh_unmatched_close",
+								"bh_unmatched_content",
+								"bh_square",
+								"bh_square_center",
+								"bh_square_open",
+								"bh_square_close",
+								"bh_square_content"
+							],
+							"color_scheme": "Packages/Color Scheme - Default/Monokai.sublime-color-scheme",
+							"in_converting": true,
+							"is_init_dirty_state": false,
+							"origin_content": "#include <stdio.h>\n\ntypedef struct\n{\n\tchar chs[100];\n\tint length;\n}List;\n\nList L;\n\nint main()\n{\n\tint i;\n\tchar ch; \n\tprintf(\"输入字符, 回车结束：\\n\");\n\twhile((ch = getchar()) != '\\n')      // 读取控制台输入的字符，判断回车结束 \n\t{\n\t\tL.chs[L.length] = ch;\n\t\tL.length++;\n\t};\n\tprintf(\"输出：\\n\");\n\twhile(L.length > 0)\n\t{\n\t\tprintf(\"%c\", L.chs[L.length-1]);\t\t// 出栈 ：先入后出 \n\t\tL.length--;\n\t}\n\treturn 0;\n}",
+							"origin_encoding": "GB2312",
+							"rb_syntax": "json",
+							"syntax": "Packages/C++/C.sublime-syntax",
 							"translate_tabs_to_spaces": false
 						},
 						"translation.x": 0.0,
