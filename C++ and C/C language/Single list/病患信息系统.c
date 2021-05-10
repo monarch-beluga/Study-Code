@@ -105,8 +105,8 @@ int main()
 } 
 int menu_select() 
 {
-	system("cls");
 	int sn;
+	system("cls");
 	printf("=================================\n");
 	printf("   病患信息管理系统\n");
 	printf("=================================\n");
