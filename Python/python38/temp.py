@@ -1,19 +1,29 @@
-import pandas as pd
-import pypyodbc as mdb
+class Student:
+    def __init__(self, xh, name, age):
+        self.xh = xh
+        self.name = name
+        self.age = age
 
-# 连接mdb文件
-p_path = r'E:\Data\MeteoData20192020.mdb'
+    def hello(self):
+        print("你好，我是:", self.name)
 
-connStr = r'Driver={Microsoft Access Driver (*.mdb)}; DBQ=%s; Database=bill;' % p_path
-conn = mdb.win_connect_mdb(connStr)
-# 获得数据库操作对象
-crsr = conn.cursor()
-
-# 打印mdb文件中的表名
-for table_name in crsr.tables(tableType='TABLE'):
-    print(table_name[2])
-
-# pandas 读取
-dfTable = pd.read_sql("SELECT * FROM all2019", conn)
+    # 3. 创建方法
+    def set(self, xh, name, age):
+        self.xh = xh
+        self.name = name
+        self.age = age
 
 
+# 2. 创建实例
+zs = Student("001", "张三", 18)
+ls = Student("002", "李四", 18)
+print("学号", "姓名", "年龄")
+print(zs.xh, zs.name, zs.age)
+print(ls.xh, ls.name, ls.age)
+zs.hello()
+ls.hello()
+
+# 3. 调用方法
+zs.set("003", "王五", "19")
+print(zs.xh, zs.name, zs.age)
+zs.hello()

@@ -169,12 +169,16 @@
 			}
 		},
 		{
-			"file": "/F/temp/二叉树.c",
+			"contents": "#include <stdio.h>\n   #include <stdlib.h>\n   #include <string.h> \n   #include <stdbool.h> //定义true \ntypedef struct{\n\tlong stuId; // 学号 \n    long memoryAdd; // 内存地址 \n} Record,*RecordType;\ntypedef struct BiTnode{\n\tRecordType data;\n\tstruct BiTnode* lchild,*rchild;\n} BiTnode,*BiTree;\n\n/*创建先序二叉树*/\nBiTree CreateBiTree()\n{\n\tstatic long m = 10000;\n\tBiTree node;\n\tlong s;\n\tRecordType data = (RecordType) malloc (sizeof(RecordType));\n\tscanf(\"%ld\", &s);\n\tif (s == 0)\n\t\tnode = NULL;\n\telse\n\t{\n\t\tnode = (BiTree) malloc (sizeof(BiTree));\n\t\tdata->memoryAdd = ++m;\n\t\tdata->stuId = s;\n\t\tnode->data = data;\n\t\tnode->lchild = CreateBiTree();\n\t\tnode->rchild = CreateBiTree();\n\t}\n\treturn node;\n} \n/*先序遍历二叉树*/\nvoid PreOrderTraverse(BiTree t)\n{\n\tif(t)\n\t{\n\t\tprintf(\"%ld\\t\", t->data->stuId);\n\t\tprintf(\"%ld\\n\", t->data->memoryAdd);\n\t\tPreOrderTraverse(t->lchild);\n\t\tPreOrderTraverse(t->rchild);\n\t}\n}\n/*根据学号查找树节点*/\nBiTnode* FindNode(BiTree t,long stuId) \n{\n\tBiTnode* p;\n\tif (t->data->stuId == stuId)\n\t\t\treturn t;\n\tif (t->lchild) \n        p = FindNode(t->lchild, stuId);\n\tif(p)\n\t\treturn p;\n\tif (t->rchild) \n        p = FindNode(t->lchild, stuId);\n    return p;\n} \nint main()\n{\n  \tchar ch ='\\0';\n  \tBiTree tree = NULL;\n \tdo\n\t    {\n\t\tprintf(\"*************请选择所需要的操作************\\n\");\n\t\tprintf(\"1. 构建二叉树\\n\");\n\t\tprintf(\"2. 先根遍历二叉树\\n\");\n\t\tprintf(\"3. 根据学号查找内存地址\\n\");\n\t\tprintf(\"4. 退出\\n\");\n\t\tprintf(\"\\n\");\n\t\t\n\t\tch=getchar();\n\t\tgetchar();\n\t\tswitch(ch)\n\t\t{\n\t\t\tcase '1':\n\t\t\t{\n\t\t\t\tprintf(\"请按照先根顺序输入节点：如果没有子节点，则输入0\\n\");\n\t\t\t\ttree = CreateBiTree();\n\t\t\t\tbreak;\n\t\t\t}\n\t\t\tcase '2':\n\t\t\t{\n\t\t\t\tPreOrderTraverse(tree);\n\t\t\t\tbreak;\n\t\t\t}\n\t\t\tcase '3':\n\t\t\t{\n\t\t\t\tprintf(\"请输入学号：\");\n\t\t\t\tlong stuId =0;\n\t\t\t\tscanf(\"%ld\",&stuId);\n\t\t\t\tif(stuId>0)\n\t\t\t\t{\n\t\t\t\t\tBiTnode* result = FindNode(tree,stuId);\n\t\t\t\t\tif(result!=NULL)\n\t\t\t\t\t{\n\t\t\t\t\t\tprintf(\"学号 %ld 对应记录的内存地址为 %ld\\n\\n\",stuId,result->data->memoryAdd);\t\t\t\t\t\t \n\t\t\t\t\t}\n\t\t\t\t\telse\n\t\t\t\t\t{ printf(\"不存在该学号\\n\\n\"); }\t\t\t\t\t\n\t\t\t\t}\n\t\t\t\telse\n\t\t\t\t    {printf(\"学号必须大于零\\n\\n\");}\n\t\t\t\tbreak;\n\t\t\t}\n\t\t\tcase '4':\n\t\t\t{   exit(1); break;\t}\n\t\t\tdefault: \n\t\t\tprintf(\"hello\");\n\t\t\texit(1);\t\t\t   \n\t\t}\t\t\n\t\t_flushall(); //_flushall()清空内存 \n\t} while(true);\t\n  \treturn 0;\n}\n",
+			"file": "C language/BinaryTree/二叉树.c",
+			"file_size": 2357,
+			"file_write_time": 132668455965332445,
 			"settings":
 			{
-				"buffer_size": 2171,
-				"encoding": "UTF-8",
-				"line_ending": "Windows"
+				"buffer_size": 2119,
+				"encoding": "Western (Windows 1252)",
+				"line_ending": "Windows",
+				"scratch": true
 			}
 		}
 	],
@@ -780,14 +784,14 @@
 	[
 		"/E/Study/Projects/C++ and C",
 		"/E/Study/Projects/C++ and C/C language",
-		"/E/Study/Projects/C++ and C/C language/Sequence table",
-		"/E/Study/Projects/C++ and C/C language/Single list"
+		"/E/Study/Projects/C++ and C/C language/BinaryTree"
 	],
 	"file_history":
 	[
+		"/F/temp/temp.c",
+		"/F/temp/二叉树.c",
 		"/E/Study/Projects/C++ and C/C language/Single list/病患信息系统.c",
 		"/E/Study/Projects/C++ and C/C language/Single list/temp.c",
-		"/F/temp/二叉树.c",
 		"/F/PRCP3.pyx",
 		"/E/Study/Projects/C++ and C/C language/Sequence table/队列.c",
 		"/F/队列.c",
@@ -965,7 +969,7 @@
 	"groups":
 	[
 		{
-			"selected": 0,
+			"selected": 1,
 			"sheets":
 			[
 				{
@@ -1581,8 +1585,8 @@
 						"selection":
 						[
 							[
-								341,
-								341
+								0,
+								2119
 							]
 						],
 						"settings":
@@ -1592,27 +1596,12 @@
 							{
 								"close":
 								{
-									"1":
-									[
-										673,
-										674
-									]
 								},
 								"icon":
 								{
-									"1":
-									[
-										"Packages/BracketHighlighter/icons/curly_bracket.png",
-										"region.purplish"
-									]
 								},
 								"open":
 								{
-									"1":
-									[
-										316,
-										317
-									]
 								},
 								"unmatched":
 								{
@@ -1625,79 +1614,78 @@
 								"bh_angle_open",
 								"bh_angle_close",
 								"bh_angle_content",
-								"bh_square",
-								"bh_square_center",
-								"bh_square_open",
-								"bh_square_close",
-								"bh_square_content",
-								"bh_regex",
-								"bh_regex_center",
-								"bh_regex_open",
-								"bh_regex_close",
-								"bh_regex_content",
-								"bh_c_define",
-								"bh_c_define_center",
-								"bh_c_define_open",
-								"bh_c_define_close",
-								"bh_c_define_content",
-								"bh_unmatched",
-								"bh_unmatched_center",
-								"bh_unmatched_open",
-								"bh_unmatched_close",
-								"bh_unmatched_content",
-								"bh_single_quote",
-								"bh_single_quote_center",
-								"bh_single_quote_open",
-								"bh_single_quote_close",
-								"bh_single_quote_content",
-								"bh_double_quote",
-								"bh_double_quote_center",
-								"bh_double_quote_open",
-								"bh_double_quote_close",
-								"bh_double_quote_content",
 								"bh_default",
 								"bh_default_center",
 								"bh_default_open",
 								"bh_default_close",
 								"bh_default_content",
-								"bh_tag",
-								"bh_tag_center",
-								"bh_tag_open",
-								"bh_tag_close",
-								"bh_tag_content",
+								"bh_single_quote",
+								"bh_single_quote_center",
+								"bh_single_quote_open",
+								"bh_single_quote_close",
+								"bh_single_quote_content",
+								"bh_regex",
+								"bh_regex_center",
+								"bh_regex_open",
+								"bh_regex_close",
+								"bh_regex_content",
+								"bh_round",
+								"bh_round_center",
+								"bh_round_open",
+								"bh_round_close",
+								"bh_round_content",
+								"bh_square",
+								"bh_square_center",
+								"bh_square_open",
+								"bh_square_close",
+								"bh_square_content",
 								"bh_curly",
 								"bh_curly_center",
 								"bh_curly_open",
 								"bh_curly_close",
 								"bh_curly_content",
-								"bh_round",
-								"bh_round_center",
-								"bh_round_open",
-								"bh_round_close",
-								"bh_round_content"
+								"bh_c_define",
+								"bh_c_define_center",
+								"bh_c_define_open",
+								"bh_c_define_close",
+								"bh_c_define_content",
+								"bh_double_quote",
+								"bh_double_quote_center",
+								"bh_double_quote_open",
+								"bh_double_quote_close",
+								"bh_double_quote_content",
+								"bh_unmatched",
+								"bh_unmatched_center",
+								"bh_unmatched_open",
+								"bh_unmatched_close",
+								"bh_unmatched_content",
+								"bh_tag",
+								"bh_tag_center",
+								"bh_tag_open",
+								"bh_tag_close",
+								"bh_tag_content"
 							],
 							"in_converting": true,
-							"origin_content": "#include <stdio.h>\n   #include <stdlib.h>\n   #include <string.h> \n   #include <stdbool.h> //瀹氫箟true \ntypedef struct{\n\tlong stuId; // 瀛﹀彿 \n    long memoryAdd; // 鍐呭瓨鍦板潃 \n} Record,*RecordType;\ntypedef struct BiTnode{\n\tRecordType data;\n\tstruct BiTnode* lchild,*rchild;\n} BiTnode,*BiTree;\n\n/*鍒涘缓鍏堝簭浜屽弶鏍*/\nBiTree CreateBiTree()\n{\n\tstatic long m = 100;\n\tBiTree node;\n\tlong s;\n\tscanf(\"%ld\", &s);\n\tif (s == 0)\n\t\tnode = NULL;\n\telse\n\t{\n\t\tnode = (BiTree) malloc (sizeof(BiTree));\n\t\tnode->data->stuId = s;\n\t\tnode->data->memoryAdd = ++m;\n\t\tnode->lchild = CreateBiTree();\n\t\tnode->rchild = CreateBiTree();\n\t}\n\treturn node;\n} \n/*鍏堝簭閬嶅巻浜屽弶鏍*/\nvoid PreOrderTraverse(BiTree t)\n{\n\tif(t)\n\t{\n\t\tprintf(\"%ld\\t\", t->data->stuId);\n\t\tprintf(\"%ld\\n\", t->data->memoryAdd);\n\t\tPreOrderTraverse(t->lchild);\n\t\tPreOrderTraverse(t->rchild);\n\t}\n}\n/*鏍规嵁瀛﹀彿鏌ユ壘鏍戣妭鐐*/\nBiTnode* FindNode(BiTree t,long stuId) \n{\n\tBiTnode* p;\n\tif(t)\n\t\treturn NULL;\n\telse\n\t{\n\t\tif (t->data->stuId == stuId)\n\t\t\treturn t;\n\t\telse\n\t\t{\n\t\t\tp = FindNode(t->lchild, stuId);\n\t\t\tif (p->data->stuId == stuId)\n\t\t\t\treturn p;\n\t\t\telse\n\t\t\t\treturn FindNode(t->rchild, stuId);\n\t\t}\n\t}\n} \nint main()\n{\n  \tchar ch ='\\0';\n  \tBiTree tree = NULL;\n \tdo\n\t    {\n\t\tprintf(\"*************璇烽夋嫨鎵闇瑕佺殑鎿嶄綔************\\n\");\n\t\tprintf(\"1. 鏋勫缓浜屽弶鏍慭n\");\n\t\tprintf(\"2. 鍏堟牴閬嶅巻浜屽弶鏍慭n\");\n\t\tprintf(\"3. 鏍规嵁瀛﹀彿鏌ユ壘鍐呭瓨鍦板潃\\n\");\n\t\tprintf(\"4. 閫鍑篭n\");\n\t\tprintf(\"\\n\");\n\t\t\n\t\tch=getchar();\n\t\tgetchar();\n\t\tswitch(ch)\n\t\t{\n\t\t\tcase '1':\n\t\t\t{\n\t\t\t\tprintf(\"璇锋寜鐓у厛鏍归『搴忚緭鍏ヨ妭鐐癸細濡傛灉娌℃湁瀛愯妭鐐癸紝鍒欒緭鍏0\\n\");\n\t\t\t\ttree = CreateBiTree();\n\t\t\t\tbreak;\n\t\t\t}\n\t\t\tcase '2':\n\t\t\t{\n\t\t\t\tPreOrderTraverse(tree);\n\t\t\t\tbreak;\n\t\t\t}\n\t\t\tcase '3':\n\t\t\t{\n\t\t\t\tprintf(\"璇疯緭鍏ュ鍙凤細\");\n\t\t\t\tlong stuId =0;\n\t\t\t\tscanf(\"%ld\",&stuId);\n\t\t\t\tif(stuId>0)\n\t\t\t\t{\n\t\t\t\t\tBiTnode* result = FindNode(tree,stuId);\n\t\t\t\t\tif(result!=NULL)\n\t\t\t\t\t{\n\t\t\t\t\t\tprintf(\"瀛﹀彿 %ld 瀵瑰簲璁板綍鐨勫唴瀛樺湴鍧涓 %ld\\n\\n\",stuId,result->data->memoryAdd);\t\t\t\t\t\t \n\t\t\t\t\t}\n\t\t\t\t\telse\n\t\t\t\t\t{ printf(\"涓嶅瓨鍦ㄨ瀛﹀彿\\n\\n\"); }\t\t\t\t\t\n\t\t\t\t}\n\t\t\t\telse\n\t\t\t\t    {printf(\"瀛﹀彿蹇呴』澶т簬闆禱n\\n\");}\n\t\t\t\tbreak;\n\t\t\t}\n\t\t\tcase '4':\n\t\t\t{   exit(1); break;\t}\n\t\t\tdefault: \n\t\t\tprintf(\"hello\");\n\t\t\texit(1);\t\t\t   \n\t\t}\t\t\n\t\t_flushall(); //_flushall()娓呯┖鍐呭瓨 \n\t} while(true);\t\n  \treturn 0;\n}\n",
+							"origin_content": "#include <stdio.h>\n   #include <stdlib.h>\n   #include <string.h> \n   #include <stdbool.h> //定义true \ntypedef struct{\n\tlong stuId; // 学号 \n    long memoryAdd; // 内存地址 \n} Record,*RecordType;\ntypedef struct BiTnode{\n\tRecordType data;\n\tstruct BiTnode* lchild,*rchild;\n} BiTnode,*BiTree;\n\n/*创建先序二叉树*/\nBiTree CreateBiTree()\n{\n\tstatic long m = 10000;\n\tBiTree node;\n\tlong s;\n\tRecordType data = (RecordType) malloc (sizeof(RecordType));\n\tscanf(\"%ld\", &s);\n\tif (s == 0)\n\t\tnode = NULL;\n\telse\n\t{\n\t\tnode = (BiTree) malloc (sizeof(BiTree));\n\t\tdata->memoryAdd = ++m;\n\t\tdata->stuId = s;\n\t\tnode->data = data;\n\t\tnode->lchild = CreateBiTree();\n\t\tnode->rchild = CreateBiTree();\n\t}\n\treturn node;\n} \n/*先序遍历二叉树*/\nvoid PreOrderTraverse(BiTree t)\n{\n\tif(t)\n\t{\n\t\tprintf(\"%ld\\t\", t->data->stuId);\n\t\tprintf(\"%ld\\n\", t->data->memoryAdd);\n\t\tPreOrderTraverse(t->lchild);\n\t\tPreOrderTraverse(t->rchild);\n\t}\n}\n/*根据学号查找树节点*/\nBiTnode* FindNode(BiTree t,long stuId) \n{\n\tBiTnode* p;\n\tif (t->data->stuId == stuId)\n\t\t\treturn t;\n\tif (t->lchild) \n        p = FindNode(t->lchild, stuId);\n\tif(p)\n\t\treturn p;\n\tif (t->rchild) \n        p = FindNode(t->lchild, stuId);\n    return p;\n} \nint main()\n{\n  \tchar ch ='\\0';\n  \tBiTree tree = NULL;\n \tdo\n\t    {\n\t\tprintf(\"*************请选择所需要的操作************\\n\");\n\t\tprintf(\"1. 构建二叉树\\n\");\n\t\tprintf(\"2. 先根遍历二叉树\\n\");\n\t\tprintf(\"3. 根据学号查找内存地址\\n\");\n\t\tprintf(\"4. 退出\\n\");\n\t\tprintf(\"\\n\");\n\t\t\n\t\tch=getchar();\n\t\tgetchar();\n\t\tswitch(ch)\n\t\t{\n\t\t\tcase '1':\n\t\t\t{\n\t\t\t\tprintf(\"请按照先根顺序输入节点：如果没有子节点，则输入0\\n\");\n\t\t\t\ttree = CreateBiTree();\n\t\t\t\tbreak;\n\t\t\t}\n\t\t\tcase '2':\n\t\t\t{\n\t\t\t\tPreOrderTraverse(tree);\n\t\t\t\tbreak;\n\t\t\t}\n\t\t\tcase '3':\n\t\t\t{\n\t\t\t\tprintf(\"请输入学号：\");\n\t\t\t\tlong stuId =0;\n\t\t\t\tscanf(\"%ld\",&stuId);\n\t\t\t\tif(stuId>0)\n\t\t\t\t{\n\t\t\t\t\tBiTnode* result = FindNode(tree,stuId);\n\t\t\t\t\tif(result!=NULL)\n\t\t\t\t\t{\n\t\t\t\t\t\tprintf(\"学号 %ld 对应记录的内存地址为 %ld\\n\\n\",stuId,result->data->memoryAdd);\t\t\t\t\t\t \n\t\t\t\t\t}\n\t\t\t\t\telse\n\t\t\t\t\t{ printf(\"不存在该学号\\n\\n\"); }\t\t\t\t\t\n\t\t\t\t}\n\t\t\t\telse\n\t\t\t\t    {printf(\"学号必须大于零\\n\\n\");}\n\t\t\t\tbreak;\n\t\t\t}\n\t\t\tcase '4':\n\t\t\t{   exit(1); break;\t}\n\t\t\tdefault: \n\t\t\tprintf(\"hello\");\n\t\t\texit(1);\t\t\t   \n\t\t}\t\t\n\t\t_flushall(); //_flushall()清空内存 \n\t} while(true);\t\n  \treturn 0;\n}\n",
 							"origin_encoding": "GB18030",
 							"rb_syntax": "json",
-							"revert_to_scratch": true,
 							"syntax": "Packages/C++/C.sublime-syntax",
 							"translate_tabs_to_spaces": false
 						},
 						"translation.x": 0.0,
-						"translation.y": 155.0,
+						"translation.y": 2277.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 0,
+					"stack_index": 1,
 					"type": "text"
 				},
 				{
 					"buffer": 1,
-					"file": "/F/temp/二叉树.c",
+					"file": "C language/BinaryTree/二叉树.c",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 2171,
+						"buffer_size": 2119,
 						"regions":
 						{
 							"rb_level0":
@@ -1706,84 +1694,84 @@
 								"regions":
 								[
 									[
-										107,
-										108
+										114,
+										115
 									],
 									[
-										164,
-										165
+										165,
+										166
 									],
 									[
-										208,
-										209
+										209,
+										210
 									],
 									[
-										261,
-										262
+										262,
+										263
 									],
 									[
-										319,
-										320
+										313,
+										314
 									],
 									[
-										320,
-										321
+										314,
+										315
 									],
 									[
-										322,
-										323
+										316,
+										317
 									],
 									[
-										607,
-										608
+										673,
+										674
 									],
 									[
-										650,
-										651
+										709,
+										710
 									],
 									[
-										659,
-										660
+										718,
+										719
 									],
 									[
-										661,
-										662
+										720,
+										721
 									],
 									[
-										812,
-										813
+										871,
+										872
 									],
 									[
-										854,
-										855
+										904,
+										905
 									],
 									[
-										874,
-										875
+										924,
+										925
 									],
 									[
-										877,
-										878
+										927,
+										928
 									],
 									[
-										1091,
-										1092
+										1132,
+										1133
 									],
 									[
-										1103,
-										1104
+										1143,
+										1144
 									],
 									[
-										1104,
-										1105
+										1144,
+										1145
 									],
 									[
-										1106,
-										1107
+										1146,
+										1147
 									],
 									[
-										2169,
-										2170
+										2117,
+										2118
 									]
 								],
 								"scope": "level0.rb"
@@ -1794,76 +1782,124 @@
 								"regions":
 								[
 									[
-										375,
-										376
+										384,
+										385
 									],
 									[
-										385,
-										386
+										395,
+										396
 									],
 									[
-										392,
-										393
-									],
-									[
-										399,
-										400
+										404,
+										405
 									],
 									[
 										423,
 										424
 									],
 									[
-										591,
-										592
+										432,
+										433
 									],
 									[
-										666,
-										667
+										442,
+										443
 									],
 									[
-										668,
-										669
+										449,
+										450
 									],
 									[
-										671,
-										672
+										456,
+										457
 									],
 									[
-										810,
-										811
+										480,
+										481
 									],
 									[
-										895,
-										896
+										657,
+										658
 									],
 									[
-										897,
-										898
+										725,
+										726
 									],
 									[
-										921,
-										922
+										727,
+										728
 									],
 									[
-										1089,
-										1090
+										730,
+										731
 									],
 									[
-										1159,
-										1160
+										869,
+										870
 									],
 									[
-										2140,
-										2141
+										946,
+										947
 									],
 									[
-										2147,
-										2148
+										970,
+										971
 									],
 									[
-										2152,
-										2153
+										989,
+										990
+									],
+									[
+										999,
+										1000
+									],
+									[
+										1022,
+										1023
+									],
+									[
+										1039,
+										1040
+									],
+									[
+										1045,
+										1046
+									],
+									[
+										1047,
+										1048
+									],
+									[
+										1065,
+										1066
+									],
+									[
+										1075,
+										1076
+									],
+									[
+										1098,
+										1099
+									],
+									[
+										1115,
+										1116
+									],
+									[
+										1199,
+										1200
+									],
+									[
+										2088,
+										2089
+									],
+									[
+										2095,
+										2096
+									],
+									[
+										2100,
+										2101
 									]
 								],
 								"scope": "level1.rb"
@@ -1874,172 +1910,164 @@
 								"regions":
 								[
 									[
-										434,
-										435
+										411,
+										412
 									],
 									[
-										441,
-										442
+										422,
+										423
 									],
 									[
-										450,
-										451
+										491,
+										492
 									],
 									[
-										465,
-										466
+										498,
+										499
 									],
 									[
-										553,
-										554
+										507,
+										508
 									],
 									[
-										554,
-										555
+										522,
+										523
 									],
 									[
-										586,
-										587
+										619,
+										620
 									],
 									[
-										587,
-										588
+										620,
+										621
 									],
 									[
-										681,
-										682
+										652,
+										653
 									],
 									[
-										705,
-										706
+										653,
+										654
 									],
 									[
-										716,
-										717
+										740,
+										741
 									],
 									[
-										744,
-										745
-									],
-									[
-										765,
-										766
+										764,
+										765
 									],
 									[
 										775,
 										776
 									],
 									[
-										796,
-										797
+										803,
+										804
 									],
 									[
-										806,
-										807
+										824,
+										825
 									],
 									[
-										928,
-										929
+										834,
+										835
 									],
 									[
-										952,
-										953
+										855,
+										856
 									],
 									[
-										976,
-										977
+										865,
+										866
 									],
 									[
-										1086,
-										1087
+										1209,
+										1210
 									],
 									[
-										1169,
-										1170
+										1248,
+										1249
 									],
 									[
-										1217,
-										1218
+										1259,
+										1260
 									],
 									[
-										1228,
-										1229
+										1272,
+										1273
 									],
 									[
-										1246,
-										1247
+										1283,
+										1284
 									],
 									[
-										1257,
-										1258
+										1298,
+										1299
 									],
 									[
-										1279,
-										1280
+										1309,
+										1310
 									],
 									[
-										1290,
-										1291
+										1327,
+										1328
 									],
 									[
-										1318,
-										1319
+										1338,
+										1339
 									],
 									[
-										1329,
-										1330
+										1348,
+										1349
 									],
 									[
-										1341,
-										1342
+										1359,
+										1360
 									],
 									[
-										1352,
-										1353
+										1364,
+										1365
 									],
 									[
-										1357,
-										1358
+										1382,
+										1383
 									],
 									[
-										1375,
-										1376
+										1383,
+										1384
 									],
 									[
-										1376,
-										1377
+										1395,
+										1396
 									],
 									[
-										1389,
-										1390
+										1396,
+										1397
 									],
 									[
-										1390,
-										1391
+										1407,
+										1408
 									],
 									[
-										1401,
-										1402
+										1410,
+										1411
 									],
 									[
-										1404,
-										1405
+										1414,
+										1415
 									],
 									[
-										1408,
-										1409
+										2049,
+										2050
 									],
 									[
-										2097,
-										2098
+										2064,
+										2065
 									],
 									[
-										2112,
-										2113
-									],
-									[
-										2113,
-										2114
+										2065,
+										2066
 									]
 								],
 								"scope": "level2.rb"
@@ -2050,84 +2078,60 @@
 								"regions":
 								[
 									[
-										457,
-										458
+										514,
+										515
 									],
 									[
-										464,
-										465
+										521,
+										522
 									],
 									[
-										993,
-										994
+										1432,
+										1433
 									],
 									[
-										1010,
-										1011
+										1517,
+										1518
 									],
 									[
-										1019,
-										1020
+										1535,
+										1536
 									],
 									[
-										1021,
-										1022
+										1579,
+										1580
 									],
 									[
-										1064,
-										1065
+										1597,
+										1598
 									],
 									[
-										1081,
-										1082
+										1956,
+										1957
 									],
 									[
-										1426,
-										1427
+										1974,
+										1975
 									],
 									[
-										1534,
-										1535
+										1994,
+										1995
 									],
 									[
-										1552,
-										1553
+										2018,
+										2019
 									],
 									[
-										1596,
-										1597
+										2026,
+										2027
 									],
 									[
-										1614,
-										1615
+										2036,
+										2037
 									],
 									[
-										2004,
-										2005
-									],
-									[
-										2022,
-										2023
-									],
-									[
-										2042,
-										2043
-									],
-									[
-										2066,
-										2067
-									],
-									[
-										2074,
-										2075
-									],
-									[
-										2084,
-										2085
-									],
-									[
-										2086,
-										2087
+										2038,
+										2039
 									]
 								],
 								"scope": "level3.rb"
@@ -2138,76 +2142,76 @@
 								"regions":
 								[
 									[
-										1438,
-										1439
+										1444,
+										1445
 									],
 									[
-										1490,
-										1491
+										1473,
+										1474
 									],
 									[
-										1516,
-										1517
+										1499,
+										1500
 									],
 									[
-										1517,
-										1518
+										1500,
+										1501
 									],
 									[
-										1574,
-										1575
+										1557,
+										1558
 									],
 									[
-										1579,
-										1580
+										1562,
+										1563
 									],
 									[
-										1626,
-										1627
+										1609,
+										1610
 									],
 									[
-										1641,
-										1642
+										1618,
+										1619
 									],
 									[
-										1672,
-										1673
+										1649,
+										1650
+									],
+									[
+										1662,
+										1663
+									],
+									[
+										1671,
+										1672
+									],
+									[
+										1679,
+										1680
 									],
 									[
 										1685,
 										1686
 									],
 									[
-										1694,
-										1695
+										1898,
+										1899
 									],
 									[
-										1702,
-										1703
+										1917,
+										1918
 									],
 									[
-										1708,
-										1709
+										1940,
+										1941
 									],
 									[
-										1939,
-										1940
+										1982,
+										1983
 									],
 									[
-										1958,
-										1959
-									],
-									[
-										1988,
-										1989
-									],
-									[
-										2030,
-										2031
-									],
-									[
-										2032,
-										2033
+										1984,
+										1985
 									]
 								],
 								"scope": "level4.rb"
@@ -2218,44 +2222,44 @@
 								"regions":
 								[
 									[
-										1741,
-										1742
+										1718,
+										1719
+									],
+									[
+										1729,
+										1730
+									],
+									[
+										1739,
+										1740
 									],
 									[
 										1752,
 										1753
 									],
 									[
-										1762,
-										1763
+										1759,
+										1760
 									],
 									[
-										1775,
-										1776
+										1846,
+										1847
 									],
 									[
-										1782,
-										1783
+										1863,
+										1864
 									],
 									[
-										1881,
-										1882
+										1887,
+										1888
 									],
 									[
-										1898,
-										1899
+										1924,
+										1925
 									],
 									[
-										1928,
-										1929
-									],
-									[
-										1965,
-										1966
-									],
-									[
-										1986,
-										1987
+										1938,
+										1939
 									]
 								],
 								"scope": "level5.rb"
@@ -2266,20 +2270,20 @@
 								"regions":
 								[
 									[
-										1796,
-										1797
+										1773,
+										1774
 									],
 									[
-										1866,
-										1867
+										1831,
+										1832
 									],
 									[
-										1906,
-										1907
+										1871,
+										1872
 									],
 									[
-										1925,
-										1926
+										1884,
+										1885
 									]
 								],
 								"scope": "level6.rb"
@@ -2288,8 +2292,8 @@
 						"selection":
 						[
 							[
-								1087,
-								1087
+								1952,
+								1952
 							]
 						],
 						"settings":
@@ -2301,8 +2305,8 @@
 								{
 									"1":
 									[
-										1086,
-										1087
+										1956,
+										1957
 									]
 								},
 								"icon":
@@ -2317,8 +2321,8 @@
 								{
 									"1":
 									[
-										976,
-										977
+										1597,
+										1598
 									]
 								},
 								"unmatched":
@@ -2332,66 +2336,69 @@
 								"bh_angle_open",
 								"bh_angle_close",
 								"bh_angle_content",
-								"bh_square",
-								"bh_square_center",
-								"bh_square_open",
-								"bh_square_close",
-								"bh_square_content",
-								"bh_regex",
-								"bh_regex_center",
-								"bh_regex_open",
-								"bh_regex_close",
-								"bh_regex_content",
-								"bh_c_define",
-								"bh_c_define_center",
-								"bh_c_define_open",
-								"bh_c_define_close",
-								"bh_c_define_content",
-								"bh_unmatched",
-								"bh_unmatched_center",
-								"bh_unmatched_open",
-								"bh_unmatched_close",
-								"bh_unmatched_content",
-								"bh_single_quote",
-								"bh_single_quote_center",
-								"bh_single_quote_open",
-								"bh_single_quote_close",
-								"bh_single_quote_content",
-								"bh_double_quote",
-								"bh_double_quote_center",
-								"bh_double_quote_open",
-								"bh_double_quote_close",
-								"bh_double_quote_content",
 								"bh_default",
 								"bh_default_center",
 								"bh_default_open",
 								"bh_default_close",
 								"bh_default_content",
-								"bh_tag",
-								"bh_tag_center",
-								"bh_tag_open",
-								"bh_tag_close",
-								"bh_tag_content",
+								"bh_single_quote",
+								"bh_single_quote_center",
+								"bh_single_quote_open",
+								"bh_single_quote_close",
+								"bh_single_quote_content",
+								"bh_regex",
+								"bh_regex_center",
+								"bh_regex_open",
+								"bh_regex_close",
+								"bh_regex_content",
+								"bh_round",
+								"bh_round_center",
+								"bh_round_open",
+								"bh_round_close",
+								"bh_round_content",
+								"bh_square",
+								"bh_square_center",
+								"bh_square_open",
+								"bh_square_close",
+								"bh_square_content",
 								"bh_curly",
 								"bh_curly_center",
 								"bh_curly_open",
 								"bh_curly_close",
 								"bh_curly_content",
-								"bh_round",
-								"bh_round_center",
-								"bh_round_open",
-								"bh_round_close",
-								"bh_round_content"
+								"bh_c_define",
+								"bh_c_define_center",
+								"bh_c_define_open",
+								"bh_c_define_close",
+								"bh_c_define_content",
+								"bh_double_quote",
+								"bh_double_quote_center",
+								"bh_double_quote_open",
+								"bh_double_quote_close",
+								"bh_double_quote_content",
+								"bh_unmatched",
+								"bh_unmatched_center",
+								"bh_unmatched_open",
+								"bh_unmatched_close",
+								"bh_unmatched_content",
+								"bh_tag",
+								"bh_tag_center",
+								"bh_tag_open",
+								"bh_tag_close",
+								"bh_tag_content"
 							],
+							"in_converting": true,
+							"origin_content": "#include <stdio.h>\n   #include <stdlib.h>\n   #include <string.h> \n   #include <stdbool.h> //定义true \ntypedef struct{\n\tlong stuId; // 学号 \n    long memoryAdd; // 内存地址 \n} Record,*RecordType;\ntypedef struct BiTnode{\n\tRecordType data;\n\tstruct BiTnode* lchild,*rchild;\n} BiTnode,*BiTree;\n\n/*创建先序二叉树*/\nBiTree CreateBiTree()\n{\n\tstatic long m = 10000;\n\tBiTree node;\n\tlong s;\n\tRecordType data = (RecordType) malloc (sizeof(RecordType));\n\tscanf(\"%ld\", &s);\n\tif (s == 0)\n\t\tnode = NULL;\n\telse\n\t{\n\t\tnode = (BiTree) malloc (sizeof(BiTree));\n\t\tdata->memoryAdd = ++m;\n\t\tdata->stuId = s;\n\t\tnode->data = data;\n\t\tnode->lchild = CreateBiTree();\n\t\tnode->rchild = CreateBiTree();\n\t}\n\treturn node;\n} \n/*先序遍历二叉树*/\nvoid PreOrderTraverse(BiTree t)\n{\n\tif(t)\n\t{\n\t\tprintf(\"%ld\\t\", t->data->stuId);\n\t\tprintf(\"%ld\\n\", t->data->memoryAdd);\n\t\tPreOrderTraverse(t->lchild);\n\t\tPreOrderTraverse(t->rchild);\n\t}\n}\n/*根据学号查找树节点*/\nBiTnode* FindNode(BiTree t,long stuId) \n{\n\tBiTnode* p;\n\tif (t->data->stuId == stuId)\n\t\t\treturn t;\n\tif (t->lchild) \n        p = FindNode(t->lchild, stuId);\n\tif(p)\n\t\treturn p;\n\tif (t->rchild) \n        p = FindNode(t->lchild, stuId);\n    return p;\n} \nint main()\n{\n  \tchar ch ='\\0';\n  \tBiTree tree = NULL;\n \tdo\n\t    {\n\t\tprintf(\"*************请选择所需要的操作************\\n\");\n\t\tprintf(\"1. 构建二叉树\\n\");\n\t\tprintf(\"2. 先根遍历二叉树\\n\");\n\t\tprintf(\"3. 根据学号查找内存地址\\n\");\n\t\tprintf(\"4. 退出\\n\");\n\t\tprintf(\"\\n\");\n\t\t\n\t\tch=getchar();\n\t\tgetchar();\n\t\tswitch(ch)\n\t\t{\n\t\t\tcase '1':\n\t\t\t{\n\t\t\t\tprintf(\"请按照先根顺序输入节点：如果没有子节点，则输入0\\n\");\n\t\t\t\ttree = CreateBiTree();\n\t\t\t\tbreak;\n\t\t\t}\n\t\t\tcase '2':\n\t\t\t{\n\t\t\t\tPreOrderTraverse(tree);\n\t\t\t\tbreak;\n\t\t\t}\n\t\t\tcase '3':\n\t\t\t{\n\t\t\t\tprintf(\"请输入学号：\");\n\t\t\t\tlong stuId =0;\n\t\t\t\tscanf(\"%ld\",&stuId);\n\t\t\t\tif(stuId>0)\n\t\t\t\t{\n\t\t\t\t\tBiTnode* result = FindNode(tree,stuId);\n\t\t\t\t\tif(result!=NULL)\n\t\t\t\t\t{\n\t\t\t\t\t\tprintf(\"学号 %ld 对应记录的内存地址为 %ld\\n\\n\",stuId,result->data->memoryAdd);\t\t\t\t\t\t \n\t\t\t\t\t}\n\t\t\t\t\telse\n\t\t\t\t\t{ printf(\"不存在该学号\\n\\n\"); }\t\t\t\t\t\n\t\t\t\t}\n\t\t\t\telse\n\t\t\t\t    {printf(\"学号必须大于零\\n\\n\");}\n\t\t\t\tbreak;\n\t\t\t}\n\t\t\tcase '4':\n\t\t\t{   exit(1); break;\t}\n\t\t\tdefault: \n\t\t\tprintf(\"hello\");\n\t\t\texit(1);\t\t\t   \n\t\t}\t\t\n\t\t_flushall(); //_flushall()清空内存 \n\t} while(true);\t\n  \treturn 0;\n}\n",
+							"origin_encoding": "GB18030",
 							"rb_syntax": "json",
 							"syntax": "Packages/C++/C.sublime-syntax",
 							"translate_tabs_to_spaces": false
 						},
 						"translation.x": 0.0,
-						"translation.y": 1276.0,
+						"translation.y": 2290.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 1,
+					"stack_index": 0,
 					"type": "text"
 				}
 			]
