@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>动画翻页</title>
+    <script src="script.js"></script>
+    <style>
+        body{
+            background:#ccc;
+        }
+        #magazine{
+            position: relative;
+            margin: auto;
+            width:1400px;
+            height:950px;
+        }
+        .paper {
+            margin: auto;
+            width:700px;
+            height:950px;
+            transform-style: preserve-3d;
+            display: block;
+        }
+        .paper img{
+            /*right: 0;*/
+            /*top: 0;*/
+            position: absolute;
+            width:700px;
+            height:950px;
+        }
+
+        /*.paper[data-left] img[data-front], .paper[data-right] img[data-back]{*/
+        /*    z-index: -1;*/
+        /*    transform: scale(-1, 1);*/
+        /*}*/
+        /*.paper[data-left] img[data-back], .paper[data-right] img[data-front]{*/
+        /*    transform: translateZ(1px);*/
+        /*}*/
+        /*@keyframes flip-to-left {*/
+        /*    from {*/
+        /*        transform: perspective(1000px) rotateY(0);*/
+        /*    }*/
+        /*    to {*/
+        /*        transform: perspective(1000px) rotateY(-180deg);*/
+        /*    }*/
+        /*}*/
+        /*@keyframes flip-to-right {*/
+        /*    from {*/
+        /*        transform: perspective(1000px) rotateY(0);*/
+        /*    }*/
+        /*    to {*/
+        /*        transform: perspective(1000px) rotateY(-180deg);*/
+        /*    }*/
+        /*}*/
+        /*.paper[data-right] {*/
+        /*    transform-origin: left center;*/
+        /*    animation: flip-to-left 2s ease-in-out;*/
+        /*}*/
+        /*.paper[data-left] {*/
+        /*    transform-origin: right center;*/
+        /*    animation: flip-to-left 2s ease-in-out;*/
+        /*}*/
+    </style>
+    <script src="https://cdn.bootcdn.net/ajax/libs/jquery/3.6.0/jquery.js"></script>
+</head>
+<body>
+<div id="magazine">
+
+</div>
+
+<script>
+    let images = ["image/1.jpg", "image/2.jpg", "image/3.jpg", "image/4.jpg",
+        "image/5.jpg", "image/6.jpg"];
+
+    // 加载元素
+    let magazine = $('#magazine');
+    for(let i = 0; i < images.length; i+=2) {
+        let j = i + 1;
+        if (i+1 === images.length)
+            j = i;
+        let $paper = $('<div class="paper"></div>');
+        $paper.append($('<img src='+images[i]+' alt>'));
+        if (i !== 0)
+            $paper.hide();
+        magazine.append($paper);
+    }
+    // for(let i = 0; i < images.length; i+=2) {
+    //     let j = i + 1;
+    //     if (i+1 === images.length)
+    //         j = i;
+    //     let $paper = $('<div class="paper"></div>');
+    //     $paper.append($('<img src='+images[i]+' data-front alt>'));
+    //     $paper.append($('<img src='+images[j]+' data-back alt>'));
+    //     // if (i === 0)
+    //     //
+    //     if (i !== 0)
+    //         $paper.hide();
+    //     else
+    //         $paper.attr('data-right','');
+    //     magazine.append($paper);
+    // }
+    // $('.paper').one('click', function (){
+    //     $('.paper:first-child').attr('data-right', '');
+    // })
+    $('.paper').click(dataRight)
+</script>
+
+
+</body>
+</html>

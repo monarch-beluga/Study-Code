@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="script/turn.min.js"></script>
+    <script src="http://code.jquery.com/jquery-1.7.1.min.js"></script>
+
+    <style type="text/css">
+        body{
+            background:#ccc;
+        }
+        #magazine{
+            width:1152px;
+            height:752px;
+        }
+        #magazine .turn-page{
+            background-color:#ccc;
+            background-size:100% 100%;
+        }
+    </style>
+</head>
+<body>
+
+<div id="magazine">
+    <div style="background-image:url(image/1.jpg);"></div>
+    <div style="background-image:url(image/2.jpg);"></div>
+    <div style="background-image:url(image/3.jpg);"></div>
+    <div style="background-image:url(image/4.jpg);"></div>
+    <div style="background-image:url(image/5.jpg);"></div>
+    <div style="background-image:url(image/6.jpg);"></div>
+</div>
+
+<script type="text/javascript">
+
+    $(window).ready(function() {
+        $('#magazine').turn({
+            display: 'double',
+            acceleration: true,
+            gradients: !$.isTouch,
+            elevation:50,
+            when: {
+                turned: function(e, page) {
+                    /*console.log('Current view: ', $(this).turn('view'));*/
+                }
+            }
+        });
+    });
+
+
+    $(window).bind('keydown', function(e){
+
+        if (e.keyCode==37)
+            $('#magazine').turn('previous');
+        else if (e.keyCode==39)
+            $('#magazine').turn('next');
+
+    });
+
+</script>
+</body>
+</html>

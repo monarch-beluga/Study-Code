@@ -5,7 +5,7 @@ from sklearn.metrics import r2_score
 from sklearn.feature_selection import f_regression
 
 
-def fun1(datay, *datax):
+def fun1(datay, datax):
     for i, temp in enumerate(datax):
         if i == 0:
             data_x = temp.reshape(-1, 1)

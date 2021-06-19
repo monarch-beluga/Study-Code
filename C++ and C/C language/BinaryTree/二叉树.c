@@ -1,7 +1,7 @@
 #include <stdio.h>
-   #include <stdlib.h>
-   #include <string.h> 
-   #include <stdbool.h> //定义true 
+#include <stdlib.h>
+#include <string.h> 
+#include <stdbool.h> //定义true 
 typedef struct{
 	long stuId; // 学号 
     long memoryAdd; // 内存地址 

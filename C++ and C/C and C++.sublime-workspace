@@ -4,6 +4,46 @@
 		"selected_items":
 		[
 			[
+				"F",
+				"FINITY"
+			],
+			[
+				"e",
+				"edges"
+			],
+			[
+				"v",
+				"vexs"
+			],
+			[
+				"pr",
+				"printf\tprintf …"
+			],
+			[
+				"f",
+				"front"
+			],
+			[
+				"a",
+				"adjvex"
+			],
+			[
+				"adj",
+				"adjlist"
+			],
+			[
+				"print",
+				"print"
+			],
+			[
+				"vist",
+				"visited"
+			],
+			[
+				"vis",
+				"visited"
+			],
+			[
 				"Bi",
 				"BiTree"
 			],
@@ -26,10 +66,6 @@
 			[
 				"l",
 				"len1"
-			],
-			[
-				"a",
-				"a_len"
 			],
 			[
 				"n",
@@ -56,20 +92,12 @@
 				"get_next"
 			],
 			[
-				"pr",
-				"prev"
-			],
-			[
 				"ge",
 				"get_next"
 			],
 			[
 				"g",
 				"get_data"
-			],
-			[
-				"f",
-				"fibonacci_num"
 			],
 			[
 				"re",
@@ -132,10 +160,6 @@
 				"t"
 			],
 			[
-				"e",
-				"else"
-			],
-			[
 				"s",
 				"score"
 			],
@@ -156,29 +180,24 @@
 	"buffers":
 	[
 		{
-			"contents": "#include <stdio.h>\n   #include <stdlib.h>\n   #include <string.h> \n   #include <stdbool.h> //定义true \ntypedef struct{\n\tlong stuId; // 学号 \n    long memoryAdd; // 内存地址 \n} Record,*RecordType;\ntypedef struct BiTnode{\n\tRecordType data;\n\tstruct BiTnode* lchild,*rchild;\n} BiTnode,*BiTree;\n\n/*创建先序二叉树*/\nBiTree CreateBiTree()\n{\n\tstatic long m = 10000;\n\tBiTree node;\n\tlong s;\n\tRecordType data = (RecordType) malloc (sizeof(RecordType));\n\tscanf(\"%ld\", &s);\n\tif (s == 0)\n\t\tnode = NULL;\n\telse\n\t{\n\t\tnode = (BiTree) malloc (sizeof(BiTree));\n\t\tdata->memoryAdd = ++m;\n\t\tdata->stuId = s;\n\t\tnode->data = data;\n\t\tnode->lchild = CreateBiTree();\n\t\tnode->rchild = CreateBiTree();\n\t}\n\treturn node;\n} \n/*先序遍历二叉树*/\nvoid PreOrderTraverse(BiTree t)\n{\n\tif(t)\n\t{\n\t\tprintf(\"%ld\\t\", t->data->stuId);\n\t\tprintf(\"%ld\\n\", t->data->memoryAdd);\n\t\tPreOrderTraverse(t->lchild);\n\t\tPreOrderTraverse(t->rchild);\n\t}\n}\n/*根据学号查找树节点*/\nBiTnode* FindNode(BiTree t,long stuId) \n{\n\tBiTnode* p;\n\tif (t->data->stuId == stuId)\n\t\t\treturn t;\n\tif (t->lchild) \n        p = FindNode(t->lchild, stuId);\n\tif(p)\n\t\treturn p;\n\tif (t->rchild) \n        p = FindNode(t->lchild, stuId);\n    return p;\n} \nint main()\n{\n  \tchar ch ='\\0';\n  \tBiTree tree = NULL;\n \tdo\n\t    {\n\t\tprintf(\"*************请选择所需要的操作************\\n\");\n\t\tprintf(\"1. 构建二叉树\\n\");\n\t\tprintf(\"2. 先根遍历二叉树\\n\");\n\t\tprintf(\"3. 根据学号查找内存地址\\n\");\n\t\tprintf(\"4. 退出\\n\");\n\t\tprintf(\"\\n\");\n\t\t\n\t\tch=getchar();\n\t\tgetchar();\n\t\tswitch(ch)\n\t\t{\n\t\t\tcase '1':\n\t\t\t{\n\t\t\t\tprintf(\"请按照先根顺序输入节点：如果没有子节点，则输入0\\n\");\n\t\t\t\ttree = CreateBiTree();\n\t\t\t\tbreak;\n\t\t\t}\n\t\t\tcase '2':\n\t\t\t{\n\t\t\t\tPreOrderTraverse(tree);\n\t\t\t\tbreak;\n\t\t\t}\n\t\t\tcase '3':\n\t\t\t{\n\t\t\t\tprintf(\"请输入学号：\");\n\t\t\t\tlong stuId =0;\n\t\t\t\tscanf(\"%ld\",&stuId);\n\t\t\t\tif(stuId>0)\n\t\t\t\t{\n\t\t\t\t\tBiTnode* result = FindNode(tree,stuId);\n\t\t\t\t\tif(result!=NULL)\n\t\t\t\t\t{\n\t\t\t\t\t\tprintf(\"学号 %ld 对应记录的内存地址为 %ld\\n\\n\",stuId,result->data->memoryAdd);\t\t\t\t\t\t \n\t\t\t\t\t}\n\t\t\t\t\telse\n\t\t\t\t\t{ printf(\"不存在该学号\\n\\n\"); }\t\t\t\t\t\n\t\t\t\t}\n\t\t\t\telse\n\t\t\t\t    {printf(\"学号必须大于零\\n\\n\");}\n\t\t\t\tbreak;\n\t\t\t}\n\t\t\tcase '4':\n\t\t\t{   exit(1); break;\t}\n\t\t\tdefault: \n\t\t\tprintf(\"hello\");\n\t\t\texit(1);\t\t\t   \n\t\t}\t\t\n\t\t_flushall(); //_flushall()清空内存 \n\t} while(true);\t\n  \treturn 0;\n}\n",
-			"file": "/F/temp/temp.c",
-			"file_size": 2357,
-			"file_write_time": 132664882260000000,
+			"contents": "#include\"ljb.h\"\n\nint visited[M];\nLinkedGraph g1;\nchar* f1 = \"无向图.txt\";\n\nvoid dfs(LinkedGraph g, int i);\nvoid DfsTraverse(LinkedGraph g);\nvoid bfs(LinkedGraph g, int i);\nvoid BfsTraverse(LinkedGraph g);\nvoid Menu();\nvoid Menu_select();\n\n\nint main()\n{\n\tMenu();\n\treturn 0;\n}\n\nvoid Menu()\n{\n\tsystem(\"cls\");\t\t\t\t\t// 清屏\n\t// 打印界面\n\tprintf(\"\\n********连通图邻接表存储*********\\n\");\n\tprintf(\"*\\t1-创建邻接表\\t\\t*\\n\");\n\tprintf(\"*\\t2-打印邻接表结构\\t*\\n\");\n\tprintf(\"*\\t3-深度优先\\t\\t*\\n\");\n\tprintf(\"*\\t4-广度优先\\t\\t*\\n\");\n\tprintf(\"*\\t0-退出\\t\\t\\t*\\n\");\n\tprintf(\"*********************************\\n\");\n\t// 菜单选择\n\tMenu_select();\n}\n\nvoid Menu_select()\n{\n\tint a; \n\tprintf(\"请选择<Select>:\\n\");\n\tscanf(\"%d\",&a);\n\tswitch(a)\n\t{\n\t\tcase 1:\n\t\tcreat(&g1, f1, 0);\n\t\tprintf(\"邻接表创建成功！！！\\n\");\n\t\tbreak;\n\t\tcase 2:\n\t\tprintf(\"邻接表结构：\\n\");\n\t\tprint(g1);\n\t\tbreak;\n\t\tcase 3:\n\t\tprintf(\"深度优先遍历：\\n\");\n\t\tDfsTraverse(g1);\n\t\tbreak;\n\t\tcase 4:\n\t\tprintf(\"广度优先遍历：\\n\");\n\t\tBfsTraverse(g1);\n\t\tbreak;\n\t\tcase 0:exit(0);\n\t}\n\t// 按下后继续\n\tsystem(\"pause\");\n\t// 执行完一次选择后重新回到菜单界面\n\tMenu();\n}\n\nvoid dfs(LinkedGraph g, int i)\n{\n\tEdgeNode *p;\n\tprintf(\"visit vertex: %c\\n\", g.adjlist[i].vertex);\n\tvisited[i] = 1;\n\tp = g.adjlist[i].FirstEdge;\n\twhile (p)\n\t{\n\t\tif (!visited[p->adjvex])\n\t\t\tdfs(g, p->adjvex);\n\t\tp = p->next;\n\t}\n}\n\nvoid DfsTraverse(LinkedGraph g)\n{\n\tint i;\n\tfor(i=0; i<g.n; i++)\n\t\tvisited[i] = 0;\n\tfor (i = 0; i < g.n; ++i)\n\t\tif (!visited[i])\n\t\t\tdfs(g, i);\n}\n\nvoid bfs(LinkedGraph g, int i)\n{\n\tint j;\n\tEdgeNode *p;\n\tint queue[M], front, rear;\n\tfront = 0, rear = 0;\n\tprintf(\"%c \", g.adjlist[i].vertex);\n\tvisited[i] = 1;\n\tqueue[rear++] = i;\n\twhile(rear > front)\n\t{\n\t\tj = queue[front++];\n\t\tp = g.adjlist[j].FirstEdge;\n\t\twhile(p)\n\t\t{\n\t\t\tif (visited[p->adjvex] == 0)\n\t\t\t{\n\t\t\t\tprintf(\"--> %c\", g.adjlist[p->adjvex].vertex);\n\t\t\t\tqueue[rear++] = p->adjvex;\n\t\t\t\tvisited[p->adjvex] = 1;\n\t\t\t}\n\t\t\tp = p->next;\n\t\t}\n\t}\n}\nvoid BfsTraverse(LinkedGraph g)\n{\n\tint i, count = 0;\n\tfor(i=0; i<g.n; i++)\n\t\tvisited[i] = 0;\n\tfor (i = 0; i < g.n; ++i)\n\t{\n\t\tif (!visited[i])\n\t\t{\n\t\t\tprintf(\"\\n\");\n\t\t\tcount++;\n\t\t\tbfs(g, i);\n\t\t}\n\t}\n\tprintf(\"\\n该连通图共有%d个连通分量\\n\", count);\n}\n",
+			"file": "C language/Figure/ljb.c",
+			"file_size": 2294,
+			"file_write_time": 132682435383383869,
 			"settings":
 			{
-				"buffer_size": 2119,
-				"encoding": "Western (Windows 1252)",
+				"buffer_size": 2055,
 				"line_ending": "Windows",
 				"scratch": true
 			}
 		},
 		{
-			"contents": "#include <stdio.h>\n   #include <stdlib.h>\n   #include <string.h> \n   #include <stdbool.h> //定义true \ntypedef struct{\n\tlong stuId; // 学号 \n    long memoryAdd; // 内存地址 \n} Record,*RecordType;\ntypedef struct BiTnode{\n\tRecordType data;\n\tstruct BiTnode* lchild,*rchild;\n} BiTnode,*BiTree;\n\n/*创建先序二叉树*/\nBiTree CreateBiTree()\n{\n\tstatic long m = 10000;\n\tBiTree node;\n\tlong s;\n\tRecordType data = (RecordType) malloc (sizeof(RecordType));\n\tscanf(\"%ld\", &s);\n\tif (s == 0)\n\t\tnode = NULL;\n\telse\n\t{\n\t\tnode = (BiTree) malloc (sizeof(BiTree));\n\t\tdata->memoryAdd = ++m;\n\t\tdata->stuId = s;\n\t\tnode->data = data;\n\t\tnode->lchild = CreateBiTree();\n\t\tnode->rchild = CreateBiTree();\n\t}\n\treturn node;\n} \n/*先序遍历二叉树*/\nvoid PreOrderTraverse(BiTree t)\n{\n\tif(t)\n\t{\n\t\tprintf(\"%ld\\t\", t->data->stuId);\n\t\tprintf(\"%ld\\n\", t->data->memoryAdd);\n\t\tPreOrderTraverse(t->lchild);\n\t\tPreOrderTraverse(t->rchild);\n\t}\n}\n/*根据学号查找树节点*/\nBiTnode* FindNode(BiTree t,long stuId) \n{\n\tBiTnode* p;\n\tif (t->data->stuId == stuId)\n\t\t\treturn t;\n\tif (t->lchild) \n        p = FindNode(t->lchild, stuId);\n\tif(p)\n\t\treturn p;\n\tif (t->rchild) \n        p = FindNode(t->lchild, stuId);\n    return p;\n} \nint main()\n{\n  \tchar ch ='\\0';\n  \tBiTree tree = NULL;\n \tdo\n\t    {\n\t\tprintf(\"*************请选择所需要的操作************\\n\");\n\t\tprintf(\"1. 构建二叉树\\n\");\n\t\tprintf(\"2. 先根遍历二叉树\\n\");\n\t\tprintf(\"3. 根据学号查找内存地址\\n\");\n\t\tprintf(\"4. 退出\\n\");\n\t\tprintf(\"\\n\");\n\t\t\n\t\tch=getchar();\n\t\tgetchar();\n\t\tswitch(ch)\n\t\t{\n\t\t\tcase '1':\n\t\t\t{\n\t\t\t\tprintf(\"请按照先根顺序输入节点：如果没有子节点，则输入0\\n\");\n\t\t\t\ttree = CreateBiTree();\n\t\t\t\tbreak;\n\t\t\t}\n\t\t\tcase '2':\n\t\t\t{\n\t\t\t\tPreOrderTraverse(tree);\n\t\t\t\tbreak;\n\t\t\t}\n\t\t\tcase '3':\n\t\t\t{\n\t\t\t\tprintf(\"请输入学号：\");\n\t\t\t\tlong stuId =0;\n\t\t\t\tscanf(\"%ld\",&stuId);\n\t\t\t\tif(stuId>0)\n\t\t\t\t{\n\t\t\t\t\tBiTnode* result = FindNode(tree,stuId);\n\t\t\t\t\tif(result!=NULL)\n\t\t\t\t\t{\n\t\t\t\t\t\tprintf(\"学号 %ld 对应记录的内存地址为 %ld\\n\\n\",stuId,result->data->memoryAdd);\t\t\t\t\t\t \n\t\t\t\t\t}\n\t\t\t\t\telse\n\t\t\t\t\t{ printf(\"不存在该学号\\n\\n\"); }\t\t\t\t\t\n\t\t\t\t}\n\t\t\t\telse\n\t\t\t\t    {printf(\"学号必须大于零\\n\\n\");}\n\t\t\t\tbreak;\n\t\t\t}\n\t\t\tcase '4':\n\t\t\t{   exit(1); break;\t}\n\t\t\tdefault: \n\t\t\tprintf(\"hello\");\n\t\t\texit(1);\t\t\t   \n\t\t}\t\t\n\t\t_flushall(); //_flushall()清空内存 \n\t} while(true);\t\n  \treturn 0;\n}\n",
-			"file": "C language/BinaryTree/二叉树.c",
-			"file_size": 2357,
-			"file_write_time": 132668455965332445,
+			"file": "C language/Figure/无向图.txt",
 			"settings":
 			{
-				"buffer_size": 2119,
-				"encoding": "Western (Windows 1252)",
-				"line_ending": "Windows",
-				"scratch": true
+				"buffer_size": 54,
+				"encoding": "UTF-8",
+				"line_ending": "Windows"
 			}
 		}
 	],
@@ -702,7 +721,7 @@
 			]
 		]
 	],
-	"build_varint": "Run",
+	"build_varint": "",
 	"command_palette":
 	{
 		"height": 0.0,
@@ -784,16 +803,34 @@
 	[
 		"/E/Study/Projects/C++ and C",
 		"/E/Study/Projects/C++ and C/C language",
-		"/E/Study/Projects/C++ and C/C language/BinaryTree"
+		"/E/Study/Projects/C++ and C/C language/BinaryTree",
+		"/E/Study/Projects/C++ and C/C language/Figure",
+		"/E/Study/Projects/C++ and C/C language/Sequence table",
+		"/E/Study/Projects/C++ and C/C language/Single list"
 	],
 	"file_history":
 	[
+		"/E/Study/Projects/C++ and C/C language/BinaryTree/二叉树.c",
+		"/E/Study/Projects/C++ and C/C language/BinaryTree/temp.c",
+		"/E/Study/Projects/C++ and C/C language/Sequence table/temp.c",
+		"/E/Study/Projects/C++ and C/C language/Sequence table/练习1.c",
+		"/E/Study/Projects/C++ and C/C language/Single list/temp.c",
+		"/E/Study/Projects/C++ and C/C language/Figure/无向图.txt",
+		"/E/Study/Projects/C++ and C/C language/Figure/ljb.c",
+		"/E/Study/Projects/C++ and C/C language/Figure/ljb.h",
+		"/E/Study/Projects/C++ and C/C language/Figure/ljjz.c",
+		"/E/Study/Projects/c++ and c/c language/Figure/ljb.h",
+		"/E/Study/Projects/C++ and C/C language/Figure/ljb_无向图.txt",
+		"/E/Study/Projects/C++ and C/C language/Single list/病患信息系统.c",
+		"/E/Study/Projects/C++ and C/C language/Sequence table/学生管理系统.c",
+		"/E/Study/Projects/C++ and C/C language/Sequence table/队列.c",
+		"/E/Study/Projects/C++ and C/C language/Figure/ljb_有向图.txt",
+		"/E/Study/Projects/C++ and C/C language/Figure/ljb.txt",
+		"/E/Study/Projects/C++ and C/C language/Figure/temp.c",
+		"/E/Study/Projects/C++ and C/C language/Figure/ljb1.h",
 		"/F/temp/temp.c",
 		"/F/temp/二叉树.c",
-		"/E/Study/Projects/C++ and C/C language/Single list/病患信息系统.c",
-		"/E/Study/Projects/C++ and C/C language/Single list/temp.c",
 		"/F/PRCP3.pyx",
-		"/E/Study/Projects/C++ and C/C language/Sequence table/队列.c",
 		"/F/队列.c",
 		"/E/Study/Projects/Python/python38/temp.py",
 		"/E/Study/Projects/C++ and C/Algorithm/06_red_blue.cc",
@@ -803,11 +840,9 @@
 		"/F/file/study/Data structure/Single list/病患信息系统.c",
 		"/E/Study/Projects/C++ and C/Algorithm/08_Prime_Subtraction.cc",
 		"/E/Study/Projects/C++ and C/Algorithm/Flip_the_Bits.cc",
-		"/E/Study/Projects/C++ and C/C language/Sequence table/temp.c",
 		"/E/Study/Projects/C++ and C/Algorithm/05_Perfectly_array.cc",
 		"/E/Study/Projects/C++ and C/Algorithm/03_newton_iteration.cc",
 		"/E/Study/Projects/C++ and C/Algorithm/04_Average_Height.cc",
-		"/E/Study/Projects/C++ and C/C language/Sequence table/练习1.c",
 		"/F/队列3.c",
 		"/E/Study/Projects/C++ and C/C language/Sequence table/学生类型.h",
 		"/E/Study/Projects/C++ and C/C language/Sequence table/顺序栈.c",
@@ -830,7 +865,6 @@
 		"/C/Users/Monarch/AppData/Roaming/Sublime Text 3/Packages/C++/C++.sublime-syntax",
 		"/E/Study/Projects/C++ and C/Algorithm/03_newton_iteration.cpp",
 		"/E/Study/Projects/C++ and C/Algorithm/02_linked_list_reversal.cpp",
-		"/E/Study/Projects/C++ and C/C language/Sequence table/学生管理系统.c",
 		"/F/temp/juchi.cpp",
 		"/F/temp/juchi.c",
 		"/E/Study/Projects/C++ and C/C++/temp.cpp",
@@ -903,20 +937,11 @@
 		"/E/Study/Projects/C++ and C/Hello.cpp",
 		"/E/Study/Projects/C++ and C/C基础/二维数组的应用.cpp",
 		"/E/Study/Projects/C++ and C/C基础/switch语句.cpp",
-		"/E/Study/Projects/C++ and C/C基础/static用法.cpp",
-		"/C/Users/Monarch/AppData/Roaming/Sublime Text 3/Packages/User/C-build.sublime-build",
-		"/E/Study-tool/Typora/EasyBlogImage/垃圾清理.bat",
-		"/E/Study/Projects/C++ and C/C++基础/文件/数值相减.cpp",
-		"/E/Study/Projects/C++ and C/C基础/小程序.h",
-		"/E/Study/Projects/C++ and C/C基础/贪吃蛇.cpp",
-		"/C/Users/Monarch/AppData/Roaming/Sublime Text 3/Packages/User/ConvertToUTF8.sublime-settings",
-		"/E/Study/Projects/C++ and C/C基础/IDW.cpp",
-		"/E/Study/Projects/C++ and C/C基础/关系运算符.cpp",
-		"/E/Study/Projects/C++ and C/C基础/printf的格式控制符.cpp"
+		"/E/Study/Projects/C++ and C/C基础/static用法.cpp"
 	],
 	"find":
 	{
-		"height": 32.0
+		"height": 70.0
 	},
 	"find_in_files":
 	{
@@ -927,9 +952,12 @@
 	},
 	"find_state":
 	{
-		"case_sensitive": false,
+		"case_sensitive": true,
 		"find_history":
 		[
+			" ",
+			"i",
+			"i\n",
 			");\n",
 			";\n",
 			"Person",
@@ -951,6 +979,7 @@
 		"regex": false,
 		"replace_history":
 		[
+			"j",
 			"DataType",
 			"i",
 			"curr",
@@ -963,22 +992,22 @@
 		"reverse": false,
 		"show_context": true,
 		"use_buffer2": true,
-		"whole_word": false,
+		"whole_word": true,
 		"wrap": true
 	},
 	"groups":
 	[
 		{
-			"selected": 1,
+			"selected": 0,
 			"sheets":
 			[
 				{
 					"buffer": 0,
-					"file": "/F/temp/temp.c",
+					"file": "C language/Figure/ljb.c",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 2119,
+						"buffer_size": 2055,
 						"regions":
 						{
 							"rb_level0":
@@ -987,84 +1016,172 @@
 								"regions":
 								[
 									[
-										114,
-										115
+										28,
+										29
 									],
 									[
-										165,
-										166
+										30,
+										31
 									],
 									[
-										209,
-										210
+										80,
+										81
 									],
 									[
-										262,
-										263
+										101,
+										102
 									],
 									[
-										313,
-										314
+										120,
+										121
 									],
 									[
-										314,
-										315
+										134,
+										135
 									],
 									[
-										316,
-										317
+										145,
+										146
 									],
 									[
-										673,
-										674
+										166,
+										167
 									],
 									[
-										709,
-										710
+										185,
+										186
 									],
 									[
-										718,
-										719
+										199,
+										200
 									],
 									[
-										720,
-										721
+										211,
+										212
 									],
 									[
-										871,
-										872
+										212,
+										213
 									],
 									[
-										904,
-										905
+										231,
+										232
 									],
 									[
-										924,
-										925
+										232,
+										233
 									],
 									[
-										927,
-										928
+										245,
+										246
 									],
 									[
-										1132,
-										1133
+										246,
+										247
 									],
 									[
-										1143,
-										1144
+										248,
+										249
 									],
 									[
-										1144,
-										1145
+										270,
+										271
 									],
 									[
-										1146,
-										1147
+										282,
+										283
 									],
 									[
-										2117,
-										2118
+										283,
+										284
+									],
+									[
+										285,
+										286
+									],
+									[
+										584,
+										585
+									],
+									[
+										603,
+										604
+									],
+									[
+										604,
+										605
+									],
+									[
+										606,
+										607
+									],
+									[
+										996,
+										997
+									],
+									[
+										1007,
+										1008
+									],
+									[
+										1028,
+										1029
+									],
+									[
+										1030,
+										1031
+									],
+									[
+										1225,
+										1226
+									],
+									[
+										1244,
+										1245
+									],
+									[
+										1258,
+										1259
+									],
+									[
+										1260,
+										1261
+									],
+									[
+										1370,
+										1371
+									],
+									[
+										1381,
+										1382
+									],
+									[
+										1402,
+										1403
+									],
+									[
+										1404,
+										1405
+									],
+									[
+										1818,
+										1819
+									],
+									[
+										1836,
+										1837
+									],
+									[
+										1850,
+										1851
+									],
+									[
+										1852,
+										1853
+									],
+									[
+										2053,
+										2054
 									]
 								],
 								"scope": "level0.rb"
@@ -1075,124 +1192,300 @@
 								"regions":
 								[
 									[
-										384,
-										385
+										255,
+										256
 									],
 									[
-										395,
-										396
+										256,
+										257
 									],
 									[
-										404,
-										405
+										294,
+										295
 									],
 									[
-										423,
-										424
+										300,
+										301
 									],
 									[
-										432,
-										433
+										329,
+										330
 									],
 									[
-										442,
-										443
+										361,
+										362
 									],
 									[
-										449,
-										450
+										371,
+										372
 									],
 									[
-										456,
-										457
+										391,
+										392
 									],
 									[
-										480,
-										481
+										401,
+										402
 									],
 									[
-										657,
-										658
+										421,
+										422
 									],
 									[
-										725,
-										726
+										431,
+										432
 									],
 									[
-										727,
-										728
+										450,
+										451
 									],
 									[
-										730,
-										731
+										460,
+										461
 									],
 									[
-										869,
-										870
+										479,
+										480
 									],
 									[
-										946,
-										947
+										489,
+										490
 									],
 									[
-										970,
-										971
+										508,
+										509
 									],
 									[
-										989,
-										990
+										518,
+										519
 									],
 									[
-										999,
-										1000
+										556,
+										557
 									],
 									[
-										1022,
-										1023
+										580,
+										581
 									],
 									[
-										1039,
-										1040
+										581,
+										582
 									],
 									[
-										1045,
-										1046
+										624,
+										625
 									],
 									[
-										1047,
-										1048
+										641,
+										642
 									],
 									[
-										1065,
-										1066
+										650,
+										651
 									],
 									[
-										1075,
-										1076
+										658,
+										659
 									],
 									[
-										1098,
-										1099
+										668,
+										669
 									],
 									[
-										1115,
-										1116
+										670,
+										671
 									],
 									[
-										1199,
-										1200
+										673,
+										674
 									],
 									[
-										2088,
-										2089
+										936,
+										937
 									],
 									[
-										2095,
-										2096
+										955,
+										956
 									],
 									[
-										2100,
-										2101
+										963,
+										964
+									],
+									[
+										992,
+										993
+									],
+									[
+										993,
+										994
+									],
+									[
+										1053,
+										1054
+									],
+									[
+										1095,
+										1096
+									],
+									[
+										1106,
+										1107
+									],
+									[
+										1108,
+										1109
+									],
+									[
+										1129,
+										1130
+									],
+									[
+										1131,
+										1132
+									],
+									[
+										1151,
+										1152
+									],
+									[
+										1153,
+										1154
+									],
+									[
+										1156,
+										1157
+									],
+									[
+										1223,
+										1224
+									],
+									[
+										1274,
+										1275
+									],
+									[
+										1290,
+										1291
+									],
+									[
+										1301,
+										1302
+									],
+									[
+										1303,
+										1304
+									],
+									[
+										1315,
+										1316
+									],
+									[
+										1335,
+										1336
+									],
+									[
+										1342,
+										1343
+									],
+									[
+										1354,
+										1355
+									],
+									[
+										1362,
+										1363
+									],
+									[
+										1367,
+										1368
+									],
+									[
+										1438,
+										1439
+									],
+									[
+										1440,
+										1441
+									],
+									[
+										1485,
+										1486
+									],
+									[
+										1512,
+										1513
+									],
+									[
+										1523,
+										1524
+									],
+									[
+										1525,
+										1526
+									],
+									[
+										1538,
+										1539
+									],
+									[
+										1545,
+										1546
+									],
+									[
+										1558,
+										1559
+									],
+									[
+										1571,
+										1572
+									],
+									[
+										1574,
+										1575
+									],
+									[
+										1816,
+										1817
+									],
+									[
+										1877,
+										1878
+									],
+									[
+										1893,
+										1894
+									],
+									[
+										1904,
+										1905
+									],
+									[
+										1906,
+										1907
+									],
+									[
+										1918,
+										1919
+									],
+									[
+										1938,
+										1939
+									],
+									[
+										1941,
+										1942
+									],
+									[
+										2014,
+										2015
+									],
+									[
+										2023,
+										2024
+									],
+									[
+										2050,
+										2051
 									]
 								],
 								"scope": "level1.rb"
@@ -1203,164 +1496,164 @@
 								"regions":
 								[
 									[
-										411,
-										412
+										692,
+										693
 									],
 									[
-										422,
-										423
+										703,
+										704
 									],
 									[
-										491,
-										492
+										714,
+										715
 									],
 									[
-										498,
-										499
+										729,
+										730
 									],
 									[
-										507,
-										508
+										759,
+										760
 									],
 									[
-										522,
-										523
+										770,
+										771
 									],
 									[
-										619,
-										620
+										780,
+										781
 									],
 									[
-										620,
-										621
+										783,
+										784
 									],
 									[
-										652,
-										653
+										813,
+										814
 									],
 									[
-										653,
-										654
+										825,
+										826
 									],
 									[
-										740,
-										741
+										841,
+										842
 									],
 									[
-										764,
-										765
+										844,
+										845
 									],
 									[
-										775,
-										776
+										874,
+										875
 									],
 									[
-										803,
-										804
+										886,
+										887
 									],
 									[
-										824,
-										825
+										902,
+										903
 									],
 									[
-										834,
-										835
+										905,
+										906
 									],
 									[
-										855,
-										856
+										930,
+										931
 									],
 									[
-										865,
-										866
+										932,
+										933
 									],
 									[
-										1209,
-										1210
+										1085,
+										1086
 									],
 									[
-										1248,
-										1249
+										1087,
+										1088
 									],
 									[
-										1259,
-										1260
+										1163,
+										1164
 									],
 									[
-										1272,
-										1273
+										1183,
+										1184
 									],
 									[
-										1283,
-										1284
+										1191,
+										1192
 									],
 									[
-										1298,
-										1299
+										1204,
+										1205
 									],
 									[
-										1309,
-										1310
+										1351,
+										1352
 									],
 									[
-										1327,
-										1328
+										1353,
+										1354
 									],
 									[
-										1338,
-										1339
+										1502,
+										1503
 									],
 									[
-										1348,
-										1349
+										1504,
+										1505
 									],
 									[
-										1359,
-										1360
+										1587,
+										1588
 									],
 									[
-										1364,
-										1365
+										1595,
+										1596
 									],
 									[
-										1382,
-										1383
+										1613,
+										1614
 									],
 									[
-										1383,
-										1384
+										1615,
+										1616
 									],
 									[
-										1395,
-										1396
+										1635,
+										1636
 									],
 									[
-										1396,
-										1397
+										1637,
+										1638
 									],
 									[
-										1407,
-										1408
+										1641,
+										1642
 									],
 									[
-										1410,
-										1411
+										1813,
+										1814
 									],
 									[
-										1414,
-										1415
+										1948,
+										1949
 									],
 									[
-										2049,
-										2050
+										1960,
+										1961
 									],
 									[
-										2064,
-										2065
+										1964,
+										1965
 									],
 									[
-										2065,
-										2066
+										2011,
+										2012
 									]
 								],
 								"scope": "level2.rb"
@@ -1371,60 +1664,52 @@
 								"regions":
 								[
 									[
-										514,
-										515
+										1172,
+										1173
 									],
 									[
-										521,
-										522
+										1182,
+										1183
 									],
 									[
-										1432,
-										1433
+										1649,
+										1650
 									],
 									[
-										1517,
-										1518
+										1673,
+										1674
 									],
 									[
-										1535,
-										1536
+										1678,
+										1679
 									],
 									[
-										1579,
-										1580
+										1793,
+										1794
 									],
 									[
-										1597,
-										1598
+										1957,
+										1958
 									],
 									[
-										1956,
-										1957
+										1959,
+										1960
 									],
 									[
-										1974,
-										1975
+										1975,
+										1976
 									],
 									[
-										1994,
-										1995
+										1980,
+										1981
 									],
 									[
-										2018,
-										2019
+										2001,
+										2002
 									],
 									[
-										2026,
-										2027
-									],
-									[
-										2036,
-										2037
-									],
-									[
-										2038,
-										2039
+										2006,
+										2007
 									]
 								],
 								"scope": "level3.rb"
@@ -1435,76 +1720,36 @@
 								"regions":
 								[
 									[
-										1444,
-										1445
+										1657,
+										1658
 									],
 									[
-										1473,
-										1474
+										1667,
+										1668
 									],
 									[
-										1499,
-										1500
+										1690,
+										1691
 									],
 									[
-										1500,
-										1501
+										1728,
+										1729
 									],
 									[
-										1557,
-										1558
+										1740,
+										1741
 									],
 									[
-										1562,
-										1563
+										1747,
+										1748
 									],
 									[
-										1609,
-										1610
+										1773,
+										1774
 									],
 									[
-										1618,
-										1619
-									],
-									[
-										1649,
-										1650
-									],
-									[
-										1662,
-										1663
-									],
-									[
-										1671,
-										1672
-									],
-									[
-										1679,
-										1680
-									],
-									[
-										1685,
-										1686
-									],
-									[
-										1898,
-										1899
-									],
-									[
-										1917,
-										1918
-									],
-									[
-										1940,
-										1941
-									],
-									[
-										1982,
-										1983
-									],
-									[
-										1984,
-										1985
+										1783,
+										1784
 									]
 								],
 								"scope": "level4.rb"
@@ -1515,78 +1760,22 @@
 								"regions":
 								[
 									[
-										1718,
-										1719
+										1710,
+										1711
 									],
 									[
-										1729,
-										1730
-									],
-									[
-										1739,
-										1740
-									],
-									[
-										1752,
-										1753
-									],
-									[
-										1759,
-										1760
-									],
-									[
-										1846,
-										1847
-									],
-									[
-										1863,
-										1864
-									],
-									[
-										1887,
-										1888
-									],
-									[
-										1924,
-										1925
-									],
-									[
-										1938,
-										1939
+										1720,
+										1721
 									]
 								],
 								"scope": "level5.rb"
-							},
-							"rb_level6":
-							{
-								"flags": 272,
-								"regions":
-								[
-									[
-										1773,
-										1774
-									],
-									[
-										1831,
-										1832
-									],
-									[
-										1871,
-										1872
-									],
-									[
-										1884,
-										1885
-									]
-								],
-								"scope": "level6.rb"
 							}
 						},
 						"selection":
 						[
 							[
-								0,
-								2119
+								168,
+								168
 							]
 						],
 						"settings":
@@ -1609,26 +1798,6 @@
 							},
 							"bracket_highlighter.regions":
 							[
-								"bh_angle",
-								"bh_angle_center",
-								"bh_angle_open",
-								"bh_angle_close",
-								"bh_angle_content",
-								"bh_default",
-								"bh_default_center",
-								"bh_default_open",
-								"bh_default_close",
-								"bh_default_content",
-								"bh_single_quote",
-								"bh_single_quote_center",
-								"bh_single_quote_open",
-								"bh_single_quote_close",
-								"bh_single_quote_content",
-								"bh_regex",
-								"bh_regex_center",
-								"bh_regex_open",
-								"bh_regex_close",
-								"bh_regex_content",
 								"bh_round",
 								"bh_round_center",
 								"bh_round_open",
@@ -1639,6 +1808,21 @@
 								"bh_square_open",
 								"bh_square_close",
 								"bh_square_content",
+								"bh_single_quote",
+								"bh_single_quote_center",
+								"bh_single_quote_open",
+								"bh_single_quote_close",
+								"bh_single_quote_content",
+								"bh_angle",
+								"bh_angle_center",
+								"bh_angle_open",
+								"bh_angle_close",
+								"bh_angle_content",
+								"bh_default",
+								"bh_default_center",
+								"bh_default_open",
+								"bh_default_close",
+								"bh_default_content",
 								"bh_curly",
 								"bh_curly_center",
 								"bh_curly_open",
@@ -1649,651 +1833,58 @@
 								"bh_c_define_open",
 								"bh_c_define_close",
 								"bh_c_define_content",
-								"bh_double_quote",
-								"bh_double_quote_center",
-								"bh_double_quote_open",
-								"bh_double_quote_close",
-								"bh_double_quote_content",
+								"bh_regex",
+								"bh_regex_center",
+								"bh_regex_open",
+								"bh_regex_close",
+								"bh_regex_content",
 								"bh_unmatched",
 								"bh_unmatched_center",
 								"bh_unmatched_open",
 								"bh_unmatched_close",
 								"bh_unmatched_content",
+								"bh_double_quote",
+								"bh_double_quote_center",
+								"bh_double_quote_open",
+								"bh_double_quote_close",
+								"bh_double_quote_content",
 								"bh_tag",
 								"bh_tag_center",
 								"bh_tag_open",
 								"bh_tag_close",
 								"bh_tag_content"
 							],
+							"color_scheme": "Packages/Color Scheme - Default/Monokai.sublime-color-scheme",
 							"in_converting": true,
-							"origin_content": "#include <stdio.h>\n   #include <stdlib.h>\n   #include <string.h> \n   #include <stdbool.h> //定义true \ntypedef struct{\n\tlong stuId; // 学号 \n    long memoryAdd; // 内存地址 \n} Record,*RecordType;\ntypedef struct BiTnode{\n\tRecordType data;\n\tstruct BiTnode* lchild,*rchild;\n} BiTnode,*BiTree;\n\n/*创建先序二叉树*/\nBiTree CreateBiTree()\n{\n\tstatic long m = 10000;\n\tBiTree node;\n\tlong s;\n\tRecordType data = (RecordType) malloc (sizeof(RecordType));\n\tscanf(\"%ld\", &s);\n\tif (s == 0)\n\t\tnode = NULL;\n\telse\n\t{\n\t\tnode = (BiTree) malloc (sizeof(BiTree));\n\t\tdata->memoryAdd = ++m;\n\t\tdata->stuId = s;\n\t\tnode->data = data;\n\t\tnode->lchild = CreateBiTree();\n\t\tnode->rchild = CreateBiTree();\n\t}\n\treturn node;\n} \n/*先序遍历二叉树*/\nvoid PreOrderTraverse(BiTree t)\n{\n\tif(t)\n\t{\n\t\tprintf(\"%ld\\t\", t->data->stuId);\n\t\tprintf(\"%ld\\n\", t->data->memoryAdd);\n\t\tPreOrderTraverse(t->lchild);\n\t\tPreOrderTraverse(t->rchild);\n\t}\n}\n/*根据学号查找树节点*/\nBiTnode* FindNode(BiTree t,long stuId) \n{\n\tBiTnode* p;\n\tif (t->data->stuId == stuId)\n\t\t\treturn t;\n\tif (t->lchild) \n        p = FindNode(t->lchild, stuId);\n\tif(p)\n\t\treturn p;\n\tif (t->rchild) \n        p = FindNode(t->lchild, stuId);\n    return p;\n} \nint main()\n{\n  \tchar ch ='\\0';\n  \tBiTree tree = NULL;\n \tdo\n\t    {\n\t\tprintf(\"*************请选择所需要的操作************\\n\");\n\t\tprintf(\"1. 构建二叉树\\n\");\n\t\tprintf(\"2. 先根遍历二叉树\\n\");\n\t\tprintf(\"3. 根据学号查找内存地址\\n\");\n\t\tprintf(\"4. 退出\\n\");\n\t\tprintf(\"\\n\");\n\t\t\n\t\tch=getchar();\n\t\tgetchar();\n\t\tswitch(ch)\n\t\t{\n\t\t\tcase '1':\n\t\t\t{\n\t\t\t\tprintf(\"请按照先根顺序输入节点：如果没有子节点，则输入0\\n\");\n\t\t\t\ttree = CreateBiTree();\n\t\t\t\tbreak;\n\t\t\t}\n\t\t\tcase '2':\n\t\t\t{\n\t\t\t\tPreOrderTraverse(tree);\n\t\t\t\tbreak;\n\t\t\t}\n\t\t\tcase '3':\n\t\t\t{\n\t\t\t\tprintf(\"请输入学号：\");\n\t\t\t\tlong stuId =0;\n\t\t\t\tscanf(\"%ld\",&stuId);\n\t\t\t\tif(stuId>0)\n\t\t\t\t{\n\t\t\t\t\tBiTnode* result = FindNode(tree,stuId);\n\t\t\t\t\tif(result!=NULL)\n\t\t\t\t\t{\n\t\t\t\t\t\tprintf(\"学号 %ld 对应记录的内存地址为 %ld\\n\\n\",stuId,result->data->memoryAdd);\t\t\t\t\t\t \n\t\t\t\t\t}\n\t\t\t\t\telse\n\t\t\t\t\t{ printf(\"不存在该学号\\n\\n\"); }\t\t\t\t\t\n\t\t\t\t}\n\t\t\t\telse\n\t\t\t\t    {printf(\"学号必须大于零\\n\\n\");}\n\t\t\t\tbreak;\n\t\t\t}\n\t\t\tcase '4':\n\t\t\t{   exit(1); break;\t}\n\t\t\tdefault: \n\t\t\tprintf(\"hello\");\n\t\t\texit(1);\t\t\t   \n\t\t}\t\t\n\t\t_flushall(); //_flushall()清空内存 \n\t} while(true);\t\n  \treturn 0;\n}\n",
+							"is_init_dirty_state": false,
+							"origin_content": "#include\"ljb.h\"\n\nint visited[M];\nLinkedGraph g1;\nchar* f1 = \"无向图.txt\";\n\nvoid dfs(LinkedGraph g, int i);\nvoid DfsTraverse(LinkedGraph g);\nvoid bfs(LinkedGraph g, int i);\nvoid BfsTraverse(LinkedGraph g);\nvoid Menu();\nvoid Menu_select();\n\n\nint main()\n{\n\tMenu();\n\treturn 0;\n}\n\nvoid Menu()\n{\n\tsystem(\"cls\");\t\t\t\t\t// 清屏\n\t// 打印界面\n\tprintf(\"\\n********连通图邻接表存储*********\\n\");\n\tprintf(\"*\\t1-创建邻接表\\t\\t*\\n\");\n\tprintf(\"*\\t2-打印邻接表结构\\t*\\n\");\n\tprintf(\"*\\t3-深度优先\\t\\t*\\n\");\n\tprintf(\"*\\t4-广度优先\\t\\t*\\n\");\n\tprintf(\"*\\t0-退出\\t\\t\\t*\\n\");\n\tprintf(\"*********************************\\n\");\n\t// 菜单选择\n\tMenu_select();\n}\n\nvoid Menu_select()\n{\n\tint a; \n\tprintf(\"请选择<Select>:\\n\");\n\tscanf(\"%d\",&a);\n\tswitch(a)\n\t{\n\t\tcase 1:\n\t\tcreat(&g1, f1, 0);\n\t\tprintf(\"邻接表创建成功！！！\\n\");\n\t\tbreak;\n\t\tcase 2:\n\t\tprintf(\"邻接表结构：\\n\");\n\t\tprint(g1);\n\t\tbreak;\n\t\tcase 3:\n\t\tprintf(\"深度优先遍历：\\n\");\n\t\tDfsTraverse(g1);\n\t\tbreak;\n\t\tcase 4:\n\t\tprintf(\"广度优先遍历：\\n\");\n\t\tBfsTraverse(g1);\n\t\tbreak;\n\t\tcase 0:exit(0);\n\t}\n\t// 按下后继续\n\tsystem(\"pause\");\n\t// 执行完一次选择后重新回到菜单界面\n\tMenu();\n}\n\nvoid dfs(LinkedGraph g, int i)\n{\n\tEdgeNode *p;\n\tprintf(\"visit vertex: %c\\n\", g.adjlist[i].vertex);\n\tvisited[i] = 1;\n\tp = g.adjlist[i].FirstEdge;\n\twhile (p)\n\t{\n\t\tif (!visited[p->adjvex])\n\t\t\tdfs(g, p->adjvex);\n\t\tp = p->next;\n\t}\n}\n\nvoid DfsTraverse(LinkedGraph g)\n{\n\tint i;\n\tfor(i=0; i<g.n; i++)\n\t\tvisited[i] = 0;\n\tfor (i = 0; i < g.n; ++i)\n\t\tif (!visited[i])\n\t\t\tdfs(g, i);\n}\n\nvoid bfs(LinkedGraph g, int i)\n{\n\tint j;\n\tEdgeNode *p;\n\tint queue[M], front, rear;\n\tfront = 0, rear = 0;\n\tprintf(\"%c \", g.adjlist[i].vertex);\n\tvisited[i] = 1;\n\tqueue[rear++] = i;\n\twhile(rear > front)\n\t{\n\t\tj = queue[front++];\n\t\tp = g.adjlist[j].FirstEdge;\n\t\twhile(p)\n\t\t{\n\t\t\tif (visited[p->adjvex] == 0)\n\t\t\t{\n\t\t\t\tprintf(\"--> %c\", g.adjlist[p->adjvex].vertex);\n\t\t\t\tqueue[rear++] = p->adjvex;\n\t\t\t\tvisited[p->adjvex] = 1;\n\t\t\t}\n\t\t\tp = p->next;\n\t\t}\n\t}\n}\nvoid BfsTraverse(LinkedGraph g)\n{\n\tint i, count = 0;\n\tfor(i=0; i<g.n; i++)\n\t\tvisited[i] = 0;\n\tfor (i = 0; i < g.n; ++i)\n\t{\n\t\tif (!visited[i])\n\t\t{\n\t\t\tprintf(\"\\n\");\n\t\t\tcount++;\n\t\t\tbfs(g, i);\n\t\t}\n\t}\n\tprintf(\"\\n该连通图共有%d个连通分量\\n\", count);\n}\n",
 							"origin_encoding": "GB18030",
 							"rb_syntax": "json",
 							"syntax": "Packages/C++/C.sublime-syntax",
 							"translate_tabs_to_spaces": false
 						},
 						"translation.x": 0.0,
-						"translation.y": 2277.0,
+						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 1,
+					"stack_index": 0,
 					"type": "text"
 				},
 				{
 					"buffer": 1,
-					"file": "C language/BinaryTree/二叉树.c",
+					"file": "C language/Figure/无向图.txt",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 2119,
+						"buffer_size": 54,
 						"regions":
 						{
-							"rb_level0":
-							{
-								"flags": 272,
-								"regions":
-								[
-									[
-										114,
-										115
-									],
-									[
-										165,
-										166
-									],
-									[
-										209,
-										210
-									],
-									[
-										262,
-										263
-									],
-									[
-										313,
-										314
-									],
-									[
-										314,
-										315
-									],
-									[
-										316,
-										317
-									],
-									[
-										673,
-										674
-									],
-									[
-										709,
-										710
-									],
-									[
-										718,
-										719
-									],
-									[
-										720,
-										721
-									],
-									[
-										871,
-										872
-									],
-									[
-										904,
-										905
-									],
-									[
-										924,
-										925
-									],
-									[
-										927,
-										928
-									],
-									[
-										1132,
-										1133
-									],
-									[
-										1143,
-										1144
-									],
-									[
-										1144,
-										1145
-									],
-									[
-										1146,
-										1147
-									],
-									[
-										2117,
-										2118
-									]
-								],
-								"scope": "level0.rb"
-							},
-							"rb_level1":
-							{
-								"flags": 272,
-								"regions":
-								[
-									[
-										384,
-										385
-									],
-									[
-										395,
-										396
-									],
-									[
-										404,
-										405
-									],
-									[
-										423,
-										424
-									],
-									[
-										432,
-										433
-									],
-									[
-										442,
-										443
-									],
-									[
-										449,
-										450
-									],
-									[
-										456,
-										457
-									],
-									[
-										480,
-										481
-									],
-									[
-										657,
-										658
-									],
-									[
-										725,
-										726
-									],
-									[
-										727,
-										728
-									],
-									[
-										730,
-										731
-									],
-									[
-										869,
-										870
-									],
-									[
-										946,
-										947
-									],
-									[
-										970,
-										971
-									],
-									[
-										989,
-										990
-									],
-									[
-										999,
-										1000
-									],
-									[
-										1022,
-										1023
-									],
-									[
-										1039,
-										1040
-									],
-									[
-										1045,
-										1046
-									],
-									[
-										1047,
-										1048
-									],
-									[
-										1065,
-										1066
-									],
-									[
-										1075,
-										1076
-									],
-									[
-										1098,
-										1099
-									],
-									[
-										1115,
-										1116
-									],
-									[
-										1199,
-										1200
-									],
-									[
-										2088,
-										2089
-									],
-									[
-										2095,
-										2096
-									],
-									[
-										2100,
-										2101
-									]
-								],
-								"scope": "level1.rb"
-							},
-							"rb_level2":
-							{
-								"flags": 272,
-								"regions":
-								[
-									[
-										411,
-										412
-									],
-									[
-										422,
-										423
-									],
-									[
-										491,
-										492
-									],
-									[
-										498,
-										499
-									],
-									[
-										507,
-										508
-									],
-									[
-										522,
-										523
-									],
-									[
-										619,
-										620
-									],
-									[
-										620,
-										621
-									],
-									[
-										652,
-										653
-									],
-									[
-										653,
-										654
-									],
-									[
-										740,
-										741
-									],
-									[
-										764,
-										765
-									],
-									[
-										775,
-										776
-									],
-									[
-										803,
-										804
-									],
-									[
-										824,
-										825
-									],
-									[
-										834,
-										835
-									],
-									[
-										855,
-										856
-									],
-									[
-										865,
-										866
-									],
-									[
-										1209,
-										1210
-									],
-									[
-										1248,
-										1249
-									],
-									[
-										1259,
-										1260
-									],
-									[
-										1272,
-										1273
-									],
-									[
-										1283,
-										1284
-									],
-									[
-										1298,
-										1299
-									],
-									[
-										1309,
-										1310
-									],
-									[
-										1327,
-										1328
-									],
-									[
-										1338,
-										1339
-									],
-									[
-										1348,
-										1349
-									],
-									[
-										1359,
-										1360
-									],
-									[
-										1364,
-										1365
-									],
-									[
-										1382,
-										1383
-									],
-									[
-										1383,
-										1384
-									],
-									[
-										1395,
-										1396
-									],
-									[
-										1396,
-										1397
-									],
-									[
-										1407,
-										1408
-									],
-									[
-										1410,
-										1411
-									],
-									[
-										1414,
-										1415
-									],
-									[
-										2049,
-										2050
-									],
-									[
-										2064,
-										2065
-									],
-									[
-										2065,
-										2066
-									]
-								],
-								"scope": "level2.rb"
-							},
-							"rb_level3":
-							{
-								"flags": 272,
-								"regions":
-								[
-									[
-										514,
-										515
-									],
-									[
-										521,
-										522
-									],
-									[
-										1432,
-										1433
-									],
-									[
-										1517,
-										1518
-									],
-									[
-										1535,
-										1536
-									],
-									[
-										1579,
-										1580
-									],
-									[
-										1597,
-										1598
-									],
-									[
-										1956,
-										1957
-									],
-									[
-										1974,
-										1975
-									],
-									[
-										1994,
-										1995
-									],
-									[
-										2018,
-										2019
-									],
-									[
-										2026,
-										2027
-									],
-									[
-										2036,
-										2037
-									],
-									[
-										2038,
-										2039
-									]
-								],
-								"scope": "level3.rb"
-							},
-							"rb_level4":
-							{
-								"flags": 272,
-								"regions":
-								[
-									[
-										1444,
-										1445
-									],
-									[
-										1473,
-										1474
-									],
-									[
-										1499,
-										1500
-									],
-									[
-										1500,
-										1501
-									],
-									[
-										1557,
-										1558
-									],
-									[
-										1562,
-										1563
-									],
-									[
-										1609,
-										1610
-									],
-									[
-										1618,
-										1619
-									],
-									[
-										1649,
-										1650
-									],
-									[
-										1662,
-										1663
-									],
-									[
-										1671,
-										1672
-									],
-									[
-										1679,
-										1680
-									],
-									[
-										1685,
-										1686
-									],
-									[
-										1898,
-										1899
-									],
-									[
-										1917,
-										1918
-									],
-									[
-										1940,
-										1941
-									],
-									[
-										1982,
-										1983
-									],
-									[
-										1984,
-										1985
-									]
-								],
-								"scope": "level4.rb"
-							},
-							"rb_level5":
-							{
-								"flags": 272,
-								"regions":
-								[
-									[
-										1718,
-										1719
-									],
-									[
-										1729,
-										1730
-									],
-									[
-										1739,
-										1740
-									],
-									[
-										1752,
-										1753
-									],
-									[
-										1759,
-										1760
-									],
-									[
-										1846,
-										1847
-									],
-									[
-										1863,
-										1864
-									],
-									[
-										1887,
-										1888
-									],
-									[
-										1924,
-										1925
-									],
-									[
-										1938,
-										1939
-									]
-								],
-								"scope": "level5.rb"
-							},
-							"rb_level6":
-							{
-								"flags": 272,
-								"regions":
-								[
-									[
-										1773,
-										1774
-									],
-									[
-										1831,
-										1832
-									],
-									[
-										1871,
-										1872
-									],
-									[
-										1884,
-										1885
-									]
-								],
-								"scope": "level6.rb"
-							}
 						},
 						"selection":
 						[
 							[
-								1952,
-								1952
+								37,
+								37
 							]
 						],
 						"settings":
@@ -2303,27 +1894,12 @@
 							{
 								"close":
 								{
-									"1":
-									[
-										1956,
-										1957
-									]
 								},
 								"icon":
 								{
-									"1":
-									[
-										"Packages/BracketHighlighter/icons/curly_bracket.png",
-										"region.purplish"
-									]
 								},
 								"open":
 								{
-									"1":
-									[
-										1597,
-										1598
-									]
 								},
 								"unmatched":
 								{
@@ -2331,26 +1907,6 @@
 							},
 							"bracket_highlighter.regions":
 							[
-								"bh_angle",
-								"bh_angle_center",
-								"bh_angle_open",
-								"bh_angle_close",
-								"bh_angle_content",
-								"bh_default",
-								"bh_default_center",
-								"bh_default_open",
-								"bh_default_close",
-								"bh_default_content",
-								"bh_single_quote",
-								"bh_single_quote_center",
-								"bh_single_quote_open",
-								"bh_single_quote_close",
-								"bh_single_quote_content",
-								"bh_regex",
-								"bh_regex_center",
-								"bh_regex_open",
-								"bh_regex_close",
-								"bh_regex_content",
 								"bh_round",
 								"bh_round_center",
 								"bh_round_open",
@@ -2361,6 +1917,21 @@
 								"bh_square_open",
 								"bh_square_close",
 								"bh_square_content",
+								"bh_single_quote",
+								"bh_single_quote_center",
+								"bh_single_quote_open",
+								"bh_single_quote_close",
+								"bh_single_quote_content",
+								"bh_angle",
+								"bh_angle_center",
+								"bh_angle_open",
+								"bh_angle_close",
+								"bh_angle_content",
+								"bh_default",
+								"bh_default_center",
+								"bh_default_open",
+								"bh_default_close",
+								"bh_default_content",
 								"bh_curly",
 								"bh_curly_center",
 								"bh_curly_open",
@@ -2371,34 +1942,36 @@
 								"bh_c_define_open",
 								"bh_c_define_close",
 								"bh_c_define_content",
-								"bh_double_quote",
-								"bh_double_quote_center",
-								"bh_double_quote_open",
-								"bh_double_quote_close",
-								"bh_double_quote_content",
+								"bh_regex",
+								"bh_regex_center",
+								"bh_regex_open",
+								"bh_regex_close",
+								"bh_regex_content",
 								"bh_unmatched",
 								"bh_unmatched_center",
 								"bh_unmatched_open",
 								"bh_unmatched_close",
 								"bh_unmatched_content",
+								"bh_double_quote",
+								"bh_double_quote_center",
+								"bh_double_quote_open",
+								"bh_double_quote_close",
+								"bh_double_quote_content",
 								"bh_tag",
 								"bh_tag_center",
 								"bh_tag_open",
 								"bh_tag_close",
 								"bh_tag_content"
 							],
-							"in_converting": true,
-							"origin_content": "#include <stdio.h>\n   #include <stdlib.h>\n   #include <string.h> \n   #include <stdbool.h> //定义true \ntypedef struct{\n\tlong stuId; // 学号 \n    long memoryAdd; // 内存地址 \n} Record,*RecordType;\ntypedef struct BiTnode{\n\tRecordType data;\n\tstruct BiTnode* lchild,*rchild;\n} BiTnode,*BiTree;\n\n/*创建先序二叉树*/\nBiTree CreateBiTree()\n{\n\tstatic long m = 10000;\n\tBiTree node;\n\tlong s;\n\tRecordType data = (RecordType) malloc (sizeof(RecordType));\n\tscanf(\"%ld\", &s);\n\tif (s == 0)\n\t\tnode = NULL;\n\telse\n\t{\n\t\tnode = (BiTree) malloc (sizeof(BiTree));\n\t\tdata->memoryAdd = ++m;\n\t\tdata->stuId = s;\n\t\tnode->data = data;\n\t\tnode->lchild = CreateBiTree();\n\t\tnode->rchild = CreateBiTree();\n\t}\n\treturn node;\n} \n/*先序遍历二叉树*/\nvoid PreOrderTraverse(BiTree t)\n{\n\tif(t)\n\t{\n\t\tprintf(\"%ld\\t\", t->data->stuId);\n\t\tprintf(\"%ld\\n\", t->data->memoryAdd);\n\t\tPreOrderTraverse(t->lchild);\n\t\tPreOrderTraverse(t->rchild);\n\t}\n}\n/*根据学号查找树节点*/\nBiTnode* FindNode(BiTree t,long stuId) \n{\n\tBiTnode* p;\n\tif (t->data->stuId == stuId)\n\t\t\treturn t;\n\tif (t->lchild) \n        p = FindNode(t->lchild, stuId);\n\tif(p)\n\t\treturn p;\n\tif (t->rchild) \n        p = FindNode(t->lchild, stuId);\n    return p;\n} \nint main()\n{\n  \tchar ch ='\\0';\n  \tBiTree tree = NULL;\n \tdo\n\t    {\n\t\tprintf(\"*************请选择所需要的操作************\\n\");\n\t\tprintf(\"1. 构建二叉树\\n\");\n\t\tprintf(\"2. 先根遍历二叉树\\n\");\n\t\tprintf(\"3. 根据学号查找内存地址\\n\");\n\t\tprintf(\"4. 退出\\n\");\n\t\tprintf(\"\\n\");\n\t\t\n\t\tch=getchar();\n\t\tgetchar();\n\t\tswitch(ch)\n\t\t{\n\t\t\tcase '1':\n\t\t\t{\n\t\t\t\tprintf(\"请按照先根顺序输入节点：如果没有子节点，则输入0\\n\");\n\t\t\t\ttree = CreateBiTree();\n\t\t\t\tbreak;\n\t\t\t}\n\t\t\tcase '2':\n\t\t\t{\n\t\t\t\tPreOrderTraverse(tree);\n\t\t\t\tbreak;\n\t\t\t}\n\t\t\tcase '3':\n\t\t\t{\n\t\t\t\tprintf(\"请输入学号：\");\n\t\t\t\tlong stuId =0;\n\t\t\t\tscanf(\"%ld\",&stuId);\n\t\t\t\tif(stuId>0)\n\t\t\t\t{\n\t\t\t\t\tBiTnode* result = FindNode(tree,stuId);\n\t\t\t\t\tif(result!=NULL)\n\t\t\t\t\t{\n\t\t\t\t\t\tprintf(\"学号 %ld 对应记录的内存地址为 %ld\\n\\n\",stuId,result->data->memoryAdd);\t\t\t\t\t\t \n\t\t\t\t\t}\n\t\t\t\t\telse\n\t\t\t\t\t{ printf(\"不存在该学号\\n\\n\"); }\t\t\t\t\t\n\t\t\t\t}\n\t\t\t\telse\n\t\t\t\t    {printf(\"学号必须大于零\\n\\n\");}\n\t\t\t\tbreak;\n\t\t\t}\n\t\t\tcase '4':\n\t\t\t{   exit(1); break;\t}\n\t\t\tdefault: \n\t\t\tprintf(\"hello\");\n\t\t\texit(1);\t\t\t   \n\t\t}\t\t\n\t\t_flushall(); //_flushall()清空内存 \n\t} while(true);\t\n  \treturn 0;\n}\n",
-							"origin_encoding": "GB18030",
-							"rb_syntax": "json",
-							"syntax": "Packages/C++/C.sublime-syntax",
-							"translate_tabs_to_spaces": false
+							"is_init_dirty_state": false,
+							"origin_encoding": "ASCII",
+							"syntax": "Packages/Text/Plain text.tmLanguage"
 						},
 						"translation.x": 0.0,
-						"translation.y": 2290.0,
+						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 0,
+					"stack_index": 1,
 					"type": "text"
 				}
 			]
@@ -2447,7 +2020,7 @@
 	"project": "C and C++.sublime-project",
 	"replace":
 	{
-		"height": 60.0
+		"height": 114.0
 	},
 	"save_all_on_build": true,
 	"select_file":

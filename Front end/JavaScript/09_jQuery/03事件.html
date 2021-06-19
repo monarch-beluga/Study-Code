@@ -7,6 +7,7 @@
         div{
             height: 200px;
             width: 200px;
+            margin: auto;
             border: solid 1px red;
         }
     </style>
@@ -24,11 +25,18 @@
 
 <script>
     // 当网页元素加载完毕之后，响应事件
-    $(function (){
-        $('#divMove').mousemove(function (e){
-            $('#mouseMove').text(e.pageX+','+e.pageY);
-        });
-    })
+    // $(function (){
+    //     $('#divMove').mousemove(function (e){
+    //         $('#mouseMove').text(e.pageX+','+e.pageY);
+    //     });
+    // })
+    function onMouseWheel(e) {
+        console.log(e.deltaMode);
+    }
+    document.getElementById("divMove").onmousewheel = function (e){
+        console.log(e.wheelDelta);
+        $('#mouseMove').text(e.pageX+','+e.pageY);
+    }
 </script>
 
 </body>
