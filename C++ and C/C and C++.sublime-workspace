@@ -4,6 +4,10 @@
 		"selected_items":
 		[
 			[
+				"i",
+				"InsertNode"
+			],
+			[
 				"F",
 				"FINITY"
 			],
@@ -112,10 +116,6 @@
 				"List"
 			],
 			[
-				"i",
-				"input"
-			],
-			[
 				"ma",
 				"mark"
 			],
@@ -180,22 +180,34 @@
 	"buffers":
 	[
 		{
-			"contents": "#include\"ljb.h\"\n\nint visited[M];\nLinkedGraph g1;\nchar* f1 = \"无向图.txt\";\n\nvoid dfs(LinkedGraph g, int i);\nvoid DfsTraverse(LinkedGraph g);\nvoid bfs(LinkedGraph g, int i);\nvoid BfsTraverse(LinkedGraph g);\nvoid Menu();\nvoid Menu_select();\n\n\nint main()\n{\n\tMenu();\n\treturn 0;\n}\n\nvoid Menu()\n{\n\tsystem(\"cls\");\t\t\t\t\t// 清屏\n\t// 打印界面\n\tprintf(\"\\n********连通图邻接表存储*********\\n\");\n\tprintf(\"*\\t1-创建邻接表\\t\\t*\\n\");\n\tprintf(\"*\\t2-打印邻接表结构\\t*\\n\");\n\tprintf(\"*\\t3-深度优先\\t\\t*\\n\");\n\tprintf(\"*\\t4-广度优先\\t\\t*\\n\");\n\tprintf(\"*\\t0-退出\\t\\t\\t*\\n\");\n\tprintf(\"*********************************\\n\");\n\t// 菜单选择\n\tMenu_select();\n}\n\nvoid Menu_select()\n{\n\tint a; \n\tprintf(\"请选择<Select>:\\n\");\n\tscanf(\"%d\",&a);\n\tswitch(a)\n\t{\n\t\tcase 1:\n\t\tcreat(&g1, f1, 0);\n\t\tprintf(\"邻接表创建成功！！！\\n\");\n\t\tbreak;\n\t\tcase 2:\n\t\tprintf(\"邻接表结构：\\n\");\n\t\tprint(g1);\n\t\tbreak;\n\t\tcase 3:\n\t\tprintf(\"深度优先遍历：\\n\");\n\t\tDfsTraverse(g1);\n\t\tbreak;\n\t\tcase 4:\n\t\tprintf(\"广度优先遍历：\\n\");\n\t\tBfsTraverse(g1);\n\t\tbreak;\n\t\tcase 0:exit(0);\n\t}\n\t// 按下后继续\n\tsystem(\"pause\");\n\t// 执行完一次选择后重新回到菜单界面\n\tMenu();\n}\n\nvoid dfs(LinkedGraph g, int i)\n{\n\tEdgeNode *p;\n\tprintf(\"visit vertex: %c\\n\", g.adjlist[i].vertex);\n\tvisited[i] = 1;\n\tp = g.adjlist[i].FirstEdge;\n\twhile (p)\n\t{\n\t\tif (!visited[p->adjvex])\n\t\t\tdfs(g, p->adjvex);\n\t\tp = p->next;\n\t}\n}\n\nvoid DfsTraverse(LinkedGraph g)\n{\n\tint i;\n\tfor(i=0; i<g.n; i++)\n\t\tvisited[i] = 0;\n\tfor (i = 0; i < g.n; ++i)\n\t\tif (!visited[i])\n\t\t\tdfs(g, i);\n}\n\nvoid bfs(LinkedGraph g, int i)\n{\n\tint j;\n\tEdgeNode *p;\n\tint queue[M], front, rear;\n\tfront = 0, rear = 0;\n\tprintf(\"%c \", g.adjlist[i].vertex);\n\tvisited[i] = 1;\n\tqueue[rear++] = i;\n\twhile(rear > front)\n\t{\n\t\tj = queue[front++];\n\t\tp = g.adjlist[j].FirstEdge;\n\t\twhile(p)\n\t\t{\n\t\t\tif (visited[p->adjvex] == 0)\n\t\t\t{\n\t\t\t\tprintf(\"--> %c\", g.adjlist[p->adjvex].vertex);\n\t\t\t\tqueue[rear++] = p->adjvex;\n\t\t\t\tvisited[p->adjvex] = 1;\n\t\t\t}\n\t\t\tp = p->next;\n\t\t}\n\t}\n}\nvoid BfsTraverse(LinkedGraph g)\n{\n\tint i, count = 0;\n\tfor(i=0; i<g.n; i++)\n\t\tvisited[i] = 0;\n\tfor (i = 0; i < g.n; ++i)\n\t{\n\t\tif (!visited[i])\n\t\t{\n\t\t\tprintf(\"\\n\");\n\t\t\tcount++;\n\t\t\tbfs(g, i);\n\t\t}\n\t}\n\tprintf(\"\\n该连通图共有%d个连通分量\\n\", count);\n}\n",
-			"file": "C language/Figure/ljb.c",
-			"file_size": 2294,
-			"file_write_time": 132682435383383869,
+			"contents": "#include <stdio.h>\n#include <string.h>\n#include <stdlib.h>\n\ntypedef struct node\n{\t//节点类型定义\n\tint data;     //数据域 \n\tstruct node* next; //指针域\n}LNode,*LinkList;\nLinkList pHead;   \nLNode *p;\n//函数声明\nLinkList CreateList()\n{\n\tpHead = (LinkList)malloc(sizeof(LNode));\n\tpHead->next = NULL;\n\treturn pHead;\n}\nvoid InsertNode(LinkList head, LNode* p)\n{\n\tLNode* p1 = head;\n\twhile(p1->next != NULL)\n\t\tp1 = p1->next;\n\tp1->next = p;\n\tp->next = NULL;\n}\nvoid PrintList(LinkList head)\n{\n\tLNode* p1 = head->next;\n\twhile(p1 != NULL)\n\t{\n\t\tprintf(\"%d->\", p1->data);\n\t\tp1 = p1->next;\n\t}\n\tprintf(\"\\n\");\n}\nvoid iteration(LinkList head)\n{\n\tLNode* next;\n\tLNode* prev = NULL;\n\tLNode* curr = head->next;\n\twhile (curr != NULL){\n        next = curr->next;\n        curr->next = prev;\n        prev = curr;\n        curr = next;\n    }\n    head->next = prev;\n}\nint main()\n{\n\tpHead = CreateList();\n\tfor (int i = 0; i < 6; ++i)\n\t{\n\t\tp = (LNode*)malloc(sizeof(LNode));\n\t\tp->data = i;\n\t\tInsertNode(pHead, p);\n\t}\n\tPrintList(pHead);\n\titeration(pHead);\n\tPrintList(pHead);\n\treturn 0;\n}\n",
+			"file": "C language/Single list/temp.c",
+			"file_size": 1119,
+			"file_write_time": 132693210864829957,
 			"settings":
 			{
-				"buffer_size": 2055,
+				"buffer_size": 1040,
 				"line_ending": "Windows",
 				"scratch": true
 			}
 		},
 		{
-			"file": "C language/Figure/无向图.txt",
+			"contents": "/*单链表实现病患信息管理问题*/\n#include <stdio.h>\n#include <string.h>\n#include <stdlib.h>\n#include<setjmp.h>\n#include<windows.h>\ntypedef struct\n{\tchar num[5];   //编号 \n\tchar name[9];  //姓名 \n\tchar sex[3];   //性别 \n\tchar phone[13]; //电话 \n\tchar addr[31];  //地址 \n}ElemType;\ntypedef struct node\n{\t//节点类型定义\n\tElemType data;     //数据域 \n\tstruct node* next; //指针域\n}LNode,*LinkList;\nLinkList pHead;\nLNode *p;\njmp_buf mark;\nint save = 0;\n//函数声明\nint menu_select();\nLinkList CreateList(void); \nvoid InsertNode(LinkList head, LNode* p);\nLNode* ListFind(LinkList head);\nvoid DeleteNode(LinkList head);\nvoid PrintList(LinkList head);\n\n//主函数\nint main()\n{\n\tFILE* f;\n\tfor(;;)\n\t{\n\t\tswitch(menu_select())\n\t\t{\n\t\t\tcase 1:\n\t\t\tprintf(\"*******************************\\n\");\n\t\t\tprintf(\"* 病患信息表的建立(Tab键分隔)*\\n\");\n\t\t\tprintf(\"*******************************\\n\");\n\t\t\tpHead = CreateList();\n\t\t\tbreak;\n\t\t\tcase 2:\n\t\t\tprintf(\"*********************************************\\n\");\n\t\t\tprintf(\"**\\t\\t 病患信息添加  \\t\\t   **\\n\");\n\t\t\tprintf(\"*********************************************\\n\");\n\t\t\tprintf(\"*编号（4） 姓名（8） 性别 电话（11） 地址（31）*\\n\");\n\t\t\tprintf(\"*********************************************\\n\");\n\t\t\tp=(LNode*)malloc(sizeof(LNode));\n\t\t\tscanf(\"%s%s%s%s%s\",p->data.num,p->data.name,\n                   p->data.sex,p->data.phone,p->data.addr);\n            InsertNode(pHead,p);\n\t\t\tsave++;\n\t\t\tbreak;\n\t\t\tcase 3:\n\t\t\tprintf(\"*******************************\\n\");\n\t\t\tprintf(\"**   病患信息查询  **\\n\");\n\t\t\tprintf(\"*******************************\\n\");\n\t\t\tp=ListFind(pHead);\n\t\t\tif(p!=NULL)\n\t\t\t{\n\t\t\t\tprintf(\"*编号（4） 姓名（8） 性别 电话（11） 地址（31） *\\n\");\n\t\t\t\tprintf(\"---------------------------------------------\\n\");\n\t\t\t\tprintf(\"%s\\t%s\\t%s\\t%s\\t%s\\n\",p->data.num,p->data.name,\n\t\t\t\t\t\tp->data.sex,p->data.phone,p->data.addr);\n\t\t\t\tprintf(\"*********************************************\\n\");\n\t\t\t}\n\t\t\telse\n               printf(\"没有查到要查询的病人!\\n\");\n            break;\n            case 4:\n            printf(\"*******************************\\n\");\n\t\t\tprintf(\"**   病患信息删除  **\\n\");\n\t\t\tprintf(\"*******************************\\n\");\n\t\t\tDeleteNode(pHead); // 删除节点\n\t\t\tsave++;\n\t\t\tbreak;\n\t\t\tcase 5:\n            printf(\"*********************************************\\n\");\n\t\t\tprintf(\"**\\t   病患信息链表的输出  \\t**\\n\");\n\t\t\tprintf(\"*********************************************\\n\");\n\t\t\tPrintList(pHead); \n\t\t\tbreak;\n\t\t\tcase 0:\n\t\t\tif(save)\n\t\t\t{\n\t\t\t\tf = fopen(\"Patients.txt\",\"w\");\t\t\t// 输出\n\t\t\t\tp = pHead->next;\n\t\t\t\twhile(p)\n\t\t\t\t{\n\t\t\t\t\tfprintf(f, \"%s\\t%s\\t%s\\t%s\\t%s\\n\",p->data.num,p->data.name,\n\t\t\t                   p->data.sex,p->data.phone,p->data.addr);\n\t\t\t\t\tp = p->next;\n\t\t\t\t}\n\t\t\t\tfclose(f);\n\t\t\t}\n\t\t    printf(\"\\t 再见!\\n\");\n\t\t\treturn 0; \n\t\t}\n\t\tsystem(\"pause\");\n\t}\n\treturn 0;\n} \nint menu_select() \n{\n\tint sn;\n\tsystem(\"cls\");\n\tprintf(\"=================================\\n\");\n\tprintf(\"   病患信息管理系统\\n\");\n\tprintf(\"=================================\\n\");\n\tprintf(\"   1. 病患信息表的建立\\n\");\n\tprintf(\"   2. 病患节点的插入\\n\");\n\tprintf(\"   3. 病患节点的查询\\n\");\n\tprintf(\"   4. 病患节点的删除\\n\");\n\tprintf(\"   5. 病患信息表的输出\\n\");\n\tprintf(\"   0. 退出管理系统\\n\");\n\tprintf(\"=================================\\n\");\n\tfor(;;)\n\t{\n\t\tsn = setjmp(mark);\n\t\tif (!scanf(\"%d\",&sn))\n\t\t\tlongjmp(mark, -1);\n\t\tif(sn<0||sn>5)\n\t\t\tprintf(\"\\n\\t 输入错误，重选 0-5\");\n\t    else\n\t    \tbreak;\n\t}\n\tsystem(\"cls\");\n\treturn sn;\n}\nLinkList CreateList(void)  //尾插法建立带头节点的病患信息表 \n{\n\tLNode* p;\n\tFILE *f;\n\tpHead = (LinkList)malloc(sizeof(LNode));\n\tpHead->next = NULL;\n\tf = fopen(\"Patients.txt\",\"r\");\n\tif (f)\t\t\t\t\t// 判断文件是否存在\n\t{\n\t\twhile(1)\t\t\t\t// 循环读取信息\n\t\t{\n\t\t\t// 文件读取\n\t\t\tp = (LNode*)malloc(sizeof(LNode));\n\t\t\tfscanf(f, \"%s\\t%s\\t%s\\t%s\\t%s\", p->data.num, p->data.name,\n\t\t\t\t\tp->data.sex, p->data.phone, p->data.addr);\n\t\t\tif (!feof(f))\t\t\t// 判断文件读取是否结束\n\t\t\t\tInsertNode(pHead,p);\n\t\t\telse\n\t\t\t\tbreak;\n\t\t}\n\t}\n\tfclose(f);\n\tprintf(\"患者信息表建立成功！！！\\n\");\n\treturn pHead;\n}\nvoid InsertNode(LinkList head, LNode* p) //在head指向的链表中插入节点 \n{\n\tLNode* p1;\n\tint flag;\n\tp1 = head;\n\twhile(p1)\n\t{\n\t\tif (p1->next == NULL)\t\t\t// 尾部插入\n\t\t{\n\t\t\tp->next = p1->next;\n\t\t\tp1->next = p;\n\t\t\tprintf(\"节点插入成功！！！\\n\");\n\t\t\tbreak;\n\t\t}\n\t\telse\n\t\t{\n\t\t\tif (!strcmp(p->data.num, p1->next->data.num))\t\t\t// 判断编号是否唯一\n\t\t\t{\n\t\t\t\tprintf(\"编号(%s)已存在，0-取消插入  1-替换节点:\\n\", p1->next->data.num);\t\n\t\t\t\tscanf(\"%d\", &flag);\n\t\t\t\tif(flag == 0)\t\t\t\t// 取消插入\n\t\t\t\t\tprintf(\"已取消插入\\n\");\n\t\t\t\telse\t\t\t\t\t\t// 用新的数据替换原来的数据\n\t\t\t\t{\n\t\t\t\t\tp->next = p1->next->next;\n\t\t\t\t\tp1->next = p;\n\t\t\t\t\tprintf(\"替换成功！！！\\n\");\n\t\t\t\t}\n\t\t\t\treturn;\n\t\t\t}\n\t\t}\n\t\tp1 = p1->next;\n\t}\n}\t\nLNode* ListFind(LinkList head) //查找 \n{\n\tchar i[5];\n\tLNode* p;\n\tprintf(\"请输入需要查询的节点编号:\\n\");\t\t\t// 按编号查找\n\tscanf(\"%s\", i);\n\tp = head;\n\twhile(p)\n\t{\n\t\tif (!strcmp(p->data.num, i))\n\t\t\treturn p;\n\t\tp = p->next;\n\t}\n\treturn p;\n}\nvoid DeleteNode(LinkList head)\n{\n\tLNode* p=head;\n\tLNode* pre=NULL; \n\tint i,j=0,flag;\n\twhile(1)\n\t{\n\t\tprintf(\"请输入需要删除节点的位置:\\n\");\t\t// 按节点位置删除\n\t\tscanf(\"%d\", &i);\n\t\tif (i > 0)\n\t\t\tbreak;\n\t\telse\n\t\t\tprintf(\"输入不合法，请输入大于0的数！！\"); \n\t}\n\twhile(1)\n\t{\n\t\tif(p)\n\t\t{\n\t\t\tif (j == i)\t\t// 查找到节点后确认是否删除\n\t\t\t{\n\t\t\t\tprintf(\"*编号（4） 姓名（8） 性别 电话（11） 地址（31） *\\n\");\n\t\t\t\tprintf(\"---------------------------------------------\\n\");\n\t\t\t    printf(\"%s\\t%s\\t%s\\t%s\\t%s\\n\",p->data.num,p->data.name,\n                    p->data.sex,p->data.phone,p->data.addr);\n\t\t\t\tprintf(\"*********************************************\\n\");\n                printf(\"是否删除该学生：0-否\\t1-是\\n\");\n\t\t\t\tscanf(\"%d\",&flag);\n\t\t\t\tif (flag)\n\t\t\t\t{\n\t\t\t\t\tpre->next = p->next;\n\t\t\t\t\tfree(p);\n\t\t\t\t\tprintf(\"节点删除成功！！！\\n\");\n\t\t\t\t}\n\t\t\t\telse\n\t\t\t\t\tprintf(\"取消删除节点\\n\");\n\t\t\t\treturn;\n\t\t\t}\n\t\t\tpre = p;\n\t\t\tp = p->next;\n\t\t\tj++;\n\t\t}\n\t\telse\n\t\t{\n\t\t\tprintf(\"没有%d节点!!\", i);\n\t\t\treturn;\n\t\t}\n\t}\n}\t\n\nvoid PrintList(LinkList head)\n{\n\tLNode* p;\n\tp = head->next;\n\tprintf(\"*编号（4） 姓名（8） 性别 电话（11） 地址（31） *\\n\");\n\tprintf(\"---------------------------------------------\\n\");\n\twhile(p)\t\t\t// 循环输出节点信息\n\t{\n\t\tprintf(\"%s\\t%s\\t%s\\t%s\\t%s\\n\",p->data.num,p->data.name,\n                   p->data.sex,p->data.phone,p->data.addr);\n\t\tp = p->next;\n\t}\n\tprintf(\"*********************************************\\n\");\n}\t\n\n",
+			"file": "C language/Single list/病患信息系统.c",
+			"file_size": 6587,
+			"file_write_time": 132651221701554096,
 			"settings":
 			{
-				"buffer_size": 54,
+				"buffer_size": 5858,
+				"line_ending": "Windows",
+				"scratch": true
+			}
+		},
+		{
+			"file": "Algorithm/02_linked_list_reversal.cc",
+			"settings":
+			{
+				"buffer_size": 1154,
 				"encoding": "UTF-8",
 				"line_ending": "Windows"
 			}
@@ -803,21 +815,29 @@
 	[
 		"/E/Study/Projects/C++ and C",
 		"/E/Study/Projects/C++ and C/C language",
-		"/E/Study/Projects/C++ and C/C language/BinaryTree",
-		"/E/Study/Projects/C++ and C/C language/Figure",
-		"/E/Study/Projects/C++ and C/C language/Sequence table",
 		"/E/Study/Projects/C++ and C/C language/Single list"
 	],
 	"file_history":
 	[
+		"/E/public/数据/DEM/dem_prj.txt",
+		"/E/Study/Projects/C++ and C/C language/Sort/ArrayIo.h",
+		"/E/Study/Projects/C++ and C/C language/Huffman/哈夫曼编码.c",
+		"/E/Study/Projects/C++ and C/C language/ArrayIo.h",
+		"/E/Study/Projects/C++ and C/C language/冒泡排序.c",
+		"/E/Study/Projects/C++ and C/C language/哈夫曼编码.c",
+		"/D/test.txt",
+		"/E/Study/Projects/C++ and C/C language/out.txt",
+		"/E/Study/Projects/C++ and C/C language/Figure/ljb.c",
+		"/E/Study/Projects/C++ and C/C language/data1.txt",
+		"/E/Study/Projects/C++ and C/C language/Figure/无向图.txt",
+		"/E/Study/Projects/C++ and C/C language/Figure/ljb.h",
+		"/E/Study/Projects/C++ and C/C language/test.txt",
+		"/E/Study/Projects/C++ and C/C language/temp.c",
 		"/E/Study/Projects/C++ and C/C language/BinaryTree/二叉树.c",
 		"/E/Study/Projects/C++ and C/C language/BinaryTree/temp.c",
 		"/E/Study/Projects/C++ and C/C language/Sequence table/temp.c",
 		"/E/Study/Projects/C++ and C/C language/Sequence table/练习1.c",
 		"/E/Study/Projects/C++ and C/C language/Single list/temp.c",
-		"/E/Study/Projects/C++ and C/C language/Figure/无向图.txt",
-		"/E/Study/Projects/C++ and C/C language/Figure/ljb.c",
-		"/E/Study/Projects/C++ and C/C language/Figure/ljb.h",
 		"/E/Study/Projects/C++ and C/C language/Figure/ljjz.c",
 		"/E/Study/Projects/c++ and c/c language/Figure/ljb.h",
 		"/E/Study/Projects/C++ and C/C language/Figure/ljb_无向图.txt",
@@ -926,18 +946,7 @@
 		"/C/Users/Monarch/AppData/Roaming/Sublime Text 3/Packages/RainbowBrackets/README.md",
 		"/E/Study/Projects/C++ and C/C language/Student management/Student.h",
 		"/E/Study/Projects/自动提交/automatic.cpp",
-		"/E/Study/Projects/C++ and C/hello.cpp",
-		"/E/Study/Projects/C++ and C/temp.c",
-		"/C/Users/Monarch/AppData/Roaming/Sublime Text 3/Packages/User/C.sublime-build",
-		"/C/Users/Monarch/AppData/Roaming/Sublime Text 3/Packages/User/C++-build.sublime-build",
-		"/C/Users/Monarch/AppData/Roaming/Sublime Text 3/Packages/User/C++.sublime-build",
-		"/E/Study/Projects/C++ and C/Hello.c",
-		"/E/Study/Projects/C++ and C/hello.c",
-		"/E/Study/Projects/C++ and C/C基础/for循环.cpp",
-		"/E/Study/Projects/C++ and C/Hello.cpp",
-		"/E/Study/Projects/C++ and C/C基础/二维数组的应用.cpp",
-		"/E/Study/Projects/C++ and C/C基础/switch语句.cpp",
-		"/E/Study/Projects/C++ and C/C基础/static用法.cpp"
+		"/E/Study/Projects/C++ and C/hello.cpp"
 	],
 	"find":
 	{
@@ -955,6 +964,7 @@
 		"case_sensitive": true,
 		"find_history":
 		[
+			"m",
 			" ",
 			"i",
 			"i\n",
@@ -991,7 +1001,7 @@
 		],
 		"reverse": false,
 		"show_context": true,
-		"use_buffer2": true,
+		"use_buffer2": false,
 		"whole_word": true,
 		"wrap": true
 	},
@@ -1003,11 +1013,11 @@
 			[
 				{
 					"buffer": 0,
-					"file": "C language/Figure/ljb.c",
+					"file": "C language/Single list/temp.c",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 2055,
+						"buffer_size": 1040,
 						"regions":
 						{
 							"rb_level0":
@@ -1016,172 +1026,92 @@
 								"regions":
 								[
 									[
-										28,
-										29
-									],
-									[
-										30,
-										31
-									],
-									[
 										80,
 										81
 									],
 									[
-										101,
-										102
-									],
-									[
-										120,
-										121
-									],
-									[
-										134,
-										135
-									],
-									[
-										145,
-										146
-									],
-									[
-										166,
-										167
-									],
-									[
-										185,
-										186
-									],
-									[
-										199,
-										200
-									],
-									[
-										211,
-										212
+										139,
+										140
 									],
 									[
 										212,
 										213
 									],
 									[
-										231,
-										232
+										213,
+										214
 									],
 									[
-										232,
-										233
+										215,
+										216
 									],
 									[
-										245,
-										246
+										295,
+										296
 									],
 									[
-										246,
-										247
+										312,
+										313
 									],
 									[
-										248,
-										249
+										336,
+										337
 									],
 									[
-										270,
-										271
+										338,
+										339
 									],
 									[
-										282,
-										283
+										433,
+										434
 									],
 									[
-										283,
-										284
+										449,
+										450
 									],
 									[
-										285,
-										286
+										463,
+										464
 									],
 									[
-										584,
-										585
+										465,
+										466
 									],
 									[
-										603,
-										604
+										577,
+										578
 									],
 									[
-										604,
-										605
+										593,
+										594
 									],
 									[
-										606,
-										607
+										607,
+										608
 									],
 									[
-										996,
-										997
+										609,
+										610
 									],
 									[
-										1007,
-										1008
+										821,
+										822
 									],
 									[
-										1028,
-										1029
+										831,
+										832
 									],
 									[
-										1030,
-										1031
+										832,
+										833
 									],
 									[
-										1225,
-										1226
+										834,
+										835
 									],
 									[
-										1244,
-										1245
-									],
-									[
-										1258,
-										1259
-									],
-									[
-										1260,
-										1261
-									],
-									[
-										1370,
-										1371
-									],
-									[
-										1381,
-										1382
-									],
-									[
-										1402,
-										1403
-									],
-									[
-										1404,
-										1405
-									],
-									[
-										1818,
-										1819
-									],
-									[
-										1836,
-										1837
-									],
-									[
-										1850,
-										1851
-									],
-									[
-										1852,
-										1853
-									],
-									[
-										2053,
-										2054
+										1038,
+										1039
 									]
 								],
 								"scope": "level0.rb"
@@ -1192,300 +1122,116 @@
 								"regions":
 								[
 									[
-										255,
-										256
+										226,
+										227
+									],
+									[
+										235,
+										236
+									],
+									[
+										242,
+										243
 									],
 									[
 										256,
 										257
 									],
 									[
-										294,
-										295
+										365,
+										366
 									],
 									[
-										300,
-										301
+										382,
+										383
 									],
 									[
-										329,
-										330
+										498,
+										499
 									],
 									[
-										361,
-										362
+										509,
+										510
 									],
 									[
-										371,
-										372
+										512,
+										513
 									],
 									[
-										391,
-										392
+										560,
+										561
 									],
 									[
-										401,
-										402
+										569,
+										570
 									],
 									[
-										421,
-										422
+										574,
+										575
 									],
 									[
-										431,
-										432
+										680,
+										681
 									],
 									[
-										450,
-										451
+										693,
+										694
 									],
 									[
-										460,
-										461
+										694,
+										695
 									],
 									[
-										479,
-										480
+										796,
+										797
 									],
 									[
-										489,
-										490
+										855,
+										856
 									],
 									[
-										508,
-										509
+										856,
+										857
 									],
 									[
-										518,
-										519
+										864,
+										865
 									],
 									[
-										556,
-										557
+										886,
+										887
 									],
 									[
-										580,
-										581
+										889,
+										890
 									],
 									[
-										581,
-										582
+										968,
+										969
 									],
 									[
-										624,
-										625
+										980,
+										981
 									],
 									[
-										641,
-										642
+										986,
+										987
 									],
 									[
-										650,
-										651
+										999,
+										1000
 									],
 									[
-										658,
-										659
+										1005,
+										1006
 									],
 									[
-										668,
-										669
+										1018,
+										1019
 									],
 									[
-										670,
-										671
-									],
-									[
-										673,
-										674
-									],
-									[
-										936,
-										937
-									],
-									[
-										955,
-										956
-									],
-									[
-										963,
-										964
-									],
-									[
-										992,
-										993
-									],
-									[
-										993,
-										994
-									],
-									[
-										1053,
-										1054
-									],
-									[
-										1095,
-										1096
-									],
-									[
-										1106,
-										1107
-									],
-									[
-										1108,
-										1109
-									],
-									[
-										1129,
-										1130
-									],
-									[
-										1131,
-										1132
-									],
-									[
-										1151,
-										1152
-									],
-									[
-										1153,
-										1154
-									],
-									[
-										1156,
-										1157
-									],
-									[
-										1223,
-										1224
-									],
-									[
-										1274,
-										1275
-									],
-									[
-										1290,
-										1291
-									],
-									[
-										1301,
-										1302
-									],
-									[
-										1303,
-										1304
-									],
-									[
-										1315,
-										1316
-									],
-									[
-										1335,
-										1336
-									],
-									[
-										1342,
-										1343
-									],
-									[
-										1354,
-										1355
-									],
-									[
-										1362,
-										1363
-									],
-									[
-										1367,
-										1368
-									],
-									[
-										1438,
-										1439
-									],
-									[
-										1440,
-										1441
-									],
-									[
-										1485,
-										1486
-									],
-									[
-										1512,
-										1513
-									],
-									[
-										1523,
-										1524
-									],
-									[
-										1525,
-										1526
-									],
-									[
-										1538,
-										1539
-									],
-									[
-										1545,
-										1546
-									],
-									[
-										1558,
-										1559
-									],
-									[
-										1571,
-										1572
-									],
-									[
-										1574,
-										1575
-									],
-									[
-										1816,
-										1817
-									],
-									[
-										1877,
-										1878
-									],
-									[
-										1893,
-										1894
-									],
-									[
-										1904,
-										1905
-									],
-									[
-										1906,
-										1907
-									],
-									[
-										1918,
-										1919
-									],
-									[
-										1938,
-										1939
-									],
-									[
-										1941,
-										1942
-									],
-									[
-										2014,
-										2015
-									],
-									[
-										2023,
-										2024
-									],
-									[
-										2050,
-										2051
+										1024,
+										1025
 									]
 								],
 								"scope": "level1.rb"
@@ -1496,164 +1242,44 @@
 								"regions":
 								[
 									[
-										692,
-										693
+										249,
+										250
 									],
 									[
-										703,
-										704
+										255,
+										256
 									],
 									[
-										714,
-										715
+										522,
+										523
 									],
 									[
-										729,
-										730
+										539,
+										540
 									],
 									[
-										759,
-										760
+										897,
+										898
 									],
 									[
-										770,
-										771
+										904,
+										905
 									],
 									[
-										780,
-										781
+										911,
+										912
 									],
 									[
-										783,
-										784
+										925,
+										926
 									],
 									[
-										813,
-										814
+										955,
+										956
 									],
 									[
-										825,
-										826
-									],
-									[
-										841,
-										842
-									],
-									[
-										844,
-										845
-									],
-									[
-										874,
-										875
-									],
-									[
-										886,
-										887
-									],
-									[
-										902,
-										903
-									],
-									[
-										905,
-										906
-									],
-									[
-										930,
-										931
-									],
-									[
-										932,
-										933
-									],
-									[
-										1085,
-										1086
-									],
-									[
-										1087,
-										1088
-									],
-									[
-										1163,
-										1164
-									],
-									[
-										1183,
-										1184
-									],
-									[
-										1191,
-										1192
-									],
-									[
-										1204,
-										1205
-									],
-									[
-										1351,
-										1352
-									],
-									[
-										1353,
-										1354
-									],
-									[
-										1502,
-										1503
-									],
-									[
-										1504,
-										1505
-									],
-									[
-										1587,
-										1588
-									],
-									[
-										1595,
-										1596
-									],
-									[
-										1613,
-										1614
-									],
-									[
-										1615,
-										1616
-									],
-									[
-										1635,
-										1636
-									],
-									[
-										1637,
-										1638
-									],
-									[
-										1641,
-										1642
-									],
-									[
-										1813,
-										1814
-									],
-									[
-										1948,
-										1949
-									],
-									[
-										1960,
-										1961
-									],
-									[
-										1964,
-										1965
-									],
-									[
-										2011,
-										2012
+										964,
+										965
 									]
 								],
 								"scope": "level2.rb"
@@ -1664,52 +1290,1240 @@
 								"regions":
 								[
 									[
-										1172,
-										1173
+										918,
+										919
 									],
 									[
-										1182,
-										1183
+										924,
+										925
+									]
+								],
+								"scope": "level3.rb"
+							}
+						},
+						"selection":
+						[
+							[
+								820,
+								820
+							]
+						],
+						"settings":
+						{
+							"bracket_highlighter.busy": false,
+							"bracket_highlighter.locations":
+							{
+								"close":
+								{
+									"1":
+									[
+										821,
+										822
+									]
+								},
+								"icon":
+								{
+									"1":
+									[
+										"Packages/BracketHighlighter/icons/curly_bracket.png",
+										"region.purplish"
+									]
+								},
+								"open":
+								{
+									"1":
+									[
+										609,
+										610
+									]
+								},
+								"unmatched":
+								{
+								}
+							},
+							"bracket_highlighter.regions":
+							[
+								"bh_round",
+								"bh_round_center",
+								"bh_round_open",
+								"bh_round_close",
+								"bh_round_content",
+								"bh_square",
+								"bh_square_center",
+								"bh_square_open",
+								"bh_square_close",
+								"bh_square_content",
+								"bh_single_quote",
+								"bh_single_quote_center",
+								"bh_single_quote_open",
+								"bh_single_quote_close",
+								"bh_single_quote_content",
+								"bh_angle",
+								"bh_angle_center",
+								"bh_angle_open",
+								"bh_angle_close",
+								"bh_angle_content",
+								"bh_default",
+								"bh_default_center",
+								"bh_default_open",
+								"bh_default_close",
+								"bh_default_content",
+								"bh_curly",
+								"bh_curly_center",
+								"bh_curly_open",
+								"bh_curly_close",
+								"bh_curly_content",
+								"bh_c_define",
+								"bh_c_define_center",
+								"bh_c_define_open",
+								"bh_c_define_close",
+								"bh_c_define_content",
+								"bh_regex",
+								"bh_regex_center",
+								"bh_regex_open",
+								"bh_regex_close",
+								"bh_regex_content",
+								"bh_unmatched",
+								"bh_unmatched_center",
+								"bh_unmatched_open",
+								"bh_unmatched_close",
+								"bh_unmatched_content",
+								"bh_double_quote",
+								"bh_double_quote_center",
+								"bh_double_quote_open",
+								"bh_double_quote_close",
+								"bh_double_quote_content",
+								"bh_tag",
+								"bh_tag_center",
+								"bh_tag_open",
+								"bh_tag_close",
+								"bh_tag_content"
+							],
+							"in_converting": true,
+							"is_init_dirty_state": false,
+							"origin_content": "#include <stdio.h>\n#include <string.h>\n#include <stdlib.h>\n#include<windows.h>\ntypedef struct\n{\tchar num[5];   //编号 \n\tchar name[9];  //姓名 \n\tchar sex[3];   //性别 \n\tchar phone[13]; //电话 \n\tchar addr[31];  //地址 \n}ElemType;\ntypedef struct node\n{\t//节点类型定义\n\tElemType data;     //数据域 \n\tstruct node* next; //指针域\n}LNode,*LinkList;\nLinkList pHead;   LNode *p;\n//函数声明\nint menu_select();\nLinkList CreateList(void); \nvoid InsertNode(LinkList head, LNode* p);\nLNode* ListFind(LinkList head);\nvoid DeleteNode(LinkList head);\nvoid PrintList(LinkList head);\n//主函数\nint main()\n{\n\twhile(1)\n\t{\n\t\tswitch(menu_select())\n\t\t{\n\t\t\tcase 1:\n\t\t\tprintf(\"*******************************\\n\");\n\t\t\tprintf(\"**   病患信息表的建立（Tab键分隔）   **\\n）\");\n\t\t\tprintf(\"*******************************\\n\");\n\t\t\tpHead = CreateList();\n\t\t\tbreak;\n\t\t\tcase 2:\n\t\t\tprintf(\"*******************************\\n\");\n\t\t\tprintf(\"**   病患信息添加  **\\n）\");\n\t\t\tprintf(\"*******************************\\n\");\n\t\t\tprintf(\"*编号（4） 姓名（8） 性别 电话（11） 地址（31） *\\n\");\n\t\t\tprintf(\"*******************************\\n\");\n\t\t\tp=(LNode*)malloc(sizeof(LNode));\n\t\t\tscanf(\"%s%s%s%s%s\",p->data.num,p->data.name,\n                   p->data.sex,p->data.phone,p->data.addr);\n            InsertNode(pHead,p);\n\t\t\tbreak;\n\t\t\tcase 3:\n\t\t\tprintf(\"*******************************\\n\");\n\t\t\tprintf(\"**   病患信息查询  **\\n）\");\n\t\t\tprintf(\"*******************************\\n\");\n\t\t\tp=ListFind(pHead);\n\t\t\tif(p!=NULL)\n\t\t\t{\n\t\t\t   printf(\"*编号（4） 姓名（8） 性别 电话（11） 地址（31） *\\n\");\n\t\t\t   printf(\"--------------------------------\\n\");\n\t\t\t   printf(\"%s\\t%s\\t%s\\t%s\\t%s\\n\",p->data.num,p->data.name,\n                   p->data.sex,p->data.phone,p->data.addr);\n               printf(\"*******************************\\n\");\n\t\t\t}\n\t\t\telse\n               printf(\"没有查到要查询的病人!\\n\");\n            break;\n            case 4:\n            printf(\"*******************************\\n\");\n\t\t\tprintf(\"**   病患信息删除  **\\n）\");\n\t\t\tprintf(\"*******************************\\n\");\n\t\t\tDeleteNode(pHead); // 删除节点\n\t\t\tbreak;\n\t\t\tcase 5:\n            printf(\"*******************************\\n\");\n\t\t\tprintf(\"**   病患信息链表的输出  **\\n）\");\n\t\t\tprintf(\"*******************************\\n\");\n\t\t\tPrintList(pHead); \n\t\t\tbreak;\n\t\t\tcase 0:\n\t\t    printf(\"\\t 再见!\\n\");\n\t\t\treturn 0; \n\t\t}\n\t\tsystem(\"pause\");\n\t}\n\treturn 0;\n} \nint menu_select() \n{\n\tint sn;\n\tsystem(\"cls\");\n\tprintf(\"=================================\\n\");\n\tprintf(\"   病患信息管理系统\\n\");\n\tprintf(\"=================================\\n\");\n\tprintf(\"   1. 病患信息表的建立\\n\");\n\tprintf(\"   2. 病患节点的插入\\n\");\n\tprintf(\"   3. 病患节点的查询\\n\");\n\tprintf(\"   4. 病患节点的删除\\n\");\n\tprintf(\"   5. 病患信息表的输出\\n\");\n\tprintf(\"   0. 退出管理系统\\n\");\n\tprintf(\"=================================\\n\");\n\tfor(;;)\n\t{\n\t\tscanf(\"%d\",&sn);\n\t\tif(sn<0||sn>5)\n\t\t   printf(\"\\n\\t 输入错误，重选 0-5\");\n        else\n           break;\n\t}\n\treturn sn;\n}\nLinkList CreateList(void)  //尾插法建立带头节点的病患信息表 \n{\n\tLNode* head;\n\thead = (LNode*)malloc(sizeof(LNode));\n\thead->next = NULL;\n\tprintf(\"患者信息表建立成功！！！\\n\");\n\treturn head;\n}\nvoid InsertNode(LinkList head, LNode* p) //在head指向的链表中插入节点 \n{\n\tint i,k;\n\tLNode* q;\n\tq = head;\n\tk = 0;\n\tprintf(\"请输入你要插入的位置：\\n\");\n\tscanf(\"%d\",&i);\n\twhile(q!=NULL&&i!=k)\n\t{\n\t\tq = q->next;\n\t\tk++;\n\t}\n\tif(q == NULL)\n\t{\n\t\tprintf(\"插入失败！\\n\");\n\t}\n\tp->next = q->next;\n\tq->next = p;\n}\t\nLNode* ListFind(LinkList head) //查找 \n{\n    ElemType N;\n\tp = head;\n\tprintf(\"请输入要查询患者编号：\\n\");\n\tscanf(\"%s\",N.num);\n\twhile((p->next!=NULL)&&strcmp(N.num,p->data.num))\n\t{\n\t\tp = p->next;\n\t}\n\treturn p;\n}\nvoid DeleteNode(LinkList head)\n{\n\tLNode* p,* q;\n\tElemType M;\n\tif(head->next == NULL)\n\t{\n\t\tprintf(\"删除失败！\\n\");\n\t}\n\tp = head;\n\tq = head->next;\n\tprintf(\"请输入要删除患者的编号：\\n\");\n\tscanf(\"%s\",M.num);\n\twhile((q->next!=NULL)&&strcmp(M.num,q->data.num))\n\t{\n\t\tp = q;\n\t\tq = q->next;\n\t}\n\tif(q == NULL)\n\t{\n\t\tprintf(\"没有该患者！删除失败！\");\n\t}\n\tif(q)\n\t{\n\t\tp->next = q->next;\n\t\tfree(q);\n\t}\n}\t\n\nvoid PrintList(LinkList head)\n{\n   p = head->next;\n   if(!p)\n       printf(\"单链表为空!\");\n   else\n   {\n   \tprintf(\"各节点的值为：\\n\");\n   \twhile(p)\n   \t   {\n   \t   \tprintf(\"患者编号为：\");\n  \t    printf(\"%s\",p->data.num);\n  \t    printf(\"\\n\");\n  \t    printf(\"患者姓名为：\");\n  \t    printf(\"%s\",p->data.name);\n  \t    printf(\"\\n\");\n  \t    printf(\"患者性别为：\");\n  \t    printf(\"%s\",p->data.sex);\n  \t    printf(\"\\n\");\n  \t    printf(\"患者电话为：\");\n  \t    printf(\"%s\",p->data.phone);\n  \t    printf(\"\\n\");\n  \t    printf(\"患者地址为：\");\n  \t    printf(\"%s\",p->data.addr);\n  \t    printf(\"\\n\");\n  \t    p = p->next;\n  \t    printf(\"\\n\");\n\t   }\n   }\n}\n",
+							"origin_encoding": "GB18030",
+							"rb_syntax": "json",
+							"revert_to_scratch": true,
+							"syntax": "Packages/C++/C.sublime-syntax",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 720.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 0,
+					"type": "text"
+				},
+				{
+					"buffer": 1,
+					"file": "C language/Single list/病患信息系统.c",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 5858,
+						"regions":
+						{
+							"rb_level0":
+							{
+								"flags": 272,
+								"regions":
+								[
+									[
+										131,
+										132
 									],
 									[
-										1649,
-										1650
+										244,
+										245
 									],
 									[
-										1673,
-										1674
+										275,
+										276
 									],
 									[
-										1678,
-										1679
+										339,
+										340
 									],
 									[
-										1793,
-										1794
+										433,
+										434
 									],
 									[
-										1957,
-										1958
+										434,
+										435
 									],
 									[
-										1959,
-										1960
+										456,
+										457
 									],
 									[
-										1975,
-										1976
+										461,
+										462
 									],
 									[
-										1980,
-										1981
+										480,
+										481
 									],
 									[
-										2001,
-										2002
+										504,
+										505
 									],
 									[
-										2006,
-										2007
+										522,
+										523
+									],
+									[
+										536,
+										537
+									],
+									[
+										554,
+										555
+									],
+									[
+										568,
+										569
+									],
+									[
+										585,
+										586
+									],
+									[
+										599,
+										600
+									],
+									[
+										617,
+										618
+									],
+									[
+										618,
+										619
+									],
+									[
+										620,
+										621
+									],
+									[
+										2651,
+										2652
+									],
+									[
+										2669,
+										2670
+									],
+									[
+										2670,
+										2671
+									],
+									[
+										2673,
+										2674
+									],
+									[
+										3220,
+										3221
+									],
+									[
+										3241,
+										3242
+									],
+									[
+										3246,
+										3247
+									],
+									[
+										3268,
+										3269
+									],
+									[
+										3738,
+										3739
+									],
+									[
+										3755,
+										3756
+									],
+									[
+										3779,
+										3780
+									],
+									[
+										3800,
+										3801
+									],
+									[
+										4348,
+										4349
+									],
+									[
+										4366,
+										4367
+									],
+									[
+										4380,
+										4381
+									],
+									[
+										4388,
+										4389
+									],
+									[
+										4566,
+										4567
+									],
+									[
+										4583,
+										4584
+									],
+									[
+										4597,
+										4598
+									],
+									[
+										4599,
+										4600
+									],
+									[
+										5461,
+										5462
+									],
+									[
+										5479,
+										5480
+									],
+									[
+										5493,
+										5494
+									],
+									[
+										5495,
+										5496
+									],
+									[
+										5854,
+										5855
+									]
+								],
+								"scope": "level0.rb"
+							},
+							"rb_level1":
+							{
+								"flags": 272,
+								"regions":
+								[
+									[
+										141,
+										142
+									],
+									[
+										143,
+										144
+									],
+									[
+										164,
+										165
+									],
+									[
+										166,
+										167
+									],
+									[
+										185,
+										186
+									],
+									[
+										187,
+										188
+									],
+									[
+										209,
+										210
+									],
+									[
+										212,
+										213
+									],
+									[
+										231,
+										232
+									],
+									[
+										234,
+										235
+									],
+									[
+										636,
+										637
+									],
+									[
+										639,
+										640
+									],
+									[
+										642,
+										643
+									],
+									[
+										2638,
+										2639
+									],
+									[
+										2691,
+										2692
+									],
+									[
+										2697,
+										2698
+									],
+									[
+										2707,
+										2708
+									],
+									[
+										2745,
+										2746
+									],
+									[
+										2755,
+										2756
+									],
+									[
+										2771,
+										2772
+									],
+									[
+										2781,
+										2782
+									],
+									[
+										2819,
+										2820
+									],
+									[
+										2829,
+										2830
+									],
+									[
+										2848,
+										2849
+									],
+									[
+										2858,
+										2859
+									],
+									[
+										2876,
+										2877
+									],
+									[
+										2886,
+										2887
+									],
+									[
+										2904,
+										2905
+									],
+									[
+										2914,
+										2915
+									],
+									[
+										2932,
+										2933
+									],
+									[
+										2942,
+										2943
+									],
+									[
+										2961,
+										2962
+									],
+									[
+										2971,
+										2972
+									],
+									[
+										2988,
+										2989
+									],
+									[
+										2998,
+										2999
+									],
+									[
+										3036,
+										3037
+									],
+									[
+										3043,
+										3044
+									],
+									[
+										3046,
+										3047
+									],
+									[
+										3049,
+										3050
+									],
+									[
+										3190,
+										3191
+									],
+									[
+										3199,
+										3200
+									],
+									[
+										3205,
+										3206
+									],
+									[
+										3300,
+										3301
+									],
+									[
+										3309,
+										3310
+									],
+									[
+										3316,
+										3317
+									],
+									[
+										3330,
+										3331
+									],
+									[
+										3364,
+										3365
+									],
+									[
+										3383,
+										3384
+									],
+									[
+										3390,
+										3391
+									],
+									[
+										3392,
+										3393
+									],
+									[
+										3411,
+										3412
+									],
+									[
+										3682,
+										3683
+									],
+									[
+										3691,
+										3692
+									],
+									[
+										3693,
+										3694
+									],
+									[
+										3703,
+										3704
+									],
+									[
+										3720,
+										3721
+									],
+									[
+										3843,
+										3844
+									],
+									[
+										3846,
+										3847
+									],
+									[
+										3849,
+										3850
+									],
+									[
+										4346,
+										4347
+									],
+									[
+										4397,
+										4398
+									],
+									[
+										4399,
+										4400
+									],
+									[
+										4420,
+										4421
+									],
+									[
+										4438,
+										4439
+									],
+									[
+										4458,
+										4459
+									],
+									[
+										4466,
+										4467
+									],
+									[
+										4486,
+										4487
+									],
+									[
+										4488,
+										4489
+									],
+									[
+										4491,
+										4492
+									],
+									[
+										4553,
+										4554
+									],
+									[
+										4659,
+										4660
+									],
+									[
+										4661,
+										4662
+									],
+									[
+										4664,
+										4665
+									],
+									[
+										4789,
+										4790
+									],
+									[
+										4797,
+										4798
+									],
+									[
+										4799,
+										4800
+									],
+									[
+										4802,
+										4803
+									],
+									[
+										5459,
+										5460
+									],
+									[
+										5532,
+										5533
+									],
+									[
+										5568,
+										5569
+									],
+									[
+										5578,
+										5579
+									],
+									[
+										5628,
+										5629
+									],
+									[
+										5637,
+										5638
+									],
+									[
+										5639,
+										5640
+									],
+									[
+										5656,
+										5657
+									],
+									[
+										5792,
+										5793
+									],
+									[
+										5801,
+										5802
+									],
+									[
+										5851,
+										5852
+									]
+								],
+								"scope": "level1.rb"
+							},
+							"rb_level2":
+							{
+								"flags": 272,
+								"regions":
+								[
+									[
+										652,
+										653
+									],
+									[
+										666,
+										667
+									],
+									[
+										670,
+										671
+									],
+									[
+										2616,
+										2617
+									],
+									[
+										2626,
+										2627
+									],
+									[
+										2634,
+										2635
+									],
+									[
+										3064,
+										3065
+									],
+									[
+										3069,
+										3070
+									],
+									[
+										3077,
+										3078
+									],
+									[
+										3094,
+										3095
+									],
+									[
+										3106,
+										3107
+									],
+									[
+										3115,
+										3116
+									],
+									[
+										3122,
+										3123
+									],
+									[
+										3133,
+										3134
+									],
+									[
+										3144,
+										3145
+									],
+									[
+										3163,
+										3164
+									],
+									[
+										3323,
+										3324
+									],
+									[
+										3329,
+										3330
+									],
+									[
+										3420,
+										3421
+									],
+									[
+										3422,
+										3423
+									],
+									[
+										3439,
+										3440
+									],
+									[
+										3679,
+										3680
+									],
+									[
+										3856,
+										3857
+									],
+									[
+										3873,
+										3874
+									],
+									[
+										3887,
+										3888
+									],
+									[
+										3967,
+										3968
+									],
+									[
+										3978,
+										3979
+									],
+									[
+										4326,
+										4327
+									],
+									[
+										4498,
+										4499
+									],
+									[
+										4522,
+										4523
+									],
+									[
+										4674,
+										4675
+									],
+									[
+										4692,
+										4693
+									],
+									[
+										4714,
+										4715
+									],
+									[
+										4723,
+										4724
+									],
+									[
+										4731,
+										4732
+									],
+									[
+										4737,
+										4738
+									],
+									[
+										4765,
+										4766
+									],
+									[
+										4784,
+										4785
+									],
+									[
+										4808,
+										4809
+									],
+									[
+										4810,
+										4811
+									],
+									[
+										4814,
+										4815
+									],
+									[
+										5404,
+										5405
+									],
+									[
+										5415,
+										5416
+									],
+									[
+										5456,
+										5457
+									],
+									[
+										5666,
+										5667
+									],
+									[
+										5773,
+										5774
+									]
+								],
+								"scope": "level2.rb"
+							},
+							"rb_level3":
+							{
+								"flags": 272,
+								"regions":
+								[
+									[
+										664,
+										665
+									],
+									[
+										665,
+										666
+									],
+									[
+										692,
+										693
+									],
+									[
+										728,
+										729
+									],
+									[
+										740,
+										741
+									],
+									[
+										764,
+										765
+									],
+									[
+										776,
+										777
+									],
+									[
+										812,
+										813
+									],
+									[
+										836,
+										837
+									],
+									[
+										837,
+										838
+									],
+									[
+										870,
+										871
+									],
+									[
+										920,
+										921
+									],
+									[
+										932,
+										933
+									],
+									[
+										961,
+										962
+									],
+									[
+										973,
+										974
+									],
+									[
+										1023,
+										1024
+									],
+									[
+										1035,
+										1036
+									],
+									[
+										1070,
+										1071
+									],
+									[
+										1082,
+										1083
+									],
+									[
+										1132,
+										1133
+									],
+									[
+										1140,
+										1141
+									],
+									[
+										1147,
+										1148
+									],
+									[
+										1154,
+										1155
+									],
+									[
+										1168,
+										1169
+									],
+									[
+										1179,
+										1180
+									],
+									[
+										1276,
+										1277
+									],
+									[
+										1301,
+										1302
+									],
+									[
+										1309,
+										1310
+									],
+									[
+										1353,
+										1354
+									],
+									[
+										1389,
+										1390
+									],
+									[
+										1401,
+										1402
+									],
+									[
+										1421,
+										1422
+									],
+									[
+										1433,
+										1434
+									],
+									[
+										1469,
+										1470
+									],
+									[
+										1485,
+										1486
+									],
+									[
+										1491,
+										1492
+									],
+									[
+										1499,
+										1500
+									],
+									[
+										1507,
+										1508
+									],
+									[
+										1512,
+										1513
+									],
+									[
+										1799,
+										1800
+									],
+									[
+										1830,
+										1831
+									],
+									[
+										1846,
+										1847
+									],
+									[
+										1906,
+										1907
+									],
+									[
+										1942,
+										1943
+									],
+									[
+										1954,
+										1955
+									],
+									[
+										1974,
+										1975
+									],
+									[
+										1986,
+										1987
+									],
+									[
+										2022,
+										2023
+									],
+									[
+										2038,
+										2039
+									],
+									[
+										2044,
+										2045
+									],
+									[
+										2105,
+										2106
+									],
+									[
+										2155,
+										2156
+									],
+									[
+										2167,
+										2168
+									],
+									[
+										2194,
+										2195
+									],
+									[
+										2206,
+										2207
+									],
+									[
+										2256,
+										2257
+									],
+									[
+										2271,
+										2272
+									],
+									[
+										2277,
+										2278
+									],
+									[
+										2307,
+										2308
+									],
+									[
+										2312,
+										2313
+									],
+									[
+										2317,
+										2318
+									],
+									[
+										2572,
+										2573
+									],
+									[
+										2586,
+										2587
+									],
+									[
+										2597,
+										2598
+									],
+									[
+										3084,
+										3085
+									],
+									[
+										3093,
+										3094
+									],
+									[
+										3459,
+										3460
+									],
+									[
+										3466,
+										3467
+									],
+									[
+										3473,
+										3474
+									],
+									[
+										3487,
+										3488
+									],
+									[
+										3499,
+										3500
+									],
+									[
+										3597,
+										3598
+									],
+									[
+										3606,
+										3607
+									],
+									[
+										3615,
+										3616
+									],
+									[
+										3647,
+										3648
+									],
+									[
+										3655,
+										3656
+									],
+									[
+										3938,
+										3939
+									],
+									[
+										3952,
+										3953
+									],
+									[
+										3986,
+										3987
+									],
+									[
+										4027,
+										4028
+									],
+									[
+										4046,
+										4047
+									],
+									[
+										4322,
+										4323
+									],
+									[
+										4506,
+										4507
+									],
+									[
+										4521,
+										4522
+									],
+									[
+										4822,
+										4823
+									],
+									[
+										4829,
+										4830
+									],
+									[
+										4851,
+										4852
+									],
+									[
+										5364,
+										5365
+									],
+									[
+										5426,
+										5427
+									],
+									[
+										5440,
+										5441
 									]
 								],
 								"scope": "level3.rb"
@@ -1720,36 +2534,212 @@
 								"regions":
 								[
 									[
-										1657,
-										1658
+										1161,
+										1162
 									],
 									[
-										1667,
-										1668
+										1167,
+										1168
 									],
 									[
-										1690,
-										1691
+										1524,
+										1525
 									],
 									[
-										1728,
-										1729
+										1560,
+										1561
 									],
 									[
-										1740,
-										1741
+										1573,
+										1574
 									],
 									[
-										1747,
-										1748
+										1623,
+										1624
 									],
 									[
-										1773,
-										1774
+										1636,
+										1637
 									],
 									[
-										1783,
-										1784
+										1730,
+										1731
+									],
+									[
+										1743,
+										1744
+									],
+									[
+										1793,
+										1794
+									],
+									[
+										2332,
+										2333
+									],
+									[
+										2351,
+										2352
+									],
+									[
+										2392,
+										2393
+									],
+									[
+										2394,
+										2395
+									],
+									[
+										2400,
+										2401
+									],
+									[
+										2552,
+										2553
+									],
+									[
+										2564,
+										2565
+									],
+									[
+										2566,
+										2567
+									],
+									[
+										3480,
+										3481
+									],
+									[
+										3486,
+										3487
+									],
+									[
+										3612,
+										3613
+									],
+									[
+										3614,
+										3615
+									],
+									[
+										3994,
+										3995
+									],
+									[
+										4026,
+										4027
+									],
+									[
+										4058,
+										4059
+									],
+									[
+										4108,
+										4109
+									],
+									[
+										4121,
+										4122
+									],
+									[
+										4133,
+										4134
+									],
+									[
+										4142,
+										4143
+									],
+									[
+										4152,
+										4153
+									],
+									[
+										4176,
+										4177
+									],
+									[
+										4186,
+										4187
+									],
+									[
+										4223,
+										4224
+									],
+									[
+										4305,
+										4306
+									],
+									[
+										4863,
+										4864
+									],
+									[
+										4899,
+										4900
+									],
+									[
+										4912,
+										4913
+									],
+									[
+										4962,
+										4963
+									],
+									[
+										4978,
+										4979
+									],
+									[
+										5086,
+										5087
+									],
+									[
+										5099,
+										5100
+									],
+									[
+										5149,
+										5150
+									],
+									[
+										5174,
+										5175
+									],
+									[
+										5195,
+										5196
+									],
+									[
+										5207,
+										5208
+									],
+									[
+										5218,
+										5219
+									],
+									[
+										5228,
+										5229
+									],
+									[
+										5233,
+										5234
+									],
+									[
+										5239,
+										5240
+									],
+									[
+										5313,
+										5314
+									],
+									[
+										5335,
+										5336
+									],
+									[
+										5346,
+										5347
 									]
 								],
 								"scope": "level4.rb"
@@ -1760,12 +2750,36 @@
 								"regions":
 								[
 									[
-										1710,
-										1711
+										2414,
+										2415
 									],
 									[
-										1720,
-										1721
+										2527,
+										2528
+									],
+									[
+										4286,
+										4287
+									],
+									[
+										4298,
+										4299
+									],
+									[
+										5276,
+										5277
+									],
+									[
+										5278,
+										5279
+									],
+									[
+										5292,
+										5293
+									],
+									[
+										5306,
+										5307
 									]
 								],
 								"scope": "level5.rb"
@@ -1774,8 +2788,8 @@
 						"selection":
 						[
 							[
-								168,
-								168
+								3459,
+								3489
 							]
 						],
 						"settings":
@@ -1785,12 +2799,27 @@
 							{
 								"close":
 								{
+									"1":
+									[
+										3466,
+										3467
+									]
 								},
 								"icon":
 								{
+									"1":
+									[
+										"Packages/BracketHighlighter/icons/round_bracket.png",
+										"region.yellowish"
+									]
 								},
 								"open":
 								{
+									"1":
+									[
+										3459,
+										3460
+									]
 								},
 								"unmatched":
 								{
@@ -1798,36 +2827,6 @@
 							},
 							"bracket_highlighter.regions":
 							[
-								"bh_round",
-								"bh_round_center",
-								"bh_round_open",
-								"bh_round_close",
-								"bh_round_content",
-								"bh_square",
-								"bh_square_center",
-								"bh_square_open",
-								"bh_square_close",
-								"bh_square_content",
-								"bh_single_quote",
-								"bh_single_quote_center",
-								"bh_single_quote_open",
-								"bh_single_quote_close",
-								"bh_single_quote_content",
-								"bh_angle",
-								"bh_angle_center",
-								"bh_angle_open",
-								"bh_angle_close",
-								"bh_angle_content",
-								"bh_default",
-								"bh_default_center",
-								"bh_default_open",
-								"bh_default_close",
-								"bh_default_content",
-								"bh_curly",
-								"bh_curly_center",
-								"bh_curly_open",
-								"bh_curly_close",
-								"bh_curly_content",
 								"bh_c_define",
 								"bh_c_define_center",
 								"bh_c_define_open",
@@ -1838,11 +2837,16 @@
 								"bh_regex_open",
 								"bh_regex_close",
 								"bh_regex_content",
-								"bh_unmatched",
-								"bh_unmatched_center",
-								"bh_unmatched_open",
-								"bh_unmatched_close",
-								"bh_unmatched_content",
+								"bh_single_quote",
+								"bh_single_quote_center",
+								"bh_single_quote_open",
+								"bh_single_quote_close",
+								"bh_single_quote_content",
+								"bh_curly",
+								"bh_curly_center",
+								"bh_curly_open",
+								"bh_curly_close",
+								"bh_curly_content",
 								"bh_double_quote",
 								"bh_double_quote_center",
 								"bh_double_quote_open",
@@ -1852,39 +2856,375 @@
 								"bh_tag_center",
 								"bh_tag_open",
 								"bh_tag_close",
-								"bh_tag_content"
+								"bh_tag_content",
+								"bh_angle",
+								"bh_angle_center",
+								"bh_angle_open",
+								"bh_angle_close",
+								"bh_angle_content",
+								"bh_round",
+								"bh_round_center",
+								"bh_round_open",
+								"bh_round_close",
+								"bh_round_content",
+								"bh_default",
+								"bh_default_center",
+								"bh_default_open",
+								"bh_default_close",
+								"bh_default_content",
+								"bh_unmatched",
+								"bh_unmatched_center",
+								"bh_unmatched_open",
+								"bh_unmatched_close",
+								"bh_unmatched_content",
+								"bh_square",
+								"bh_square_center",
+								"bh_square_open",
+								"bh_square_close",
+								"bh_square_content"
 							],
-							"color_scheme": "Packages/Color Scheme - Default/Monokai.sublime-color-scheme",
 							"in_converting": true,
 							"is_init_dirty_state": false,
-							"origin_content": "#include\"ljb.h\"\n\nint visited[M];\nLinkedGraph g1;\nchar* f1 = \"无向图.txt\";\n\nvoid dfs(LinkedGraph g, int i);\nvoid DfsTraverse(LinkedGraph g);\nvoid bfs(LinkedGraph g, int i);\nvoid BfsTraverse(LinkedGraph g);\nvoid Menu();\nvoid Menu_select();\n\n\nint main()\n{\n\tMenu();\n\treturn 0;\n}\n\nvoid Menu()\n{\n\tsystem(\"cls\");\t\t\t\t\t// 清屏\n\t// 打印界面\n\tprintf(\"\\n********连通图邻接表存储*********\\n\");\n\tprintf(\"*\\t1-创建邻接表\\t\\t*\\n\");\n\tprintf(\"*\\t2-打印邻接表结构\\t*\\n\");\n\tprintf(\"*\\t3-深度优先\\t\\t*\\n\");\n\tprintf(\"*\\t4-广度优先\\t\\t*\\n\");\n\tprintf(\"*\\t0-退出\\t\\t\\t*\\n\");\n\tprintf(\"*********************************\\n\");\n\t// 菜单选择\n\tMenu_select();\n}\n\nvoid Menu_select()\n{\n\tint a; \n\tprintf(\"请选择<Select>:\\n\");\n\tscanf(\"%d\",&a);\n\tswitch(a)\n\t{\n\t\tcase 1:\n\t\tcreat(&g1, f1, 0);\n\t\tprintf(\"邻接表创建成功！！！\\n\");\n\t\tbreak;\n\t\tcase 2:\n\t\tprintf(\"邻接表结构：\\n\");\n\t\tprint(g1);\n\t\tbreak;\n\t\tcase 3:\n\t\tprintf(\"深度优先遍历：\\n\");\n\t\tDfsTraverse(g1);\n\t\tbreak;\n\t\tcase 4:\n\t\tprintf(\"广度优先遍历：\\n\");\n\t\tBfsTraverse(g1);\n\t\tbreak;\n\t\tcase 0:exit(0);\n\t}\n\t// 按下后继续\n\tsystem(\"pause\");\n\t// 执行完一次选择后重新回到菜单界面\n\tMenu();\n}\n\nvoid dfs(LinkedGraph g, int i)\n{\n\tEdgeNode *p;\n\tprintf(\"visit vertex: %c\\n\", g.adjlist[i].vertex);\n\tvisited[i] = 1;\n\tp = g.adjlist[i].FirstEdge;\n\twhile (p)\n\t{\n\t\tif (!visited[p->adjvex])\n\t\t\tdfs(g, p->adjvex);\n\t\tp = p->next;\n\t}\n}\n\nvoid DfsTraverse(LinkedGraph g)\n{\n\tint i;\n\tfor(i=0; i<g.n; i++)\n\t\tvisited[i] = 0;\n\tfor (i = 0; i < g.n; ++i)\n\t\tif (!visited[i])\n\t\t\tdfs(g, i);\n}\n\nvoid bfs(LinkedGraph g, int i)\n{\n\tint j;\n\tEdgeNode *p;\n\tint queue[M], front, rear;\n\tfront = 0, rear = 0;\n\tprintf(\"%c \", g.adjlist[i].vertex);\n\tvisited[i] = 1;\n\tqueue[rear++] = i;\n\twhile(rear > front)\n\t{\n\t\tj = queue[front++];\n\t\tp = g.adjlist[j].FirstEdge;\n\t\twhile(p)\n\t\t{\n\t\t\tif (visited[p->adjvex] == 0)\n\t\t\t{\n\t\t\t\tprintf(\"--> %c\", g.adjlist[p->adjvex].vertex);\n\t\t\t\tqueue[rear++] = p->adjvex;\n\t\t\t\tvisited[p->adjvex] = 1;\n\t\t\t}\n\t\t\tp = p->next;\n\t\t}\n\t}\n}\nvoid BfsTraverse(LinkedGraph g)\n{\n\tint i, count = 0;\n\tfor(i=0; i<g.n; i++)\n\t\tvisited[i] = 0;\n\tfor (i = 0; i < g.n; ++i)\n\t{\n\t\tif (!visited[i])\n\t\t{\n\t\t\tprintf(\"\\n\");\n\t\t\tcount++;\n\t\t\tbfs(g, i);\n\t\t}\n\t}\n\tprintf(\"\\n该连通图共有%d个连通分量\\n\", count);\n}\n",
-							"origin_encoding": "GB18030",
+							"origin_content": "/*单链表实现病患信息管理问题*/\n#include <stdio.h>\n#include <string.h>\n#include <stdlib.h>\n#include<setjmp.h>\n#include<windows.h>\ntypedef struct\n{\tchar num[5];   //编号 \n\tchar name[9];  //姓名 \n\tchar sex[3];   //性别 \n\tchar phone[13]; //电话 \n\tchar addr[31];  //地址 \n}ElemType;\ntypedef struct node\n{\t//节点类型定义\n\tElemType data;     //数据域 \n\tstruct node* next; //指针域\n}LNode,*LinkList;\nLinkList pHead;\nLNode *p;\njmp_buf mark;\nint save = 0;\n//函数声明\nint menu_select();\nLinkList CreateList(void); \nvoid InsertNode(LinkList head, LNode* p);\nLNode* ListFind(LinkList head);\nvoid DeleteNode(LinkList head);\nvoid PrintList(LinkList head);\n\n//主函数\nint main()\n{\n\tFILE* f;\n\tfor(;;)\n\t{\n\t\tswitch(menu_select())\n\t\t{\n\t\t\tcase 1:\n\t\t\tprintf(\"*******************************\\n\");\n\t\t\tprintf(\"* 病患信息表的建立(Tab键分隔)*\\n\");\n\t\t\tprintf(\"*******************************\\n\");\n\t\t\tpHead = CreateList();\n\t\t\tbreak;\n\t\t\tcase 2:\n\t\t\tprintf(\"*********************************************\\n\");\n\t\t\tprintf(\"**\\t\\t 病患信息添加  \\t\\t   **\\n\");\n\t\t\tprintf(\"*********************************************\\n\");\n\t\t\tprintf(\"*编号（4） 姓名（8） 性别 电话（11） 地址（31）*\\n\");\n\t\t\tprintf(\"*********************************************\\n\");\n\t\t\tp=(LNode*)malloc(sizeof(LNode));\n\t\t\tscanf(\"%s%s%s%s%s\",p->data.num,p->data.name,\n                   p->data.sex,p->data.phone,p->data.addr);\n            InsertNode(pHead,p);\n\t\t\tsave++;\n\t\t\tbreak;\n\t\t\tcase 3:\n\t\t\tprintf(\"*******************************\\n\");\n\t\t\tprintf(\"**   病患信息查询  **\\n\");\n\t\t\tprintf(\"*******************************\\n\");\n\t\t\tp=ListFind(pHead);\n\t\t\tif(p!=NULL)\n\t\t\t{\n\t\t\t\tprintf(\"*编号（4） 姓名（8） 性别 电话（11） 地址（31） *\\n\");\n\t\t\t\tprintf(\"---------------------------------------------\\n\");\n\t\t\t\tprintf(\"%s\\t%s\\t%s\\t%s\\t%s\\n\",p->data.num,p->data.name,\n\t\t\t\t\t\tp->data.sex,p->data.phone,p->data.addr);\n\t\t\t\tprintf(\"*********************************************\\n\");\n\t\t\t}\n\t\t\telse\n               printf(\"没有查到要查询的病人!\\n\");\n            break;\n            case 4:\n            printf(\"*******************************\\n\");\n\t\t\tprintf(\"**   病患信息删除  **\\n\");\n\t\t\tprintf(\"*******************************\\n\");\n\t\t\tDeleteNode(pHead); // 删除节点\n\t\t\tsave++;\n\t\t\tbreak;\n\t\t\tcase 5:\n            printf(\"*********************************************\\n\");\n\t\t\tprintf(\"**\\t   病患信息链表的输出  \\t**\\n\");\n\t\t\tprintf(\"*********************************************\\n\");\n\t\t\tPrintList(pHead); \n\t\t\tbreak;\n\t\t\tcase 0:\n\t\t\tif(save)\n\t\t\t{\n\t\t\t\tf = fopen(\"Patients.txt\",\"w\");\t\t\t// 输出\n\t\t\t\tp = pHead->next;\n\t\t\t\twhile(p)\n\t\t\t\t{\n\t\t\t\t\tfprintf(f, \"%s\\t%s\\t%s\\t%s\\t%s\\n\",p->data.num,p->data.name,\n\t\t\t                   p->data.sex,p->data.phone,p->data.addr);\n\t\t\t\t\tp = p->next;\n\t\t\t\t}\n\t\t\t\tfclose(f);\n\t\t\t}\n\t\t    printf(\"\\t 再见!\\n\");\n\t\t\treturn 0; \n\t\t}\n\t\tsystem(\"pause\");\n\t}\n\treturn 0;\n} \nint menu_select() \n{\n\tint sn;\n\tsystem(\"cls\");\n\tprintf(\"=================================\\n\");\n\tprintf(\"   病患信息管理系统\\n\");\n\tprintf(\"=================================\\n\");\n\tprintf(\"   1. 病患信息表的建立\\n\");\n\tprintf(\"   2. 病患节点的插入\\n\");\n\tprintf(\"   3. 病患节点的查询\\n\");\n\tprintf(\"   4. 病患节点的删除\\n\");\n\tprintf(\"   5. 病患信息表的输出\\n\");\n\tprintf(\"   0. 退出管理系统\\n\");\n\tprintf(\"=================================\\n\");\n\tfor(;;)\n\t{\n\t\tsn = setjmp(mark);\n\t\tif (!scanf(\"%d\",&sn))\n\t\t\tlongjmp(mark, -1);\n\t\tif(sn<0||sn>5)\n\t\t\tprintf(\"\\n\\t 输入错误，重选 0-5\");\n\t    else\n\t    \tbreak;\n\t}\n\tsystem(\"cls\");\n\treturn sn;\n}\nLinkList CreateList(void)  //尾插法建立带头节点的病患信息表 \n{\n\tLNode* p;\n\tFILE *f;\n\tpHead = (LinkList)malloc(sizeof(LNode));\n\tpHead->next = NULL;\n\tf = fopen(\"Patients.txt\",\"r\");\n\tif (f)\t\t\t\t\t// 判断文件是否存在\n\t{\n\t\twhile(1)\t\t\t\t// 循环读取信息\n\t\t{\n\t\t\t// 文件读取\n\t\t\tp = (LNode*)malloc(sizeof(LNode));\n\t\t\tfscanf(f, \"%s\\t%s\\t%s\\t%s\\t%s\", p->data.num, p->data.name,\n\t\t\t\t\tp->data.sex, p->data.phone, p->data.addr);\n\t\t\tif (!feof(f))\t\t\t// 判断文件读取是否结束\n\t\t\t\tInsertNode(pHead,p);\n\t\t\telse\n\t\t\t\tbreak;\n\t\t}\n\t}\n\tfclose(f);\n\tprintf(\"患者信息表建立成功！！！\\n\");\n\treturn pHead;\n}\nvoid InsertNode(LinkList head, LNode* p) //在head指向的链表中插入节点 \n{\n\tLNode* p1;\n\tint flag;\n\tp1 = head;\n\twhile(p1)\n\t{\n\t\tif (p1->next == NULL)\t\t\t// 尾部插入\n\t\t{\n\t\t\tp->next = p1->next;\n\t\t\tp1->next = p;\n\t\t\tprintf(\"节点插入成功！！！\\n\");\n\t\t\tbreak;\n\t\t}\n\t\telse\n\t\t{\n\t\t\tif (!strcmp(p->data.num, p1->next->data.num))\t\t\t// 判断编号是否唯一\n\t\t\t{\n\t\t\t\tprintf(\"编号(%s)已存在，0-取消插入  1-替换节点:\\n\", p1->next->data.num);\t\n\t\t\t\tscanf(\"%d\", &flag);\n\t\t\t\tif(flag == 0)\t\t\t\t// 取消插入\n\t\t\t\t\tprintf(\"已取消插入\\n\");\n\t\t\t\telse\t\t\t\t\t\t// 用新的数据替换原来的数据\n\t\t\t\t{\n\t\t\t\t\tp->next = p1->next->next;\n\t\t\t\t\tp1->next = p;\n\t\t\t\t\tprintf(\"替换成功！！！\\n\");\n\t\t\t\t}\n\t\t\t\treturn;\n\t\t\t}\n\t\t}\n\t\tp1 = p1->next;\n\t}\n}\t\nLNode* ListFind(LinkList head) //查找 \n{\n\tchar i[5];\n\tLNode* p;\n\tprintf(\"请输入需要查询的节点编号:\\n\");\t\t\t// 按编号查找\n\tscanf(\"%s\", i);\n\tp = head;\n\twhile(p)\n\t{\n\t\tif (!strcmp(p->data.num, i))\n\t\t\treturn p;\n\t\tp = p->next;\n\t}\n\treturn p;\n}\nvoid DeleteNode(LinkList head)\n{\n\tLNode* p=head;\n\tLNode* pre=NULL; \n\tint i,j=0,flag;\n\twhile(1)\n\t{\n\t\tprintf(\"请输入需要删除节点的位置:\\n\");\t\t// 按节点位置删除\n\t\tscanf(\"%d\", &i);\n\t\tif (i > 0)\n\t\t\tbreak;\n\t\telse\n\t\t\tprintf(\"输入不合法，请输入大于0的数！！\"); \n\t}\n\twhile(1)\n\t{\n\t\tif(p)\n\t\t{\n\t\t\tif (j == i)\t\t// 查找到节点后确认是否删除\n\t\t\t{\n\t\t\t\tprintf(\"*编号（4） 姓名（8） 性别 电话（11） 地址（31） *\\n\");\n\t\t\t\tprintf(\"---------------------------------------------\\n\");\n\t\t\t    printf(\"%s\\t%s\\t%s\\t%s\\t%s\\n\",p->data.num,p->data.name,\n                    p->data.sex,p->data.phone,p->data.addr);\n\t\t\t\tprintf(\"*********************************************\\n\");\n                printf(\"是否删除该学生：0-否\\t1-是\\n\");\n\t\t\t\tscanf(\"%d\",&flag);\n\t\t\t\tif (flag)\n\t\t\t\t{\n\t\t\t\t\tpre->next = p->next;\n\t\t\t\t\tfree(p);\n\t\t\t\t\tprintf(\"节点删除成功！！！\\n\");\n\t\t\t\t}\n\t\t\t\telse\n\t\t\t\t\tprintf(\"取消删除节点\\n\");\n\t\t\t\treturn;\n\t\t\t}\n\t\t\tpre = p;\n\t\t\tp = p->next;\n\t\t\tj++;\n\t\t}\n\t\telse\n\t\t{\n\t\t\tprintf(\"没有%d节点!!\", i);\n\t\t\treturn;\n\t\t}\n\t}\n}\t\n\nvoid PrintList(LinkList head)\n{\n\tLNode* p;\n\tp = head->next;\n\tprintf(\"*编号（4） 姓名（8） 性别 电话（11） 地址（31） *\\n\");\n\tprintf(\"---------------------------------------------\\n\");\n\twhile(p)\t\t\t// 循环输出节点信息\n\t{\n\t\tprintf(\"%s\\t%s\\t%s\\t%s\\t%s\\n\",p->data.num,p->data.name,\n                   p->data.sex,p->data.phone,p->data.addr);\n\t\tp = p->next;\n\t}\n\tprintf(\"*********************************************\\n\");\n}\t\n\n",
+							"origin_encoding": "GBK",
 							"rb_syntax": "json",
 							"syntax": "Packages/C++/C.sublime-syntax",
 							"translate_tabs_to_spaces": false
 						},
 						"translation.x": 0.0,
-						"translation.y": 0.0,
+						"translation.y": 2898.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 0,
+					"stack_index": 1,
 					"type": "text"
 				},
 				{
-					"buffer": 1,
-					"file": "C language/Figure/无向图.txt",
+					"buffer": 2,
+					"file": "Algorithm/02_linked_list_reversal.cc",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 54,
+						"buffer_size": 1154,
 						"regions":
 						{
+							"rb_level0":
+							{
+								"flags": 272,
+								"regions":
+								[
+									[
+										63,
+										64
+									],
+									[
+										255,
+										256
+									],
+									[
+										283,
+										284
+									],
+									[
+										294,
+										295
+									],
+									[
+										310,
+										311
+									],
+									[
+										321,
+										322
+									],
+									[
+										333,
+										334
+									],
+									[
+										334,
+										335
+									],
+									[
+										336,
+										337
+									],
+									[
+										585,
+										586
+									],
+									[
+										602,
+										603
+									],
+									[
+										613,
+										614
+									],
+									[
+										615,
+										616
+									],
+									[
+										737,
+										738
+									],
+									[
+										753,
+										754
+									],
+									[
+										764,
+										765
+									],
+									[
+										766,
+										767
+									],
+									[
+										983,
+										984
+									],
+									[
+										1006,
+										1007
+									],
+									[
+										1007,
+										1008
+									],
+									[
+										1009,
+										1010
+									],
+									[
+										1025,
+										1026
+									],
+									[
+										1047,
+										1048
+									],
+									[
+										1048,
+										1049
+									],
+									[
+										1050,
+										1051
+									],
+									[
+										1066,
+										1067
+									],
+									[
+										1087,
+										1088
+									],
+									[
+										1093,
+										1094
+									],
+									[
+										1095,
+										1096
+									],
+									[
+										1108,
+										1109
+									],
+									[
+										1129,
+										1130
+									],
+									[
+										1137,
+										1138
+									],
+									[
+										1139,
+										1140
+									],
+									[
+										1152,
+										1153
+									]
+								],
+								"scope": "level0.rb"
+							},
+							"rb_level1":
+							{
+								"flags": 272,
+								"regions":
+								[
+									[
+										80,
+										81
+									],
+									[
+										95,
+										96
+									],
+									[
+										99,
+										100
+									],
+									[
+										129,
+										130
+									],
+									[
+										145,
+										146
+									],
+									[
+										146,
+										147
+									],
+									[
+										165,
+										166
+									],
+									[
+										166,
+										167
+									],
+									[
+										184,
+										185
+									],
+									[
+										190,
+										191
+									],
+									[
+										208,
+										209
+									],
+									[
+										216,
+										217
+									],
+									[
+										362,
+										363
+									],
+									[
+										384,
+										385
+									],
+									[
+										403,
+										404
+									],
+									[
+										411,
+										412
+									],
+									[
+										466,
+										467
+									],
+									[
+										471,
+										472
+									],
+									[
+										500,
+										501
+									],
+									[
+										505,
+										506
+									],
+									[
+										573,
+										574
+									],
+									[
+										582,
+										583
+									],
+									[
+										640,
+										641
+									],
+									[
+										650,
+										651
+									],
+									[
+										653,
+										654
+									],
+									[
+										710,
+										711
+									],
+									[
+										867,
+										868
+									],
+									[
+										880,
+										881
+									],
+									[
+										883,
+										884
+									],
+									[
+										967,
+										968
+									]
+								],
+								"scope": "level1.rb"
+							},
+							"rb_level2":
+							{
+								"flags": 272,
+								"regions":
+								[
+									[
+										676,
+										677
+									],
+									[
+										677,
+										678
+									],
+									[
+										705,
+										706
+									],
+									[
+										706,
+										707
+									],
+									[
+										908,
+										909
+									],
+									[
+										909,
+										910
+									],
+									[
+										928,
+										929
+									],
+									[
+										933,
+										934
+									]
+								],
+								"scope": "level2.rb"
+							}
 						},
 						"selection":
 						[
 							[
-								37,
-								37
+								324,
+								324
 							]
 						],
 						"settings":
@@ -1907,36 +3247,6 @@
 							},
 							"bracket_highlighter.regions":
 							[
-								"bh_round",
-								"bh_round_center",
-								"bh_round_open",
-								"bh_round_close",
-								"bh_round_content",
-								"bh_square",
-								"bh_square_center",
-								"bh_square_open",
-								"bh_square_close",
-								"bh_square_content",
-								"bh_single_quote",
-								"bh_single_quote_center",
-								"bh_single_quote_open",
-								"bh_single_quote_close",
-								"bh_single_quote_content",
-								"bh_angle",
-								"bh_angle_center",
-								"bh_angle_open",
-								"bh_angle_close",
-								"bh_angle_content",
-								"bh_default",
-								"bh_default_center",
-								"bh_default_open",
-								"bh_default_close",
-								"bh_default_content",
-								"bh_curly",
-								"bh_curly_center",
-								"bh_curly_open",
-								"bh_curly_close",
-								"bh_curly_content",
 								"bh_c_define",
 								"bh_c_define_center",
 								"bh_c_define_open",
@@ -1947,11 +3257,16 @@
 								"bh_regex_open",
 								"bh_regex_close",
 								"bh_regex_content",
-								"bh_unmatched",
-								"bh_unmatched_center",
-								"bh_unmatched_open",
-								"bh_unmatched_close",
-								"bh_unmatched_content",
+								"bh_single_quote",
+								"bh_single_quote_center",
+								"bh_single_quote_open",
+								"bh_single_quote_close",
+								"bh_single_quote_content",
+								"bh_curly",
+								"bh_curly_center",
+								"bh_curly_open",
+								"bh_curly_close",
+								"bh_curly_content",
 								"bh_double_quote",
 								"bh_double_quote_center",
 								"bh_double_quote_open",
@@ -1961,17 +3276,44 @@
 								"bh_tag_center",
 								"bh_tag_open",
 								"bh_tag_close",
-								"bh_tag_content"
+								"bh_tag_content",
+								"bh_angle",
+								"bh_angle_center",
+								"bh_angle_open",
+								"bh_angle_close",
+								"bh_angle_content",
+								"bh_round",
+								"bh_round_center",
+								"bh_round_open",
+								"bh_round_close",
+								"bh_round_content",
+								"bh_default",
+								"bh_default_center",
+								"bh_default_open",
+								"bh_default_close",
+								"bh_default_content",
+								"bh_unmatched",
+								"bh_unmatched_center",
+								"bh_unmatched_open",
+								"bh_unmatched_close",
+								"bh_unmatched_content",
+								"bh_square",
+								"bh_square_center",
+								"bh_square_open",
+								"bh_square_close",
+								"bh_square_content"
 							],
 							"is_init_dirty_state": false,
-							"origin_encoding": "ASCII",
-							"syntax": "Packages/Text/Plain text.tmLanguage"
+							"origin_encoding": "UTF-8",
+							"rb_syntax": "json",
+							"syntax": "Packages/C++/C++.sublime-syntax",
+							"translate_tabs_to_spaces": false
 						},
 						"translation.x": 0.0,
-						"translation.y": 0.0,
+						"translation.y": 237.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 1,
+					"stack_index": 2,
 					"type": "text"
 				}
 			]

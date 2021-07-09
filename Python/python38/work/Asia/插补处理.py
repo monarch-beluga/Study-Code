@@ -46,10 +46,10 @@ def writer_data(write_f, data_write):
 
 with ThreadPoolExecutor(max_workers=40) as worker:
     data = [i for i in worker.map(read, files)]
-data = np.array(data).transpose(1, 2, 0)
+data = np.array(data).transpose((1, 2, 0))
 with ThreadPoolExecutor(max_workers=80) as worker:
     data = np.array([x for x in worker.map(linear, data)])
-data = data.transpose(2, 0, 1)
+data = data.transpose((2, 0, 1))
 with ThreadPoolExecutor(max_workers=40) as worker:
     worker.map(writer_data, files, data)
 
