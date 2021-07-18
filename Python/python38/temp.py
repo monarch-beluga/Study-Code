@@ -3,12 +3,24 @@
 @version:
 author:Monarch
 @time: 2021/07/05
-@file: drive.py
+@file: temp.py
 @function:
 @modify:
 """
 
-import pandas as pd
+import time
+
+for i in range(10):
+    print('#'*(i+1), end='\r')
+    time.sleep(1)
+
+
+
+
+
+
+
+
 
 
 

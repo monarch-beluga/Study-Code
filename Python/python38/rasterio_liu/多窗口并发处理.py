@@ -52,7 +52,7 @@ for win in windows:
         with rasterio.open(file2[0]) as src1:
             block_array = src1.read(window=win)[0]  # 读取数据
         dat.append(block_array)
-    data1 = np.array([j for j in dat])  # 处理数
+    data1 = np.array(dat)  # 处理数
     data2 = fun2(data1)
     Data[0].write(data2[0], window=win)
     Data[1].write(data2[1], window=win)
