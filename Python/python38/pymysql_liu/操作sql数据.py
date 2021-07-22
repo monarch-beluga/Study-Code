@@ -2,12 +2,11 @@
 """
 @version:
 author:Monarch
-@time: 2021/07/05
-@file: temp.py
+@time: 2021/07/22
+@file: 操作sql数据.py
 @function:
 @modify:
 """
-
 
 import pymysql
 
@@ -25,4 +24,3 @@ except:
     conn.rollback()
 
 conn.close()
-

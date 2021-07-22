@@ -12,7 +12,6 @@ import arcpy
 from arcpy.sa import *
 from glob import glob
 import time
-import sys
 import os
 
 var = ['PRCP', 'TMIN', 'SSD', 'WIN', 'RHU', 'TMAX']
@@ -22,8 +21,10 @@ arcpy.env.workspace = out_path
 arcpy.env.parallelProcessingFactor = 0
 
 roi = Raster(r'SRTM_Sanjy_250m.grd')
+i = 1
+st = time.time()
 for v in var:
-    raster_files = glob(path+'{0}/*.grd'.format(v))
+    raster_files = glob(path + '{0}/*.grd'.format(v))
     if not os.path.exists(out_path + v):
         os.makedirs(out_path + v)
     for raster_file in raster_files:
@@ -31,6 +32,6 @@ for v in var:
         out_file = raster_file.split('\\')[-1].replace('.grd', '.flt')
         arcpy.RasterToFloat_conversion(temp, out_path + v + os.sep + out_file)
         arcpy.Delete_management(temp)
-        sys.stdout.write('\r{0}裁剪成功'.format(out_file))
-        break
-    break
+        print '进度: {0}/{1}, 耗时:{2:.2f}s'.format(i, 276*6, time.time()-st)
+        i += 1
+    print '{0}已完成'.format(v)
