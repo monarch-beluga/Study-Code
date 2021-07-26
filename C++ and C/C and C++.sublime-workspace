@@ -187,9 +187,24 @@
 			"settings":
 			{
 				"buffer_size": 1751,
-				"encoding": "Western (Windows 1252)",
 				"line_ending": "Windows",
 				"scratch": true
+			}
+		},
+		{
+			"file": "/E/Data/re_data/PRCP00002.dat",
+			"settings":
+			{
+				"buffer_size": 75932,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "/E/Data/re_data/temp.dat",
+			"settings":
+			{
+				"buffer_size": 49,
+				"line_ending": "Windows"
 			}
 		}
 	],
@@ -799,6 +814,8 @@
 	],
 	"file_history":
 	[
+		"/E/Data/MOD/glcv_es_3.0/src/scmod_0917_c.txt",
+		"/E/Data/MOD/glcv_es_3.0/src/writehead.c",
 		"/E/Study/Projects/C++ and C/Algorithm/02_linked_list_reversal.cc",
 		"/E/Study/Projects/C++ and C/C language/Single list/病患信息系统.c",
 		"/E/Study/Projects/C++ and C/C基础/结构体与指针.cpp",
@@ -924,9 +941,7 @@
 		"/C/Users/Monarch/AppData/Roaming/Sublime Text 3/Packages/User/C Run.sublime-build",
 		"/E/Study/Projects/C++ and C/C language/Student management/student.txt",
 		"/F/file/study/data structure/Student management/学生类型.h",
-		"/C/Users/Monarch/AppData/Roaming/Sublime Text 3/Packages/Material Theme/Material-Theme-Darker.sublime-theme",
-		"/C/Users/Monarch/AppData/Roaming/Sublime Text 3/Packages/Predawn Monokai/Predawn Monokai.tmTheme",
-		"/C/Users/Monarch/AppData/Roaming/Sublime Text 3/Packages/Color Scheme - Default/Mariana.sublime-color-scheme"
+		"/C/Users/Monarch/AppData/Roaming/Sublime Text 3/Packages/Material Theme/Material-Theme-Darker.sublime-theme"
 	],
 	"find":
 	{
@@ -990,7 +1005,7 @@
 	"groups":
 	[
 		{
-			"selected": 0,
+			"selected": 2,
 			"sheets":
 			[
 				{
@@ -2149,6 +2164,26 @@
 							},
 							"bracket_highlighter.regions":
 							[
+								"bh_default",
+								"bh_default_center",
+								"bh_default_open",
+								"bh_default_close",
+								"bh_default_content",
+								"bh_square",
+								"bh_square_center",
+								"bh_square_open",
+								"bh_square_close",
+								"bh_square_content",
+								"bh_double_quote",
+								"bh_double_quote_center",
+								"bh_double_quote_open",
+								"bh_double_quote_close",
+								"bh_double_quote_content",
+								"bh_angle",
+								"bh_angle_center",
+								"bh_angle_open",
+								"bh_angle_close",
+								"bh_angle_content",
 								"bh_c_define",
 								"bh_c_define_center",
 								"bh_c_define_open",
@@ -2159,36 +2194,11 @@
 								"bh_unmatched_open",
 								"bh_unmatched_close",
 								"bh_unmatched_content",
-								"bh_single_quote",
-								"bh_single_quote_center",
-								"bh_single_quote_open",
-								"bh_single_quote_close",
-								"bh_single_quote_content",
-								"bh_double_quote",
-								"bh_double_quote_center",
-								"bh_double_quote_open",
-								"bh_double_quote_close",
-								"bh_double_quote_content",
-								"bh_square",
-								"bh_square_center",
-								"bh_square_open",
-								"bh_square_close",
-								"bh_square_content",
 								"bh_regex",
 								"bh_regex_center",
 								"bh_regex_open",
 								"bh_regex_close",
 								"bh_regex_content",
-								"bh_angle",
-								"bh_angle_center",
-								"bh_angle_open",
-								"bh_angle_close",
-								"bh_angle_content",
-								"bh_tag",
-								"bh_tag_center",
-								"bh_tag_open",
-								"bh_tag_close",
-								"bh_tag_content",
 								"bh_round",
 								"bh_round_center",
 								"bh_round_open",
@@ -2199,18 +2209,235 @@
 								"bh_curly_open",
 								"bh_curly_close",
 								"bh_curly_content",
-								"bh_default",
-								"bh_default_center",
-								"bh_default_open",
-								"bh_default_close",
-								"bh_default_content"
+								"bh_single_quote",
+								"bh_single_quote_center",
+								"bh_single_quote_open",
+								"bh_single_quote_close",
+								"bh_single_quote_content",
+								"bh_tag",
+								"bh_tag_center",
+								"bh_tag_open",
+								"bh_tag_close",
+								"bh_tag_content"
 							],
+							"color_scheme": "Packages/Color Scheme - Default/Monokai.sublime-color-scheme",
 							"in_converting": true,
+							"is_init_dirty_state": false,
 							"origin_content": "#include<stdio.h>\n#include<math.h>\n\nint main()\n{\n\tint i = 0,j = 2;\n\tdouble a = 3.1415926;\n\tdouble p,l,d,x[11],y[11];\n\tprintf(\"请输入中心坐标点:\\n\");\n\tprintf(\"x[0]=\");\n\tscanf(\"%lf\",&x[0]);\n\tprintf(\"y[0]=\");\n\tscanf(\"%lf\",&y[0]);\n\tprintf(\"请输入第一个凸拐点坐标:\\n\");\n\tprintf(\"x[1]=\");\n\tscanf(\"%lf\",&x[1]);\n\tprintf(\"y[1]=\");\n\tscanf(\"%lf\", &y[1]);\n\tl = sqrt((x[1] - x[0]) * (x[1] - x[0]) + (y[1] - y[0]) * (y[1] - y[0]));\n\tif (y[0] - y[1] > 0)\n\t\tp = a - 0.5 * a - atan((x[0] - x[1]) / (y[0] - y[1]));\n\telse if (y[0] - y[1] == 0)\n\t\tp = a - atan((x[0] - x[1]) / (y[0] - y[1]));\n\telse\n\t\tp = a + 0.5 * a - atan((x[0] - x[1]) / (y[0] - y[1]));\n\t/* p 表示点 1 至点 0 的坐标方位角*/\n\tprintf(\"其余四个凸拐点的坐标为：\\n\");\n\tfor (i = 2; i < 6; i++)\n\t{\n\t\tx[i] = (x[1] - x[0]) * cos((i - 1) * 72.0 / 180.0 * a) - (y[1] - y[0]) * sin((i - 1) * 72.0 / 180.0 * a) + x[0];\n\t\ty[i] = (x[1] - x[0]) * sin((i - 1) * 72.0 / 180.0 * a) + (y[1] - y[0]) * cos((i - 1) * 72.0 / 180.0 * a) + y[0];\n\t\t/*运用向量旋转公式：\n\t\t已知 A（x1,y1）绕 B（x0,y0）旋转到 C（X,Y）且角 ABC 为 θ,则 X-x0=(x1-\n\t\tx0)cosθ-（y1-y0）sinθ;\n\t\tY-y0=(x1-x0)sinθ+（y1-y2）cosθ;\n\t\t*/\n\t\tprintf(\"x[%d]=%.3f,y[%d]=%.3f\\n\", j, x[i], j++, y[i]);\n\t}\n\tprintf(\"五个凹拐点的坐标为：\\n\");\n\n\td = l * sin(54.0 / 180.0 * a) - l * cos(54.0 / 180.0 * a) * tan(36.0 / 180.0 * a);\n\tx[6] = x[0] - d * cos(p + 36.0 / 180.0 * a);\n\ty[6] = y[0] - d * sin(p + 36.0 / 180.0 * a);\n\t/*运用坐标方位角知识，左折角为 36°*/\n\tprintf(\"x[6]=%.3f,y[6]=%.3f\\n\", x[6], y[6]);\n\tj = 7;\n\n\tfor (i = 7; i < 11; i++)\n\t{\n\t\tx[i] = (x[6] - x[0]) * cos((i - 6) * (72.0 / 180.0) * a) - (y[6] - y[0]) * sin((i - 6) * (72.0 / 180.0) * a) + x[0];\n\t\ty[i] = (x[6] - x[0]) * sin((i - 6) * (72.0 / 180.0) * a) + (y[6] - y[0]) * cos((i - 6) * (72.0 / 180.0) * a) + y[0];\n\t\t/*方法同上，旋转*/\n\t\tprintf(\"x[%d]=%.3f,y[%d]=%.3f\\n\", j, x[i], j++, y[i]);\n\t}\n\treturn 0;\n}",
 							"origin_encoding": "GB2312",
 							"rb_syntax": "json",
 							"syntax": "Packages/C++/C++.sublime-syntax",
 							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 2,
+					"type": "text"
+				},
+				{
+					"buffer": 1,
+					"file": "/E/Data/re_data/PRCP00002.dat",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 75932,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								445,
+								445
+							]
+						],
+						"settings":
+						{
+							"bracket_highlighter.busy": false,
+							"bracket_highlighter.locations":
+							{
+								"close":
+								{
+								},
+								"icon":
+								{
+								},
+								"open":
+								{
+								},
+								"unmatched":
+								{
+								}
+							},
+							"bracket_highlighter.regions":
+							[
+								"bh_double_quote",
+								"bh_double_quote_center",
+								"bh_double_quote_open",
+								"bh_double_quote_close",
+								"bh_double_quote_content",
+								"bh_tag",
+								"bh_tag_center",
+								"bh_tag_open",
+								"bh_tag_close",
+								"bh_tag_content",
+								"bh_c_define",
+								"bh_c_define_center",
+								"bh_c_define_open",
+								"bh_c_define_close",
+								"bh_c_define_content",
+								"bh_curly",
+								"bh_curly_center",
+								"bh_curly_open",
+								"bh_curly_close",
+								"bh_curly_content",
+								"bh_single_quote",
+								"bh_single_quote_center",
+								"bh_single_quote_open",
+								"bh_single_quote_close",
+								"bh_single_quote_content",
+								"bh_default",
+								"bh_default_center",
+								"bh_default_open",
+								"bh_default_close",
+								"bh_default_content",
+								"bh_angle",
+								"bh_angle_center",
+								"bh_angle_open",
+								"bh_angle_close",
+								"bh_angle_content",
+								"bh_unmatched",
+								"bh_unmatched_center",
+								"bh_unmatched_open",
+								"bh_unmatched_close",
+								"bh_unmatched_content",
+								"bh_regex",
+								"bh_regex_center",
+								"bh_regex_open",
+								"bh_regex_close",
+								"bh_regex_content",
+								"bh_round",
+								"bh_round_center",
+								"bh_round_open",
+								"bh_round_close",
+								"bh_round_content",
+								"bh_square",
+								"bh_square_center",
+								"bh_square_open",
+								"bh_square_close",
+								"bh_square_content"
+							],
+							"color_scheme": "Packages/Color Scheme - Default/Monokai.sublime-color-scheme",
+							"is_init_dirty_state": false,
+							"origin_encoding": "ASCII",
+							"syntax": "Packages/Text/Plain text.tmLanguage"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 1,
+					"type": "text"
+				},
+				{
+					"buffer": 2,
+					"file": "/E/Data/re_data/temp.dat",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 49,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								49,
+								49
+							]
+						],
+						"settings":
+						{
+							"bracket_highlighter.busy": false,
+							"bracket_highlighter.locations":
+							{
+								"close":
+								{
+								},
+								"icon":
+								{
+								},
+								"open":
+								{
+								},
+								"unmatched":
+								{
+								}
+							},
+							"bracket_highlighter.regions":
+							[
+								"bh_curly",
+								"bh_curly_center",
+								"bh_curly_open",
+								"bh_curly_close",
+								"bh_curly_content",
+								"bh_default",
+								"bh_default_center",
+								"bh_default_open",
+								"bh_default_close",
+								"bh_default_content",
+								"bh_c_define",
+								"bh_c_define_center",
+								"bh_c_define_open",
+								"bh_c_define_close",
+								"bh_c_define_content",
+								"bh_tag",
+								"bh_tag_center",
+								"bh_tag_open",
+								"bh_tag_close",
+								"bh_tag_content",
+								"bh_double_quote",
+								"bh_double_quote_center",
+								"bh_double_quote_open",
+								"bh_double_quote_close",
+								"bh_double_quote_content",
+								"bh_unmatched",
+								"bh_unmatched_center",
+								"bh_unmatched_open",
+								"bh_unmatched_close",
+								"bh_unmatched_content",
+								"bh_single_quote",
+								"bh_single_quote_center",
+								"bh_single_quote_open",
+								"bh_single_quote_close",
+								"bh_single_quote_content",
+								"bh_angle",
+								"bh_angle_center",
+								"bh_angle_open",
+								"bh_angle_close",
+								"bh_angle_content",
+								"bh_round",
+								"bh_round_center",
+								"bh_round_open",
+								"bh_round_close",
+								"bh_round_content",
+								"bh_regex",
+								"bh_regex_center",
+								"bh_regex_open",
+								"bh_regex_close",
+								"bh_regex_content",
+								"bh_square",
+								"bh_square_center",
+								"bh_square_open",
+								"bh_square_close",
+								"bh_square_content"
+							],
+							"color_scheme": "Packages/Color Scheme - Default/Monokai.sublime-color-scheme",
+							"is_init_dirty_state": false,
+							"origin_encoding": "ASCII",
+							"syntax": "Packages/Text/Plain text.tmLanguage"
 						},
 						"translation.x": 0.0,
 						"translation.y": 0.0,
