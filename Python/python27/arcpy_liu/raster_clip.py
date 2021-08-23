@@ -9,7 +9,6 @@ author:Monarch
 """
 
 import arcpy
-from arcpy.sa import *
 from glob import glob
 import time
 import os
@@ -20,7 +19,7 @@ out_path = r'F:/sjy_clip/'
 arcpy.env.workspace = out_path
 arcpy.env.parallelProcessingFactor = 0
 
-roi = Raster(r'SRTM_Sanjy_250m.grd')
+roi = arcpy.Raster(r'SRTM_Sanjy_250m.grd')
 i = 1
 st = time.time()
 for v in var:

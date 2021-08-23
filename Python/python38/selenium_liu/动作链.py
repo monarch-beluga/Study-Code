@@ -3,7 +3,7 @@ from selenium import webdriver
 from selenium.webdriver import ActionChains
 from time import sleep
 
-e_path = r'E:\study\python\anaconda3\Scripts\chromedriver'
+e_path = r'chromedriver'
 master = webdriver.Chrome(executable_path=e_path)
 
 master.get('https://www.taobao.com/')

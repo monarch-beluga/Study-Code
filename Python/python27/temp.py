@@ -1,28 +1,40 @@
 # -*- coding: utf-8 -*-
 
-
 import arcpy
-from arcpy.sa import *
 from glob import glob
 import os
+import time
 
-out_path = r'E:/Data/clip/reult/'
-var = ['PRCP', 'TMIN', 'SSD', 'WIN', 'RHU', 'TMAX']
+out_path = r'F:/Albedo/'
+os.chdir(out_path)
 arcpy.env.workspace = out_path
 
 roi = arcpy.FeatureSet(r'E:/Data/clip/JX.shp')
+st = time.time()
+i = 1
+files = glob(r'*.tif')
+s = len(files)
+v = 'reult/'
+proj = r'E:/Data/clip/WGS_1984_Albers.prj'
+if not os.path.exists(v):
+    os.makedirs(v)
+for raster_f in files:
+    pro_temp = arcpy.ProjectRaster_management(in_raster=raster_f,
+                                              out_raster='porj_temp.tif',
+                                              out_coor_system=proj,
+                                              resampling_type='NEAREST',
+                                              cell_size="30")
+    clip_temp = arcpy.Clip_management(in_raster=pro_temp, out_raster='clip_temp.tif',
+                                      in_template_dataset=roi)
+    arcpy.Delete_management(pro_temp)
+    out_file = v + raster_f.replace('tif', 'flt')
+    arcpy.RasterToFloat_conversion(clip_temp, out_file)
+    arcpy.Delete_management(clip_temp)
+    i += 1
+    p = time.time() - st
+    t = p / i * s - p
+    print '进度: {0}/{1}, 耗时:{2:.2f}s, 还需:{3:.2f}s'.format(i, s, p, t)
 
-for v in var[:1]:
-    files = glob(r'E:/Data/clip/{0}/reult/RES_*.grd'.format(v))
-    if not os.path.exists(out_path + v):
-        os.makedirs(out_path + v)
-    for raster_f in files:
-        clip_temp = arcpy.Clip_management(in_raster=raster_f, out_raster='clip_temp.tif', in_template_dataset=roi)
-        re_temp = arcpy.Resample_management(in_raster=clip_temp, out_raster='re_temp.tif',
-                                            cell_size=30, resampling_type="NEAREST")
-        arcpy.Delete_management(clip_temp)
-        out_file = raster_f.split('\\')[-1].replace('.grd', '.flt')
-        arcpy.RasterToFloat_conversion(re_temp, out_path + v + os.sep + out_file)
-        arcpy.Delete_management(re_temp)
+
 
 

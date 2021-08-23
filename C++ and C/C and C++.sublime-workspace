@@ -4,6 +4,18 @@
 		"selected_items":
 		[
 			[
+				"n",
+				"ndvi_to_fpar"
+			],
+			[
+				"co",
+				"color"
+			],
+			[
+				"re",
+				"result"
+			],
+			[
 				"i",
 				"InsertNode"
 			],
@@ -72,10 +84,6 @@
 				"len1"
 			],
 			[
-				"n",
-				"nums"
-			],
-			[
 				"Ne",
 				"NewtonSolvingEquations"
 			],
@@ -102,10 +110,6 @@
 			[
 				"g",
 				"get_data"
-			],
-			[
-				"re",
-				"return"
 			],
 			[
 				"Fib",
@@ -180,30 +184,11 @@
 	"buffers":
 	[
 		{
-			"contents": "#include<stdio.h>\n#include<math.h>\n\nint main()\n{\n\tint i = 0,j = 2;\n\tdouble a = 3.1415926;\n\tdouble p,l,d,x[11],y[11];\n\tprintf(\"请输入中心坐标点:\\n\");\n\tprintf(\"x[0]=\");\n\tscanf(\"%lf\",&x[0]);\n\tprintf(\"y[0]=\");\n\tscanf(\"%lf\",&y[0]);\n\tprintf(\"请输入第一个凸拐点坐标:\\n\");\n\tprintf(\"x[1]=\");\n\tscanf(\"%lf\",&x[1]);\n\tprintf(\"y[1]=\");\n\tscanf(\"%lf\", &y[1]);\n\tl = sqrt((x[1] - x[0]) * (x[1] - x[0]) + (y[1] - y[0]) * (y[1] - y[0]));\n\tif (y[0] - y[1] > 0)\n\t\tp = a - 0.5 * a - atan((x[0] - x[1]) / (y[0] - y[1]));\n\telse if (y[0] - y[1] == 0)\n\t\tp = a - atan((x[0] - x[1]) / (y[0] - y[1]));\n\telse\n\t\tp = a + 0.5 * a - atan((x[0] - x[1]) / (y[0] - y[1]));\n\t/* p 表示点 1 至点 0 的坐标方位角*/\n\tprintf(\"其余四个凸拐点的坐标为：\\n\");\n\tfor (i = 2; i < 6; i++)\n\t{\n\t\tx[i] = (x[1] - x[0]) * cos((i - 1) * 72.0 / 180.0 * a) - (y[1] - y[0]) * sin((i - 1) * 72.0 / 180.0 * a) + x[0];\n\t\ty[i] = (x[1] - x[0]) * sin((i - 1) * 72.0 / 180.0 * a) + (y[1] - y[0]) * cos((i - 1) * 72.0 / 180.0 * a) + y[0];\n\t\t/*运用向量旋转公式：\n\t\t已知 A（x1,y1）绕 B（x0,y0）旋转到 C（X,Y）且角 ABC 为 θ,则 X-x0=(x1-\n\t\tx0)cosθ-（y1-y0）sinθ;\n\t\tY-y0=(x1-x0)sinθ+（y1-y2）cosθ;\n\t\t*/\n\t\tprintf(\"x[%d]=%.3f,y[%d]=%.3f\\n\", j, x[i], j++, y[i]);\n\t}\n\tprintf(\"五个凹拐点的坐标为：\\n\");\n\n\td = l * sin(54.0 / 180.0 * a) - l * cos(54.0 / 180.0 * a) * tan(36.0 / 180.0 * a);\n\tx[6] = x[0] - d * cos(p + 36.0 / 180.0 * a);\n\ty[6] = y[0] - d * sin(p + 36.0 / 180.0 * a);\n\t/*运用坐标方位角知识，左折角为 36°*/\n\tprintf(\"x[6]=%.3f,y[6]=%.3f\\n\", x[6], y[6]);\n\tj = 7;\n\n\tfor (i = 7; i < 11; i++)\n\t{\n\t\tx[i] = (x[6] - x[0]) * cos((i - 6) * (72.0 / 180.0) * a) - (y[6] - y[0]) * sin((i - 6) * (72.0 / 180.0) * a) + x[0];\n\t\ty[i] = (x[6] - x[0]) * sin((i - 6) * (72.0 / 180.0) * a) + (y[6] - y[0]) * cos((i - 6) * (72.0 / 180.0) * a) + y[0];\n\t\t/*方法同上，旋转*/\n\t\tprintf(\"x[%d]=%.3f,y[%d]=%.3f\\n\", j, x[i], j++, y[i]);\n\t}\n\treturn 0;\n}",
-			"file": "C基础/讨论.cpp",
-			"file_size": 1914,
-			"file_write_time": 132600988178476335,
+			"file": "temp.c",
 			"settings":
 			{
-				"buffer_size": 1751,
-				"line_ending": "Windows",
-				"scratch": true
-			}
-		},
-		{
-			"file": "/E/Data/re_data/PRCP00002.dat",
-			"settings":
-			{
-				"buffer_size": 75932,
-				"line_ending": "Windows"
-			}
-		},
-		{
-			"file": "/E/Data/re_data/temp.dat",
-			"settings":
-			{
-				"buffer_size": 49,
+				"buffer_size": 331,
+				"encoding": "UTF-8",
 				"line_ending": "Windows"
 			}
 		}
@@ -808,12 +793,25 @@
 	},
 	"expanded_folders":
 	[
-		"/E/Study/Projects/C++ and C",
-		"/E/Study/Projects/C++ and C/C language",
-		"/E/Study/Projects/C++ and C/C基础"
+		"/E/Study/Projects/C++ and C"
 	],
 	"file_history":
 	[
+		"/E/Data/glcv_es_3.0/glcv_es/glopem.h",
+		"/E/Data/MOD/bat/readconf.c",
+		"/E/Data/glcv_es_3.0/glcv_es/readconf.c",
+		"/E/Study/Projects/C++ and C/Algorithm/06_red_blue.cc",
+		"/E/Study/Projects/C++ and C/Algorithm/temp.cc",
+		"/D/didi/1000HYB/章鱼小小丸子.7z",
+		"/D/didi/极乐天堂.rar",
+		"/E/Study/Projects/C++ and C/Algorithm/01_fibonacci_sequence.cc",
+		"/E/Study/Projects/C++ and C/Algorithm/07_Domino_piling.cc",
+		"/E/Study/Projects/C++ and C/Algorithm/Flip_the_Bits.cc",
+		"/E/Study/Projects/C++ and C/temp.c",
+		"/E/Study/Projects/C++ and C/temp.cc",
+		"/E/Study/Projects/C++ and C/C基础/讨论.cpp",
+		"/E/Data/re_data/PRCP00002.dat",
+		"/E/Data/re_data/temp.dat",
 		"/E/Data/MOD/glcv_es_3.0/src/scmod_0917_c.txt",
 		"/E/Data/MOD/glcv_es_3.0/src/writehead.c",
 		"/E/Study/Projects/C++ and C/Algorithm/02_linked_list_reversal.cc",
@@ -857,13 +855,10 @@
 		"/F/PRCP3.pyx",
 		"/F/队列.c",
 		"/E/Study/Projects/Python/python38/temp.py",
-		"/E/Study/Projects/C++ and C/Algorithm/06_red_blue.cc",
-		"/E/Study/Projects/C++ and C/Algorithm/07_Domino_piling.cc",
 		"/E/Study/Projects/C++ and C/C language/Single list/Patients.txt",
 		"/F/file/study/Data structure/Sequence table/顺序栈.c",
 		"/F/file/study/Data structure/Single list/病患信息系统.c",
 		"/E/Study/Projects/C++ and C/Algorithm/08_Prime_Subtraction.cc",
-		"/E/Study/Projects/C++ and C/Algorithm/Flip_the_Bits.cc",
 		"/E/Study/Projects/C++ and C/Algorithm/05_Perfectly_array.cc",
 		"/E/Study/Projects/C++ and C/Algorithm/03_newton_iteration.cc",
 		"/E/Study/Projects/C++ and C/Algorithm/04_Average_Height.cc",
@@ -874,7 +869,6 @@
 		"/F/队列1.c",
 		"/E/Study/Projects/C++ and C/C language/Sequence table/Students.txt",
 		"/F/file/study/Data structure/Sequence table/队列.c",
-		"/E/Study/Projects/C++ and C/Algorithm/01_fibonacci_sequence.cc",
 		"/E/Study/Projects/mysql/ForeignKey.sql",
 		"/C/Users/Monarch/AppData/Roaming/Sublime Text 3/Packages/User/SublimeTextTrans.sublime-settings",
 		"/C/Users/Monarch/AppData/Roaming/Sublime Text 3/Packages/SublimeTextTrans/SublimeTrans.py",
@@ -930,18 +924,7 @@
 		"/E/Study/Projects/C++ and C/C language/Student management/temp.c",
 		"/E/Study/Projects/C++ and C/C language/Student management/刘强.txt",
 		"/E/Study/Projects/C++ and C/C language/Student management/Students - 副本.txt",
-		"/E/Study/Projects/C++ and C/C language/Student management/123.txt",
-		"/E/Study/Projects/C++ and C/C language/Student management/学生管理系统.c",
-		"/E/Study/Projects/C++ and C/C language/Student management/Students.txt",
-		"/E/Study/Projects/自动提交/automatic.py",
-		"/E/Study/Projects/C++ and C/C language/Student management/学生类型 - 副本.h",
-		"/E/Study/Projects/C++ and C/C language/Student management/实验2.c",
-		"/E/Study/Projects/C++ and C/C++基础/学习/exercise6.cpp",
-		"/C/Users/Monarch/AppData/Roaming/Sublime Text 3/Packages/User/C++ Run.sublime-build",
-		"/C/Users/Monarch/AppData/Roaming/Sublime Text 3/Packages/User/C Run.sublime-build",
-		"/E/Study/Projects/C++ and C/C language/Student management/student.txt",
-		"/F/file/study/data structure/Student management/学生类型.h",
-		"/C/Users/Monarch/AppData/Roaming/Sublime Text 3/Packages/Material Theme/Material-Theme-Darker.sublime-theme"
+		"/E/Study/Projects/C++ and C/C language/Student management/123.txt"
 	],
 	"find":
 	{
@@ -1005,16 +988,16 @@
 	"groups":
 	[
 		{
-			"selected": 2,
+			"selected": 0,
 			"sheets":
 			[
 				{
 					"buffer": 0,
-					"file": "C基础/讨论.cpp",
+					"file": "temp.c",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 1751,
+						"buffer_size": 331,
 						"regions":
 						{
 							"rb_level0":
@@ -1023,20 +1006,36 @@
 								"regions":
 								[
 									[
-										44,
-										45
+										37,
+										38
 									],
 									[
-										45,
-										46
+										48,
+										49
 									],
 									[
-										47,
-										48
+										50,
+										51
 									],
 									[
-										1750,
-										1751
+										263,
+										264
+									],
+									[
+										274,
+										275
+									],
+									[
+										275,
+										276
+									],
+									[
+										277,
+										278
+									],
+									[
+										329,
+										330
 									]
 								],
 								"scope": "level0.rb"
@@ -1047,276 +1046,60 @@
 								"regions":
 								[
 									[
-										105,
-										106
+										64,
+										65
+									],
+									[
+										71,
+										72
+									],
+									[
+										73,
+										74
+									],
+									[
+										80,
+										81
+									],
+									[
+										100,
+										101
 									],
 									[
 										108,
 										109
 									],
 									[
-										111,
-										112
+										110,
+										111
 									],
 									[
-										114,
-										115
-									],
-									[
-										124,
-										125
-									],
-									[
-										138,
-										139
-									],
-									[
-										148,
-										149
+										121,
+										122
 									],
 									[
 										156,
 										157
 									],
 									[
-										165,
-										166
+										168,
+										169
 									],
 									[
-										177,
-										178
+										170,
+										171
 									],
 									[
-										187,
-										188
+										181,
+										182
 									],
 									[
-										195,
-										196
+										302,
+										303
 									],
 									[
-										204,
-										205
-									],
-									[
-										216,
-										217
-									],
-									[
-										226,
-										227
-									],
-									[
-										243,
-										244
-									],
-									[
-										253,
-										254
-									],
-									[
-										261,
-										262
-									],
-									[
-										270,
-										271
-									],
-									[
-										282,
-										283
-									],
-									[
-										292,
-										293
-									],
-									[
-										300,
-										301
-									],
-									[
-										309,
-										310
-									],
-									[
-										322,
-										323
-									],
-									[
-										334,
-										335
-									],
-									[
-										396,
-										397
-									],
-									[
-										403,
-										404
-									],
-									[
-										419,
-										420
-									],
-									[
-										445,
-										446
-									],
-									[
-										475,
-										476
-									],
-									[
-										487,
-										488
-									],
-									[
-										504,
-										505
-									],
-									[
-										520,
-										521
-									],
-									[
-										550,
-										551
-									],
-									[
-										583,
-										584
-									],
-									[
-										613,
-										614
-									],
-									[
-										649,
-										650
-									],
-									[
-										666,
-										667
-									],
-									[
-										674,
-										675
-									],
-									[
-										692,
-										693
-									],
-									[
-										695,
-										696
-									],
-									[
-										1115,
-										1116
-									],
-									[
-										1124,
-										1125
-									],
-									[
-										1139,
-										1140
-									],
-									[
-										1155,
-										1156
-									],
-									[
-										1172,
-										1173
-									],
-									[
-										1183,
-										1184
-									],
-									[
-										1200,
-										1201
-									],
-									[
-										1207,
-										1208
-									],
-									[
-										1224,
-										1225
-									],
-									[
-										1229,
-										1230
-									],
-									[
-										1231,
-										1232
-									],
-									[
-										1236,
-										1237
-									],
-									[
-										1238,
-										1239
-									],
-									[
-										1249,
-										1250
-									],
-									[
-										1270,
-										1271
-									],
-									[
-										1275,
-										1276
-									],
-									[
-										1277,
-										1278
-									],
-									[
-										1282,
-										1283
-									],
-									[
-										1284,
-										1285
-									],
-									[
-										1295,
-										1296
-									],
-									[
-										1316,
-										1317
-									],
-									[
-										1350,
-										1351
-									],
-									[
-										1386,
-										1387
-									],
-									[
-										1403,
-										1404
-									],
-									[
-										1422,
-										1423
-									],
-									[
-										1425,
-										1426
-									],
-									[
-										1737,
-										1738
+										326,
+										327
 									]
 								],
 								"scope": "level1.rb"
@@ -1327,806 +1110,22 @@
 								"regions":
 								[
 									[
-										174,
-										175
+										323,
+										324
 									],
 									[
-										176,
-										177
-									],
-									[
-										213,
-										214
-									],
-									[
-										215,
-										216
-									],
-									[
-										279,
-										280
-									],
-									[
-										281,
-										282
-									],
-									[
-										319,
-										320
-									],
-									[
-										321,
-										322
-									],
-									[
-										335,
-										336
-									],
-									[
-										347,
-										348
-									],
-									[
-										351,
-										352
-									],
-									[
-										363,
-										364
-									],
-									[
-										367,
-										368
-									],
-									[
-										379,
-										380
-									],
-									[
-										383,
-										384
-									],
-									[
-										395,
-										396
-									],
-									[
-										405,
-										406
-									],
-									[
-										407,
-										408
-									],
-									[
-										412,
-										413
-									],
-									[
-										414,
-										415
-									],
-									[
-										446,
-										447
-									],
-									[
-										458,
-										459
-									],
-									[
-										462,
-										463
-									],
-									[
-										474,
-										475
-									],
-									[
-										489,
-										490
-									],
-									[
-										491,
-										492
-									],
-									[
-										496,
-										497
-									],
-									[
-										498,
-										499
-									],
-									[
-										521,
-										522
-									],
-									[
-										533,
-										534
-									],
-									[
-										537,
-										538
-									],
-									[
-										549,
-										550
-									],
-									[
-										584,
-										585
-									],
-									[
-										596,
-										597
-									],
-									[
-										600,
-										601
-									],
-									[
-										612,
-										613
-									],
-									[
-										700,
-										701
-									],
-									[
-										702,
-										703
-									],
-									[
-										706,
-										707
-									],
-									[
-										718,
-										719
-									],
-									[
-										725,
-										726
-									],
-									[
-										752,
-										753
-									],
-									[
-										756,
-										757
-									],
-									[
-										768,
-										769
-									],
-									[
-										775,
-										776
-									],
-									[
-										802,
-										803
-									],
-									[
-										807,
-										808
-									],
-									[
-										809,
-										810
-									],
-									[
-										815,
-										816
-									],
-									[
-										817,
-										818
-									],
-									[
-										821,
-										822
-									],
-									[
-										833,
-										834
-									],
-									[
-										840,
-										841
-									],
-									[
-										867,
-										868
-									],
-									[
-										871,
-										872
-									],
-									[
-										883,
-										884
-									],
-									[
-										890,
-										891
-									],
-									[
-										917,
-										918
-									],
-									[
-										922,
-										923
-									],
-									[
-										924,
-										925
-									],
-									[
-										1065,
-										1066
-									],
-									[
-										1111,
-										1112
-									],
-									[
-										1377,
-										1378
-									],
-									[
-										1379,
-										1380
-									],
-									[
-										1383,
-										1384
-									],
-									[
-										1385,
-										1386
-									],
-									[
-										1430,
-										1431
-									],
-									[
-										1432,
-										1433
-									],
-									[
-										1436,
-										1437
-									],
-									[
-										1448,
-										1449
-									],
-									[
-										1455,
-										1456
-									],
-									[
-										1484,
-										1485
-									],
-									[
-										1488,
-										1489
-									],
-									[
-										1500,
-										1501
-									],
-									[
-										1507,
-										1508
-									],
-									[
-										1536,
-										1537
-									],
-									[
-										1541,
-										1542
-									],
-									[
-										1543,
-										1544
-									],
-									[
-										1549,
-										1550
-									],
-									[
-										1551,
-										1552
-									],
-									[
-										1555,
-										1556
-									],
-									[
-										1567,
-										1568
-									],
-									[
-										1574,
-										1575
-									],
-									[
-										1603,
-										1604
-									],
-									[
-										1607,
-										1608
-									],
-									[
-										1619,
-										1620
-									],
-									[
-										1626,
-										1627
-									],
-									[
-										1655,
-										1656
-									],
-									[
-										1660,
-										1661
-									],
-									[
-										1662,
-										1663
-									],
-									[
-										1687,
-										1688
-									],
-									[
-										1733,
-										1734
+										325,
+										326
 									]
 								],
 								"scope": "level2.rb"
-							},
-							"rb_level3":
-							{
-								"flags": 272,
-								"regions":
-								[
-									[
-										337,
-										338
-									],
-									[
-										339,
-										340
-									],
-									[
-										344,
-										345
-									],
-									[
-										346,
-										347
-									],
-									[
-										353,
-										354
-									],
-									[
-										355,
-										356
-									],
-									[
-										360,
-										361
-									],
-									[
-										362,
-										363
-									],
-									[
-										369,
-										370
-									],
-									[
-										371,
-										372
-									],
-									[
-										376,
-										377
-									],
-									[
-										378,
-										379
-									],
-									[
-										385,
-										386
-									],
-									[
-										387,
-										388
-									],
-									[
-										392,
-										393
-									],
-									[
-										394,
-										395
-									],
-									[
-										448,
-										449
-									],
-									[
-										450,
-										451
-									],
-									[
-										455,
-										456
-									],
-									[
-										457,
-										458
-									],
-									[
-										464,
-										465
-									],
-									[
-										466,
-										467
-									],
-									[
-										471,
-										472
-									],
-									[
-										473,
-										474
-									],
-									[
-										523,
-										524
-									],
-									[
-										525,
-										526
-									],
-									[
-										530,
-										531
-									],
-									[
-										532,
-										533
-									],
-									[
-										539,
-										540
-									],
-									[
-										541,
-										542
-									],
-									[
-										546,
-										547
-									],
-									[
-										548,
-										549
-									],
-									[
-										586,
-										587
-									],
-									[
-										588,
-										589
-									],
-									[
-										593,
-										594
-									],
-									[
-										595,
-										596
-									],
-									[
-										602,
-										603
-									],
-									[
-										604,
-										605
-									],
-									[
-										609,
-										610
-									],
-									[
-										611,
-										612
-									],
-									[
-										708,
-										709
-									],
-									[
-										710,
-										711
-									],
-									[
-										715,
-										716
-									],
-									[
-										717,
-										718
-									],
-									[
-										726,
-										727
-									],
-									[
-										732,
-										733
-									],
-									[
-										758,
-										759
-									],
-									[
-										760,
-										761
-									],
-									[
-										765,
-										766
-									],
-									[
-										767,
-										768
-									],
-									[
-										776,
-										777
-									],
-									[
-										782,
-										783
-									],
-									[
-										823,
-										824
-									],
-									[
-										825,
-										826
-									],
-									[
-										830,
-										831
-									],
-									[
-										832,
-										833
-									],
-									[
-										841,
-										842
-									],
-									[
-										847,
-										848
-									],
-									[
-										873,
-										874
-									],
-									[
-										875,
-										876
-									],
-									[
-										880,
-										881
-									],
-									[
-										882,
-										883
-									],
-									[
-										891,
-										892
-									],
-									[
-										897,
-										898
-									],
-									[
-										1097,
-										1098
-									],
-									[
-										1099,
-										1100
-									],
-									[
-										1108,
-										1109
-									],
-									[
-										1110,
-										1111
-									],
-									[
-										1438,
-										1439
-									],
-									[
-										1440,
-										1441
-									],
-									[
-										1445,
-										1446
-									],
-									[
-										1447,
-										1448
-									],
-									[
-										1456,
-										1457
-									],
-									[
-										1462,
-										1463
-									],
-									[
-										1466,
-										1467
-									],
-									[
-										1479,
-										1480
-									],
-									[
-										1490,
-										1491
-									],
-									[
-										1492,
-										1493
-									],
-									[
-										1497,
-										1498
-									],
-									[
-										1499,
-										1500
-									],
-									[
-										1508,
-										1509
-									],
-									[
-										1514,
-										1515
-									],
-									[
-										1518,
-										1519
-									],
-									[
-										1531,
-										1532
-									],
-									[
-										1557,
-										1558
-									],
-									[
-										1559,
-										1560
-									],
-									[
-										1564,
-										1565
-									],
-									[
-										1566,
-										1567
-									],
-									[
-										1575,
-										1576
-									],
-									[
-										1581,
-										1582
-									],
-									[
-										1585,
-										1586
-									],
-									[
-										1598,
-										1599
-									],
-									[
-										1609,
-										1610
-									],
-									[
-										1611,
-										1612
-									],
-									[
-										1616,
-										1617
-									],
-									[
-										1618,
-										1619
-									],
-									[
-										1627,
-										1628
-									],
-									[
-										1633,
-										1634
-									],
-									[
-										1637,
-										1638
-									],
-									[
-										1650,
-										1651
-									],
-									[
-										1719,
-										1720
-									],
-									[
-										1721,
-										1722
-									],
-									[
-										1730,
-										1731
-									],
-									[
-										1732,
-										1733
-									]
-								],
-								"scope": "level3.rb"
 							}
 						},
 						"selection":
 						[
 							[
-								218,
-								218
+								278,
+								278
 							]
 						],
 						"settings":
@@ -2138,8 +1137,8 @@
 								{
 									"1":
 									[
-										1750,
-										1751
+										329,
+										330
 									]
 								},
 								"icon":
@@ -2154,8 +1153,8 @@
 								{
 									"1":
 									[
-										47,
-										48
+										277,
+										278
 									]
 								},
 								"unmatched":
@@ -2169,46 +1168,36 @@
 								"bh_default_open",
 								"bh_default_close",
 								"bh_default_content",
+								"bh_double_quote",
+								"bh_double_quote_center",
+								"bh_double_quote_open",
+								"bh_double_quote_close",
+								"bh_double_quote_content",
+								"bh_round",
+								"bh_round_center",
+								"bh_round_open",
+								"bh_round_close",
+								"bh_round_content",
+								"bh_unmatched",
+								"bh_unmatched_center",
+								"bh_unmatched_open",
+								"bh_unmatched_close",
+								"bh_unmatched_content",
+								"bh_curly",
+								"bh_curly_center",
+								"bh_curly_open",
+								"bh_curly_close",
+								"bh_curly_content",
+								"bh_regex",
+								"bh_regex_center",
+								"bh_regex_open",
+								"bh_regex_close",
+								"bh_regex_content",
 								"bh_square",
 								"bh_square_center",
 								"bh_square_open",
 								"bh_square_close",
 								"bh_square_content",
-								"bh_double_quote",
-								"bh_double_quote_center",
-								"bh_double_quote_open",
-								"bh_double_quote_close",
-								"bh_double_quote_content",
-								"bh_angle",
-								"bh_angle_center",
-								"bh_angle_open",
-								"bh_angle_close",
-								"bh_angle_content",
-								"bh_c_define",
-								"bh_c_define_center",
-								"bh_c_define_open",
-								"bh_c_define_close",
-								"bh_c_define_content",
-								"bh_unmatched",
-								"bh_unmatched_center",
-								"bh_unmatched_open",
-								"bh_unmatched_close",
-								"bh_unmatched_content",
-								"bh_regex",
-								"bh_regex_center",
-								"bh_regex_open",
-								"bh_regex_close",
-								"bh_regex_content",
-								"bh_round",
-								"bh_round_center",
-								"bh_round_open",
-								"bh_round_close",
-								"bh_round_content",
-								"bh_curly",
-								"bh_curly_center",
-								"bh_curly_open",
-								"bh_curly_close",
-								"bh_curly_content",
 								"bh_single_quote",
 								"bh_single_quote_center",
 								"bh_single_quote_open",
@@ -2218,226 +1207,22 @@
 								"bh_tag_center",
 								"bh_tag_open",
 								"bh_tag_close",
-								"bh_tag_content"
+								"bh_tag_content",
+								"bh_c_define",
+								"bh_c_define_center",
+								"bh_c_define_open",
+								"bh_c_define_close",
+								"bh_c_define_content",
+								"bh_angle",
+								"bh_angle_center",
+								"bh_angle_open",
+								"bh_angle_close",
+								"bh_angle_content"
 							],
 							"color_scheme": "Packages/Color Scheme - Default/Monokai.sublime-color-scheme",
-							"in_converting": true,
 							"is_init_dirty_state": false,
-							"origin_content": "#include<stdio.h>\n#include<math.h>\n\nint main()\n{\n\tint i = 0,j = 2;\n\tdouble a = 3.1415926;\n\tdouble p,l,d,x[11],y[11];\n\tprintf(\"请输入中心坐标点:\\n\");\n\tprintf(\"x[0]=\");\n\tscanf(\"%lf\",&x[0]);\n\tprintf(\"y[0]=\");\n\tscanf(\"%lf\",&y[0]);\n\tprintf(\"请输入第一个凸拐点坐标:\\n\");\n\tprintf(\"x[1]=\");\n\tscanf(\"%lf\",&x[1]);\n\tprintf(\"y[1]=\");\n\tscanf(\"%lf\", &y[1]);\n\tl = sqrt((x[1] - x[0]) * (x[1] - x[0]) + (y[1] - y[0]) * (y[1] - y[0]));\n\tif (y[0] - y[1] > 0)\n\t\tp = a - 0.5 * a - atan((x[0] - x[1]) / (y[0] - y[1]));\n\telse if (y[0] - y[1] == 0)\n\t\tp = a - atan((x[0] - x[1]) / (y[0] - y[1]));\n\telse\n\t\tp = a + 0.5 * a - atan((x[0] - x[1]) / (y[0] - y[1]));\n\t/* p 表示点 1 至点 0 的坐标方位角*/\n\tprintf(\"其余四个凸拐点的坐标为：\\n\");\n\tfor (i = 2; i < 6; i++)\n\t{\n\t\tx[i] = (x[1] - x[0]) * cos((i - 1) * 72.0 / 180.0 * a) - (y[1] - y[0]) * sin((i - 1) * 72.0 / 180.0 * a) + x[0];\n\t\ty[i] = (x[1] - x[0]) * sin((i - 1) * 72.0 / 180.0 * a) + (y[1] - y[0]) * cos((i - 1) * 72.0 / 180.0 * a) + y[0];\n\t\t/*运用向量旋转公式：\n\t\t已知 A（x1,y1）绕 B（x0,y0）旋转到 C（X,Y）且角 ABC 为 θ,则 X-x0=(x1-\n\t\tx0)cosθ-（y1-y0）sinθ;\n\t\tY-y0=(x1-x0)sinθ+（y1-y2）cosθ;\n\t\t*/\n\t\tprintf(\"x[%d]=%.3f,y[%d]=%.3f\\n\", j, x[i], j++, y[i]);\n\t}\n\tprintf(\"五个凹拐点的坐标为：\\n\");\n\n\td = l * sin(54.0 / 180.0 * a) - l * cos(54.0 / 180.0 * a) * tan(36.0 / 180.0 * a);\n\tx[6] = x[0] - d * cos(p + 36.0 / 180.0 * a);\n\ty[6] = y[0] - d * sin(p + 36.0 / 180.0 * a);\n\t/*运用坐标方位角知识，左折角为 36°*/\n\tprintf(\"x[6]=%.3f,y[6]=%.3f\\n\", x[6], y[6]);\n\tj = 7;\n\n\tfor (i = 7; i < 11; i++)\n\t{\n\t\tx[i] = (x[6] - x[0]) * cos((i - 6) * (72.0 / 180.0) * a) - (y[6] - y[0]) * sin((i - 6) * (72.0 / 180.0) * a) + x[0];\n\t\ty[i] = (x[6] - x[0]) * sin((i - 6) * (72.0 / 180.0) * a) + (y[6] - y[0]) * cos((i - 6) * (72.0 / 180.0) * a) + y[0];\n\t\t/*方法同上，旋转*/\n\t\tprintf(\"x[%d]=%.3f,y[%d]=%.3f\\n\", j, x[i], j++, y[i]);\n\t}\n\treturn 0;\n}",
-							"origin_encoding": "GB2312",
 							"rb_syntax": "json",
-							"syntax": "Packages/C++/C++.sublime-syntax",
-							"translate_tabs_to_spaces": false
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 2,
-					"type": "text"
-				},
-				{
-					"buffer": 1,
-					"file": "/E/Data/re_data/PRCP00002.dat",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 75932,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								445,
-								445
-							]
-						],
-						"settings":
-						{
-							"bracket_highlighter.busy": false,
-							"bracket_highlighter.locations":
-							{
-								"close":
-								{
-								},
-								"icon":
-								{
-								},
-								"open":
-								{
-								},
-								"unmatched":
-								{
-								}
-							},
-							"bracket_highlighter.regions":
-							[
-								"bh_double_quote",
-								"bh_double_quote_center",
-								"bh_double_quote_open",
-								"bh_double_quote_close",
-								"bh_double_quote_content",
-								"bh_tag",
-								"bh_tag_center",
-								"bh_tag_open",
-								"bh_tag_close",
-								"bh_tag_content",
-								"bh_c_define",
-								"bh_c_define_center",
-								"bh_c_define_open",
-								"bh_c_define_close",
-								"bh_c_define_content",
-								"bh_curly",
-								"bh_curly_center",
-								"bh_curly_open",
-								"bh_curly_close",
-								"bh_curly_content",
-								"bh_single_quote",
-								"bh_single_quote_center",
-								"bh_single_quote_open",
-								"bh_single_quote_close",
-								"bh_single_quote_content",
-								"bh_default",
-								"bh_default_center",
-								"bh_default_open",
-								"bh_default_close",
-								"bh_default_content",
-								"bh_angle",
-								"bh_angle_center",
-								"bh_angle_open",
-								"bh_angle_close",
-								"bh_angle_content",
-								"bh_unmatched",
-								"bh_unmatched_center",
-								"bh_unmatched_open",
-								"bh_unmatched_close",
-								"bh_unmatched_content",
-								"bh_regex",
-								"bh_regex_center",
-								"bh_regex_open",
-								"bh_regex_close",
-								"bh_regex_content",
-								"bh_round",
-								"bh_round_center",
-								"bh_round_open",
-								"bh_round_close",
-								"bh_round_content",
-								"bh_square",
-								"bh_square_center",
-								"bh_square_open",
-								"bh_square_close",
-								"bh_square_content"
-							],
-							"color_scheme": "Packages/Color Scheme - Default/Monokai.sublime-color-scheme",
-							"is_init_dirty_state": false,
-							"origin_encoding": "ASCII",
-							"syntax": "Packages/Text/Plain text.tmLanguage"
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 1,
-					"type": "text"
-				},
-				{
-					"buffer": 2,
-					"file": "/E/Data/re_data/temp.dat",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 49,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								49,
-								49
-							]
-						],
-						"settings":
-						{
-							"bracket_highlighter.busy": false,
-							"bracket_highlighter.locations":
-							{
-								"close":
-								{
-								},
-								"icon":
-								{
-								},
-								"open":
-								{
-								},
-								"unmatched":
-								{
-								}
-							},
-							"bracket_highlighter.regions":
-							[
-								"bh_curly",
-								"bh_curly_center",
-								"bh_curly_open",
-								"bh_curly_close",
-								"bh_curly_content",
-								"bh_default",
-								"bh_default_center",
-								"bh_default_open",
-								"bh_default_close",
-								"bh_default_content",
-								"bh_c_define",
-								"bh_c_define_center",
-								"bh_c_define_open",
-								"bh_c_define_close",
-								"bh_c_define_content",
-								"bh_tag",
-								"bh_tag_center",
-								"bh_tag_open",
-								"bh_tag_close",
-								"bh_tag_content",
-								"bh_double_quote",
-								"bh_double_quote_center",
-								"bh_double_quote_open",
-								"bh_double_quote_close",
-								"bh_double_quote_content",
-								"bh_unmatched",
-								"bh_unmatched_center",
-								"bh_unmatched_open",
-								"bh_unmatched_close",
-								"bh_unmatched_content",
-								"bh_single_quote",
-								"bh_single_quote_center",
-								"bh_single_quote_open",
-								"bh_single_quote_close",
-								"bh_single_quote_content",
-								"bh_angle",
-								"bh_angle_center",
-								"bh_angle_open",
-								"bh_angle_close",
-								"bh_angle_content",
-								"bh_round",
-								"bh_round_center",
-								"bh_round_open",
-								"bh_round_close",
-								"bh_round_content",
-								"bh_regex",
-								"bh_regex_center",
-								"bh_regex_open",
-								"bh_regex_close",
-								"bh_regex_content",
-								"bh_square",
-								"bh_square_center",
-								"bh_square_open",
-								"bh_square_close",
-								"bh_square_content"
-							],
-							"color_scheme": "Packages/Color Scheme - Default/Monokai.sublime-color-scheme",
-							"is_init_dirty_state": false,
-							"origin_encoding": "ASCII",
-							"syntax": "Packages/Text/Plain text.tmLanguage"
+							"syntax": "Packages/C++/C.sublime-syntax"
 						},
 						"translation.x": 0.0,
 						"translation.y": 0.0,

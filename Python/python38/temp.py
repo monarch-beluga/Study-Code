@@ -8,34 +8,33 @@ author:Monarch
 @modify:
 """
 
-
 import pandas as pd
-from glob import glob
 import numpy as np
 
 
-def f_write(f_name):
-    with open(f_name, 'w') as fp:
-        for x in df2.index:
-            print('{0:11s}{1:12.2f}{2:12.2f}{3:10.3f}'
-                  .format(df2.loc[x, 0], df2.loc[x, 1], df2.loc[x, 2], df2.loc[x, 3]), file=fp, sep='', end='')
-            for y in df2.columns[4:]:
-                print('%10.2f' % df2.loc[x, y], file=fp, sep='', end='')
-            print('', file=fp)
+def df_format(fp, f_mat, Data):
+    for i in range(len(Data)):
+        print(f_mat.format(*Data.loc[i].to_list()), file=fp)
 
 
-var = ['PRCP', 'TMIN', 'SSD', 'WIN', 'RHU', 'TMAX']
-path = r'E:/Data/re_data/'
-for v in var[:1]:
-    files = glob(path+v+'*.dat')
-    for f in files:
-        df = pd.read_csv(f, delim_whitespace=True, header=None, index_col=[0, 1, 2, 3])
-        df[df > 10000] = np.nan
-        df1 = df.interpolate(method='linear', limit_direction='both', axis=1).round(2)
-        df2 = df1.reset_index()
-        out_file = f.replace(v, 'reult/{0}'.format(v))
-        f_write(out_file)
-        print(f.split('\\')[-1], '处理完成！！')
+file_name = r'E:\public\sjy\TAVG\TAVG00000.dat'
+with open(file_name, 'r') as f:
+    lines = f.readlines()
+data = []
+for line in lines:
+    data.append(line.split())
 
+df = pd.DataFrame(data)
+df.set_index([0, 1, 2, 3], inplace=True)
+df = df.astype('float')
+df[df > 100] = np.nan
+df1 = df.interpolate(method='linear', limit_direction='both', axis=1)
+df1.reset_index(inplace=True)
+df1.set_index(0, inplace=True)
+df1 = df1.astype('float')
+df1.reset_index(inplace=True)
 
+with open(file_name, 'w') as f:
+    out_format = '{:11s}'+'{:12.2f}'*2+'{:10.3f}'+'{:10.2f}'*19
+    df_format(f, out_format, df1)
 

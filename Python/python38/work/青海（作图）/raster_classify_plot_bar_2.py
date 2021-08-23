@@ -5,7 +5,8 @@ Created on Sun Aug  2 16:08:18 2020
 @author: YeHui
 
 """
-import os, gdal
+import os
+from osgeo import gdal
 import pandas as pd
 import numpy as np
 from glob import glob as glb
