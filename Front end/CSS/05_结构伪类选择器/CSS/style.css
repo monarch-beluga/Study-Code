@@ -1,0 +1,16 @@
+/*选择 ul 的第一个 子元素*/
+ul li:first-child{
+    background: red;
+}
+/*选择 ul 的最后一个 子元素*/
+ul li:last-child{
+    background: green;
+}
+/*定位该元素父元素指定位置的子元素，且仅当规定位置的元素是该元素时生效,按顺序选*/
+p:nth-child(2){
+    background: blue;
+}
+/*定位该元素父元素指定位置的该类型子元素，按类型选*/
+p:nth-of-type(2){
+    background: yellow;
+}

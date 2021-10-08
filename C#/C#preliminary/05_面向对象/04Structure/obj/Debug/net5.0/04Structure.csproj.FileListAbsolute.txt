@@ -1,0 +1,16 @@
+E:\Study\Projects\C#\C#preliminary\05_面向对象\04Structure\bin\Debug\net5.0\04Structure.exe
+E:\Study\Projects\C#\C#preliminary\05_面向对象\04Structure\bin\Debug\net5.0\04Structure.deps.json
+E:\Study\Projects\C#\C#preliminary\05_面向对象\04Structure\bin\Debug\net5.0\04Structure.runtimeconfig.json
+E:\Study\Projects\C#\C#preliminary\05_面向对象\04Structure\bin\Debug\net5.0\04Structure.runtimeconfig.dev.json
+E:\Study\Projects\C#\C#preliminary\05_面向对象\04Structure\bin\Debug\net5.0\04Structure.dll
+E:\Study\Projects\C#\C#preliminary\05_面向对象\04Structure\bin\Debug\net5.0\ref\04Structure.dll
+E:\Study\Projects\C#\C#preliminary\05_面向对象\04Structure\bin\Debug\net5.0\04Structure.pdb
+E:\Study\Projects\C#\C#preliminary\05_面向对象\04Structure\obj\Debug\net5.0\04Structure.GeneratedMSBuildEditorConfig.editorconfig
+E:\Study\Projects\C#\C#preliminary\05_面向对象\04Structure\obj\Debug\net5.0\04Structure.AssemblyInfoInputs.cache
+E:\Study\Projects\C#\C#preliminary\05_面向对象\04Structure\obj\Debug\net5.0\04Structure.AssemblyInfo.cs
+E:\Study\Projects\C#\C#preliminary\05_面向对象\04Structure\obj\Debug\net5.0\04Structure.csproj.CoreCompileInputs.cache
+E:\Study\Projects\C#\C#preliminary\05_面向对象\04Structure\obj\Debug\net5.0\04Structure.dll
+E:\Study\Projects\C#\C#preliminary\05_面向对象\04Structure\obj\Debug\net5.0\ref\04Structure.dll
+E:\Study\Projects\C#\C#preliminary\05_面向对象\04Structure\obj\Debug\net5.0\04Structure.pdb
+E:\Study\Projects\C#\C#preliminary\05_面向对象\04Structure\obj\Debug\net5.0\04Structure.genruntimeconfig.cache
+E:\Study\Projects\C#\C#preliminary\05_面向对象\04Structure\obj\Debug\net5.0\04Structure.csprojAssemblyReference.cache

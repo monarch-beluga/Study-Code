@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>float</title>
+
+    <style>
+        div{
+            margin: 10px;
+            padding: 5px;
+        }
+        .div{
+            border: 1px black solid;
+            /*height: 200px;*/
+            /*overflow: hidden;*/
+        }
+        .div:after{
+            content: '';
+            display: block;
+            clear: both;
+
+        }
+        .div1{
+            border: 1px #f00 dashed;
+            display: inline-block;
+            float: left;
+        }
+        .div2{
+            border: 1px #00F dashed;
+            display: inline-block;
+            float: left;
+        }
+        .div3{
+            border: 1px #0F0 dashed;
+            display: inline-block;
+            float: left;
+        }
+        /*
+        clear: right;   右侧不允许有浮动元素
+        clear: left;    左侧不允许有浮动元素
+        clear: both;    两侧不允许有浮动元素
+        */
+        .div4{
+            border: 1px #666 dashed;
+            font-size: 12px;
+            line-height: 23px;
+            display: inline-block;
+            float: left;
+        }
+    </style>
+
+</head>
+<body>
+<div class="div">
+    <div class="div1"><img src="../10_定位/images/background.png" alt="背景"></div>
+    <div class="div2"><img src="images/head.png" alt="头部"></div>
+    <div class="div3"><img src="images/head2.png" alt="头部2"></div>
+    <div class="div4">
+        浮动的盒子可以向左浮动，也可以向右浮动，直到它的外边缘碰到包含框或另一个浮动盒子为止。
+    </div>
+    <!--<div class="clear" style="clear: both"></div>-->
+</div>
+
+</body>
+</html>

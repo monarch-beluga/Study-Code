@@ -1,0 +1,27 @@
+/*标签选择器：会选择到页面所有的这个标签的元素*/
+h1{
+    color: #e8475d;
+    background: #5491ec;
+    border-radius: 24px;
+    text-align: center;
+    font-size: 50px;
+    margin-block-start: 1em;
+    margin-block-end: 1em;
+    margin-inline-start: 50px;
+    margin-inline-end: 50px;
+}
+/*类选择器：格式：.class的名称{}*/
+.test1{
+    color: #3748ff;
+    background: #ffffff;
+    font-size: 2em;
+    margin-block-start: 0.67em;
+    margin-block-end: 0.67em;
+    margin-inline-start: 0px;
+    margin-inline-end: 0px;
+}
+/*id选择器：id必须保证全局唯一*/
+#test2{
+    color: #de84e8;
+    font-size: 3rem;
+}

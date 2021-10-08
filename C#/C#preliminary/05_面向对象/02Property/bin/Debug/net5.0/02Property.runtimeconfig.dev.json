@@ -1,0 +1,9 @@
+{
+  "runtimeOptions": {
+    "additionalProbingPaths": [
+      "C:\\Users\\Monarch\\.dotnet\\store\\|arch|\\|tfm|",
+      "C:\\Users\\Monarch\\.nuget\\packages",
+      "E:\\Study\\Visual Studio\\Visual Studio Shared\\NuGetPackages"
+    ]
+  }
+}

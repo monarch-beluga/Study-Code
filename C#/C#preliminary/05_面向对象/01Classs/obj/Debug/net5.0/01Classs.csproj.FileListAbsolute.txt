@@ -1,0 +1,15 @@
+E:\Study\Projects\C#\C#preliminary\05_面向对象\01Classs\bin\Debug\net5.0\01Classs.exe
+E:\Study\Projects\C#\C#preliminary\05_面向对象\01Classs\bin\Debug\net5.0\01Classs.deps.json
+E:\Study\Projects\C#\C#preliminary\05_面向对象\01Classs\bin\Debug\net5.0\01Classs.runtimeconfig.json
+E:\Study\Projects\C#\C#preliminary\05_面向对象\01Classs\bin\Debug\net5.0\01Classs.runtimeconfig.dev.json
+E:\Study\Projects\C#\C#preliminary\05_面向对象\01Classs\bin\Debug\net5.0\01Classs.dll
+E:\Study\Projects\C#\C#preliminary\05_面向对象\01Classs\bin\Debug\net5.0\ref\01Classs.dll
+E:\Study\Projects\C#\C#preliminary\05_面向对象\01Classs\bin\Debug\net5.0\01Classs.pdb
+E:\Study\Projects\C#\C#preliminary\05_面向对象\01Classs\obj\Debug\net5.0\01Classs.GeneratedMSBuildEditorConfig.editorconfig
+E:\Study\Projects\C#\C#preliminary\05_面向对象\01Classs\obj\Debug\net5.0\01Classs.AssemblyInfoInputs.cache
+E:\Study\Projects\C#\C#preliminary\05_面向对象\01Classs\obj\Debug\net5.0\01Classs.AssemblyInfo.cs
+E:\Study\Projects\C#\C#preliminary\05_面向对象\01Classs\obj\Debug\net5.0\01Classs.csproj.CoreCompileInputs.cache
+E:\Study\Projects\C#\C#preliminary\05_面向对象\01Classs\obj\Debug\net5.0\01Classs.dll
+E:\Study\Projects\C#\C#preliminary\05_面向对象\01Classs\obj\Debug\net5.0\ref\01Classs.dll
+E:\Study\Projects\C#\C#preliminary\05_面向对象\01Classs\obj\Debug\net5.0\01Classs.pdb
+E:\Study\Projects\C#\C#preliminary\05_面向对象\01Classs\obj\Debug\net5.0\01Classs.genruntimeconfig.cache

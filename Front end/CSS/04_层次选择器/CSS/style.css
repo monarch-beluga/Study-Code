@@ -1,0 +1,16 @@
+/*后代选择器*/
+body p{
+    background: red;
+}
+/*子选择器*/
+body>p{
+    background: #3cbda6;
+}
+/*相邻兄弟选择器*/
+.active + p{
+    background: #a13d30;
+}
+/*通用兄弟选择器*/
+.active~p{
+    background: #a13d30;
+}

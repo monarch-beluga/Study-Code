@@ -1,0 +1,35 @@
+#div{
+    width: 250px;
+    background: antiquewhite;
+}
+.title{
+    font: bold 25px kaiti;
+    text-indent: 2em;
+    /*颜色，图片，图片位置，平铺方式*/
+    background: red url("images/down.png") 225px 3px no-repeat;
+}
+/*
+list-style:
+    none   去掉原点
+    circle 空心圆
+    decimal 数字
+    square  正方形
+*/
+ul li {
+    height: 30px;
+    list-style: none;
+    /*text-indent: 1em;*/
+    background-image: url("images/right.png");
+    background-position-x: 185px;
+    background-repeat: no-repeat;
+    display: list-item;
+}
+a{
+    text-decoration: none;
+    color: black;
+    font-size: 18px;
+}
+a:hover{
+    color: orange;
+    text-decoration: underline;
+}

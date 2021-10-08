@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>z-index</title>
+
+    <style>
+        #content{
+            width: 250px;
+            margin: 0;
+            padding: 0;
+            overflow: hidden;
+            font-size: 12px;
+            line-height: 25px;
+            border: 1px solid black;
+        }
+        ul,li{
+            margin: 0;
+            padding: 0;
+        }
+        #content ul{
+            position: relative;
+        }
+        .text1,.tip{
+            position: absolute;
+            width: 250px;
+            top: 95px;
+        }
+        .text1{
+            color: white;
+            z-index: 80;
+        }
+        .tip{
+            background-color: black;
+        }
+
+    </style>
+
+</head>
+<body>
+
+<div id="content">
+    <ul>
+        <li><img src="images/background.png" alt=""></li>
+        <li class="text1">京东商城</li>
+        <li class="tip"></li>
+        <li>时间: 2021-04-03</li>
+        <li>地点: 迟云山</li>
+    </ul>
+</div>
+
+</body>
+</html>

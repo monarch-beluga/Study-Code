@@ -1,0 +1,31 @@
+/*标签都具有一些默认的值，通用操作：*/
+body,h1,li,ul,a{
+    margin: 0;
+    text-decoration: none;
+}
+/*border: 粗细、样式、颜色*/
+#box{
+    width: 300px;
+    border: 1px solid red;
+    /*使标签水平居中的方式*/
+    margin: 0 auto;
+    padding: 0;
+}
+h2{
+    font-size: 16px;
+    background: #3cbda6;
+    line-height: 30px;
+    color: red;
+}
+form{
+    background: #3cbda6;
+}
+div:nth-of-type(1)>label>input{
+    border: 3px solid black;
+}
+div:nth-of-type(2)>label>input{
+    border: 3px dashed #3748ff;
+}
+div:nth-of-type(3)>label>input{
+    border: 2px dashed #de84e8;
+}

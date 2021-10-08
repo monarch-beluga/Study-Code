@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Map和Set</title>
+</head>
+<body>
+
+<script>
+    'use strict';
+
+    // let names = ['tom', 'jack', 'haha'];
+    // let scores = [100, 90, 80];
+    // 定义
+    let map = new Map([['tom', 100], ['jack', 90], ['hhh', 80]]);
+    console.log(map.get('tom'));        // 100
+    // map添加值
+    map.set('lei', 100);
+    console.log(map);   // {"tom" => 100, "jack" => 90, "hhh" => 80, "lei" => 100}
+
+    // 定义
+    let set = new Set([3, 1, 2, 1, 2]);   // 去重
+    console.log(set);       // {3, 1, 2}
+    // 增加
+    set.add(10);
+    console.log(set);       // {3, 1, 2, 10}
+    // 删除
+    set.delete(10);
+    console.log(set);       // {3, 1, 2}
+    // 查看是否包含某个元素
+    console.log(set.has(3));    // true
+    console.log(set.has(10));   // false
+</script>
+
+</body>
+</html>

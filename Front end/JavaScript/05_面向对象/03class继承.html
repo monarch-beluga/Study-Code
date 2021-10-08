@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>class继承</title>
+</head>
+<body>
+
+<script>
+    'use strict';
+
+    class Student{
+        constructor(name) {         // 构造函数
+            this.name = name;
+        }
+
+        hello(){                    // 方法
+            console.log('Hello');
+        }
+    }
+
+    let xiaoming = new Student('小明');
+    console.log(xiaoming.name);         // 小明
+    xiaoming.hello();                   // Hello
+
+    class xiaoStudent extends Student{      // extends 继承
+        constructor(name, grade) {
+            super(name);
+            this.grade = grade;
+        }
+
+        myGrade(){
+            console.log('我是一名小学生');
+        }
+    }
+
+    let xiaohong = new xiaoStudent('小红', 12);
+    xiaohong.hello();       // Hello
+    xiaohong.myGrade();     // 我是一名小学生
+    console.log(xiaohong);
+    /*grade: 12
+    name: "小红"
+    __proto__: Student
+    constructor: class xiaoStudent
+    myGrade: ƒ myGrade()*/
+</script>
+
+</body>
+</html>

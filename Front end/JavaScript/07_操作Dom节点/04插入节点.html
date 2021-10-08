@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>插入节点</title>
+
+    <link rel="stylesheet" href="00style.css">
+
+</head>
+<body>
+
+<p id="java">JAVA</p>
+<div id="list">
+    <p id="se">JavaSE</p>
+    <p id="ee">JavaEE</p>
+    <p id="me">JavaME</p>
+</div>
+<button onclick="button_click1()">点击添加</button>
+<button onclick="button_click2()">点击移动</button>
+<button onclick="button_click3()">点击插入</button>
+
+<script>
+    let java = document.getElementById('java');
+    let div = document.getElementById('list');
+    // 添加节点
+    function button_click1(){
+        let newp = document.createElement('p');         // 创建一个新节点
+        // 设置属性
+        // newp.id = 'js';
+        newp.setAttribute('id', 'js');
+        newp.innerText = 'Javascript';
+        // 添加
+        div.append(newp);
+    }
+    // 添加现有节点(移动)
+    function button_click2(){
+        div.append(java);
+    }
+    // 插入节点
+    function button_click3(){
+        let newp = document.createElement('h1');
+        newp.setAttribute('class', 'js');
+        newp.innerText = '标题';
+        java.insertAdjacentElement('beforebegin', newp);
+    }
+
+</script>
+
+</body>
+</html>

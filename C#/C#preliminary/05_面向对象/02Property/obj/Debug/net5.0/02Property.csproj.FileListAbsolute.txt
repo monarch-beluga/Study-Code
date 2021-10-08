@@ -1,0 +1,16 @@
+E:\Study\Projects\C#\C#preliminary\05_面向对象\02Property\bin\Debug\net5.0\02Property.exe
+E:\Study\Projects\C#\C#preliminary\05_面向对象\02Property\bin\Debug\net5.0\02Property.deps.json
+E:\Study\Projects\C#\C#preliminary\05_面向对象\02Property\bin\Debug\net5.0\02Property.runtimeconfig.json
+E:\Study\Projects\C#\C#preliminary\05_面向对象\02Property\bin\Debug\net5.0\02Property.runtimeconfig.dev.json
+E:\Study\Projects\C#\C#preliminary\05_面向对象\02Property\bin\Debug\net5.0\02Property.dll
+E:\Study\Projects\C#\C#preliminary\05_面向对象\02Property\bin\Debug\net5.0\ref\02Property.dll
+E:\Study\Projects\C#\C#preliminary\05_面向对象\02Property\bin\Debug\net5.0\02Property.pdb
+E:\Study\Projects\C#\C#preliminary\05_面向对象\02Property\obj\Debug\net5.0\02Property.GeneratedMSBuildEditorConfig.editorconfig
+E:\Study\Projects\C#\C#preliminary\05_面向对象\02Property\obj\Debug\net5.0\02Property.AssemblyInfoInputs.cache
+E:\Study\Projects\C#\C#preliminary\05_面向对象\02Property\obj\Debug\net5.0\02Property.AssemblyInfo.cs
+E:\Study\Projects\C#\C#preliminary\05_面向对象\02Property\obj\Debug\net5.0\02Property.csproj.CoreCompileInputs.cache
+E:\Study\Projects\C#\C#preliminary\05_面向对象\02Property\obj\Debug\net5.0\02Property.dll
+E:\Study\Projects\C#\C#preliminary\05_面向对象\02Property\obj\Debug\net5.0\ref\02Property.dll
+E:\Study\Projects\C#\C#preliminary\05_面向对象\02Property\obj\Debug\net5.0\02Property.pdb
+E:\Study\Projects\C#\C#preliminary\05_面向对象\02Property\obj\Debug\net5.0\02Property.genruntimeconfig.cache
+E:\Study\Projects\C#\C#preliminary\05_面向对象\02Property\obj\Debug\net5.0\02Property.csprojAssemblyReference.cache

@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>事件</title>
+    <style>
+        div{
+            height: 200px;
+            width: 200px;
+            margin: auto;
+            border: solid 1px red;
+        }
+    </style>
+    <script src="https://cdn.bootcdn.net/ajax/libs/jquery/3.6.0/jquery.js"></script>
+</head>
+<body>
+<!-- 获取鼠标当前坐标 -->
+<p>
+    mouse: <span id="mouseMove"></span>
+</p>
+在这里移动鼠标试试:
+<div id="divMove">
+
+</div>
+
+<script>
+    // 当网页元素加载完毕之后，响应事件
+    // $(function (){
+    //     $('#divMove').mousemove(function (e){
+    //         $('#mouseMove').text(e.pageX+','+e.pageY);
+    //     });
+    // })
+    function onMouseWheel(e) {
+        console.log(e.deltaMode);
+    }
+    document.getElementById("divMove").onmousewheel = function (e){
+        console.log(e.wheelDelta);
+        $('#mouseMove').text(e.pageX+','+e.pageY);
+    }
+</script>
+
+</body>
+</html>

@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Date</title>
+</head>
+<body>
+
+<script>
+    'use strict';
+
+    let date = new Date();  // Sat Apr 10 2021 23:44:20 GMT+0800 (中国标准时间) {}
+    console.log(date.getFullYear());     // 年   2021
+    console.log(date.getMonth());        // 月   3
+    console.log(date.getDate());         // 日   10
+    console.log(date.getDay());          // 星期  6
+    console.log(date.getHours());        // 时   23
+    console.log(date.getMinutes());      // 分   48
+    console.log(date.getSeconds());      // 秒   31
+    // 时间戳 由1970 1.1 0：00：00到现在的毫秒数
+    console.log(date.getTime());         // 1618069711969
+    // 时间戳转为时间
+    console.log(new Date(1618069711969));
+    // Sat Apr 10 2021 23:48:31 GMT+0800 (中国标准时间)
+
+    // 本地日期时间
+    console.log(date.toLocaleString());     // 2021/4/10下午11:53:50
+    // 本地日期
+    console.log(date.toLocaleDateString()); // 2021/4/10
+    // 本地时间
+    console.log(date.toLocaleTimeString()); // 下午11:53:50
+    // GMT
+    console.log(date.toUTCString()); // Sat, 10 Apr 2021 15:56:17 GMT
+</script>
+
+</body>
+</html>

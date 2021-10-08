@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>超链接伪类</title>
+
+    <style>
+        /*默认的颜色*/
+        a{
+            text-decoration: none;
+            color: #000000;
+        }
+        /*鼠标悬浮的状态*/
+        a:hover{
+            color: orange;
+        }
+        /*鼠标按住的状态*/
+        a:active{
+            color: green;
+        }
+        a:visited{
+            color: #353434;
+        }
+        #price{
+            font-weight: bolder;
+            text-shadow: #373137 3px 3px 3px;       /*阴影*/
+        }
+    </style>
+
+</head>
+<body>
+
+<a href="#">
+    <img src="images/b.png" alt="码出高效">
+</a>
+<p>
+    <a href="#">码出高效：Java开发手册</a>
+</p>
+<p>
+    <a href="#">作者：杨冠宝 / 高海慧</a>
+</p>
+<p id="price">
+    ￥99
+</p>
+
+
+</body>
+</html>

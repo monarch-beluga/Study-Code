@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>对象</title>
+</head>
+<body>
+<script>
+    'use strict';
+
+    let student = {
+        name: 'Monarch',
+        age: 3,
+        email: '2134567892@qq.com',
+        score: 600
+    };
+    console.log(student);
+    /*age: 3
+    email: "2134567892@qq.com"
+    name: "Monarch"
+    score: 600*/
+    // 对象赋值
+    student.age = 18;
+    console.log(student.age);   // 18
+    // 使用不存在的属性
+    console.log(student.hah);   // undefined
+    // 动态删减属性
+    delete student.name;
+    console.log(student);
+    /*age: 18
+    email: "2134567892@qq.com"
+    score: 600*/
+    // 动态增加属性
+    student.name = "Yan";
+    console.log(student);
+    /*age: 18
+    email: "2134567892@qq.com"
+    name: "Yan"
+    score: 600*/
+    // 判断属性或方法是否在这个对象中
+    console.log('name' in student);     // true
+    console.log('Yan' in student);      // false
+    console.log('toString' in student); // true,继承于Object类
+    // 判断一个属性是否是这个对象本事拥有
+    console.log(student.hasOwnProperty('toString'));    // false
+    console.log(student.hasOwnProperty('age'));         // true
+</script>
+</body>
+</html>
