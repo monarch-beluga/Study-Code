@@ -1,11 +1,14 @@
+# -*- coding:utf-8 _*-
+"""
+@version:
+author:Monarch
+@time: 2021/07/14
+@file: 气象数据处理.py
+@function:
+@modify:
+"""
 
-import pandas as pd
-from sqlalchemy import create_engine
+from work.Meteodata_import_sql.import_data import me_data_import
 
-# conn = create_engine('mysql+pymysql://root:123456@127.0.0.1:3306/shop', encoding='utf8')
-conn = create_engine('mysql+pymysql://root:123456@192.168.28.183:3306/meteodata', encoding='utf8')
-f = r'E:\public\Data\station.txt'
+me_data_import(r'H:\Monarch\Data\Asia_2020.txt', 2020, 'meteodata_extens')
 
-df = pd.read_csv(f, header=0)
-df1 = df.rename(columns={'台站':'code', 'evela':'elev'})
-df1.to_sql('station', conn, if_exists='append', index=False, index_label=False)
