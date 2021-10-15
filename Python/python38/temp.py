@@ -8,7 +8,7 @@ author:Monarch
 @modify:
 """
 
-from work.Meteodata_import_sql.import_data import me_data_import
+import math
 
-me_data_import(r'H:\Monarch\Data\Asia_2020.txt', 2020, 'meteodata_extens')
+print(int(math.sqrt(8))+1)
 
