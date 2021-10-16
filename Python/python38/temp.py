@@ -8,7 +8,7 @@ author:Monarch
 @modify:
 """
 
-from work.Meteodata_import_sql.import_data import me_data_import
+from Monarch.import_me_data import me_data_import
 
 me_data_import(r'H:\Monarch\Data\Asia_2020.txt', 2020, 'meteodata_extens')
 
