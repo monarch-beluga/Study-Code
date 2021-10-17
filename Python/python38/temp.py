@@ -8,7 +8,9 @@ author:Monarch
 @modify:
 """
 
-import math
+from work.Meteodata_import_sql.import_data import *
+#
+#
+creat_station(r'H:\Monarch\Data\temp')
 
-print(int(math.sqrt(8))+1)
 

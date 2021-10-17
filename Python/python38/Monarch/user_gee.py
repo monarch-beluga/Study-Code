@@ -112,6 +112,15 @@ def cloud_free_landsat_sr(img):
     return img.updateMask(mask)
 
 
+def rm_cloud_s2_sr(image):
+    qa = image.select('QA60')
+    cloud_bit_mask = 1 << 10
+    cirrus_bit_mask = 1 << 11
+    mask = qa.bitwiseAnd(cloud_bit_mask).eq(0) \
+               .And(qa.bitwiseAnd(cirrus_bit_mask).eq(0))
+    return image.updateMask(mask)
+
+
 def clip_dow_merge(geo: ee.Geometry, image: ee.Image, outfile: str, scale: int,
                    crs='epsg:4326', sep=0.25):
     """
