@@ -1,86 +1,63 @@
 #include<iostream>
-
+#include<string>
+#include<stdio.h>
 using namespace std;
-typedef struct roads
-{
-    int city_end;
-    int lenth;
-    roads* next;
-}*r;
-typedef struct city
-{
-    int teams;
-    roads* head;
-} C;
 
 int main()
 {
-    #if ONLINE_JUDGE
+        #if ONLINE_JUDGE
 #else
     freopen("input.txt", "r", stdin);
 #endif
-    int n, m, c1, c2;
-    int a, b, l, k;
-    r p;
-    cin >> n >> m >> c1 >> c2;
-    C *cs = new C[n];
-    int *queue = new int[n*2];
-//     int v = new int[n];
-    int *minD = new int[n];
-    int *maxR = new int[n];
-    int *path = new int[n];
-    for(int i = 0; i < n; i++)
+    int k, n, pre;
+    int sum[3][3] = {0, 0, 0, 0, 0, 0, 0, 0, 0};
+    int c1;
+    cin >> k;
+    cin >> n;
+    if(n < 0)
+        c1 = 0;
+    else
+        c1 = 1;
+    sum[0][0] = sum[c1][0] = sum[0][1] = sum[c1][1] = n;
+    for(int i = 1; i < k; i++)
     {
-        cin >> cs[i].teams;
-        cs[i].head = NULL;
-//         v[i] = 0;
-        minD[i] = 999999;
-        maxR[i] = -1;
-        path[i] = 1;
-    }
-    minD[c1] = 0;
-    maxR[c1] = cs[c1].teams;
-    for(int i = 0; i < m; i++)
-    {
-        p = new roads;
-        cin >> a >> b >> l;
-        p->city_end = b;
-        p->lenth = l;
-        p->next = cs[a].head;
-        cs[a].head = p;
-        p = new roads;
-        p->city_end = a;
-        p->lenth = l;
-        p->next = cs[b].head;
-        cs[b].head = p;
-    }
-    a = 0;
-    b = 0;
-    for(queue[b++]=c1; b > a;)
-    {
-        k = queue[a++];
-        p = cs[k].head;
-        while(p!=NULL)
+        pre = n;
+        cin >> n;
+        if(n*pre < 0)
         {
-            if(minD[k]+p->lenth < minD[p->city_end])
+            if(n < 0)
             {
-                minD[p->city_end] = minD[k]+p->lenth;
-                if(p->city_end != c2)
-                    queue[b++] = p->city_end;
-                path[p->city_end] = path[k];
-                maxR[p->city_end] = maxR[k] + cs[p->city_end].teams;
+                sum[0][2] = sum[c1][2] = pre;
+                if(c1 == 2)
+                {
+                    c1 = sum[0][0] > sum[1][0]?(sum[0][0]>=sum[2][0]?0:2):(sum[1][0]>=sum[2][0]?1:2);
+                    if(c1 == 2)
+                    {
+                        for(int j = 0; j < 3; j++)
+                            sum[0][j] = sum[1][j] = sum[2][j];
+                    }
+                    sum[2][0] = 0;
+                    c1 = 2;
+                }
             }
-            else if((minD[k]+p->lenth == minD[p->city_end]))
+            else 
             {
-                if(maxR[p->city_end] < maxR[k] + cs[p->city_end].teams)
-                    maxR[p->city_end] = maxR[k] + cs[p->city_end].teams;
-                path[p->city_end] += path[k];
+                if(c1 == 0)
+                    sum[0][0] = 0;
+                c1++;
+                sum[c1][1] = sum[0][1] = n;
             }
-
-            p = p->next;
         }
+        sum[0][0] += n;
+        if(n > 0)
+            sum[c1][0] += n;
     }
-    cout << path[c2] << " " << maxR[c2];
-    delete []cs, path, maxR, minD, queue;
+    if(c1 == 0)
+        cout << 0 << " " << sum[0][1] << " " << n;
+    else
+    {
+        c1 = sum[0][0] > sum[1][0]?(sum[0][0]>=sum[2][0]?0:2):(sum[1][0]>=sum[2][0]?1:2);
+        cout << sum[c1][0] << " " << sum[c1][1] << " " << sum[c1][2];
+    }
     return 0;
 }
