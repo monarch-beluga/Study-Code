@@ -63,6 +63,7 @@ def sg_images(images: ee.ImageCollection, window_size: int, order: int, deriv=0)
     y = images.sort('system:time_start', False).toBands().toArray()
     times = images.aggregate_array('system:time_start')
     ids = images.aggregate_array('system:id')
+    band_name = images.first().bandNames().get(0).getInfo()
     y1 = images.sort('system:time_start', True).toBands().toArray()
     y0 = y1.arrayGet(0)
     first_filling = y.arraySlice(0, -half_window - 1, -1).subtract(y0).abs().multiply(-1).add(y0)
@@ -73,7 +74,7 @@ def sg_images(images: ee.ImageCollection, window_size: int, order: int, deriv=0)
     smooth = []
     for i in run_length.getInfo():
         smooth.append(y_ext.arraySlice(0, ee.Number(i), ee.Number(i).add(window_size))
-                      .multiply(impulse_response).arrayReduce("sum", [0]).arrayGet([0])
+                      .multiply(impulse_response).arrayReduce("sum", [0]).arrayGet([0]).rename(band_name+f'_{i}')
                       .set({'system:time_start': times.get(i), 'system:id': ids.get(i)}))
     return smooth
 
