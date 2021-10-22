@@ -1,7 +1,7 @@
 
 import dbfread
 import numpy as np
-from glob2 import glob
+from glob import glob
 from scipy import stats
 import matplotlib.pyplot as plt
 

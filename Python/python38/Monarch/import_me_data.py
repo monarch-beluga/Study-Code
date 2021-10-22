@@ -15,6 +15,19 @@ from sqlalchemy import create_engine
 
 
 def create_table(year, database, sql_name, pwd, host, port):
+    """
+
+    Args:
+        year: int, 气象数据年份
+        database: str, 数据库名称, 默认为meteodata
+        sql_name: str, mysql数据库用户名, 默认root
+        pwd: str,  mysql数据库密码, 默认123456
+        port: str, 数据库主机ip地址, 默认localhost
+        host: int, 数据库端口, 默认3306
+
+    Returns:
+
+    """
     conn = pymysql.connect(host=host, password=pwd, port=port, user=sql_name, db=database)
     sql = f"CREATE table if not exists `all{year}` (Station Text,Year int,Month int,Day int,APRE real,DMXP real," \
           f" DMNP real, MTEM real,DMXT real,DMNT real,AVRH real,MNRH real, PREP real, MEWS real, MXWS real, DMWS real," \
@@ -85,30 +98,115 @@ def me_data_import(filename: str, year: int, database='meteodata', sql_name='roo
 
     data.to_sql(f'all{year}', conn, if_exists='append', index=False)
 
-    print('import  success !!!')
+    print(f'{filename} import  success !!!')
 
 
-def creat_station(path, sql_name='root', pwd='123456', host='localhost',
-                   port=3306):
-    conn = pymysql.connect(host=host, password=pwd, port=port, user=sql_name)
+def creat_station_shp(path: str, sql_name='root', pwd='123456', host='localhost', port=3306):
+    """
+
+    Args:
+        path: shapefile文件生成路径
+        sql_name: str, mysql数据库用户名, 默认root
+        pwd: str,  mysql数据库密码, 默认123456
+        port: str, 数据库主机ip地址, 默认localhost
+        host: int, 数据库端口, 默认3306
+
+    Returns:
+
+    """
     f_names = ['ChinaStations.shp', 'ForeignStations.shp']
     dbs = ['meteodata', 'meteodata_extens']
     for f_name, db in zip(f_names, dbs):
-        sql = f"select * from {db}.`station`"
-        df = pd.read_sql(sql, conn).iloc[:, :5]
-        df = df.loc[:, ['code', 'stationName', 'Y', 'X', 'elev']]
-        data = gpd.GeoDataFrame(df, geometry=gpd.points_from_xy(df.X, df.Y), crs='EPSG:4326')
-        data.columns = ['Code', 'Station', 'Lat', 'Lon', 'elev', 'geometry']
-        data[['Lat', 'Lon', 'elev']] = data[['Lat', 'Lon', 'elev']].astype(float)
+        data = creat_station_geopandas(db, sql_name, pwd, host, port)
         data.to_file(f'{path}/{f_name}', encoding='utf-8')
         print(f"{f_name} creat success !!!")
-    conn.close()
     gdf = pd.concat([gpd.read_file(f'{path}/{shp}') for shp in f_names]).pipe(gpd.GeoDataFrame)
     gdf.to_crs('EPSG:4326')
     gdf.to_file(f'{path}/tStations.shp', encoding='utf-8')
 
 
+def creat_station_geopandas(db: str, sql_name='root', pwd='123456', host='localhost', port=3306):
+    """
+
+    Args:
+        db: str, 数据库名称, 默认为meteodata
+        sql_name: str, mysql数据库用户名, 默认root
+        pwd: str,  mysql数据库密码, 默认123456
+        port: str, 数据库主机ip地址, 默认localhost
+        host: int, 数据库端口, 默认3306
+
+    Returns:
+        data: GeoDataFrame
+
+    """
+    conn = pymysql.connect(host=host, password=pwd, port=port, user=sql_name, db=db)
+    sql = f"select * from {db}.`station`"
+    df = pd.read_sql(sql, conn).iloc[:, :5]
+    df = df.loc[:, ['code', 'stationName', 'Y', 'X', 'elev']]
+    data = gpd.GeoDataFrame(df, geometry=gpd.points_from_xy(df.X, df.Y), crs='EPSG:4326')
+    data.columns = ['Code', 'Station', 'Lat', 'Lon', 'elev', 'geometry']
+    data[['Lat', 'Lon', 'elev']] = data[['Lat', 'Lon', 'elev']].astype(float)
+    conn.close()
+    return data
 
 
+def get_data_by_stations(stations: list, types: list, start_time: str, end_time: str, db: str, sql_name='root',
+                         pwd='123456', host='localhost', port=3306):
+    """
 
+    Args:
+        stations: list,
+        types: list
+        start_time: str,
+        end_time: str,
+        db: str
+        sql_name: str, mysql数据库用户名, 默认root
+        pwd: str,  mysql数据库密码, 默认123456
+        port: str, 数据库主机ip地址, 默认localhost
+        host: int, 数据库端口, 默认3306
+
+    Returns:
+        data: DataFrame
+    """
+    conn = pymysql.connect(host=host, password=pwd, port=port, user=sql_name, db=db)
+    start_year = int(start_time.split('-')[0])
+    end_year = int(end_time.split('-')[0])
+    for year in range(start_year, end_year+1):
+        sql = f'select Station, Year, Month, Day, {",".join(types)} from all{year} where ' \
+              f'Station in ({str(stations).strip("[]")}) and DATE >= "{start_time}" and DATE <= "{end_time}"'
+        df = pd.read_sql(sql, conn)
+        if year == start_year:
+            data = df
+        else:
+            data = pd.concat([data, df])
+    return data
+
+
+def get_data_by_shp(roi_shp, types: list, start_time: str, end_time: str, db: str, sql_name='root', pwd='123456',
+                    host='localhost', port=3306):
+    """
+
+    Args:
+        roi_shp: str / GeoDataFrame,
+        types: list
+        start_time: str,
+        end_time: str,
+        db: str
+        sql_name: str, mysql数据库用户名, 默认root
+        pwd: str,  mysql数据库密码, 默认123456
+        port: str, 数据库主机ip地址, 默认localhost
+        host: int, 数据库端口, 默认3306
+
+    Returns:
+        data: DataFrame
+    """
+    if type(roi_shp) == str:
+        roi_df = gpd.read_file(roi_shp)
+    else:
+        roi_df = roi_shp
+    gfd = creat_station_geopandas(db)
+    geo = gpd.overlay(gfd, roi_df, 'intersection')
+    stations = geo['Code'].tolist()
+    data = get_data_by_stations(stations, types, start_time, end_time, db, sql_name, pwd, host, port)
+    return data
 
