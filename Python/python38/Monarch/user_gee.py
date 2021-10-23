@@ -9,6 +9,7 @@ author:Monarch
 """
 import ee
 
+
 def savitzky_golay(y: ee.List, window_size: int, order: int, deriv=0) -> ee.List:
     """
     基于List的sg滤波处理
@@ -111,13 +112,22 @@ def cloud_free_landsat_sr(img):
     return img.updateMask(mask)
 
 
+def rm_cloud_s2_sr(image):
+    qa = image.select('QA60')
+    cloud_bit_mask = 1 << 10
+    cirrus_bit_mask = 1 << 11
+    mask = qa.bitwiseAnd(cloud_bit_mask).eq(0) \
+               .And(qa.bitwiseAnd(cirrus_bit_mask).eq(0))
+    return image.updateMask(mask)
+
+
 def clip_dow_merge(geo: ee.Geometry, image: ee.Image, outfile: str, scale: int,
                    crs='epsg:4326', sep=0.25):
     """
 
     Args:
         geo: ee.Geometry, 需要下载的区域矢量几何
-        image: ee.Image, 未裁剪过的单波段影像
+        image: ee.Image, 单波段影像
         outfile: str, 输出文件路径和名称，不需要文件后缀，下载的影响默认后缀为tif
         scale: int, 下载时的像元大小
         crs: str, 下载影像的投影，默认为 'epsg:4326' wgs1984投影
@@ -125,25 +135,22 @@ def clip_dow_merge(geo: ee.Geometry, image: ee.Image, outfile: str, scale: int,
     Returns: None
 
     """
-    import geemap
     import os
     import numpy as np
     import rasterio
     from glob import glob
     from rasterio.merge import merge
     import shutil
-
-    path = outfile + '_mk'
-    if not os.path.exists(path):
-        os.makedirs(path)
+    import geemap
+    import math
     bounds = geo.bounds()
-    bounds.getInfo()
+    bands = image.bandNames().size().getInfo()
     poy = np.array(bounds.coordinates().getInfo()[0])
-    min_x = poy[:, 0].min() - 0.1
-    max_x = poy[:, 0].max() + 0.1
-    min_y = poy[:, 1].min() - 0.1
-    max_y = poy[:, 1].max() + 0.1
-    step = scale / 10 * sep
+    min_x = poy[:, 0].min()
+    max_x = poy[:, 0].max()
+    min_y = poy[:, 1].min()
+    max_y = poy[:, 1].max()
+    step = scale / 10 * sep / (int(math.sqrt(bands))+1)
     end_x = int((max_x - min_x) / step) + 1
     end_y = int((max_y - min_y) / step) + 1
     polys = []
@@ -159,24 +166,30 @@ def clip_dow_merge(geo: ee.Geometry, image: ee.Image, outfile: str, scale: int,
                 x2 = max_x
             poly = ee.Geometry(ee.Geometry.Rectangle([x1, y1, x2, y2]), None, False)
             polys.append(poly)
-    print(f"分割成{len(polys)}份, 开始下载:")
-    for j, i in enumerate(polys):
-        geemap.ee_export_image(image, path + f'/temp_{j}.tif', scale=scale, crs=crs, region=i)
-    files = glob(path + "/*.tif")
-    src_files_to_mosaic = []
-    for tif_f in files:
-        src = rasterio.open(tif_f)
-        src_files_to_mosaic.append(src)
-    mosaic, out_trans = merge(src_files_to_mosaic)
-    out_meta = src.meta.copy()
-    out_meta.update({"driver": "GTiff",
-                     "height": mosaic.shape[1],
-                     "width": mosaic.shape[2],
-                     "transform": out_trans,
-                     })
-    with rasterio.open(outfile + ".tif", "w", **out_meta) as dest:
-        dest.write(mosaic)
-    for src in src_files_to_mosaic:
-        src.close()
-    shutil.rmtree(path)
+    if len(polys) > 1:
+        print(f"分割成{len(polys)}份, 开始下载:")
+        path = outfile+'_mk'
+        if not os.path.exists(path):
+            os.makedirs(path)
+        for j, i in enumerate(polys):
+            geemap.ee_export_image(image, path+f'/temp_{j}.tif', scale=scale, crs=crs, region=i)
+        files = glob(path+"/*.tif")
+        src_files_to_mosaic = []
+        for tif_f in files:
+            src = rasterio.open(tif_f)
+            src_files_to_mosaic.append(src)
+        mosaic, out_trans = merge(src_files_to_mosaic)
+        out_meta = src.meta.copy()
+        out_meta.update({"driver": "GTiff",
+                         "height": mosaic.shape[1],
+                         "width": mosaic.shape[2],
+                         "transform": out_trans,
+                         })
+        with rasterio.open(outfile+".tif", "w", **out_meta) as dest:
+            dest.write(mosaic)
+        for src in src_files_to_mosaic:
+            src.close()
+        shutil.rmtree(path)
+    else:
+        geemap.ee_export_image(image, outfile+'.tif', scale=scale, crs=crs, region=geo)
     print("download successful !!!")

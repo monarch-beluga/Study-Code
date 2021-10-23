@@ -10,6 +10,7 @@ author:monarch
 
 import pandas as pd
 import pymysql
+import geopandas as gpd
 from sqlalchemy import create_engine
 
 
@@ -51,7 +52,8 @@ def station_import(filename: str, database='meteodata', sql_name='root', pwd='12
     print('import station success !!!')
 
 
-def me_data_import(filename: str, year: int, database='meteodata', sql_name='root', pwd='123456', host='localhost', port=3306):
+def me_data_import(filename: str, year: int, database='meteodata', sql_name='root', pwd='123456', host='localhost',
+                   port=3306):
     """
 
     Args:
@@ -84,4 +86,29 @@ def me_data_import(filename: str, year: int, database='meteodata', sql_name='roo
     data.to_sql(f'all{year}', conn, if_exists='append', index=False)
 
     print('import  success !!!')
+
+
+def creat_station(path, sql_name='root', pwd='123456', host='localhost',
+                   port=3306):
+    conn = pymysql.connect(host=host, password=pwd, port=port, user=sql_name)
+    f_names = ['ChinaStations.shp', 'ForeignStations.shp']
+    dbs = ['meteodata', 'meteodata_extens']
+    for f_name, db in zip(f_names, dbs):
+        sql = f"select * from {db}.`station`"
+        df = pd.read_sql(sql, conn).iloc[:, :5]
+        df = df.loc[:, ['code', 'stationName', 'Y', 'X', 'elev']]
+        data = gpd.GeoDataFrame(df, geometry=gpd.points_from_xy(df.X, df.Y), crs='EPSG:4326')
+        data.columns = ['Code', 'Station', 'Lat', 'Lon', 'elev', 'geometry']
+        data[['Lat', 'Lon', 'elev']] = data[['Lat', 'Lon', 'elev']].astype(float)
+        data.to_file(f'{path}/{f_name}', encoding='utf-8')
+        print(f"{f_name} creat success !!!")
+    conn.close()
+    gdf = pd.concat([gpd.read_file(f'{path}/{shp}') for shp in f_names]).pipe(gpd.GeoDataFrame)
+    gdf.to_crs('EPSG:4326')
+    gdf.to_file(f'{path}/tStations.shp', encoding='utf-8')
+
+
+
+
+
 

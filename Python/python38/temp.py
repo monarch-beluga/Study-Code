@@ -8,7 +8,9 @@ author:Monarch
 @modify:
 """
 
-from Monarch.import_me_data import me_data_import
+from Monarch.import_me_data import *
+#
+#
+creat_station(r'H:\Monarch\Data\temp')
 
-me_data_import(r'H:\Monarch\Data\Asia_2020.txt', 2020, 'meteodata_extens')
 

@@ -21,13 +21,14 @@ int main()
     sum[0][0] = sum[c1][0] = sum[0][1] = sum[c1][1] = n;
     for(int i = 1; i < k; i++)
     {
-        pre = n;
+        if(n != 0)
+            pre = n;
         cin >> n;
         if(n*pre < 0)
         {
             if(n < 0)
             {
-                sum[0][2] = sum[c1][2] = pre;
+                sum[0][2] = sum[c1][2] = pre*flag;
                 if(c1 == 2)
                 {
                     c1 = sum[0][0] > sum[1][0]?(sum[0][0]>=sum[2][0]?0:2):(sum[1][0]>=sum[2][0]?1:2);
@@ -45,12 +46,24 @@ int main()
                 if(c1 == 0)
                     sum[0][0] = 0;
                 c1++;
-                sum[c1][1] = sum[0][1] = n;
+                sum[c1][1] = sum[0][1] = n*flag;
             }
+        }
+        if(n == 0)
+        {
+            if(pre > 0)
+            {
+                sum[0][2] = sum[c1][2] = n;
+            }
+            else
+                sum[0][1] = sum[c1][1] = n;
+            flag = 0;
+            continue;
         }
         sum[0][0] += n;
         if(n > 0)
             sum[c1][0] += n;
+        flag = 1;
     }
     if(c1 == 0)
         cout << 0 << " " << sum[0][1] << " " << n;
@@ -59,5 +72,4 @@ int main()
         c1 = sum[0][0] > sum[1][0]?(sum[0][0]>=sum[2][0]?0:2):(sum[1][0]>=sum[2][0]?1:2);
         cout << sum[c1][0] << " " << sum[c1][1] << " " << sum[c1][2];
     }
-    return 0;
 }
