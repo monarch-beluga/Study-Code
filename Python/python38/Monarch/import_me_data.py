@@ -12,6 +12,7 @@ import pandas as pd
 import pymysql
 import geopandas as gpd
 from pandas import DataFrame
+from concurrent.futures.thread import ThreadPoolExecutor
 from sqlalchemy import create_engine
 
 
@@ -116,7 +117,7 @@ def me_data_import(filename: str, year: int, database='meteodata', sql_name='roo
         data.to_sql(f'all{year}', conn, if_exists='append', index=False)
         print(f'{i*100000:06d}-{i*100000+len(data):06d},本次耗时:{time.time()-st:.2f}s,总耗时:{time.time()-zst:.2f}s',
               end='\r')
-    print(f'{filename} import  success !!!')
+    print(f'{filename} import  success !!!, 总耗时:{time.time()-zst:.2f}s')
 
 
 def creat_station_shp(path: str, sql_name='root', pwd='123456', host='localhost', port=3306):

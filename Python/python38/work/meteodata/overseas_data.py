@@ -14,8 +14,6 @@ import os
 import numpy as np
 import gzip
 
-path = r'H:\Monarch\Data\me_data'
-os.chdir(path)
 columns = ['Station', 'Year', 'Month', 'Day', 'APRE', 'DMXP', 'DMNP', 'TAVG', 'TMAX', 'TMIN', 'AVRH', 'MNRH',
            'PRCP', 'AWND', 'WSF2', 'WDF2', 'WSFI', 'WDFI', 'TSUN']
 types = ['PRCP', 'TAVG', 'TMAX', 'TMIN', 'AWND', 'TSUN', 'WSFI', 'WDFI', 'WSF2', 'WDF2']
