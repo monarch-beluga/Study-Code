@@ -8,42 +8,51 @@ author:Monarch
 @modify:
 """
 
-import pandas as pd
-import pymysql
-import geopandas as gpd
+# from PyEMD import EEMD
+# from concurrent.futures.thread import ThreadPoolExecutor
+# import time
+# import numpy as np
+#
+# s = 1980
+# e = 2018
+# T = np.array(list(range(s, e + 1)))
+# m = 1000
+# x0 = np.random.rand(m, 39)
+# eemd = EEMD(100, 0.01)
+#
+#
+# def eemd_data(y):
+#     y4 = eemd.eemd(y, T, -1)
+#     y5 = y4[-1]
+#     y6 = y5 - y5[0]
+#     y7 = np.diff(y6)
+#     y8 = y7.mean()
+#     # print(y8)
+#     return y8
+
+
+# if __name__ == "__main__":
+#     st = time.time()
+#     with ThreadPoolExecutor(max_workers=30) as pool:
+#         ts = np.array([i for i in pool.map(eemd_data, x0)])
+#     mn = ts.mean()
+#     sd = ts.std()
+#     print(time.time()-st)
+
+
 from Monarch.import_me_data import *
-import os
+import pymysql
+import pandas as pd
 
-path = r'H:\Monarch\Data\矢量数据'
-os.chdir(path)
+host = "103.46.128.21"
+pwd = "123456"
+port = 29611
+sql_name = "root"
+database = "meteodata"
+conn = pymysql.connect(host=host, password=pwd, port=port, user=sql_name, db=database)
 
-sql_name = 'root'
-pwd = '123456'
-host = 'localhost'
-port = 3306
-db = 'meteodata'
-start_year = 1980
-end_year = 2021
-types = ['DMXT', 'DMNT', 'MTEM', 'AVRH', 'PREP', 'MEWS', 'SOHR']
-conn = pymysql.connect(host=host, password=pwd, port=port, user=sql_name, db=db)
-roi_shp = r'省级行政区.shp'
-gfd = creat_station_geopandas('meteodata')
-roi_df = gpd.read_file(roi_shp)
-roi_df1 = roi_df[roi_df['NAME'] == '甘肃']
-geo = gpd.overlay(gfd, roi_df1, 'intersection')
-stations = geo['Code'].tolist()
-stations.append(gfd[gfd['Station'] == '祁 连']['Code'].values[0])
-# sta_df = pd.DataFrame(gfd[gfd['Code'].isin(stations)].iloc[:, :5])
-# sta_df.to_csv(r'H:\Monarch\Data\station.txt', sep=',', header=True, index=False)
-# for year in range(start_year, end_year):
-#     sql = f'select Station, Year, Month, Day, {",".join(types)} from all{year} where ' \
-#           f'Station in ({str(stations).strip("[]")})'
-#     df = pd.read_sql(sql, conn)
-#     if year == start_year:
-#         data = df
-#     else:
-#         data = pd.concat([data, df])
-#     print("进度:{0}/{1}".format(year-start_year+1, end_year-start_year), end="\r")
-
-# data.to_csv(r'H:\Monarch\Data\gsqh.txt', sep=',', header=True, index=False)
-data = get_data_by_shp(roi_df1, types, "2001", "2002", "meteodata")
+sql = "select `code`, `X`, `Y`,`stationName` from station where Y between 24 and 31 and X between 113 and 118.5"
+station = pd.read_sql(sql, conn)
+code_sta = station['code'].tolist()
+types = ['DMNT', 'DMXT']
+data = get_data_by_stations(code_sta, types, "2017", "2019", db=database, host=host, port=port)

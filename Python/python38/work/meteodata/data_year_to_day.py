@@ -10,6 +10,7 @@ author:monarch
 
 import pandas as pd
 import numpy as np
+import gzip
 import os
 
 path = r'H:\Monarch\Data'
@@ -19,13 +20,13 @@ types = ['TMIN', 'TMAX', 'PRCP', 'RHU', 'SSD', 'WIN', 'TAVG']
 columns = ['Station', 'Year', 'Month', 'Day', 'APRE', 'DMXP', 'DMNP', 'TEM', 'TMX', 'TMN', 'RHU', 'MNRH',
            'PRE', 'WIN', 'MXWS', 'DMWS', 'EXWS', 'DEWS', 'SSD']
 
+
 for year in range(2018, 2019):
     t_d = 28
     if year % 4 == 0:
         t_d = 29
     days = [31, t_d, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31]
     column = ["{0}_{1}".format(i+1, k+1) for i, j in enumerate(days) for k in range(j)]
-
     data = []
     for t in range(len(type_me)):
         # df1 = pd.read_csv(f'MeteoDaily8012/{type_me[t]}/{type_me[t]}_{year}.csv', sep=',', header=None)
@@ -63,4 +64,3 @@ for year in range(2018, 2019):
     data1 = data[columns]
     data1.to_csv(f'H:/Monarch/Data/数据库入库文件/气象数据/CH_{year}.txt', header=False, index=False, float_format='%.2f')
     print(f'{year} export success !!!')
-
