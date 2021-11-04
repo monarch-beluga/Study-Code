@@ -23,8 +23,8 @@ def create_table(year, database, sql_name, pwd, host, port):
         database: str, 数据库名称, 默认为meteodata
         sql_name: str, mysql数据库用户名, 默认root
         pwd: str,  mysql数据库密码, 默认123456
-        port: str, 数据库主机ip地址, 默认localhost
-        host: int, 数据库端口, 默认3306
+        host: int, 数据库主机ip地址, 默认localhost
+        port: str, 数据库端口, 默认3306
 
     Returns:
 
@@ -51,8 +51,8 @@ def station_import(filename: str, database='meteodata', sql_name='root', pwd='12
         database: str, 数据库名称, 默认为meteodata
         sql_name: str, mysql数据库用户名, 默认root
         pwd: str,  mysql数据库密码, 默认123456
-        port: str, 数据库主机ip地址, 默认localhost
-        host: int, 数据库端口, 默认3306
+        host: int, 数据库主机ip地址, 默认localhost
+        port: str, 数据库端口, 默认3306
 
     Returns: None
 
@@ -99,8 +99,8 @@ def me_data_import(filename: str, year: int, database='meteodata', sql_name='roo
         database: str, 数据库名称, 默认为meteodata
         sql_name: str, mysql数据库用户名, 默认root
         pwd: str,  mysql数据库密码, 默认123456
-        port: str, 数据库主机ip地址, 默认localhost
-        host: int, 数据库端口, 默认3306
+        host: int, 数据库主机ip地址, 默认localhost
+        port: str, 数据库端口, 默认3306
 
     Returns: None
 
@@ -126,8 +126,8 @@ def creat_station_shp(path: str, sql_name='root', pwd='123456', host='localhost'
         path: shapefile文件生成路径
         sql_name: str, mysql数据库用户名, 默认root
         pwd: str,  mysql数据库密码, 默认123456
-        port: str, 数据库主机ip地址, 默认localhost
-        host: int, 数据库端口, 默认3306
+        host: int, 数据库主机ip地址, 默认localhost
+        port: str, 数据库端口, 默认3306
 
     Returns:
 
@@ -143,24 +143,33 @@ def creat_station_shp(path: str, sql_name='root', pwd='123456', host='localhost'
     gdf.to_file(f'{path}/tStations.shp', encoding='utf-8')
 
 
-def creat_station_geopandas(db: str, sql_name='root', pwd='123456', host='localhost', port=3306):
+def creat_station_geopandas(db: str, sql_name='root', pwd='123456', host='localhost', port=3306, roi_shp=None):
     """
 
     Args:
         db: str, 数据库名称, 默认为meteodata
         sql_name: str, mysql数据库用户名, 默认root
         pwd: str,  mysql数据库密码, 默认123456
-        port: str, 数据库主机ip地址, 默认localhost
-        host: int, 数据库端口, 默认3306
-
+        host: int, 数据库主机ip地址, 默认localhost
+        port: str, 数据库端口, 默认3306
+        roi_shp:
     Returns:
         data: GeoDataFrame
 
     """
     conn = pymysql.connect(host=host, password=pwd, port=port, user=sql_name, db=db)
-    sql = f"select * from {db}.`station`"
-    df = pd.read_sql(sql, conn).iloc[:, :5]
-    df = df.loc[:, ['code', 'stationName', 'Y', 'X', 'elev']]
+    if roi_shp:
+        roi_df = gpd.read_file(roi_shp).to_crs('EPSG:4326')
+        bounds = roi_df.geometry.bounds
+        minx = bounds.minx.min()
+        miny = bounds.miny.min()
+        maxx = bounds.maxx.max()
+        maxy = bounds.maxy.max()
+        sql = f"select code,stationName,Y,X,elev from `station` " \
+              f"where X between {minx} and {maxx} and Y between {miny} and {maxy}"
+    else:
+        sql = f"select code,stationName,Y,X,elev from `station`"
+    df = pd.read_sql(sql, conn)
     data = gpd.GeoDataFrame(df, geometry=gpd.points_from_xy(df.X, df.Y), crs='EPSG:4326')
     data.columns = ['Code', 'Station', 'Lat', 'Lon', 'elev', 'geometry']
     data[['Lat', 'Lon', 'elev']] = data[['Lat', 'Lon', 'elev']].astype(float)
@@ -183,8 +192,8 @@ def get_data_by_stations(stations: list, types: list, start_time: str, end_time:
         db: str, 连接的数据库名称
         sql_name: str, mysql数据库用户名, 默认root
         pwd: str,  mysql数据库密码, 默认123456
-        port: str, 数据库主机ip地址, 默认localhost
-        host: int, 数据库端口, 默认3306
+        host: int, 数据库主机ip地址, 默认localhost
+        port: str, 数据库端口, 默认3306
         time_merge: bool, 导出数据时的时间格式，Ture时为年月日分开，False时为YYYY-mm-DD, 默认为False
 
     Returns:
@@ -197,14 +206,15 @@ def get_data_by_stations(stations: list, types: list, start_time: str, end_time:
     conn = pymysql.connect(host=host, password=pwd, port=port, user=sql_name, db=db)
     start_year = int(start_time.split('-')[0])
     end_year = int(end_time.split('-')[0])
-    for year in range(start_year, end_year+1):
+    if len(end_time.split('-')) > 1:
+        end_year += 1
+    data = []
+    for year in range(start_year, end_year):
         sql = f'select Station, {date}, {",".join(types)} from all{year} where ' \
-              f'Station in ({str(stations).strip("[]")}) and DATE >= "{start_time}" and DATE <= "{end_time}"'
+              f'Station in ({str(stations).strip("[]")}) and DATE >= "{start_time}" and DATE < "{end_time}"'
         df = pd.read_sql(sql, conn)
-        if year == start_year:
-            data = df
-        else:
-            data = pd.concat([data, df])
+        data.append(df)
+    data = pd.concat(data)
     return data
 
 
@@ -234,7 +244,7 @@ def get_data_by_shp(roi_shp, types: list, start_time: str, end_time: str, db: st
         roi_df = gpd.read_file(roi_shp).to_crs('EPSG:4326')
     else:
         roi_df = roi_shp
-    gfd = creat_station_geopandas(db, sql_name, pwd, host, port)
+    gfd = creat_station_geopandas(db, sql_name, pwd, host, port, roi_shp=roi_shp)
     geo = gpd.overlay(gfd, roi_df, 'intersection')
     stations = geo['Code'].tolist()
     data = get_data_by_stations(stations, types, start_time, end_time, db, sql_name, pwd, host, port, time_merge)
