@@ -250,3 +250,6 @@ def get_data_by_shp(roi_shp, types: list, start_time: str, end_time: str, db: st
     data = get_data_by_stations(stations, types, start_time, end_time, db, sql_name, pwd, host, port, time_merge)
     return data
 
+
+
+
