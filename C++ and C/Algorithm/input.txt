@@ -1,8 +1,2 @@
-3
-2
-aa
 4
-abaa
-8
-cccabbaa
-
+-2 0 0 -1
