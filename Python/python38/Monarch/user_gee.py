@@ -128,7 +128,7 @@ def clip_dow_merge(geo: ee.Geometry, image: ee.Image, outfile: str, scale: int,
 
     Args:
         geo: ee.Geometry, 需要下载的区域矢量几何
-        image: ee.Image, 单波段影像
+        image: ee.Image, 需要下载的影像
         outfile: str, 输出文件路径和名称，不需要文件后缀，下载的影响默认后缀为tif
         scale: int, 下载时的像元大小
         crs: str, 下载影像的投影，默认为 'epsg:4326' wgs1984投影

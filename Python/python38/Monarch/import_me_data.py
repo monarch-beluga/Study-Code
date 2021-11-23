@@ -134,11 +134,13 @@ def creat_station_shp(path: str, sql_name='root', pwd='123456', host='localhost'
     """
     f_names = ['ChinaStations.shp', 'ForeignStations.shp']
     dbs = ['meteodata', 'meteodata_extens']
+    total = []
     for f_name, db in zip(f_names, dbs):
         data = creat_station_geopandas(db, sql_name, pwd, host, port)
         data.to_file(f'{path}/{f_name}', encoding='utf-8')
+        total.append(data)
         print(f"{f_name} creat success !!!")
-    gdf = pd.concat([gpd.read_file(f'{path}/{shp}') for shp in f_names]).pipe(gpd.GeoDataFrame)
+    gdf = gpd.GeoDataFrame(pd.concat([total]))
     gdf.to_crs('EPSG:4326')
     gdf.to_file(f'{path}/tStations.shp', encoding='utf-8')
 
@@ -233,8 +235,8 @@ def get_data_by_shp(roi_shp, types: list, start_time: str, end_time: str, db: st
         db: str, 连接的数据库名称
         sql_name: str, mysql数据库用户名, 默认root
         pwd: str,  mysql数据库密码, 默认123456
-        port: str, 数据库主机ip地址, 默认localhost
-        host: int, 数据库端口, 默认3306
+        host: str, 数据库主机ip地址, 默认localhost
+        port: int, 数据库端口, 默认3306
         time_merge: bool, 导出数据时的时间格式，Ture时为年月日分开，False时为YYYY-mm-DD, 默认为False
 
     Returns:
@@ -250,3 +252,33 @@ def get_data_by_shp(roi_shp, types: list, start_time: str, end_time: str, db: st
     data = get_data_by_stations(stations, types, start_time, end_time, db, sql_name, pwd, host, port, time_merge)
     return data
 
+
+def get_data_by_xy(x, y, types: list, start_time: str, end_time: str, db: str, sql_name='root', pwd='123456',
+                   host='localhost', port=3306, time_merge=False):
+    """
+
+    Args:
+        x: 经度范围
+        y: 纬度范围
+        types: list, 要获取的气象要素列表
+            |APRE: 平均本站气压 | DMXP:日最高本站气压 | DMNP: 日最低本站气压 | MTEM: 平均气温 | DMXT: 日最高气温|
+            |DMNT: 日最低气温 | AVRH: 平均相对湿度 | MNRH: 最小相对湿度 | PREP: 降水量 | MEWS: 平均风速 |
+            |MXWS: 最大风速|DMWS: 最大风速的风向|EXWS: 极大风速|DEWS: 极大风速的风向|SOHR: 日照时数|
+        start_time: str, 开始时间
+        end_time: str, 结束时间
+        db: str, 连接的数据库名称
+        sql_name: str, mysql数据库用户名, 默认root
+        pwd: str,  mysql数据库密码, 默认123456
+        host: str, 数据库主机ip地址, 默认localhost
+        port: int, 数据库端口, 默认3306
+        time_merge: bool, 导出数据时的时间格式，Ture时为年月日分开，False时为YYYY-mm-DD, 默认为False
+
+    Returns:
+
+    """
+    conn = pymysql.connect(host=host, password=pwd, port=port, user=sql_name, db=db)
+    sql = "select `code`, `X`, `Y`,`stationName` from station where Y between 24 and 31 and X between 113 and 118.5"
+    station = pd.read_sql(sql, conn)
+    stations = station['code'].tolist()
+    data = get_data_by_stations(stations, types, start_time, end_time, db, sql_name, pwd, host, port, time_merge)
+    return data
