@@ -8,12 +8,12 @@ import os
 from 筛选栅格数据 import select_date
 import time
 
-paths = ["E:/public/Central_Asia/MOD11A2-Interpolation/", r'E:/public/Central_Asia/MOD13A2-Interpolation/']
-outpath = "E:/public/Central_Asia/ECA/05-06/"
-time_start = "2000"
+paths = [r"H:/Monarch/Data/TAVG/", r'H:/Monarch/Data/NDVI/']
+outpath = "H:/Monarch/Data/ECA/08-09/"
+time_start = "1982"
 time_end = "2016"
-select_moth = ["05-01", "07-01"]
-path_judgments = ["E:/public/Central_Asia/extremum/05-06/LST_Day_1km/", "E:/public/Central_Asia/extremum/05-06/NDVI/"]
+select_moth = ["08-01", "09-01"]
+path_judgments = ["H:/Monarch/Data/08-09/TAVG/", "H:/Monarch/Data/08-09/NDVI/"]
 out_files = [r'LST_min.tif', r'LST_max.tif']
 st = time.time()
 
@@ -128,6 +128,7 @@ def ECA_process(judgment_src_s, files_src_s, window, j, N):
 
 
 profile, judgment_src_s, files_src_s, windows, write_src_s = open_src()
+
 for data_W, window in zip(map(ECA_process,
                                [judgment_src_s] * len(windows),
                                [files_src_s] * len(windows),
@@ -135,6 +136,7 @@ for data_W, window in zip(map(ECA_process,
                                [i for i in range(len(windows))],
                                [len(windows)]*len(windows)),
                           windows):
+
     for data_w, write_src in zip(data_W, write_src_s):
         # print(data_w)
         data_w *= 100

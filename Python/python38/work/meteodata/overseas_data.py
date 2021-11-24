@@ -42,11 +42,11 @@ def piece_handle(df):
 
 
 def data_handle(year):
-    gz_file = f'{year}.csv.gz'
+    # gz_file = f'{year}.csv.gz'
     csv_file = f'{year}.csv'
-    with gzip.GzipFile(gz_file) as gf:
-        with open(csv_file, 'wb+') as fp:
-            fp.write(gf.read())
+    # with gzip.GzipFile(gz_file) as gf:
+    #     with open(csv_file, 'wb+') as fp:
+    #         fp.write(gf.read())
     pieces = pd.read_csv(csv_file, usecols=[0, 1, 2, 3], header=None, chunksize=3000000)
     with ThreadPoolExecutor(max_workers=30) as worker:
         data = worker.map(piece_handle, pieces)
@@ -55,4 +55,8 @@ def data_handle(year):
     data.to_csv(f'result/overseas_{year}.txt', header=False, index=False, float_format='%.2f')
     print(f'{csv_file} 处理完成!!!')
     os.remove(csv_file)
+
+
+data_handle(1980)
+
 
