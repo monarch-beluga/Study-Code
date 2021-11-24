@@ -277,8 +277,13 @@ def get_data_by_xy(x, y, types: list, start_time: str, end_time: str, db: str, s
 
     """
     conn = pymysql.connect(host=host, password=pwd, port=port, user=sql_name, db=db)
-    sql = "select `code`, `X`, `Y`,`stationName` from station where Y between 24 and 31 and X between 113 and 118.5"
+    sql = f"select `code`, `X`, `Y`,`stationName` from station where Y between {y[0]} and {y[1]} and " \
+          f"X between {x[0]} and {x[1]}"
     station = pd.read_sql(sql, conn)
     stations = station['code'].tolist()
     data = get_data_by_stations(stations, types, start_time, end_time, db, sql_name, pwd, host, port, time_merge)
     return data
+
+
+
+

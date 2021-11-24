@@ -32,6 +32,7 @@
             <name qname="@" />
             <name qname="meteodata" />
             <name qname="meteodata_extens" />
+            <name qname="test" />
           </node>
         </introspection-scope>
       </schema-mapping>
