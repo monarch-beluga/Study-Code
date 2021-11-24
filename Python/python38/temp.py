@@ -75,7 +75,3 @@ with open(f'{t}00000.dat', 'w') as f:
     out_format = '{:11s}' + '{:12.2f}' * 2 + '{:10.3f}' + '{:10.2f}' * (count - 4)
     df_format(f, out_format, data1)
 
-
-
-
-

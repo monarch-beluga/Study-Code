@@ -12,10 +12,6 @@
       <Collation>utf8_general_ci</Collation>
     </schema>
 <<<<<<< HEAD
-    <schema id="3" parent="1" name="meteodata">
-      <Collation>utf8_general_ci</Collation>
-=======
-<<<<<<< HEAD
     <schema id="3" parent="1" name="jdbcstudy">
       <Collation>utf8_general_ci</Collation>
     </schema>
@@ -37,19 +33,18 @@
 =======
     <schema id="3" parent="1" name="mysql">
       <Collation>utf8mb4_0900_ai_ci</Collation>
->>>>>>> 473d261ca188570f60b6a6df3978ecbb464cbc20
     </schema>
-    <schema id="4" parent="1" name="meteodata_extens">
+    <schema id="4" parent="1" name="performance_schema">
+      <Collation>utf8mb4_0900_ai_ci</Collation>
+    </schema>
+    <schema id="5" parent="1" name="sys">
+      <Collation>utf8mb4_0900_ai_ci</Collation>
+    </schema>
+    <schema id="6" parent="1" name="meteodata">
       <Collation>utf8_general_ci</Collation>
     </schema>
-    <schema id="5" parent="1" name="mysql">
-      <Collation>utf8mb4_0900_ai_ci</Collation>
-    </schema>
-    <schema id="6" parent="1" name="performance_schema">
-      <Collation>utf8mb4_0900_ai_ci</Collation>
-    </schema>
-    <schema id="7" parent="1" name="sys">
-      <Collation>utf8mb4_0900_ai_ci</Collation>
+    <schema id="7" parent="1" name="meteodata_extens">
+      <Collation>utf8_general_ci</Collation>
     </schema>
     <collation id="8" parent="1" name="armscii8_bin">
       <Charset>armscii8</Charset>
@@ -917,90 +912,90 @@
     <user id="281" parent="1" name="root">
       <Host>localhost</Host>
     </user>
-    <table id="282" parent="3" name="all1980"/>
-    <table id="283" parent="3" name="all1981"/>
-    <table id="284" parent="3" name="all1982"/>
-    <table id="285" parent="3" name="all1983"/>
-    <table id="286" parent="3" name="all1984"/>
-    <table id="287" parent="3" name="all1985"/>
-    <table id="288" parent="3" name="all1986"/>
-    <table id="289" parent="3" name="all1987"/>
-    <table id="290" parent="3" name="all1988"/>
-    <table id="291" parent="3" name="all1989"/>
-    <table id="292" parent="3" name="all1990"/>
-    <table id="293" parent="3" name="all1991"/>
-    <table id="294" parent="3" name="all1992"/>
-    <table id="295" parent="3" name="all1993"/>
-    <table id="296" parent="3" name="all1994"/>
-    <table id="297" parent="3" name="all1995"/>
-    <table id="298" parent="3" name="all1996"/>
-    <table id="299" parent="3" name="all1997"/>
-    <table id="300" parent="3" name="all1998"/>
-    <table id="301" parent="3" name="all1999"/>
-    <table id="302" parent="3" name="all2000"/>
-    <table id="303" parent="3" name="all2001"/>
-    <table id="304" parent="3" name="all2002"/>
-    <table id="305" parent="3" name="all2003"/>
-    <table id="306" parent="3" name="all2004"/>
-    <table id="307" parent="3" name="all2005"/>
-    <table id="308" parent="3" name="all2006"/>
-    <table id="309" parent="3" name="all2007"/>
-    <table id="310" parent="3" name="all2008"/>
-    <table id="311" parent="3" name="all2009"/>
-    <table id="312" parent="3" name="all2010"/>
-    <table id="313" parent="3" name="all2011"/>
-    <table id="314" parent="3" name="all2012"/>
-    <table id="315" parent="3" name="all2013"/>
-    <table id="316" parent="3" name="all2014"/>
-    <table id="317" parent="3" name="all2015"/>
-    <table id="318" parent="3" name="all2016"/>
-    <table id="319" parent="3" name="all2017"/>
-    <table id="320" parent="3" name="all2018"/>
-    <table id="321" parent="3" name="all2019"/>
-    <table id="322" parent="3" name="all2020"/>
-    <table id="323" parent="3" name="station"/>
-    <table id="324" parent="4" name="all1980"/>
-    <table id="325" parent="4" name="all1981"/>
-    <table id="326" parent="4" name="all1982"/>
-    <table id="327" parent="4" name="all1983"/>
-    <table id="328" parent="4" name="all1984"/>
-    <table id="329" parent="4" name="all1985"/>
-    <table id="330" parent="4" name="all1986"/>
-    <table id="331" parent="4" name="all1987"/>
-    <table id="332" parent="4" name="all1988"/>
-    <table id="333" parent="4" name="all1989"/>
-    <table id="334" parent="4" name="all1990"/>
-    <table id="335" parent="4" name="all1991"/>
-    <table id="336" parent="4" name="all1992"/>
-    <table id="337" parent="4" name="all1993"/>
-    <table id="338" parent="4" name="all1994"/>
-    <table id="339" parent="4" name="all1995"/>
-    <table id="340" parent="4" name="all1996"/>
-    <table id="341" parent="4" name="all1997"/>
-    <table id="342" parent="4" name="all1998"/>
-    <table id="343" parent="4" name="all1999"/>
-    <table id="344" parent="4" name="all2000"/>
-    <table id="345" parent="4" name="all2001"/>
-    <table id="346" parent="4" name="all2002"/>
-    <table id="347" parent="4" name="all2003"/>
-    <table id="348" parent="4" name="all2004"/>
-    <table id="349" parent="4" name="all2005"/>
-    <table id="350" parent="4" name="all2006"/>
-    <table id="351" parent="4" name="all2007"/>
-    <table id="352" parent="4" name="all2008"/>
-    <table id="353" parent="4" name="all2009"/>
-    <table id="354" parent="4" name="all2010"/>
-    <table id="355" parent="4" name="all2011"/>
-    <table id="356" parent="4" name="all2012"/>
-    <table id="357" parent="4" name="all2013"/>
-    <table id="358" parent="4" name="all2014"/>
-    <table id="359" parent="4" name="all2015"/>
-    <table id="360" parent="4" name="all2016"/>
-    <table id="361" parent="4" name="all2017"/>
-    <table id="362" parent="4" name="all2018"/>
-    <table id="363" parent="4" name="all2019"/>
-    <table id="364" parent="4" name="all2020"/>
-    <table id="365" parent="4" name="station"/>
+    <table id="282" parent="6" name="all1980"/>
+    <table id="283" parent="6" name="all1981"/>
+    <table id="284" parent="6" name="all1982"/>
+    <table id="285" parent="6" name="all1983"/>
+    <table id="286" parent="6" name="all1984"/>
+    <table id="287" parent="6" name="all1985"/>
+    <table id="288" parent="6" name="all1986"/>
+    <table id="289" parent="6" name="all1987"/>
+    <table id="290" parent="6" name="all1988"/>
+    <table id="291" parent="6" name="all1989"/>
+    <table id="292" parent="6" name="all1990"/>
+    <table id="293" parent="6" name="all1991"/>
+    <table id="294" parent="6" name="all1992"/>
+    <table id="295" parent="6" name="all1993"/>
+    <table id="296" parent="6" name="all1994"/>
+    <table id="297" parent="6" name="all1995"/>
+    <table id="298" parent="6" name="all1996"/>
+    <table id="299" parent="6" name="all1997"/>
+    <table id="300" parent="6" name="all1998"/>
+    <table id="301" parent="6" name="all1999"/>
+    <table id="302" parent="6" name="all2000"/>
+    <table id="303" parent="6" name="all2001"/>
+    <table id="304" parent="6" name="all2002"/>
+    <table id="305" parent="6" name="all2003"/>
+    <table id="306" parent="6" name="all2004"/>
+    <table id="307" parent="6" name="all2005"/>
+    <table id="308" parent="6" name="all2006"/>
+    <table id="309" parent="6" name="all2007"/>
+    <table id="310" parent="6" name="all2008"/>
+    <table id="311" parent="6" name="all2009"/>
+    <table id="312" parent="6" name="all2010"/>
+    <table id="313" parent="6" name="all2011"/>
+    <table id="314" parent="6" name="all2012"/>
+    <table id="315" parent="6" name="all2013"/>
+    <table id="316" parent="6" name="all2014"/>
+    <table id="317" parent="6" name="all2015"/>
+    <table id="318" parent="6" name="all2016"/>
+    <table id="319" parent="6" name="all2017"/>
+    <table id="320" parent="6" name="all2018"/>
+    <table id="321" parent="6" name="all2019"/>
+    <table id="322" parent="6" name="all2020"/>
+    <table id="323" parent="6" name="station"/>
+    <table id="324" parent="7" name="all1980"/>
+    <table id="325" parent="7" name="all1981"/>
+    <table id="326" parent="7" name="all1982"/>
+    <table id="327" parent="7" name="all1983"/>
+    <table id="328" parent="7" name="all1984"/>
+    <table id="329" parent="7" name="all1985"/>
+    <table id="330" parent="7" name="all1986"/>
+    <table id="331" parent="7" name="all1987"/>
+    <table id="332" parent="7" name="all1988"/>
+    <table id="333" parent="7" name="all1989"/>
+    <table id="334" parent="7" name="all1990"/>
+    <table id="335" parent="7" name="all1991"/>
+    <table id="336" parent="7" name="all1992"/>
+    <table id="337" parent="7" name="all1993"/>
+    <table id="338" parent="7" name="all1994"/>
+    <table id="339" parent="7" name="all1995"/>
+    <table id="340" parent="7" name="all1996"/>
+    <table id="341" parent="7" name="all1997"/>
+    <table id="342" parent="7" name="all1998"/>
+    <table id="343" parent="7" name="all1999"/>
+    <table id="344" parent="7" name="all2000"/>
+    <table id="345" parent="7" name="all2001"/>
+    <table id="346" parent="7" name="all2002"/>
+    <table id="347" parent="7" name="all2003"/>
+    <table id="348" parent="7" name="all2004"/>
+    <table id="349" parent="7" name="all2005"/>
+    <table id="350" parent="7" name="all2006"/>
+    <table id="351" parent="7" name="all2007"/>
+    <table id="352" parent="7" name="all2008"/>
+    <table id="353" parent="7" name="all2009"/>
+    <table id="354" parent="7" name="all2010"/>
+    <table id="355" parent="7" name="all2011"/>
+    <table id="356" parent="7" name="all2012"/>
+    <table id="357" parent="7" name="all2013"/>
+    <table id="358" parent="7" name="all2014"/>
+    <table id="359" parent="7" name="all2015"/>
+    <table id="360" parent="7" name="all2016"/>
+    <table id="361" parent="7" name="all2017"/>
+    <table id="362" parent="7" name="all2018"/>
+    <table id="363" parent="7" name="all2019"/>
+    <table id="364" parent="7" name="all2020"/>
+    <table id="365" parent="7" name="station"/>
     <column id="366" parent="282" name="Station">
       <Position>1</Position>
       <DataType>text|0s</DataType>
