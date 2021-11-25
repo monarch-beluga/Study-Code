@@ -19,6 +19,7 @@ import shutil
 import rasterio
 from glob import glob
 import os
+import threading
 
 
 def df_format(fp, f_mat, Data):
@@ -26,15 +27,15 @@ def df_format(fp, f_mat, Data):
         print(f_mat.format(*Data.loc[i].to_list()), file=fp)
 
 
-path = r'E:\public\sjy'
-# path = r'H:\Monarch\test'
+# path = r'E:\public\sjy'
+path = r'H:\Monarch\test'
 select_mod = 1
 shp_roi = r'roi.shp'
-host = "103.46.128.21"
-# host = "127.0.0.1"
+# host = "103.46.128.21"
+host = "127.0.0.1"
 pwd = "123456"
-port = 29611
-# port = 3306
+# port = 29611
+port = 3306
 sql_name = "root"
 db = "meteodata"
 types = ['MTEM', 'PREP']
@@ -133,7 +134,49 @@ def create_splina(t, f, dem_min, dem_max):
         for i in climate_list:
             print(path + os.sep + t + os.sep + f'climateVar_{f[-8:-4]}{i}', file=fp)
         print('\n\n', file=fp)
-    print(f'splina_{f[-8:-4]}.cmd create success!!')
+    print(f'{t}/splina_{f[-8:-4]}.cmd create success!!')
+
+
+def create_lapgrd(f, t):
+    outpath = ['RES', 'COV']
+    with open(f'{f}') as fp:
+        sta_data = fp.readline().split()
+    count_grd = len(sta_data) - 4
+    for i in outpath:
+        if not os.path.exists(t + os.sep + i):
+            os.makedirs(t + os.sep + i)
+    if f[-8:-4] == start_time[:4]:
+        date_start_moth = datetime.strptime(start_time, "%Y-%m-%d")
+    else:
+        date_start_moth = datetime.strptime(f'{f[-8:-4]}-01-01', "%Y-%m-%d")
+    res_name = []
+    cov_name = []
+    for i in range(count_grd):
+        date = (date_start_moth + timedelta(days=sep_day * i)).date()
+        res_name.append(t + os.sep + outpath[0] + os.sep + f'RES_{date}')
+        shutil.copy(dem.split('.')[0] + '.prj', res_name[i] + '.prj')
+        cov_name.append(t + os.sep + outpath[1] + os.sep + f'COV_{date}')
+        shutil.copy(dem.split('.')[0] + '.prj', cov_name[i] + '.prj')
+    with open(f'{t}/lapgrd_{f[-8:-4]}.cmd', 'w') as fp:
+        print(path + os.sep + t + os.sep + f'climateVar_{f[-8:-4]}.sur', file=fp)
+        print(' '.join([str(i) for i in range(1, count_grd + 1)]), file=fp)
+        print('1', file=fp)
+        print(path + os.sep + t + os.sep + f'climateVar_{f[-8:-4]}.cov', file=fp)
+        print('2\n\n1\n1', file=fp)
+        print(f'{xmin} {xmax} {csize}', file=fp)
+        print('2', file=fp)
+        print(f'{ymin} {ymax} {csize}', file=fp)
+        print('0\n2', file=fp)
+        print(path + os.sep + dem, file=fp)
+        print('2\n-9999.0', file=fp)
+        for i in res_name:
+            print(path + os.sep + i + '.grd', file=fp)
+        print(f'({ncols:.0f}f10.2)', file=fp)
+        print('2\n-9999.0', file=fp)
+        for i in cov_name:
+            print(path + os.sep + i + '.grd', file=fp)
+        print(f'({ncols:.0f}f10.2)', file=fp)
+    print(f'{t}/lapgrd_{f[-8:-4]}.cmd create success!!')
 
 
 def create_cmd():
@@ -147,48 +190,51 @@ def create_cmd():
         fs = glob(t+os.sep+'*.dat')
         # f = fs[0]
         for f in fs:
-            create_splina(t, f, dem_min, dem_max)
+            # create_splina(t, f, dem_min, dem_max)
+            create_lapgrd(f, t)
 
 
+def execCmd(cmd):
+    try:
+        os.system(cmd)
+    except:
+        print('%s\t 运行失败' % (cmd))
+
+
+# select_data()
 # create_cmd()
-outpath = ['RES', 'COV']
-t = types[0]
-fs = glob(t+os.sep+'*.dat')
-f = fs[0]
-with open(f'{f}') as fp:
-    sta_data = fp.readline().split()
-count_grd = len(sta_data) - 4
-for i in outpath:
-    if not os.path.exists(t+os.sep+i):
-        os.makedirs(t+os.sep+i)
-date_start_moth = datetime.strptime(start_time, "%Y-%m-%d")
-res_name = []
-cov_name = []
-for i in range(count_grd):
-    date = (date_start_moth+timedelta(days=sep_day*i)).date()
-    res_name.append(t+os.sep+outpath[0]+os.sep+f'RES_{date}')
-    shutil.copy(dem.split('.')[0]+'.prj', res_name[i]+'.prj')
-    cov_name.append(t+os.sep+outpath[1]+os.sep+f'COV_{date}')
-    shutil.copy(dem.split('.')[0]+'.prj', cov_name[i]+'.prj')
-with open(f'{t}/lapgrd_{f[-8:-4]}.cmd', 'w') as fp:
-    print(path+os.sep+t+os.sep+f'climateVar_{f[-8:-4]}.sur', file=fp)
-    print(' '.join([str(i) for i in range(1, count_grd+1)]), file=fp)
-    print('1', file=fp)
-    print(path+os.sep+t+os.sep+f'climateVar_{f[-8:-4]}.cov', file=fp)
-    print('2\n\n1\n1', file=fp)
-    print(f'{xmin} {xmax} {csize}', file=fp)
-    print('2', file=fp)
-    print(f'{ymin} {ymax} {csize}', file=fp)
-    print('0\n2', file=fp)
-    print(path+os.sep+dem, file=fp)
-    print('2\n-9999.0', file=fp)
-    for i in res_name:
-        print(path+os.sep+i+'.grd', file=fp)
-    print(f'({ncols:.0f}f10.2)', file=fp)
-    print('2\n-9999.0', file=fp)
-    for i in cov_name:
-        print(path+os.sep+i+'.grd', file=fp)
-    print(f'({ncols:.0f}f10.2)', file=fp)
+    # 并行
+# threads = []
+# for cmd in cmds:
+#     th = threading.Thread(target=execCmd, args=(cmd,))
+#     th.start()
+#     threads.append(th)
+#
+# # 等待线程运行完毕
+# for th in threads:
+#     th.join()
 
 
+splina_files = glob(f'*{os.sep}splina*.cmd')
+lapgrd_files = glob(f'*{os.sep}lapgrd*.cmd')
+# f = fs[0]
+threads = []
+# for f in splina_files:
+#     cmd = f'splina<{f}>{f.replace(".cmd", ".log")}'
+#     print(cmd)
+#     th = threading.Thread(target=execCmd, args=(cmd,))
+#     th.start()
+#     threads.append(th)
+#
+# for th in threads:
+#     th.join()
 
+for f in lapgrd_files:
+    cmd = f'lapgrd<{f}>{f.replace(".cmd", ".log")}'
+    print(cmd)
+    th = threading.Thread(target=execCmd, args=(cmd,))
+    th.start()
+    threads.append(th)
+
+for th in threads:
+    th.join()
