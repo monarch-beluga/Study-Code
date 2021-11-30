@@ -170,13 +170,18 @@ def clip_dow_merge(geo: ee.Geometry, image: ee.Image, outfile: str, scale: int,
     if len(polys) > 1:
         print(f"分割成{len(polys)}份, 开始下载:")
         path = outfile+'_mk'
+        t = 1
         if not os.path.exists(path):
+            t = 0
             os.makedirs(path)
         for j, i in enumerate(polys):
-            if os.path.exists(path+f'/temp_{j}.tif'):
-                continue
+            if not os.path.exists(path+f'/temp_{j}.tif'):
+                if t:
+                    clip_dow_merge(i, image, path + f'/temp_{j}', scale, sep=sep*0.5)
+                else:
+                    geemap.ee_export_image(image, path + f'/temp_{j}.tif', scale=scale, crs=crs, region=i)
             else:
-                geemap.ee_export_image(image, path+f'/temp_{j}.tif', scale=scale, crs=crs, region=i)
+                continue
         files = glob(path+"/*.tif")
         if len(files) == len(polys):
             src_files_to_mosaic = []
