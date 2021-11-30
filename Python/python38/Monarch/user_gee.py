@@ -106,8 +106,8 @@ def cloud_free_landsat_sr(img):
     Returns: ee.Image, 去云后的影像
 
     """
-    # qa = img.select('pixel_qa')                         # 特定的landsat 影像才有这一波段
-    qa = img.select('QA_PIXEL')
+    qa = img.select('pixel_qa')                         # 特定的landsat 影像才有这一波段
+    # qa = img.select('QA_PIXEL')
     cloud_state = bitwise_extract(qa, 5)                # 云掩码
     cloud_shadow_state = bitwise_extract(qa, 3)         # 云影掩码
     mask = cloud_state.eq(0).And(cloud_shadow_state.eq(0))
