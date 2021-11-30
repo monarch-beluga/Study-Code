@@ -165,7 +165,7 @@ def clip_dow_merge(geo: ee.Geometry, image: ee.Image, outfile: str, scale: int,
             x2 = min_x + step * (j + 1)
             if x2 > max_x:
                 x2 = max_x
-            poly = ee.Geometry(ee.Geometry.Rectangle([x1, y1, x2, y2]), None, False)
+            poly = ee.Geometry(ee.Geometry.Rectangle([float(x1), float(y1), float(x2), float(y2)]), None, False)
             polys.append(poly)
     if len(polys) > 1:
         print(f"分割成{len(polys)}份, 开始下载:")
@@ -173,24 +173,30 @@ def clip_dow_merge(geo: ee.Geometry, image: ee.Image, outfile: str, scale: int,
         if not os.path.exists(path):
             os.makedirs(path)
         for j, i in enumerate(polys):
-            geemap.ee_export_image(image, path+f'/temp_{j}.tif', scale=scale, crs=crs, region=i)
+            if os.path.exists(path+f'/temp_{j}.tif'):
+                continue
+            else:
+                geemap.ee_export_image(image, path+f'/temp_{j}.tif', scale=scale, crs=crs, region=i)
         files = glob(path+"/*.tif")
-        src_files_to_mosaic = []
-        for tif_f in files:
-            src = rasterio.open(tif_f)
-            src_files_to_mosaic.append(src)
-        mosaic, out_trans = merge(src_files_to_mosaic)
-        out_meta = src.meta.copy()
-        out_meta.update({"driver": "GTiff",
-                         "height": mosaic.shape[1],
-                         "width": mosaic.shape[2],
-                         "transform": out_trans,
-                         })
-        with rasterio.open(outfile+".tif", "w", **out_meta) as dest:
-            dest.write(mosaic)
-        for src in src_files_to_mosaic:
-            src.close()
-        shutil.rmtree(path)
+        if len(files) == len(polys):
+            src_files_to_mosaic = []
+            for tif_f in files:
+                src = rasterio.open(tif_f)
+                src_files_to_mosaic.append(src)
+            mosaic, out_trans = merge(src_files_to_mosaic)
+            out_meta = src.meta.copy()
+            out_meta.update({"driver": "GTiff",
+                             "height": mosaic.shape[1],
+                             "width": mosaic.shape[2],
+                             "transform": out_trans,
+                             })
+            with rasterio.open(outfile+".tif", "w", **out_meta) as dest:
+                dest.write(mosaic)
+            for src in src_files_to_mosaic:
+                src.close()
+            shutil.rmtree(path)
+        else:
+            print('下载不完全！！')
     else:
         geemap.ee_export_image(image, outfile+'.tif', scale=scale, crs=crs, region=geo)
     print("download successful !!!")

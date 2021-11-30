@@ -42,8 +42,8 @@ out_pre = ['TAVG', 'PRCP']
 #     |APRE: 平均本站气压 | DMXP:日最高本站气压 | DMNP: 日最低本站气压 | MTEM: 平均气温 | DMXT: 日最高气温|
 #     |DMNT: 日最低气温 | AVRH: 平均相对湿度 | MNRH: 最小相对湿度 | PREP: 降水量 | MEWS: 平均风速 |
 #     |MXWS: 最大风速|DMWS: 最大风速的风向|EXWS: 极大风速|DEWS: 极大风速的风向|SOHR: 日照时数|
-start_time = '2019-09-01'               # 插值起始时间
-end_time = '2020-06-01'                 # 插值结束时间
+start_time = '2019-01-01'               # 插值起始时间
+end_time = '2020-12-31'                 # 插值结束时间
 sep_day = 8                             # 插值尺度(单位：日)
 process = 4                             # 插值时并行个数(最大值 = cup逻辑处理器个数 - 2)
 
@@ -171,9 +171,9 @@ def create_lapgrd(f, t, pre):
     date = datetime.strptime(f'{f[-8:-4]}', '%Y')
     day = (date_start_moth - date).days+1
     for i in range(count_grd):
-        res_name.append(t + os.sep + outpath[0] + os.sep + f'{pre}_{day:03d}')
+        res_name.append(t + os.sep + outpath[0] + os.sep + f'{pre}_{f[-8:-4]}{day:03d}')
         shutil.copy(dem.split('.')[0] + '.prj', res_name[i] + '.prj')
-        cov_name.append(t + os.sep + outpath[1] + os.sep + f'{pre}_{day:03d}_COV')
+        cov_name.append(t + os.sep + outpath[1] + os.sep + f'{pre}_{f[-8:-4]}{day:03d}_COV')
         shutil.copy(dem.split('.')[0] + '.prj', cov_name[i] + '.prj')
         day += sep_day
     with open(f'{t}/lapgrd_{f[-8:-4]}.cmd', 'w') as fp:
@@ -231,8 +231,8 @@ def execute_cmd():
         worker.map(exec_cmd, lapgrd_cmd)
 
 
-# select_data()
-# create_cmd()
+select_data()
+create_cmd()
 execute_cmd()
 print('Interpolation success!!')
 
