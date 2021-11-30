@@ -10,9 +10,7 @@ author:Monarch
 
 import rasterio
 
-with rasterio.open(r'E:\public\数据\reult\dem.txt') as src:
-    profile = src.profile
-    data = src.read(1)
+
 
 
 
