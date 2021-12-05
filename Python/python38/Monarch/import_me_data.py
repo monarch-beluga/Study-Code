@@ -213,7 +213,7 @@ def get_data_by_stations(stations: list, types: list, start_time: str, end_time:
     zst = time.time()
     for year in range(start_year, end_year):
         sql = f'select Station, {date}, {",".join(types)} from all{year} where ' \
-              f'Station in ({str(stations).strip("[]")}) and DATE >= "{start_time}" and DATE < "{end_time}"'
+              f'Station in ({str(stations).strip("[]")}) and DATE >= "{start_time}" and DATE <= "{end_time}"'
         df = pd.read_sql(sql, conn)
         data.append(df)
         p = (year-start_year+1)/(end_year-start_year)

@@ -19,7 +19,7 @@ def df_format(fp, f_mat, Data):
         print(f_mat.format(*Data.loc[i].to_list()), file=fp)
 
 
-files = glob(r"E:\public\sjy\WIN\*.dat")
+files = glob(r"E:\public\数据\reult\*.dat")
 for file_name in files:
     with open(file_name, 'r') as f:
         lines = f.readlines()
@@ -30,7 +30,7 @@ for file_name in files:
     df = pd.DataFrame(data)
     df.set_index([0, 1, 2, 3], inplace=True)
     df = df.astype('float')
-    df[df > 20] = np.nan
+    df[df > 1000] = np.nan
     df1 = df.interpolate(method='linear', limit_direction='both', axis=1)
     df1.reset_index(inplace=True)
     df1.set_index(0, inplace=True)
