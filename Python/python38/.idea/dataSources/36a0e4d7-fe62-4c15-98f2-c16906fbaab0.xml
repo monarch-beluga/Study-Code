@@ -1,7 +1,67 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <dataSource name="办公室">
-  <database-model serializer="dbm" dbms="MYSQL" family-id="MYSQL" format-version="4.23">
-    <root id="1"/>
+  <database-model serializer="dbm" dbms="MYSQL" family-id="MYSQL" format-version="4.21">
+    <root id="1">
+      <ServerVersion>8.0.15</ServerVersion>
+      <Grants>|root||root|localhost|ALTER|G
+|root||root|localhost|ALTER ROUTINE|G
+|root||root|localhost|APPLICATION_PASSWORD_ADMIN|G
+|root||root|localhost|BACKUP_ADMIN|G
+|root||root|localhost|BINLOG_ADMIN|G
+|root||root|localhost|BINLOG_ENCRYPTION_ADMIN|G
+|root||root|localhost|CONNECTION_ADMIN|G
+|root||root|localhost|CREATE|G
+|root||root|localhost|CREATE ROLE|G
+|root||root|localhost|CREATE ROUTINE|G
+|root||root|localhost|CREATE TABLESPACE|G
+|root||root|localhost|CREATE TEMPORARY TABLES|G
+|root||root|localhost|CREATE USER|G
+|root||root|localhost|CREATE VIEW|G
+|root||root|localhost|DELETE|G
+|root||root|localhost|DROP|G
+|root||root|localhost|DROP ROLE|G
+|root||root|localhost|ENCRYPTION_KEY_ADMIN|G
+|root||root|localhost|EVENT|G
+|root||root|localhost|EXECUTE|G
+|root||root|localhost|FILE|G
+|root||root|localhost|GROUP_REPLICATION_ADMIN|G
+|root||root|localhost|INDEX|G
+|root||root|localhost|INSERT|G
+|root||root|localhost|LOCK TABLES|G
+|root||mysql.session|localhost|PERSIST_RO_VARIABLES_ADMIN|G
+|root||root|localhost|PERSIST_RO_VARIABLES_ADMIN|G
+|root||root|localhost|PROCESS|G
+|root||root|localhost|REFERENCES|G
+|root||root|localhost|RELOAD|G
+|root||root|localhost|REPLICATION CLIENT|G
+|root||root|localhost|REPLICATION SLAVE|G
+|root||root|localhost|REPLICATION_SLAVE_ADMIN|G
+|root||root|localhost|RESOURCE_GROUP_ADMIN|G
+|root||root|localhost|RESOURCE_GROUP_USER|G
+|root||root|localhost|ROLE_ADMIN|G
+|root||mysql.infoschema|localhost|SELECT|G
+|root||root|localhost|SELECT|G
+|root||root|localhost|SERVICE_CONNECTION_ADMIN|G
+|root||mysql.session|localhost|SESSION_VARIABLES_ADMIN|G
+|root||root|localhost|SESSION_VARIABLES_ADMIN|G
+|root||root|localhost|SET_USER_ID|G
+|root||root|localhost|SHOW DATABASES|G
+|root||root|localhost|SHOW VIEW|G
+|root||root|localhost|SHUTDOWN|G
+|root||mysql.session|localhost|SUPER|G
+|root||root|localhost|SUPER|G
+|root||mysql.session|localhost|SYSTEM_VARIABLES_ADMIN|G
+|root||root|localhost|SYSTEM_VARIABLES_ADMIN|G
+|root||root|localhost|TRIGGER|G
+|root||root|localhost|UPDATE|G
+|root||root|localhost|XA_RECOVER_ADMIN|G
+|root||root|localhost|grant option|G
+performance_schema|schema||mysql.session|localhost|SELECT|G
+sys|schema||mysql.sys|localhost|TRIGGER|G</Grants>
+      <DefaultEngine>InnoDB</DefaultEngine>
+      <DefaultTmpEngine>InnoDB</DefaultTmpEngine>
+      <DefaultCasing>lower/lower</DefaultCasing>
+    </root>
     <schema id="2" parent="1" name="information_schema">
       <Current>1</Current>
       <Collation>utf8_general_ci</Collation>

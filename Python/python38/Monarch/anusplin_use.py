@@ -38,6 +38,7 @@ dbs = "meteodata"                       # 需要查询的数据库, 国内使用
 # -----------------插值配置------------------------
 types = ['MTEM', 'PREP']                # 插值的要素
 out_pre = ['TAVG', 'PRCP']
+q = 0.8                                 # 数据完整性百分比
 # types: list, 要获取的气象要素列表:
 #     |APRE: 平均本站气压 | DMXP:日最高本站气压 | DMNP: 日最低本站气压 | MTEM: 平均气温 | DMXT: 日最高气温|
 #     |DMNT: 日最低气温 | AVRH: 平均相对湿度 | MNRH: 最小相对湿度 | PREP: 降水量 | MEWS: 平均风速 |
@@ -92,20 +93,22 @@ def select_data():
     # df = pd.read_csv(r'station_data.txt', header=0)
     print('data select success!!')
     # df = pd.read_csv(r'station_data.txt', header=0)
-    df['date'] = df['Year']*10000+df['Month']*100+df['Day']
+    df['date'] = df['Year'] * 10000 + df['Month'] * 100 + df['Day']
     for t in types:
         df.loc[(df[t] > 1000) | (df[t] < -100), t] = np.nan
     start_year = int(start_time[:4])
-    end_year = int(end_time[:4])+1
-    for t in types:
-        if not os.path.exists(t):
-            os.makedirs(t)
+    end_year = int(end_time[:4]) + 1
+    for t, out_t in zip(types, out_pre):
+        if not os.path.exists(out_t):
+            os.makedirs(out_t)
         data = df[['Station', 'date', t]]
         for year in range(start_year, end_year):
-            data1 = data[data['date']//10000 == year]
+            data1 = data[data['date'] // 10000 == year]
             data1.set_index(['Station', 'date'], inplace=True)
             data1 = data1.unstack()
             data1.columns = [i // sep_day for i in range(len(data1.columns))]
+            count = data1.shape[1]
+            data1.drop(data1[data1.count(1) < count*q].index, inplace=True)
             data1 = data1.interpolate(method='linear', limit_direction='both', axis=1)
             data1 = data1.T
             if t == 'PREP':
@@ -118,17 +121,17 @@ def select_data():
             data1.set_index(['index', 'X', 'Y', 'elev'], inplace=True)
             data1.reset_index(inplace=True)
             count = data1.shape[1]
-            with open(f'{t}/{t}_{year:04d}.dat', 'w') as f:
+            with open(f'{out_t}/{out_t}_{year:04d}.dat', 'w') as f:
                 out_format = '{:11s}' + '{:12.2f}' * 2 + '{:10.3f}' + '{:10.2f}' * (count - 4)
                 df_format(f, out_format, data1)
 
 
-def create_splina(t, f, dem_min, dem_max):
+def create_splina(t, f, dem_min, dem_max, pre):
     with open(f'{f}') as fp:
         sta_data = fp.readline().split()
     count_grd = len(sta_data) - 4
     climate_list = ['.res', '.opt', '.sur', '.lis', '.cov']
-    with open(f'{t}/splina_{f[-8:-4]}.cmd', 'w') as fp:
+    with open(f'{pre}/splina_{f[-8:-4]}.cmd', 'w') as fp:
         print(time.strftime("%Y-%m-%d %H:%M:%S", time.localtime()), file=fp)
         if t == 'PREP':
             print(7, file=fp)
@@ -149,19 +152,19 @@ def create_splina(t, f, dem_min, dem_max):
         print('3000\n11', file=fp)
         print(f'(a11,2f12.2,f10.3,{count_grd}f10.2)', file=fp)
         for i in climate_list:
-            print(path + os.sep + t + os.sep + f'climateVar_{f[-8:-4]}{i}', file=fp)
+            print(path + os.sep + pre + os.sep + f'climateVar_{f[-8:-4]}{i}', file=fp)
         print('\n\n', file=fp)
-    print(f'{t}/splina_{f[-8:-4]}.cmd create success!!')
+    print(f'{pre}/splina_{f[-8:-4]}.cmd create success!!')
 
 
-def create_lapgrd(f, t, pre):
+def create_lapgrd(f, pre):
     outpath = ['RES', 'COV']
     with open(f'{f}') as fp:
         sta_data = fp.readline().split()
     count_grd = len(sta_data) - 4
     for i in outpath:
-        if not os.path.exists(t + os.sep + i):
-            os.makedirs(t + os.sep + i)
+        if not os.path.exists(pre + os.sep + i):
+            os.makedirs(pre + os.sep + i)
     if f[-8:-4] == start_time[:4]:
         date_start_moth = datetime.strptime(start_time, "%Y-%m-%d")
     else:
@@ -171,16 +174,16 @@ def create_lapgrd(f, t, pre):
     date = datetime.strptime(f'{f[-8:-4]}', '%Y')
     day = (date_start_moth - date).days+1
     for i in range(count_grd):
-        res_name.append(t + os.sep + outpath[0] + os.sep + f'{pre}_{f[-8:-4]}{day:03d}')
+        res_name.append(pre + os.sep + outpath[0] + os.sep + f'{pre}_{f[-8:-4]}{day:03d}')
         shutil.copy(dem.split('.')[0] + '.prj', res_name[i] + '.prj')
-        cov_name.append(t + os.sep + outpath[1] + os.sep + f'{pre}_{f[-8:-4]}{day:03d}_COV')
+        cov_name.append(pre + os.sep + outpath[1] + os.sep + f'{pre}_{f[-8:-4]}{day:03d}_COV')
         shutil.copy(dem.split('.')[0] + '.prj', cov_name[i] + '.prj')
         day += sep_day
-    with open(f'{t}/lapgrd_{f[-8:-4]}.cmd', 'w') as fp:
-        print(path + os.sep + t + os.sep + f'climateVar_{f[-8:-4]}.sur', file=fp)
+    with open(f'{pre}/lapgrd_{f[-8:-4]}.cmd', 'w') as fp:
+        print(path + os.sep + pre + os.sep + f'climateVar_{f[-8:-4]}.sur', file=fp)
         print(' '.join([str(i) for i in range(1, count_grd + 1)]), file=fp)
         print('1', file=fp)
-        print(path + os.sep + t + os.sep + f'climateVar_{f[-8:-4]}.cov', file=fp)
+        print(path + os.sep + pre + os.sep + f'climateVar_{f[-8:-4]}.cov', file=fp)
         print('2\n\n1\n1', file=fp)
         print(f'{xmin} {xmax} {csize}', file=fp)
         print('2', file=fp)
@@ -195,7 +198,7 @@ def create_lapgrd(f, t, pre):
         for i in cov_name:
             print(path + os.sep + i + '.grd', file=fp)
         print(f'({ncols:.0f}f10.2)', file=fp)
-    print(f'{t}/lapgrd_{f[-8:-4]}.cmd create success!!')
+    print(f'{pre}/lapgrd_{f[-8:-4]}.cmd create success!!')
 
 
 def create_cmd():
@@ -210,8 +213,8 @@ def create_cmd():
         fs = glob(t+os.sep+'*.dat')
         # f = fs[0]
         for f in fs:
-            create_splina(t, f, dem_min, dem_max)
-            create_lapgrd(f, t, pre)
+            create_splina(t, f, dem_min, dem_max, pre)
+            create_lapgrd(f, pre)
 
 
 def exec_cmd(cmd):
