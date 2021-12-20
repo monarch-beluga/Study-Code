@@ -5,15 +5,13 @@ from glob import glob
 import os
 import time
 
-out_path = r'H:\Monarch\paper\Data\landuse'
-os.chdir(out_path)
-arcpy.env.workspace = out_path
+path = r'H:\Monarch\paper\Data\landuse\class'
+os.chdir(path)
+arcpy.env.workspace = path
+out_path = 'points'
 
-shp_file = glob(r'G:\arcgis1\package\jx_landuse\commondata\datasets\*.shp')
-
-st = time.time()
-for i, shp_f in enumerate(shp_file[:1]):
-    arcpy.FeatureToRaster_conversion(shp_f, 'TDLYDM', 'JX_%02d.tif' % (i+1), 10)
-    print i+1, '消耗:', time.time()-st
-print '转换成功！！！'
+shp_files = glob("*.shp")
+for f in shp_files:
+    arcpy.CreateRandomPoints_management(out_path, 'p_'+f.decode('gbk'), f.decode('gbk'), "", 10, 20)
+    print 'p_'+f.decode('gbk')+'export success !!!'
 
