@@ -216,24 +216,99 @@
 	"buffers":
 	[
 		{
-			"file": "/E/public/数据/reult/TAVG00000.dat",
+			"file": "/E/public/Data/ghcnd_station.txt",
 			"settings":
 			{
-				"buffer_size": 7872,
-				"encoding": "UTF-8 with BOM",
+				"buffer_size": 3779780,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "/E/Study/Projects/Python/python38/gdal_liu/写入文件.py",
+			"settings":
+			{
+				"buffer_size": 2782,
+				"encoding": "UTF-8",
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "/D/Life/WeChat/news/WeChat Files/wxid_241521i70k3r22/FileStorage/File/2021-12/convert2(1).py",
+			"settings":
+			{
+				"buffer_size": 1728,
+				"encoding": "UTF-8",
+				"line_ending": "Windows"
+			},
+			"undo_stack":
+			[
+			]
+		},
+		{
+			"file": "/E/Data/temp/convert2.py",
+			"settings":
+			{
+				"buffer_size": 1913,
+				"encoding": "UTF-8",
 				"line_ending": "Windows"
 			},
 			"undo_stack":
 			[
 				[
-					3,
+					7,
 					1,
-					"revert",
+					"paste",
 					null,
-					"BAAAAAAAAAAAAAAAAAAAAAAAAADAHgAAQ0gwMDAwNTc0ODIgICAzNzI0NDYuMzIgIDMyODAxMTEuMjggICAgMjUuNTAwICAgICAgMi42NCAgICAgIDIuNTAgICAgICA0LjY0ICAgICAgNS4xMiAgICAgIDYuMzMKQ0gwMDAwNTc0ODMgICAyOTU5NzEuOTMgIDMyNTE1MjQuNDAgICAgMzEuOTAwICAgICAgMi4zOSAgICAgIDIuMjEgICAgICA1LjMxICAgICAgNS4yOCAgICAgIDcuNDAKQ0gwMDAwNTc0OTQgICAzODMyNDQuNzcgIDMyNDY4MTMuNDcgICAgMjMuNjAwICAgICAgMi42NSAgICAgIDIuNzMgICAgICA0LjAwICAgICAgNS4zOCAgICAgIDYuMzMKQ0gwMDAwNTc1NzMgICAyNzY5ODMuMzkgIDMxNTY2MTYuMzQgICAgMzAuMDAwICAgICAgMi40MCAgICAgIDIuODUgICAgICA1Ljg2ICAgICAgNS4zNiAgICAgIDcuOTcKQ0gwMDAwNTc1NzQgICAyMzA0ODQuMzYgIDMxMDM3ODkuNjQgICAgMzYuMDAwICAgICAgMi4zOCAgICAgIDMuMTAgICAgICA1LjkwICAgICAgNS42MiAgICAgIDguNTcKQ0gwMDAwNTc1ODEgICAzMjk1MzQuMjMgIDMxNTcxNzUuMzggICAgMjcuNDAwICAgICAgMi43MiAgICAgIDMuMjggICAgICA1LjcyICAgICAgNS42OCAgICAgIDguMDAKQ0gwMDAwNTc1ODMgICAzNzg3MzAuMDEgIDMxNzAyMzguODUgICAgNjEuNzAwICAgICAgMi44NSAgICAgIDMuNDEgICAgICA1LjcwICAgICAgNS43NCAgICAgIDcuNjAKQ0gwMDAwNTc1ODQgICAyOTU3MzQuODcgIDMxMDY3MTEuODMgICAgNTMuMDAwICAgICAgMi44OCAgICAgIDMuNjAgICAgICA2LjYxICAgICAgNS45MiAgICAgIDguNjMKQ0gwMDAwNTc1OTggICA0NDE0ODQuMDEgIDMwNzMxMDYuMjEgICAxNDYuODAwICAgICAgMy43OSAgICAgIDQuOTEgICAgICA2LjAxICAgICAgNy45MCAgICAgIDguNDAKQ0gwMDAwNTc2NzMgICAyNzg4MTAuMTMgIDMwMjc3OTIuNzEgICAgNTMuMjAwICAgICAgMi40MyAgICAgIDMuMjUgICAgICA1LjYxICAgICAgNi4wOCAgICAgIDkuMzAKQ0gwMDAwNTc2NzkgICAzMTE0MzYuNDQgIDI5NzczMzEuNzQgICAxMDEuNDAwICAgICAgMi43NSAgICAgIDMuNzAgICAgICA2LjE1ICAgICAgNi45MyAgICAgIDkuODMKQ0gwMDAwNTc2ODIgICAzNDU0MjEuNDkgIDMwMzQ0MzQuOTAgICAxMDYuMzAwICAgICAgMy4zNCAgICAgIDQuMjUgICAgICA1LjIwICAgICAgNi44NSAgICAgIDkuNzcKQ0gwMDAwNTc2ODcgICAyNzA4ODQuNzYgIDI5NjQ5MzAuNjYgICAxMTkuMDAwICAgICAgMi4yNCAgICAgIDIuOTAgICAgICA1LjY5ICAgICAgNi4yNiAgICAgIDkuMzcKQ0gwMDAwNTc2OTYgICA0NjQxNDAuNjUgIDMwMDM2MDguMzQgICAgOTEuNzAwICAgICAgNC44NyAgICAgIDUuODYgICAgICA2LjE5ICAgICAgOC42NiAgICAgMTAuMzcKQ0gwMDAwNTc3NzYgICAyNjU1ODAuMjYgIDI4NzMyMjMuMzkgIDEyNjUuOTAwICAgICAtMS4wNiAgICAgIDEuMDYgICAgICAyLjM4ICAgICAgNC4yNiAgICAgIDYuNjMKQ0gwMDAwNTc3NzkgICAzMzA0MzQuNDQgIDI4NDczMjEuMTUgICAxMTUuMjAwICAgICAgMy4yOCAgICAgIDQuMjggICAgICA2LjAxICAgICAgOC40MSAgICAgMTIuNTMKQ0gwMDAwNTc3ODAgICAzMDk3NjUuOTEgIDI5MzgxNTkuNTAgICAgNzQuNjAwICAgICAgMy4yMSAgICAgIDQuMjEgICAgICA2LjQ5ICAgICAgNy44MCAgICAgMTEuMTMKQ0gwMDAwNTc3ODkgICAzODkyMzMuMjcgIDI4NTg0MDQuOTggICAxOTQuNTAwICAgICAgNC41NSAgICAgIDYuMTIgICAgICA3LjAyICAgICAgOS45MSAgICAgMTIuMjAKQ0gwMDAwNTc3OTMgICA0MjgyODMuMjIgIDI5MzQ4NDYuOTQgICAxMzEuMzAwICAgICAgNC4yNSAgICAgIDUuNjIgICAgICA2LjU4ICAgICAgOS4xOSAgICAgMTEuNjMKQ0gwMDAwNTc3OTkgICA0ODUxODguMjIgIDI4NTM3NzAuMzEgICAgNzEuMjAwICAgICAgNS4wNiAgICAgIDYuNzggICAgICA3LjQwICAgICAxMC43NSAgICAgMTQuNTcKQ0gwMDAwNTc4NzIgICAyNTY5NzEuODQgIDI4MjYxNzIuMzUgICAxMDQuOTAwICAgICAgMy4zMSAgICAgIDQuNDEgICAgICA2LjgxICAgICAgOC44NiAgICAgMTMuMDAKQ0gwMDAwNTc4NzQgICAyMzg0NDYuNDEgIDI3NzQ0ODguMTUgICAxMTYuNjAwICAgICAgMy4yNCAgICAgIDQuNDcgICAgICA3LjExICAgICAgOS4yMSAgICAgMTMuNDAKQ0gwMDAwNTc4ODkgICAzOTM4ODEuMzUgIDI3NDE2NDAuMDcgICA4MzUuOTAwICAgICAgNi44MCAgICAgIDkuNzggICAgICA1Ljg5ICAgICAxMC4wMSAgICAgMTQuMjcKQ0gwMDAwNTc4OTQgICA0MTM0NzEuNjcgIDI3OTgwOTIuMzkgICA4NDMuMDAwICAgICAgMi4xMCAgICAgIDMuNzUgICAgICA0LjQ3ICAgICAgOC4yNSAgICAgMTAuNjAKQ0gwMDAwNTc4OTYgICA0NDc0MzEuMDQgIDI3NzE3MzcuNzUgICAxMjYuMTAwICAgICAgNS40MCAgICAgIDcuMjUgICAgICA3Ljc2ICAgICAxMS40MSAgICAgMTUuMzMKQ0gwMDAwNTc5NzIgICAyOTczNTUuNjYgIDI2OTkzNzUuNzggICAzNjguODAwICAgICAgMS43NCAgICAgIDMuNDIgICAgICA2LjY1ICAgICAgOS4xNiAgICAgMTMuNjMKQ0gwMDAwNTc5OTMgICA0OTk2NzkuMjIgIDI3MjMwNTguNDQgICAxMzcuNTAwICAgICAgNS45NCAgICAgIDguMjkgICAgICA3Ljk2ICAgICAxMi45MiAgICAgMTYuOTcKQ0gwMDAwNTc5OTYgICA0Mjg0MzIuNzQgIDI2MzQyMjQuMjIgICAxNDkuNzAwICAgICAgNy40OSAgICAgMTAuMjUgICAgICA5LjA0ICAgICAxNC4xMyAgICAgMTcuNzMKQ0gwMDAwNTg0MDIgICA1MzU1NjYuMjQgIDMyNjg4OTYuNTAgICAxMjMuODAwICAgICAgMy40NiAgICAgIDMuOTUgICAgICA0Ljg0ICAgICAgNi4xOSAgICAgIDcuMzMKQ0gwMDAwNTg0MzYgICA4NDg2MzYuNzQgIDMyNzk2NDcuOTggICAgODcuMzAwICAgICAgMy43NCAgICAgIDQuMDEgICAgICA0LjI0ICAgICAgNS4xOSAgICAgIDguNTcKQ0gwMDAwNTg0MzcgICA3NzQ4OTUuNjUgIDMyMTgwNTEuMDIgIDE4NDAuNDAwICAgICAgMC43NyAgICAgIDAuODAgICAgIC0wLjU2ICAgICAgMC42OCAgICAgIDMuNjAKQ0gwMDAwNTg1MDAgICA0OTc5OTguNjcgIDMxNzM1MTcuMDcgICAgNTcuMDAwICAgICAgMy4zNiAgICAgIDQuNTUgICAgICA2LjIwICAgICAgNi44OSAgICAgIDguNzcKQ0gwMDAwNTg1MDYgICA1NzI2NDkuNjMgIDMxNDA2NjkuNTQgIDExNjQuNTAwICAgICAtMC4xNSAgICAgIDAuOTkgICA0MDk4LjA0ICAgICAgMy44NSAgICAgIDYuODAKQ0gwMDAwNTg1MDcgICA0OTIyMjIuOTMgIDMxMDAyNTQuNTkgICAxMTYuMDAwICAgICAgMy42MiAgICAgIDQuODQgICAgICA1Ljg0ICAgICAgNy44NSAgICAgIDguNTMKQ0gwMDAwNTg1MTkgICA2NDM4NzkuNTUgIDMwODEyMzEuODcgICAgNDAuMTAwICAgICAgNC41MyAgICAgIDUuNTYgICAgICA2LjYzICAgICAgOC41MSAgICAgMTAuNzAKQ0gwMDAwNTg1MjAgICA3MzY1MzYuNTYgIDMxODM0NjQuNTggICAxNDIuMDAwICAgICAgNC41MSAgICAgIDUuNjEgICAgICA0LjY4ICAgICAgNy4wOSAgICAgIDguMjMKQ0gwMDAwNTg1MjcgICA2OTE0ODIuNzAgIDMxMTgyNDUuNTggICAgNjEuNTAwICAgICAgNS40NSAgICAgIDYuNDIgICAgICA2LjY4ICAgICAgOS4zNiAgICAgMTEuNDAKQ0gwMDAwNTg1MzEgICA3OTEwNTguODIgIDMxNzMyNDEuMjQgICAxNDIuNzAwICAgICAgNS4wOSAgICAgIDUuOTQgICAgICA1Ljg0ICAgICAgNy42MCAgICAgIDkuMzAKQ0gwMDAwNTg1NDMgICA4NjI1ODcuOTMgIDMxNjgyMzQuNjcgICAxNzEuNDAwICAgICAgNS4yMiAgICAgIDUuODkgICAgICA2LjYxICAgICAgNy41OCAgICAgMTAuNDAKQ0gwMDAwNTg2MDAgICA1MTg1MzQuNzEgIDMwNTkwMzYuNzggICAgNzguOTAwICAgICAgNC4zMSAgICAgIDUuMzQgICAgICA2LjE4ICAgICAgOC41NyAgICAgIDkuNDMKQ0gwMDAwNTg2MDYgICA1NzMzODMuODIgIDMwMzE4OTkuMjcgICAgNDYuOTAwICAgICAgNC4zNiAgICAgIDUuMjYgICAgICA2LjU1ICAgICAgOC43MiAgICAgMTAuMTAKQ0gwMDAwNTg2MDggICA1NDA4OTYuMjUgIDI5NzA2NzQuMjEgICAgMzAuNDAwICAgICAgNC4zNCAgICAgIDUuNTAgICAgICA2LjI4ICAgICAgOC42OCAgICAgMTAuMTMKQ0gwMDAwNTg2MjIgICA3MzA4OTguMTUgIDMwODE4ODAuMDAgICAgODguNTAwICAgICAgNS40OSAgICAgIDYuNjkgICAgICA2LjE1ICAgICAgOS4wNCAgICAgMTIuMjMKQ0gwMDAwNTg2MjYgICA3MDI1MDEuMTAgIDMwMDY4NDQuMzggICAgNjAuODAwICAgICAgNS4zNiAgICAgIDYuNTggICAgICA2LjM1ICAgICAgOS41NyAgICAgMTEuNzMKQ0gwMDAwNTg2MzQgICA3OTc4NjcuOTAgIDMwNTY5MTguMDcgICAxMTYuMzAwICAgICAgNS42MiAgICAgIDYuNjIgICAgICA2LjgwICAgICAgOC43NCAgICAgMTEuNjcKQ0gwMDAwNTg2MzcgICA3NzM4NzguNTggIDMwMjkxNDEuNjUgICAxMTguMjAwICAgICAgNS4yOCAgICAgIDYuNTAgICAgICA2LjU0ICAgICAgOS4xMSAgICAgMTEuODAKQ0gwMDAwNTg3MDUgICA1MzI3NDYuMTcgIDI4ODc1MDIuNjUgICAgODUuNzAwICAgICAgNC42MiAgICAgIDYuMzggICAgICA2LjQwICAgICAgOS42NCAgICAgMTIuNjMKQ0gwMDAwNTg3MTUgICA2NTE2MTUuNTQgIDI5MjI2NzQuNzUgICAgODAuODAwICAgICAgNC41MyAgICAgIDYuMTQgICAgICA2Ljk0ICAgICAgOS44MCAgICAgMTIuMzAKQ0gwMDAwNTg3MTggICA2NDI1MTMuMTEgIDI4ODE4MzAuMzggICAxMTEuNTAwICAgICAgNC44OSAgICAgIDYuNjggICAgICA3LjMxICAgICAxMC42NiAgICAgMTIuNTAKQ0gwMDAwNTg3MjUgICA3MzM5MTguMDEgIDI5MDA1ODAuNDkgICAyMTguMDAwICAgICAgNy43MSAgICAgIDkuMzQgICAgICA3LjQ2ICAgICAxMC4wNiAgICAgMTMuMzcKQ0gwMDAwNTg3MzAgICA3ODQ4NTUuMTYgIDI5NTM4MDYuNDUgICAyMjIuMTAwICAgICAgOS4wOSAgICAgMTAuNDIgICAgICA3LjkwICAgICAxMC43MiAgICAgMTMuNjAKQ0gwMDAwNTg3MzEgICA4MzIxNzEuMzYgIDI5NzQ1NjguNDQgICAyNzYuOTAwICAgICAgNy4wMCAgICAgIDguMjUgICAgICA2LjM1ICAgICAgOS41NiAgICAgMTIuOTAKQ0gwMDAwNTg3MzQgICA3OTc2NDIuOTQgIDI5MDU1OTQuMTQgICAxOTYuOTAwICAgICAgOC43NCAgICAgMTAuNjggICAgICA3LjgwICAgICAxMC4zOSAgICAgMTQuMDMKQ0gwMDAwNTg3MzcgICA4MTk4NTYuNDAgIDI4NzYxMTguOTkgICAxNTQuOTAwICAgICAgOS42NyAgICAgMTEuNjAgICAgICA4LjMxICAgICAxMS4xNSAgICAgMTUuMDAKQ0gwMDAwNTg4MDYgICA1OTczOTAuMzYgIDI3OTYzOTcuOTcgICAyMDkuMTAwICAgICAgNS40NCAgICAgIDcuNjEgICAgICA3LjUwICAgICAxMS43MSAgICAgMTMuODcKQ0gwMDAwNTg4MTMgICA2MjI2NjkuMDAgIDI4MzcwMDEuNjUgICAxNjYuMzAwICAgICAgNS4wMyAgICAgIDYuOTggICAgICA3LjA2ICAgICAxMC43OCAgICAgMTMuMTAKQ0gwMDAwNTg4MTggICA2NTk2OTIuODAgIDI3NzI1MTIuMDIgICAzNTguOTAwICAgICAgNi40OCAgICAgIDguMzEgICAgICA3LjYwICAgICAxMC44OSAgICAgMTUuMDcKQ0gwMDAwNTg4MjAgICA3MDc5NTMuNjMgIDI4NTA2MTAuMDYgICAzNDIuOTAwICAgICAgNi4zNSAgICAgIDcuOTQgICAgICA2LjYyICAgICAgOS42OCAgICAgMTIuNzMKQ0gwMDAwNTg4MzcgICA4MTEzNTUuNzEgIDI3NzQ5MDQuMzkgICAyMDQuODAwICAgICAxMi4wNiAgICAgMTQuMzkgICAgICA5Ljg0ICAgICAxMS45NiAgICAgMTQuNjAKQ0gwMDAwNTg5MTEgICA2MzY1NjYuMDYgIDI3Mjg2ODAuNjQgICAzMTAuMDAwICAgICAgNy42MiAgICAgMTAuMjUgICAgICA4LjU3ICAgICAxMS41NCAgICAgMTUuMjMKQ0gwMDAwNTg5MTggICA2NDcyOTAuMDYgIDI2NDA0NDguNTggICAxOTguMDAwICAgICAxMC44NiAgICAgMTMuNzUgICAgIDExLjIwICAgICAxMy42MCAgICAgMTcuMDAKQ0gwMDAwNTg5MjYgICA3NDU4NzAuMDMgIDI2NzUxMDYuMDkgICAyMDUuMzAwICAgICAxNS4wMSAgICAgMTcuNjIgICAgIDEyLjg5ICAgICAxMy43MCAgICAgMTYuNTMKQ0gwMDAwNTg5MjcgICA3MDc2ODcuOTIgIDI2NDQ1NDIuOTggICAzNzYuMDAwICAgICAxNS4xMCAgICAgMTcuMDggICAgIDEyLjM4ICAgICAxMy42MyAgICAgMTYuOTAKQ0gwMDAwNTg5MzEgICA4MTAyODEuODkgIDI3MjY4OTAuMDkgIDE2NTMuNTAwICAgICAgOS42NiAgICAgIDkuOTYgICAgICA1LjcyICAgICAgNy4zMyAgICAgMTAuMTAKQ0gwMDAwNTkwODIgICAzNjQ2NjUuMjMgIDI1ODQwNDkuNjUgICAxMjEuMzAwICAgICAgOC41MSAgICAgMTAuODggICAgICA5LjY0ICAgICAxNC43NCAgICAgMTcuNTAKQ0gwMDAwNTkwODcgICAzNTk2NTkuOTAgIDI0OTY1MDQuNjEgICAgOTcuMjAwICAgICAxMC40MCAgICAgMTMuNTggICAgIDEyLjQxICAgICAxNS42NCAgICAgMTguMjcKQ0gwMDAwNTkwODggICAzNDgzMDUuNDAgIDI1MjkyNTYuODggICAgNzQuNDAwICAgICAgOS41MiAgICAgMTIuMzggICAgIDExLjQ0ICAgICAxNi4yMSAgICAgMTcuNjAKQ0gwMDAwNTkwOTIgICA0ODUwNjcuNTAgIDI2MTEzMDQuMzQgICAyNTAuMjAwICAgICAgNi40NSAgICAgIDkuMzEgICAgICA4LjI4ICAgICAxMi44OCAgICAgMTcuMjAKQ0gwMDAwNTkwOTYgICA0NTUyNDcuODcgIDI1NTQ1MjguODMgICAyMTUuMjAwICAgICAgOS4wNiAgICAgMTIuNTIgICAgIDEwLjU0ICAgICAxMy45OSAgICAgMTcuMTAKQ0gwMDAwNTkwOTcgICA0MjgzMDcuNzkgIDI1MTc5NTguMTUgICAxOTkuMzAwICAgICAxMS4wNCAgICAgMTQuODAgICAgIDExLjg5ICAgICAxNC41MiAgICAgMTcuNTMKQ0gwMDAwNTkxMDIgICA1NzAzNzUuMTkgIDI2MjQ2NjkuNjcgICAzMDMuOTAwICAgICAgOC41MSAgICAgMTAuODIgICAgICA5LjEwICAgICAxMi4yNyAgICAgMTYuMTAKQ0gwMDAwNTkxMDcgICA1Mzc5MzkuODYgIDI1MzA5MzYuNTYgICAxNzkuNjAwICAgICAgOS45OCAgICAgMTMuNDQgICAgIDExLjQ1ICAgICAxNC42MCAgICAgMTcuMzMKQ0gwMDAwNTkxMTMgICA2Nzk4ODguNzUgIDI2MDcwOTYuMTAgICAyMjYuOTAwICAgICAxMi45NiAgICAgMTUuNjggICAgIDExLjcxICAgICAxMy40NSAgICAgMTcuMzAKQ0gwMDAwNTkxMTYgICA2ODA3MDIuODAgIDI1NjUwMjIuMTUgICAgODAuMTAwICAgICAxNC45MSAgICAgMTcuNzYgICAgIDEzLjI2ICAgICAxNC4xMiAgICAgMTguMDAKQ0gwMDAwNTkxMTcgICA2MTcyNTMuMTAgIDI1NTMxODIuNjAgICAxMTYuMDAwICAgICAxMy4zNiAgICAgMTYuNDEgICAgIDEy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",
-					"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"
+					"AgAAAAAAAAAAAAAA/gcAAAAAAAAAAAAA/gcAAAAAAAD+BwAAAAAAABoIAAAjIC0qLSBjb2Rpbmc6IHV0Zi04IC0qLQoKIyDmqKHlnZflr7zlhaUJCmltcG9ydCBudW1weSBhcyBucAppbXBvcnQgbmV0Q0RGNCBhcyBuYwpmcm9tIG9zZ2VvIGltcG9ydCBnZGFsLG9zcixvZ3IKaW1wb3J0IG9zCmltcG9ydCBnbG9iCgoKIyDljZXkuKpuY+aVsOaNrm5kdmnmlbDmja7or7vlj5bkuLrlpJrkuKp0aWbmlofku7bvvIzlubblsIZuZHZp5YC85YyW5Li6LTEtMeS5i+mXtApkZWYgTkNfdG9fdGlmZnMoZGF0YSxPdXRwdXRfZm9sZGVyKToKCW5jX2RhdGFfb2JqID0gbmMuRGF0YXNldChkYXRhKQoJTG9uID0gbmNfZGF0YV9vYmoudmFyaWFibGVzWydYTE9ORyddWzpdCglMYXQgPSBuY19kYXRhX29iai52YXJpYWJsZXNbJ1hMQVQnXVs6XQoJbmR2aV9hcnIgPSBucC5hc2FycmF5KG5jX2RhdGFfb2JqLnZhcmlhYmxlc1snUTInXSkgICPlsIZuZHZp5pWw5o2u6K+75Y+W5Li65pWw57uECgkjbmR2aV9hcnJfZmxvYXQgPSBuZHZpX2Fyci5hc3R5cGUoZmxvYXQpLzEwMDAwICPlsIZpbnTnsbvlnovmlLnkuLpmbG9hdOexu+WeiyzlubbljJbkuLotMSAtIDHkuYvpl7QKCgkj5b2x5YOP55qE5bem5LiK6KeS5ZKM5Y+z5LiL6KeS5Z2Q5qCHCglMb25NaW4sTGF0TWF4LExvbk1heCxMYXRNaW4gPSBbTG9uLm1pbigpLExhdC5tYXgoKSxMb24ubWF4KCksTGF0Lm1pbigpXSAKCgkj5YiG6L6o546H6K6h566XCglOX0xhdCA9IGxlbihMYXQpIAoJTl9Mb24gPSBsZW4oTG9uKQoJTG9uX1JlcyA9IChMb25NYXggLSBMb25NaW4pIC8oZmxvYXQoTl9Mb24pLTEpCglMYXRfUmVzID0gKExhdE1heCAtIExhdE1pbikgLyAoZmxvYXQoTl9MYXQpLTEpCgoJZm9yIGkgaW4gcmFuZ2UobGVuKG5kdmlfYXJyWzpdKSk6CgkjIOWIm+W7ui50aWbmlofku7YKCQlkcml2ZXIgPSBnZGFsLkdldERyaXZlckJ5TmFtZSgnR1RpZmYnKQoJCW91dF90aWZfbmFtZSA9IE91dHB1dF9mb2xkZXIgKyAnXFwnKyBkYXRhLnNwbGl0KCdcXCcpWy0xXS5zcGxpdCgnLicpWzBdICsgJ18nICsgc3RyKGkrMSkgKyAnLnRpZicKCQlvdXRfdGlmID0gZHJpdmVyLkNyZWF0ZShvdXRfdGlmX25hbWUsTl9Mb24sTl9MYXQsMSxnZGFsLkdEVF9GbG9hdDMyKQogICAgIAoJCSMg6K6+572u5b2x5YOP55qE5pi+56S66IyD5Zu0CgkJIy1MYXRfUmVz5LiA5a6a6KaB5pivLeeahAoJCWdlb3RyYW5zZm9ybSA9IChMb25NaW4sTG9uX1JlcywgMCwgTGF0TWF4LCAwLCAtTGF0X1JlcykKCQlvdXRfdGlmLlNldEdlb1RyYW5zZm9ybShnZW90cmFuc2Zvcm0pCgoJCSPojrflj5blnLDnkIblnZDmoIfns7vnu5/kv6Hmga/vvIznlKjkuo7pgInlj5bpnIDopoHnmoTlnLDnkIblnZDmoIfns7vnu58KCQlzcnMgPSBvc3IuU3BhdGlhbFJlZmVyZW5jZSgpCgkJc3JzLkltcG9ydEZyb21FUFNHKDQzMjYpICMg5a6a5LmJ6L6T5Ye655qE5Z2Q5qCH57O75Li6IldHUyA4NCLvvIxBVVRIT1JJVFlbIkVQU0ciLCI0MzI2Il0KCQlvdXRfdGlmLlNldFByb2plY3Rpb24oc3JzLkV4cG9ydFRvV2t0KCkpICMg57uZ5paw5bu65Zu+5bGC6LWL5LqI5oqV5b2x5L+h5oGvCgoJCSPmlbDmja7lhpnlh7oKCQlvdXRfdGlmLkdldFJhc3RlckJhbmQoMSkuV3JpdGVBcnJheShuZHZpX2FycltpXSkgIyDlsIbmlbDmja7lhpnlhaXlhoXlrZjvvIzmraTml7bmsqHmnInlhpnlhaXnoaznm5gKCQlvdXRfdGlmLkZsdXNoQ2FjaGUoKSAjIOWwhuaVsOaNruWGmeWFpeehrOebmAoJCW91dF90aWYgPSBOb25lICMg5rOo5oSP5b+F6aG75YWz6ZetdGlm5paH5Lu2CgpkZWYgbWFpbigpOgoJSW5wdXRfZm9sZGVyID0gcidEOlwwMy5UZW1wb3JhcnlcUTInCglPdXRwdXRfZm9sZGVyID0gcidEOlwwMy5UZW1wb3JhcnlcUTInCgoJIyDor7vlj5bmiYDmnIluY+aVsOaNrgoJZGF0YV9saXN0ID0gZ2xvYi5nbG9iKElucHV0X2ZvbGRlciArICdcKi5uYycpCgoJZm9yIGkgaW4gcmFuZ2UobGVuKGRhdGFfbGlzdCkpOgoJCWRhdGEgPSBkYXRhX2xpc3RbaV0KCQlOQ190b190aWZmcyhkYXRhLE91dHB1dF9mb2xkZXIpCgkJcHJpbnQoZGF0YSArICctLS0tLei9rHRpZuaIkOWKnycpCiAgICAKCXByaW50KCctLS0t6L2s5o2i57uT5p2fLS0tLScpCgptYWluKCkK",
+					"AwAAAAAAAAABAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAPC/AAAAAAEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA8L8AAAAAAQAAAAAAAAAAAAAAwAYAAAAAAAAAAAAAAADwvw"
+				],
+				[
+					4,
+					1,
+					"paste",
+					null,
+					"AgAAAAAAAAAAAAAA5gcAAAAAAAAAAAAA5gcAAAAAAADmBwAAAAAAAFgJAAAjIC0qLSBjb2Rpbmc6dXRmLTggXyotCiIiIgpAdmVyc2lvbjoKYXV0aG9yOk1vbmFyY2gKQHRpbWU6IDIwMjEvMTEvMjUKQGZpbGU6IHRlbXAucHkKQGZ1bmN0aW9uOgpAbW9kaWZ5OgoiIiIKIyAtKi0gY29kaW5nOiB1dGYtOCAtKi0KCiMg5qih5Z2X5a+85YWlCmltcG9ydCBudW1weSBhcyBucAppbXBvcnQgbmV0Q0RGNCBhcyBuYwpmcm9tIG9zZ2VvIGltcG9ydCBnZGFsLCBvc3IsIG9ncgppbXBvcnQgb3MKaW1wb3J0IGdsb2IKCgojIOWNleS4qm5j5pWw5o2ubmR2aeaVsOaNruivu+WPluS4uuWkmuS4qnRpZuaWh+S7tu+8jOW5tuWwhm5kdmnlgLzljJbkuLotMS0x5LmL6Ze0CmRlZiBOQ190b190aWZmcyhkYXRhLCBPdXRwdXRfZm9sZGVyKToKICAgIG5jX2RhdGFfb2JqID0gbmMuRGF0YXNldChkYXRhKQogICAgTG9uID0gbmNfZGF0YV9vYmoudmFyaWFibGVzWydYTE9ORyddWzpdCiAgICBMYXQgPSBuY19kYXRhX29iai52YXJpYWJsZXNbJ1hMQVQnXVs6XQogICAgbmR2aV9hcnIgPSBucC5hc2FycmF5KG5jX2RhdGFfb2JqLnZhcmlhYmxlc1snUTInXSkgICMg5bCGbmR2aeaVsOaNruivu+WPluS4uuaVsOe7hAogICAgIyBuZHZpX2Fycl9mbG9hdCA9IG5kdmlfYXJyLmFzdHlwZShmbG9hdCkvMTAwMDAgI+WwhmludOexu+Wei+aUueS4umZsb2F057G75Z6LLOW5tuWMluS4ui0xIC0gMeS5i+mXtAoKICAgICMg5b2x5YOP55qE5bem5LiK6KeS5ZKM5Y+z5LiL6KeS5Z2Q5qCHCiAgICBMb25NaW4sIExhdE1heCwgTG9uTWF4LCBMYXRNaW4gPSBbTG9uLm1pbigpLCBMYXQubWF4KCksIExvbi5tYXgoKSwgTGF0Lm1pbigpXQoKICAgICMg5YiG6L6o546H6K6h566XCiAgICBOX0xhdCwgTl9Mb24gPSBMb24uc2hhcGUKICAgIExvbl9SZXMgPSAoTG9uTWF4IC0gTG9uTWluKSAvIChmbG9hdChOX0xvbikgLSAxKQogICAgTGF0X1JlcyA9IChMYXRNYXggLSBMYXRNaW4pIC8gKGZsb2F0KE5fTGF0KSAtIDEpCgogICAgZm9yIGkgaW4gcmFuZ2UobGVuKG5kdmlfYXJyWzpdKSk6CiAgICAgICAgIyDliJvlu7oudGlm5paH5Lu2CiAgICAgICAgZHJpdmVyID0gZ2RhbC5HZXREcml2ZXJCeU5hbWUoJ0dUaWZmJykKICAgICAgICBvdXRfdGlmX25hbWUgPSBPdXRwdXRfZm9sZGVyICsgJ1xcJyArIGRhdGEuc3BsaXQoJ1xcJylbLTFdLnNwbGl0KCcuJylbMF0gKyAnXycgKyBzdHIoaSArIDEpICsgJy50aWYnCiAgICAgICAgb3V0X3RpZiA9IGRyaXZlci5DcmVhdGUob3V0X3RpZl9uYW1lLCBOX0xvbiwgTl9MYXQsIDEsIGdkYWwuR0RUX0Zsb2F0MzIpCgogICAgICAgICMg6K6+572u5b2x5YOP55qE5pi+56S66IyD5Zu0CiAgICAgICAgIyAtTGF0X1Jlc+S4gOWumuimgeaYry3nmoQKICAgICAgICBnZW90cmFuc2Zvcm0gPSAoTG9uTWluLCBMb25fUmVzLCAwLCBMYXRNYXgsIDAsIC1MYXRfUmVzKQogICAgICAgIG91dF90aWYuU2V0R2VvVHJhbnNmb3JtKGdlb3RyYW5zZm9ybSkKCiAgICAgICAgIyDojrflj5blnLDnkIblnZDmoIfns7vnu5/kv6Hmga/vvIznlKjkuo7pgInlj5bpnIDopoHnmoTlnLDnkIblnZDmoIfns7vnu58KICAgICAgICBzcnMgPSBvc3IuU3BhdGlhbFJlZmVyZW5jZSgpCiAgICAgICAgc3JzLkltcG9ydEZyb21FUFNHKDQzMjYpICAjIOWumuS5iei+k+WHuueahOWdkOagh+ezu+S4uiJXR1MgODQi77yMQVVUSE9SSVRZWyJFUFNHIiwiNDMyNiJdCiAgICAgICAgb3V0X3RpZi5TZXRQcm9qZWN0aW9uKHNycy5FeHBvcnRUb1drdCgpKSAgIyDnu5nmlrDlu7rlm77lsYLotYvkuojmipXlvbHkv6Hmga8KCiAgICAgICAgIyDmlbDmja7lhpnlh7oKICAgICAgICBvdXRfdGlmLkdldFJhc3RlckJhbmQoMSkuV3JpdGVBcnJheShuZHZpX2FycltpXSkgICMg5bCG5pWw5o2u5YaZ5YWl5YaF5a2Y77yM5q2k5pe25rKh5pyJ5YaZ5YWl56Gs55uYCiAgICAgICAgb3V0X3RpZi5GbHVzaENhY2hlKCkgICMg5bCG5pWw5o2u5YaZ5YWl56Gs55uYCiAgICAgICAgb3V0X3RpZiA9IE5vbmUgICMg5rOo5oSP5b+F6aG75YWz6ZetdGlm5paH5Lu2CgoKZGVmIG1haW4oKToKICAgIHBhdGggPSByJ0U6XERhdGFcdGVtcFxRMicKICAgIG91dF9wYXRoID0gJ3Jlc3VsdF90aWYnCiAgICBvcy5jaGRpcihwYXRoKQogICAgaWYgbm90IG9zLnBhdGguZXhpc3RzKG91dF9wYXRoKToKICAgICAgICBvcy5ta2RpcihvdXRfcGF0aCkKICAgICMg6K+75Y+W5omA5pyJbmPmlbDmja4KICAgIGRhdGFfbGlzdCA9IGdsb2IuZ2xvYignKi5uYycpCgogICAgZm9yIGkgaW4gcmFuZ2UoMSk6CiAgICAgICAgZGF0YSA9IGRhdGFfbGlzdFtpXQogICAgICAgIE5DX3RvX3RpZmZzKGRhdGEsIG91dF9wYXRoKQogICAgICAgIHByaW50KGRhdGEgKyAnLS0tLS3ovax0aWbmiJDlip8nKQoKICAgIHByaW50KCctLS0t6L2s5o2i57uT5p2fLS0tLScpCgoKbWFpbigpCgoK",
+					"AgAAAAAAAAABAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAPC/AAAAAAEAAAAAAAAAAAAAAP4HAAAAAAAAAAAAAAAA8L8"
+				],
+				[
+					7,
+					1,
+					"left_delete",
+					null,
+					"AQAAAAAAAAAAAAAAAAAAAAAAAABsAAAAIyAtKi0gY29kaW5nOnV0Zi04IF8qLQoiIiIKQHZlcnNpb246CmF1dGhvcjpNb25hcmNoCkB0aW1lOiAyMDIxLzExLzI1CkBmaWxlOiB0ZW1wLnB5CkBmdW5jdGlvbjoKQG1vZGlmeToKIiIi",
+					"AgAAAAAAAAABAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAPC/AAAAAAEAAABsAAAAAAAAAAAAAAAAAAAAAAAAAAAA8L8"
+				],
+				[
+					9,
+					1,
+					"left_delete",
+					null,
+					"AQAAAAAAAAAAAAAAAAAAAAAAAAABAAAACg",
+					"AgAAAAAAAAABAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAPC/AAAAAAEAAAABAAAAAAAAAAEAAAAAAAAAAAAAAAAAAAA"
 				]
 			]
+		},
+		{
+			"file": "/E/public/Data/CH_sta.txt",
+			"redo_stack":
+			[
+				[
+					1,
+					1,
+					"insert",
+					{
+						"characters": "\n"
+					},
+					"AQAAAAAAAAAAAAAAAAAAAAAAAAABAAAACg",
+					"FgAAAAAAAAABAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAPC/AAAAAAEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA8L8AAAAAAQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAADwvwAAAAABAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAPC/AAAAAAEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA8L8AAAAAAQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAADwvwAAAAABAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAPC/AAAAAAEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA8L8AAAAAAQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAADwvwAAAAABAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAPC/AAAAAAEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA8L8AAAAAAQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAADwvwAAAAABAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAPC/AAAAAAEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA8L8AAAAAAQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAADwvwAAAAABAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAPC/AAAAAAEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA8L8AAAAAAQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAADwvwAAAAABAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAPC/AAAAAAEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA8L8AAAAAAQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAADwvwAAAAABAAAAAQAAAAAAAAABAAAAAAAAAAAAAAAAAPC/"
+				]
+			],
+			"settings":
+			{
+				"buffer_size": 112356,
+				"encoding": "UTF-8",
+				"line_ending": "Windows"
+			}
 		}
 	],
 	"build_system": "Packages/C++/C Single File.sublime-build",
@@ -939,12 +1014,36 @@
 	],
 	"file_history":
 	[
+		"/E/Data/temp/meteo/TMAX_2018.txt",
+		"/D/Platform/Steam/steamapps/workshop/content/431960/1931934283/project.json",
+		"/D/images/simptab-zenmode-.json",
+		"/D/images/simptab-zenmode-.txt",
+		"/D/Platform/Minecraft/MultiMC/instances/1.16.5/.minecraft/config/UniqueEnchantment.toml",
+		"/D/Platform/Minecraft/MultiMC/instances/1.16.5/.minecraft/crash-reports/crash-2021-12-14_12.21.27-fml.txt",
+		"/D/Platform/Minecraft/MultiMC/instances/1.16.5/.minecraft/config/UniqueEnchantment-Utils.toml",
+		"/D/Platform/Minecraft/MultiMC/instances/1.16.51/.minecraft/config/UniqueEnchantment.toml",
+		"/D/Platform/Minecraft/MultiMC/instances/1.16.5/.minecraft/config/enhancedvisuals.json",
+		"/D/Platform/Minecraft/MultiMC/instances/1.16.5/.minecraft/crash-reports/crash-2021-12-08_19.44.57-fml.txt",
+		"/D/Platform/Minecraft/MultiMC/instances/1.16.5/.minecraft/config/enhancedvisuals-client.json",
+		"/D/Platform/Minecraft/MultiMC/instances/1.16.5/.minecraft/mods/Unique+Enchantments-1.16.5-2.0.0 - 翻译版本.jar",
+		"/D/Platform/Minecraft/MultiMC/instances/1.16.5/.minecraft/usercache.json",
+		"/E/Data/temp/meteo/TMIN_2018.dat",
+		"/E/Data/temp/meteo/TMIN_2018.txt",
 		"/E/public/数据/reult/splina00000.cmd",
+		"/E/public/temp/METE00000.dat",
+		"/E/public/temp/TAVG00000.dat",
+		"/E/public/数据/reult/dem.txt",
+		"/E/Data/temp/SRTM_Sanjy_250m.prj",
+		"/E/public/数据/reult/dem.prj",
+		"/E/public/sjy/dem.prj",
+		"/E/Data/temp/JX_DEM.prj",
+		"/E/Data/temp/dem_wgs.prj",
+		"/E/public/数据/reult/TAVG00000.dat",
+		"/E/public/数据/TAVG00000 - 副本.dat",
 		"/E/Study/Projects/Python/python38/Monarch/user_gee.py",
 		"/E/public/数据/reult/TAVG/splina_2019.cmd",
 		"/E/public/数据/reult/TAVG/TAVG_2019.dat",
 		"/E/public/temp/PRCP/PRCP_2018.dat",
-		"/E/public/数据/reult/TAVG00000.dat",
 		"/E/public/temp/PRCP/PRCP_2018.txt",
 		"/E/public/temp/WIN/WIN_2018.dat",
 		"/E/public/temp/TAVG/TAVG_2018.txt",
@@ -959,14 +1058,11 @@
 		"/E/public/temp/TAVG/TAVG_2018.dat",
 		"/E/public/数据/dem.txt",
 		"/D/Life/WeChat/news/WeChat Files/wxid_241521i70k3r22/FileStorage/File/2021-12/PREP_2020.dat",
-		"/E/public/数据/reult/dem.txt",
 		"/D/Life/WeChat/news/WeChat Files/wxid_241521i70k3r22/FileStorage/File/2021-12/PRCP_2005.txt",
 		"/E/public/temp/PRCP/PRCP_2020.dat",
 		"/E/public/temp/TAVG/TAVG_2019.dat",
 		"/E/public/数据/b00000.dat",
-		"/E/public/sjy/dem.prj",
 		"/E/public/Data/ghcnd_station_1.txt",
-		"/E/public/数据/reult/dem.prj",
 		"/E/public/Data/ghcnd_station.txt",
 		"/E/Data/GIS/roi_gcs.prj",
 		"/E/public/数据/reult/lapgrd00000.cmd",
@@ -1045,28 +1141,7 @@
 		"/E/System/c.c",
 		"/C/Users/Monarch/Desktop/新建 AutoHotkey Script.ahk",
 		"/E/System/assistant.crx",
-		"/E/Study-tool/Sublime/changelog.txt",
-		"/E/Study-tool/Notepad++/NppShell_06.dll",
-		"/E/Study/Projects/C++ and C/Algorithm/ConHand.h",
-		"/E/Study/Projects/C++ and C/C language/Huffman/哈夫曼编码.c",
-		"/E/Study/Projects/C++ and C/Algorithm/08_KMP.cc",
-		"/E/Study/Projects/C++ and C/C基础/素数.cpp",
-		"/E/Study/Projects/C++ and C/Algorithm/10_二叉树转森林.cc",
-		"/E/Study/Projects/C++ and C/C基础/最大公约数.cpp",
-		"/E/Study/Projects/C++ and C/C language/Huffman/input.txt",
-		"/E/Study/Projects/C++ and C/Algorithm/03_newton_iteration.cc",
-		"/E/Study/Projects/C++ and C/Algorithm/text.cc",
-		"/E/Study/Projects/C++ and C/Algorithm/09_后序遍历非递归.cc",
-		"/E/Study/Projects/C++ and C/C++基础/头文件/set1.h",
-		"/C/Users/Monarch/AppData/Roaming/Sublime Text 3/Packages/Default/Preferences (Windows).sublime-settings",
-		"/E/Study/Projects/C++ and C/Algorithm/02_linked_list_reversal.cc",
-		"/E/Study/Projects/C++ and C/Algorithm/04_Average_Height.cc",
-		"/E/Study/Projects/C++ and C/Algorithm/05_Perfectly_array.cc",
-		"/E/Study/Projects/C++ and C/Algorithm/07_Domino_piling.cc",
-		"/C/Users/Monarch/AppData/Roaming/Sublime Text 3/Packages/C++/C++ Single File.sublime-build",
-		"/E/Study/Projects/C++ and C/C language/Sort/ArrayIo.h",
-		"/E/Study/Projects/C++ and C/C language/Single list/病患信息系统.c",
-		"/E/Study/Projects/C++ and C/C language/Sequence table/temp.c"
+		"/E/Study-tool/Sublime/changelog.txt"
 	],
 	"find":
 	{
@@ -1084,6 +1159,9 @@
 		"case_sensitive": true,
 		"find_history":
 		[
+			"Treasure",
+			"Treasurer",
+			"effects",
 			"origin",
 			"generateLapgrd",
 			"p",
@@ -1155,20 +1233,52 @@
 			[
 				{
 					"buffer": 0,
-					"file": "/E/public/数据/reult/TAVG00000.dat",
-					"selected": true,
+					"file": "/E/public/Data/ghcnd_station.txt",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 7872,
+						"buffer_size": 3779780,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								1563,
-								1563
+								0,
+								0
+							]
+						],
+						"settings":
+						{
+							"bracket_highlighter.busy": false,
+							"color_scheme": "Packages/Color Scheme - Default/Monokai.sublime-color-scheme",
+							"is_init_dirty_state": false,
+							"origin_encoding": "ASCII",
+							"syntax": "Packages/Text/Plain text.tmLanguage"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 3,
+					"stack_multiselect": false,
+					"type": "text"
+				},
+				{
+					"buffer": 1,
+					"file": "/E/Study/Projects/Python/python38/gdal_liu/写入文件.py",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 2782,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								140,
+								140
 							]
 						],
 						"settings":
@@ -1191,6 +1301,51 @@
 							},
 							"bracket_highlighter.regions":
 							[
+								"bh_angle",
+								"bh_angle_center",
+								"bh_angle_open",
+								"bh_angle_close",
+								"bh_angle_content",
+								"bh_default",
+								"bh_default_center",
+								"bh_default_open",
+								"bh_default_close",
+								"bh_default_content",
+								"bh_unmatched",
+								"bh_unmatched_center",
+								"bh_unmatched_open",
+								"bh_unmatched_close",
+								"bh_unmatched_content",
+								"bh_square",
+								"bh_square_center",
+								"bh_square_open",
+								"bh_square_close",
+								"bh_square_content",
+								"bh_round",
+								"bh_round_center",
+								"bh_round_open",
+								"bh_round_close",
+								"bh_round_content",
+								"bh_regex",
+								"bh_regex_center",
+								"bh_regex_open",
+								"bh_regex_close",
+								"bh_regex_content",
+								"bh_c_define",
+								"bh_c_define_center",
+								"bh_c_define_open",
+								"bh_c_define_close",
+								"bh_c_define_content",
+								"bh_curly",
+								"bh_curly_center",
+								"bh_curly_open",
+								"bh_curly_close",
+								"bh_curly_content",
+								"bh_single_quote",
+								"bh_single_quote_center",
+								"bh_single_quote_open",
+								"bh_single_quote_close",
+								"bh_single_quote_content",
 								"bh_double_quote",
 								"bh_double_quote_center",
 								"bh_double_quote_open",
@@ -1200,12 +1355,169 @@
 								"bh_tag_center",
 								"bh_tag_open",
 								"bh_tag_close",
-								"bh_tag_content",
+								"bh_tag_content"
+							],
+							"color_scheme": "Packages/Color Scheme - Default/Monokai.sublime-color-scheme",
+							"is_init_dirty_state": false,
+							"origin_encoding": "UTF-8",
+							"syntax": "Packages/Python/Python.sublime-syntax",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 2,
+					"stack_multiselect": false,
+					"type": "text"
+				},
+				{
+					"buffer": 2,
+					"file": "/D/Life/WeChat/news/WeChat Files/wxid_241521i70k3r22/FileStorage/File/2021-12/convert2(1).py",
+					"selected": true,
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 1728,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								694,
+								694
+							]
+						],
+						"settings":
+						{
+							"bracket_highlighter.busy": false,
+							"bracket_highlighter.locations":
+							{
+								"close":
+								{
+								},
+								"icon":
+								{
+								},
+								"open":
+								{
+								},
+								"unmatched":
+								{
+								}
+							},
+							"bracket_highlighter.regions":
+							[
+								"bh_round",
+								"bh_round_center",
+								"bh_round_open",
+								"bh_round_close",
+								"bh_round_content",
+								"bh_unmatched",
+								"bh_unmatched_center",
+								"bh_unmatched_open",
+								"bh_unmatched_close",
+								"bh_unmatched_content",
+								"bh_default",
+								"bh_default_center",
+								"bh_default_open",
+								"bh_default_close",
+								"bh_default_content",
+								"bh_single_quote",
+								"bh_single_quote_center",
+								"bh_single_quote_open",
+								"bh_single_quote_close",
+								"bh_single_quote_content",
+								"bh_angle",
+								"bh_angle_center",
+								"bh_angle_open",
+								"bh_angle_close",
+								"bh_angle_content",
 								"bh_square",
 								"bh_square_center",
 								"bh_square_open",
 								"bh_square_close",
 								"bh_square_content",
+								"bh_curly",
+								"bh_curly_center",
+								"bh_curly_open",
+								"bh_curly_close",
+								"bh_curly_content",
+								"bh_c_define",
+								"bh_c_define_center",
+								"bh_c_define_open",
+								"bh_c_define_close",
+								"bh_c_define_content",
+								"bh_regex",
+								"bh_regex_center",
+								"bh_regex_open",
+								"bh_regex_close",
+								"bh_regex_content",
+								"bh_double_quote",
+								"bh_double_quote_center",
+								"bh_double_quote_open",
+								"bh_double_quote_close",
+								"bh_double_quote_content",
+								"bh_tag",
+								"bh_tag_center",
+								"bh_tag_open",
+								"bh_tag_close",
+								"bh_tag_content"
+							],
+							"color_scheme": "Packages/Color Scheme - Default/Monokai.sublime-color-scheme",
+							"is_init_dirty_state": false,
+							"origin_encoding": "UTF-8",
+							"syntax": "Packages/Python/Python.sublime-syntax",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 162.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 0,
+					"stack_multiselect": false,
+					"type": "text"
+				},
+				{
+					"buffer": 3,
+					"file": "/E/Data/temp/convert2.py",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 1913,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								584,
+								584
+							]
+						],
+						"settings":
+						{
+							"bracket_highlighter.busy": false,
+							"bracket_highlighter.locations":
+							{
+								"close":
+								{
+								},
+								"icon":
+								{
+								},
+								"open":
+								{
+								},
+								"unmatched":
+								{
+								}
+							},
+							"bracket_highlighter.regions":
+							[
 								"bh_unmatched",
 								"bh_unmatched_center",
 								"bh_unmatched_open",
@@ -1216,45 +1528,97 @@
 								"bh_single_quote_open",
 								"bh_single_quote_close",
 								"bh_single_quote_content",
-								"bh_default",
-								"bh_default_center",
-								"bh_default_open",
-								"bh_default_close",
-								"bh_default_content",
-								"bh_curly",
-								"bh_curly_center",
-								"bh_curly_open",
-								"bh_curly_close",
-								"bh_curly_content",
-								"bh_regex",
-								"bh_regex_center",
-								"bh_regex_open",
-								"bh_regex_close",
-								"bh_regex_content",
+								"bh_c_define",
+								"bh_c_define_center",
+								"bh_c_define_open",
+								"bh_c_define_close",
+								"bh_c_define_content",
 								"bh_angle",
 								"bh_angle_center",
 								"bh_angle_open",
 								"bh_angle_close",
 								"bh_angle_content",
+								"bh_regex",
+								"bh_regex_center",
+								"bh_regex_open",
+								"bh_regex_close",
+								"bh_regex_content",
+								"bh_square",
+								"bh_square_center",
+								"bh_square_open",
+								"bh_square_close",
+								"bh_square_content",
+								"bh_curly",
+								"bh_curly_center",
+								"bh_curly_open",
+								"bh_curly_close",
+								"bh_curly_content",
+								"bh_double_quote",
+								"bh_double_quote_center",
+								"bh_double_quote_open",
+								"bh_double_quote_close",
+								"bh_double_quote_content",
+								"bh_tag",
+								"bh_tag_center",
+								"bh_tag_open",
+								"bh_tag_close",
+								"bh_tag_content",
+								"bh_default",
+								"bh_default_center",
+								"bh_default_open",
+								"bh_default_close",
+								"bh_default_content",
 								"bh_round",
 								"bh_round_center",
 								"bh_round_open",
 								"bh_round_close",
-								"bh_round_content",
-								"bh_c_define",
-								"bh_c_define_center",
-								"bh_c_define_open",
-								"bh_c_define_close",
-								"bh_c_define_content"
+								"bh_round_content"
 							],
+							"color_scheme": "Packages/Color Scheme - Default/Monokai.sublime-color-scheme",
 							"is_init_dirty_state": false,
-							"syntax": "Packages/Text/Plain text.tmLanguage"
+							"origin_encoding": "UTF-8",
+							"syntax": "Packages/Python/Python.sublime-syntax",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
 						},
 						"translation.x": 0.0,
 						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 0,
+					"stack_index": 1,
+					"stack_multiselect": false,
+					"type": "text"
+				},
+				{
+					"buffer": 4,
+					"file": "/E/public/Data/CH_sta.txt",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 112356,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								0,
+								0
+							]
+						],
+						"settings":
+						{
+							"bracket_highlighter.busy": false,
+							"color_scheme": "Packages/Color Scheme - Default/Monokai.sublime-color-scheme",
+							"is_init_dirty_state": false,
+							"origin_encoding": "UTF-8",
+							"syntax": "Packages/Text/Plain text.tmLanguage"
+						},
+						"translation.x": 0.0,
+						"translation.y": 2700.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 4,
 					"stack_multiselect": false,
 					"type": "text"
 				}

@@ -12,8 +12,9 @@
       <schema-mapping>
         <introspection-scope>
           <node kind="schema">
-            <name qname="meteodata" />
-            <name qname="meteodata_extens" />
+            <name qname="jdbcstudy" />
+            <name qname="school" />
+            <name qname="shop" />
           </node>
         </introspection-scope>
       </schema-mapping>
