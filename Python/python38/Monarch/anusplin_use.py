@@ -21,16 +21,16 @@ from concurrent.futures.thread import ThreadPoolExecutor
 
 # ============================================用户修改部分=====================================================
 # -------------------本地数据目录配置------------------
-path = r'E:\public\sjy'                 # 数据所在目录
+# path = r'E:\public\sjy'                 # 数据所在目录
 dem = r'dem.txt'                        # 高程数据(ASCII码栅格)
-# path = r'H:\Monarch\test'
+path = r'H:\Monarch\test'
 shp_roi = r'roi.shp'                    # 选取的矢量站点的范围(其投影要与高程一致)
 
 # ------------------数据库连接配置-------------------
-host = "103.46.128.21"                  # ip地址
-# host = "127.0.0.1"
-port = 29611                            # 端口
-# port = 3306
+# host = "103.46.128.21"                  # ip地址
+host = "127.0.0.1"
+# port = 29611                            # 端口
+port = 3306
 sql_name = "root"                       # 用户名称
 pwd = "123456"                          # 用户密码
 dbs = "meteodata"                       # 需要查询的数据库, 国内使用meteodata, 国外使用meteodata_extens
@@ -236,6 +236,6 @@ def execute_cmd():
 
 select_data()
 create_cmd()
-execute_cmd()
+# execute_cmd()
 print('Interpolation success!!')
 
