@@ -1,0 +1,16 @@
+E:\Study\Projects\C#\C#preliminary\05_面向对象\05ReadFile\bin\Debug\net5.0\05ReadFile.exe
+E:\Study\Projects\C#\C#preliminary\05_面向对象\05ReadFile\bin\Debug\net5.0\05ReadFile.deps.json
+E:\Study\Projects\C#\C#preliminary\05_面向对象\05ReadFile\bin\Debug\net5.0\05ReadFile.runtimeconfig.json
+E:\Study\Projects\C#\C#preliminary\05_面向对象\05ReadFile\bin\Debug\net5.0\05ReadFile.runtimeconfig.dev.json
+E:\Study\Projects\C#\C#preliminary\05_面向对象\05ReadFile\bin\Debug\net5.0\05ReadFile.dll
+E:\Study\Projects\C#\C#preliminary\05_面向对象\05ReadFile\bin\Debug\net5.0\ref\05ReadFile.dll
+E:\Study\Projects\C#\C#preliminary\05_面向对象\05ReadFile\bin\Debug\net5.0\05ReadFile.pdb
+E:\Study\Projects\C#\C#preliminary\05_面向对象\05ReadFile\obj\Debug\net5.0\05ReadFile.GeneratedMSBuildEditorConfig.editorconfig
+E:\Study\Projects\C#\C#preliminary\05_面向对象\05ReadFile\obj\Debug\net5.0\05ReadFile.AssemblyInfoInputs.cache
+E:\Study\Projects\C#\C#preliminary\05_面向对象\05ReadFile\obj\Debug\net5.0\05ReadFile.AssemblyInfo.cs
+E:\Study\Projects\C#\C#preliminary\05_面向对象\05ReadFile\obj\Debug\net5.0\05ReadFile.csproj.CoreCompileInputs.cache
+E:\Study\Projects\C#\C#preliminary\05_面向对象\05ReadFile\obj\Debug\net5.0\05ReadFile.dll
+E:\Study\Projects\C#\C#preliminary\05_面向对象\05ReadFile\obj\Debug\net5.0\ref\05ReadFile.dll
+E:\Study\Projects\C#\C#preliminary\05_面向对象\05ReadFile\obj\Debug\net5.0\05ReadFile.pdb
+E:\Study\Projects\C#\C#preliminary\05_面向对象\05ReadFile\obj\Debug\net5.0\05ReadFile.genruntimeconfig.cache
+E:\Study\Projects\C#\C#preliminary\05_面向对象\05ReadFile\obj\Debug\net5.0\05ReadFile.csprojAssemblyReference.cache
