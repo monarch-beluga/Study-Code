@@ -21,16 +21,16 @@ from concurrent.futures.thread import ThreadPoolExecutor
 
 # ============================================用户修改部分=====================================================
 # -------------------本地数据目录配置------------------
-# path = r'E:\public\sjy'                 # 数据所在目录
+path = r'E:\public\sjy'                 # 数据所在目录
 dem = r'dem.txt'                        # 高程数据(ASCII码栅格)
-path = r'H:\Monarch\test'
+# path = r'H:\Monarch\test'
 shp_roi = r'roi.shp'                    # 选取的矢量站点的范围(其投影要与高程一致)
 
 # ------------------数据库连接配置-------------------
-# host = "103.46.128.21"                  # ip地址
-host = "127.0.0.1"
-# port = 29611                            # 端口
-port = 3306
+host = "103.46.128.21"                  # ip地址
+# host = "127.0.0.1"
+port = 29611                            # 端口
+# port = 3306
 sql_name = "root"                       # 用户名称
 pwd = "123456"                          # 用户密码
 dbs = "meteodata"                       # 需要查询的数据库, 国内使用meteodata, 国外使用meteodata_extens
@@ -44,7 +44,7 @@ q = 0.8                                 # 数据完整性百分比
 #     |DMNT: 日最低气温 | AVRH: 平均相对湿度 | MNRH: 最小相对湿度 | PREP: 降水量 | MEWS: 平均风速 |
 #     |MXWS: 最大风速|DMWS: 最大风速的风向|EXWS: 极大风速|DEWS: 极大风速的风向|SOHR: 日照时数|
 start_time = '2019-01-01'               # 插值起始时间
-end_time = '2020-12-31'                 # 插值结束时间
+end_time = '2019-02-31'                 # 插值结束时间
 sep_day = 8                             # 插值尺度(单位：日)
 process = 4                             # 插值时并行个数(最大值 = cup逻辑处理器个数 - 2)
 
@@ -226,16 +226,14 @@ def exec_cmd(cmd):
 def execute_cmd():
     splina_files = glob(f'*{os.sep}splina*.cmd')
     lapgrd_files = glob(f'*{os.sep}lapgrd*.cmd')
-    splina_cmd = [f'splina<{f}>{f.replace(".cmd", ".log")}' for f in splina_files]
-    lapgrd_cmd = [f'lapgrd<{f}>{f.replace(".cmd", ".log")}' for f in lapgrd_files]
-    with ThreadPoolExecutor(max_workers=80) as worker:
-        worker.map(exec_cmd, splina_cmd)
-    with ThreadPoolExecutor(max_workers=process) as worker:
-        worker.map(exec_cmd, lapgrd_cmd)
+    for f in splina_files:
+        exec_cmd(f'splina<{f}>{f.replace(".cmd", ".log")}')
+    for f in lapgrd_files:
+        exec_cmd(f'lapgrd<{f}>{f.replace(".cmd", ".log")}')
 
 
 select_data()
 create_cmd()
-# execute_cmd()
+execute_cmd()
 print('Interpolation success!!')
 
