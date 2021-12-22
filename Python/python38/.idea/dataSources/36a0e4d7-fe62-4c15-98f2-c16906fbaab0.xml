@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <dataSource name="办公室">
-  <database-model serializer="dbm" dbms="MYSQL" family-id="MYSQL" format-version="4.21">
+  <database-model serializer="dbm" dbms="MYSQL" family-id="MYSQL" format-version="4.23">
     <root id="1">
       <ServerVersion>8.0.15</ServerVersion>
       <Grants>|root||root|localhost|ALTER|G
