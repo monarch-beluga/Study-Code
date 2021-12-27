@@ -17,7 +17,6 @@ import shutil
 import rasterio
 from glob import glob
 import os
-from concurrent.futures.thread import ThreadPoolExecutor
 
 # ============================================用户修改部分=====================================================
 # -------------------本地数据目录配置------------------
@@ -46,7 +45,6 @@ q = 0.8                                 # 数据完整性百分比
 start_time = '2019-01-01'               # 插值起始时间
 end_time = '2019-02-31'                 # 插值结束时间
 sep_day = 8                             # 插值尺度(单位：日)
-process = 4                             # 插值时并行个数(最大值 = cup逻辑处理器个数 - 2)
 
 # =======================================================================================================
 
@@ -96,13 +94,14 @@ def select_data():
     df['date'] = df['Year'] * 10000 + df['Month'] * 100 + df['Day']
     for t in types:
         df.loc[(df[t] > 1000) | (df[t] < -100), t] = np.nan
-    start_year = int(start_time[:4])
-    end_year = int(end_time[:4]) + 1
+    years = df['Year'].unique()
+    # start_year = int(start_time[:4])
+    # end_year = int(end_time[:4]) + 1
     for t, out_t in zip(types, out_pre):
         if not os.path.exists(out_t):
             os.makedirs(out_t)
         data = df[['Station', 'date', t]]
-        for year in range(start_year, end_year):
+        for year in years:
             data1 = data[data['date'] // 10000 == year]
             data1.set_index(['Station', 'date'], inplace=True)
             data1 = data1.unstack()
@@ -210,7 +209,7 @@ def create_cmd():
         del dem_data
     # t = types[0]
     for t, pre in zip(types, out_pre):
-        fs = glob(t+os.sep+'*.dat')
+        fs = glob(pre+os.sep+'*.dat')
         # f = fs[0]
         for f in fs:
             create_splina(t, f, dem_min, dem_max, pre)
