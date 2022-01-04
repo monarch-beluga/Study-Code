@@ -15,8 +15,8 @@ import os
 
 # ============================================用户修改部分=====================================================
 # -------------------本地数据目录配置------------------
-# path = r'E:\public\sjy'                 # 数据所在目录
-path = input('输入数据所在目录：')
+path = r'E:\public\sjy'                 # 数据所在目录
+# path = input('输入数据所在目录：')
 dem = r'dem.txt'                        # 高程数据(ASCII码栅格)
 # path = r'H:\Monarch\test'
 shp_roi = r'roi.shp'                    # 选取的矢量站点的范围(其投影要与高程一致)
@@ -45,6 +45,13 @@ sep_day = 4                             # 插值尺度(单位：日)
 # =======================================================================================================
 
 # =======================================程序内置部分(不要修改)===============================================
+
+
+def df_format(fp, f_mat, Data):
+    for i in range(len(Data)):
+        print(f_mat.format(*Data.loc[i].to_list()), file=fp)
+
+
 os.chdir(path)
 df = pd.read_csv(r'station_data.txt', header=0)
 df['date'] = df['Year'] * 10000 + df['Month'] * 100 + df['Day']
@@ -57,6 +64,7 @@ for t in types:
 # for t, out_t in zip(types, out_pre):
 #     if not os.path.exists(out_t):
 #         os.makedirs(out_t)
+flag = True
 t = types[0]
 pre = out_pre[0]
 data = df[['Station', 'unique', t]]
@@ -71,4 +79,7 @@ if t == 'PREP':
     data1 = data1.groupby(data1.index).sum().T
 else:
     data1 = data1.groupby(data1.index).mean().T
-data1.to_csv(f'{pre}0000.txt')
+if flag:
+    file_date = df[df['unique'].isin(data1.columns // 1000 * 1000 + data1.columns % 1000*sep_day)]['date'].unique()
+    flag = False
+
