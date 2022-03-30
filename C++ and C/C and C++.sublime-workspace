@@ -4,6 +4,10 @@
 		"selected_items":
 		[
 			[
+				"o",
+				"out_f"
+			],
+			[
 				"t",
 				"teams"
 			],
@@ -216,32 +220,15 @@
 	"buffers":
 	[
 		{
-			"file": "Algorithm/03_newton_iteration.cc",
+			"file": "C language/BinaryTree/temp.c",
 			"settings":
 			{
-				"buffer_size": 1614,
-				"encoding": "UTF-8",
-				"line_ending": "Windows"
-			}
-		},
-		{
-			"file": "/E/Work/result_npp/result1/China30m_8day_init_1.txt",
-			"settings":
-			{
-				"buffer_size": 3151,
+				"buffer_size": 136,
 				"line_ending": "Windows"
 			},
 			"undo_stack":
 			[
 			]
-		},
-		{
-			"file": "/E/Work/result_npp/result1/NPP2018001.flt.hdr",
-			"settings":
-			{
-				"buffer_size": 198,
-				"line_ending": "Unix"
-			}
 		}
 	],
 	"build_system": "Packages/C++/C Single File.sublime-build",
@@ -304,7 +291,7 @@
 			],
 			[
 				"Packages/C++/C Single File.sublime-build",
-				"Run"
+				""
 			]
 		],
 		[
@@ -941,19 +928,80 @@
 	"expanded_folders":
 	[
 		"/E/Study/Projects/C++ and C",
-		"/E/Study/Projects/C++ and C/Algorithm"
+		"/E/Study/Projects/C++ and C/Algorithm",
+		"/E/Study/Projects/C++ and C/C language",
+		"/E/Study/Projects/C++ and C/C language/BinaryTree",
+		"/E/Study/Projects/C++ and C/C++基础"
 	],
 	"file_history":
 	[
-		"/D/Life/WeChat/news/WeChat Files/wxid_241521i70k3r22/FileStorage/File/2022-01/China30m_8day_JX_linux.txt",
-		"/E/Data/glcv_es_mod/bat/China30m_8day_JX_linux.txt",
+		"/E/Data/GPS_class/软件/坐标转换软件4.2/SevenResult.txt",
+		"/C/Program Files (x86)/Hotkey/CPU.ini",
+		"/E/Data/GPS_class/软件/坐标转换软件4.2/seven paramter.txt",
+		"/E/Data/GPS_class/软件/coordv2/coordzbzhrj.20181206/COORDzbzh/SevenResult.txt",
+		"/E/Data/GPS_class/软件/coordv2/coordzbzhrj.20181206/COORDzbzh/cao1122.txt",
+		"/E/Data/GPS_class/软件/坐标转换软件4.2/four point.txt",
+		"/D/Platform/Byrut/Cyberpunk 2077/goggame-1423049311.info",
+		"/E/Study-tool/SqlServer2019/Data/StudentManageSystem.sql",
+		"/E/Data/变化检测作业/作业要求.txt",
+		"/D/Platform/Byrut/Cyberpunk 2077/engine/config/base/general.ini",
+		"/D/Platform/Byrut/Cyberpunk 2077/bin/x64/d3d12on7/LICENSE.txt",
+		"/E/Data/赛博朋克2077_mod/id.txt",
+		"/C/Users/Monarch/AppData/Local/Temp/Temp1_Vanilla - Regular body Tactical Suit unzipped-4158-1-0-1647871966.zip/Tactical Suit Regular Body Unzipped/READ ME.txt",
+		"/E/Data/赛博朋克2077_mod/ALI213-Cyberpunk2077.nxqlck.mod/ALI213.txt",
+		"/E/Data/赛博朋克2077_mod/27-决策树自动阈值分类.avi.txt",
+		"/E/Data/变化检测作业/GCP.pts",
+		"/E/Data/赛博朋克2077_mod/ALI213-Cyberpunk2077.zhisd.mod/ALI213.txt",
+		"/D/Platform/Byrut/Cyberpunk 2077/engine/config/platform/pc/SamIam76.ini",
+		"/D/Platform/Byrut/Cyberpunk 2077/engine/config/platform/pc/rendering.ini",
+		"/D/Platform/Byrut/Cyberpunk 2077/engine/config/platform/pc/platformgameplay.ini",
+		"/E/Data/ALI213-Cyberpunk2077.gzsdxyfj.mod/ALI213.txt",
+		"/D/Platform/Byrut/Cyberpunk 2077/r6/config/settings/options.json",
+		"/D/Platform/Byrut/Cyberpunk 2077/goggame-galaxyFileList.ini",
+		"/D/Platform/Byrut/Cyberpunk 2077/r6/config/inputUserMappings.xml",
+		"/D/Platform/Byrut/Cyberpunk 2077/r6/config/uiInputActions.xml",
+		"/D/Platform/Byrut/Cyberpunk 2077/bin/x64/CrashReporter/CrashReporter.exe.config",
+		"/D/Platform/Byrut/Cyberpunk 2077/bin/x64/CrashReporter/ThirdPartyNotices.txt",
+		"/D/Platform/Byrut/Cyberpunk 2077/bin/x64/Symsrv.ini",
+		"/D/Platform/Byrut/Cyberpunk 2077/bin/x64/oodle_dictionary.bin",
+		"/D/Platform/Byrut/Cyberpunk 2077/goggame-1423049311.hashdb",
+		"/D/Platform/Byrut/Cyberpunk 2077/goglog.ini",
+		"/E/System/关闭显示屏.c",
+		"/E/Study/Projects/Python/python38/Monarch/user_gee.py",
+		"/E/Data/GPS_class/软件/坐标转换软件4.2/Par.txt",
+		"/D/VPN/订阅/2022年1月31日订阅链接V2 Cla（后台持续动态更新）.txt",
+		"/E/Data/GPS_class/新疆边界/xJ.prj",
+		"/E/Data/GPS_class/软件/坐标转换软件4.2/南海七参数反算.cod",
+		"/D/Platform/Byrut/Elden Ring/ELDEN RING/Game/steam_emu.ini",
+		"/E/public/地理必修3/paper.swf",
+		"/D/Life/WeChat/news/WeChat Files/wxid_241521i70k3r22/FileStorage/File/2022-03/temp1.py",
+		"/D/meteodata/CH_2018.txt",
+		"/D/meteodata/station_data.txt",
+		"/D/meteodata/station.txt",
+		"/D/meteodata/TMAX/TMAX_2018.dat",
+		"/D/meteodata/PRCP/PRCP_2018.dat",
+		"/D/Platform/Hyou/HoneySelect2/福利游戏动漫.txt",
+		"/E/Data/zip_data/elden-ring-deluxe-edition-v-1_02_3-dlc-2022-pc-repack-ot-r_g-mehaniki.torrent",
+		"/D/meteodata/PRCP/lapgrd_2018.cmd",
+		"/D/meteodata/SSD/lapgrd_2018.cmd",
+		"/D/meteodata/SSD_2018.txt",
+		"/D/meteodata/RHU_2018.txt",
+		"/D/meteodata/PRCP_2018.txt",
+		"/D/meteodata/TMAX_2018.txt",
+		"/E/sg滤波.py",
+		"/E/Work/result_npp/result1/NPP2018001.flt.hdr",
+		"/E/Study-tool/Arcgis/License10.6/bin/service.txt",
+		"/E/Paper/Data/landuse/landuse_说明.txt",
+		"/E/Work/result_npp/line_pixel.txt",
 		"/E/Work/result_npp/result1/China30m_8day_init_1.txt",
 		"/E/Work/result_npp/China30m_8day_JX_linux.txt",
+		"/C/Users/Monarch/AppData/Local/Temp/Temp1_错误报告-2022-2-18_13.22.28.zip/PCL2 启动器日志.txt",
+		"/D/Life/WeChat/news/WeChat Files/wxid_241521i70k3r22/FileStorage/File/2022-01/China30m_8day_JX_linux.txt",
+		"/E/Data/glcv_es_mod/bat/China30m_8day_JX_linux.txt",
 		"/E/Data/glcv_es_mod/bat/parallel_glcv.c",
 		"/E/Work/气象数据20210518/CH_2019.txt",
 		"/D/VPN/订阅/12月24日订阅链接V2 Cla（后台持续动态更新）.txt",
 		"/D/VPN/订阅/12月1日订阅链接V2 Cla（后台持续动态更新）.txt",
-		"/D/Platform/Hyou/HoneySelect2/福利游戏动漫.txt",
 		"/D/Platform/Hyou/Skyrim/enblocal.ini",
 		"/D/Platform/Hyou/SHARKAIY/ESP排序（解压看说明使用）/【无心】整合ESP排序规则.txt",
 		"/E/Work/result_npp/result1/NPP2018353.flt.hdr",
@@ -1014,65 +1062,7 @@
 		"/E/Work/气象数据20210518/PRS202007-202012/SURF_CLI_CHN_MUL_DAY-PRS-10004-202004.TXT",
 		"/E/Work/气象数据20210518/SSD202007-202012/SURF_CLI_CHN_MUL_DAY-SSD-14032-202004.TXT",
 		"/E/Work/气象数据20210518/SSD202007-202012/SURF_CLI_CHN_MUL_DAY-SSD-14032-202005.TXT",
-		"/D/Platform/Hyou/SHARKAIY/使用教程.txt",
-		"/D/Platform/Hyou/HoneySelect2/安装说明.txt",
-		"/D/Platform/Hyou/HoneySelect2/必看说明/必看说明.txt",
-		"/D/Platform/Hyou/解压密码，解压方法.txt",
-		"/E/Work/气象数据20210518/WIN202007-202012/SURF_CLI_CHN_MUL_DAY-WIN-11002-202004.TXT",
-		"/E/Work/气象数据20210518/说明文档/说明.txt",
-		"/E/Work/气象数据20210518/TEM2019-202006/SURF_CLI_CHN_MUL_DAY-TEM-12001-202004.TXT",
-		"/E/Work/气象数据20210518/SSD2019-202006/SURF_CLI_CHN_MUL_DAY-SSD-14032-202004.TXT",
-		"/E/Work/气象数据20210518/RHU2019-202006/SURF_CLI_CHN_MUL_DAY-RHU-13003-202004.TXT",
-		"/E/Work/气象数据20210518/PRS2019-202006/SURF_CLI_CHN_MUL_DAY-PRS-10004-202005.TXT",
-		"/E/Work/气象数据20210518/PRS2019-202006/SURF_CLI_CHN_MUL_DAY-PRS-10004-202006.TXT",
-		"/E/Work/气象数据20210518/PRS2019-202006/SURF_CLI_CHN_MUL_DAY-PRS-10004-202004.TXT",
-		"/E/Work/气象数据20210518/PRE2019-202006/SURF_CLI_CHN_MUL_DAY-PRE-13011-202004.TXT",
-		"/E/Work/气象数据20210518/PRE2019-202006/SURF_CLI_CHN_MUL_DAY-PRE-13011-202006.TXT",
-		"/E/Application/Apache24/htdocs/pkg/cropsim/DESCRIPTION",
-		"/E/Application/Apache24/htdocs/pkg/cropsim/NAMESPACE",
-		"/E/Application/Apache24/htdocs/pkg/meteor/man/dates.Rd",
-		"/E/Application/Apache24/htdocs/pkg/meteor/src/wth_rcpp.cpp",
-		"/E/Application/Apache24/htdocs/pkg/meteor/src/simmeteo.h",
-		"/E/Application/Apache24/htdocs/pkg/meteor/src/simmeteo.cpp",
-		"/E/Application/Apache24/htdocs/pkg/meteor/src/RcppExports.cpp",
-		"/E/Application/php/php.ini",
-		"/E/Application/Apache24/conf/httpd.conf",
-		"/E/Application/Apache24/conf/extra/httpd-ssl.conf",
-		"/E/Application/Apache24/conf/extra/httpd-ahssl.conf",
-		"/E/public/Data/ghcnd_station.txt",
-		"/E/Study/test/temp.py",
-		"/E/public/数据/矢量数据/roi_prj.prj",
-		"/E/Work/气象数据20210518/EVP2019-202006/SURF_CLI_CHN_MUL_DAY-EVP-13240-201901.TXT",
-		"/E/Work/cropsim-master/README",
-		"/E/Work/meteo/SSD_2018.txt",
-		"/E/public/Data/CH_sta.txt",
-		"/E/Paper/Data/landuse/landuse_说明.txt",
-		"/E/Study/Projects/Python/python38/gdal_liu/写入文件.py",
-		"/D/Life/WeChat/news/WeChat Files/wxid_241521i70k3r22/FileStorage/File/2021-12/convert2(1).py",
-		"/E/Study/Projects/automatic.bat",
-		"/D/Savegames/theHunter_save.bat",
-		"/D/Savegames/theHunter_save.txt",
-		"/E/public/sjy/PRCP/lapgrd_2020.cmd",
-		"/E/Data/temp/convert2.py",
-		"/E/System/c.c",
-		"/E/Data/temp/meteo/TMAX_2018.txt",
-		"/D/Platform/Steam/steamapps/workshop/content/431960/1931934283/project.json",
-		"/D/images/simptab-zenmode-.json",
-		"/D/images/simptab-zenmode-.txt",
-		"/D/Platform/Minecraft/MultiMC/instances/1.16.5/.minecraft/config/UniqueEnchantment.toml",
-		"/D/Platform/Minecraft/MultiMC/instances/1.16.5/.minecraft/crash-reports/crash-2021-12-14_12.21.27-fml.txt",
-		"/D/Platform/Minecraft/MultiMC/instances/1.16.5/.minecraft/config/UniqueEnchantment-Utils.toml",
-		"/D/Platform/Minecraft/MultiMC/instances/1.16.51/.minecraft/config/UniqueEnchantment.toml",
-		"/D/Platform/Minecraft/MultiMC/instances/1.16.5/.minecraft/config/enhancedvisuals.json",
-		"/D/Platform/Minecraft/MultiMC/instances/1.16.5/.minecraft/crash-reports/crash-2021-12-08_19.44.57-fml.txt",
-		"/D/Platform/Minecraft/MultiMC/instances/1.16.5/.minecraft/config/enhancedvisuals-client.json",
-		"/D/Platform/Minecraft/MultiMC/instances/1.16.5/.minecraft/mods/Unique+Enchantments-1.16.5-2.0.0 - 翻译版本.jar",
-		"/D/Platform/Minecraft/MultiMC/instances/1.16.5/.minecraft/usercache.json",
-		"/E/Data/temp/meteo/TMIN_2018.dat",
-		"/E/Data/temp/meteo/TMIN_2018.txt",
-		"/E/public/数据/reult/splina00000.cmd",
-		"/E/public/temp/METE00000.dat",
-		"/E/public/temp/TAVG00000.dat"
+		"/D/Platform/Hyou/SHARKAIY/使用教程.txt"
 	],
 	"find":
 	{
@@ -1167,19 +1157,20 @@
 			[
 				{
 					"buffer": 0,
-					"file": "Algorithm/03_newton_iteration.cc",
+					"file": "C language/BinaryTree/temp.c",
+					"selected": true,
 					"semi_transient": true,
 					"settings":
 					{
-						"buffer_size": 1614,
+						"buffer_size": 136,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								0,
-								0
+								113,
+								113
 							]
 						],
 						"settings":
@@ -1189,12 +1180,27 @@
 							{
 								"close":
 								{
+									"1":
+									[
+										134,
+										135
+									]
 								},
 								"icon":
 								{
+									"1":
+									[
+										"Packages/BracketHighlighter/icons/curly_bracket.png",
+										"region.purplish"
+									]
 								},
 								"open":
 								{
+									"1":
+									[
+										47,
+										48
+									]
 								},
 								"unmatched":
 								{
@@ -1202,212 +1208,73 @@
 							},
 							"bracket_highlighter.regions":
 							[
-								"bh_round",
-								"bh_round_center",
-								"bh_round_open",
-								"bh_round_close",
-								"bh_round_content",
-								"bh_single_quote",
-								"bh_single_quote_center",
-								"bh_single_quote_open",
-								"bh_single_quote_close",
-								"bh_single_quote_content",
-								"bh_curly",
-								"bh_curly_center",
-								"bh_curly_open",
-								"bh_curly_close",
-								"bh_curly_content",
-								"bh_square",
-								"bh_square_center",
-								"bh_square_open",
-								"bh_square_close",
-								"bh_square_content",
-								"bh_double_quote",
-								"bh_double_quote_center",
-								"bh_double_quote_open",
-								"bh_double_quote_close",
-								"bh_double_quote_content",
-								"bh_angle",
-								"bh_angle_center",
-								"bh_angle_open",
-								"bh_angle_close",
-								"bh_angle_content",
+								"bh_default",
+								"bh_default_center",
+								"bh_default_open",
+								"bh_default_close",
+								"bh_default_content",
 								"bh_c_define",
 								"bh_c_define_center",
 								"bh_c_define_open",
 								"bh_c_define_close",
 								"bh_c_define_content",
-								"bh_unmatched",
-								"bh_unmatched_center",
-								"bh_unmatched_open",
-								"bh_unmatched_close",
-								"bh_unmatched_content",
+								"bh_square",
+								"bh_square_center",
+								"bh_square_open",
+								"bh_square_close",
+								"bh_square_content",
+								"bh_curly",
+								"bh_curly_center",
+								"bh_curly_open",
+								"bh_curly_close",
+								"bh_curly_content",
+								"bh_single_quote",
+								"bh_single_quote_center",
+								"bh_single_quote_open",
+								"bh_single_quote_close",
+								"bh_single_quote_content",
 								"bh_regex",
 								"bh_regex_center",
 								"bh_regex_open",
 								"bh_regex_close",
 								"bh_regex_content",
+								"bh_double_quote",
+								"bh_double_quote_center",
+								"bh_double_quote_open",
+								"bh_double_quote_close",
+								"bh_double_quote_content",
 								"bh_tag",
 								"bh_tag_center",
 								"bh_tag_open",
 								"bh_tag_close",
 								"bh_tag_content",
-								"bh_default",
-								"bh_default_center",
-								"bh_default_open",
-								"bh_default_close",
-								"bh_default_content"
+								"bh_angle",
+								"bh_angle_center",
+								"bh_angle_open",
+								"bh_angle_close",
+								"bh_angle_content",
+								"bh_unmatched",
+								"bh_unmatched_center",
+								"bh_unmatched_open",
+								"bh_unmatched_close",
+								"bh_unmatched_content",
+								"bh_round",
+								"bh_round_center",
+								"bh_round_open",
+								"bh_round_close",
+								"bh_round_content"
 							],
-							"color_scheme": "Packages/Color Scheme - Default/Monokai.sublime-color-scheme",
 							"is_init_dirty_state": false,
-							"origin_encoding": "UTF-8",
-							"syntax": "Packages/C++/C++.sublime-syntax",
+							"origin_encoding": "ASCII",
+							"syntax": "Packages/C++/C.sublime-syntax",
 							"tab_size": 4,
 							"translate_tabs_to_spaces": false
-						},
-						"translation.x": 0.0,
-						"translation.y": 594.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 2,
-					"stack_multiselect": false,
-					"type": "text"
-				},
-				{
-					"buffer": 1,
-					"file": "/E/Work/result_npp/result1/China30m_8day_init_1.txt",
-					"selected": true,
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 3151,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								303,
-								303
-							]
-						],
-						"settings":
-						{
-							"bracket_highlighter.busy": false,
-							"bracket_highlighter.locations":
-							{
-								"close":
-								{
-								},
-								"icon":
-								{
-								},
-								"open":
-								{
-								},
-								"unmatched":
-								{
-								}
-							},
-							"bracket_highlighter.regions":
-							[
-								"bh_round",
-								"bh_round_center",
-								"bh_round_open",
-								"bh_round_close",
-								"bh_round_content",
-								"bh_single_quote",
-								"bh_single_quote_center",
-								"bh_single_quote_open",
-								"bh_single_quote_close",
-								"bh_single_quote_content",
-								"bh_curly",
-								"bh_curly_center",
-								"bh_curly_open",
-								"bh_curly_close",
-								"bh_curly_content",
-								"bh_square",
-								"bh_square_center",
-								"bh_square_open",
-								"bh_square_close",
-								"bh_square_content",
-								"bh_double_quote",
-								"bh_double_quote_center",
-								"bh_double_quote_open",
-								"bh_double_quote_close",
-								"bh_double_quote_content",
-								"bh_angle",
-								"bh_angle_center",
-								"bh_angle_open",
-								"bh_angle_close",
-								"bh_angle_content",
-								"bh_c_define",
-								"bh_c_define_center",
-								"bh_c_define_open",
-								"bh_c_define_close",
-								"bh_c_define_content",
-								"bh_unmatched",
-								"bh_unmatched_center",
-								"bh_unmatched_open",
-								"bh_unmatched_close",
-								"bh_unmatched_content",
-								"bh_regex",
-								"bh_regex_center",
-								"bh_regex_open",
-								"bh_regex_close",
-								"bh_regex_content",
-								"bh_tag",
-								"bh_tag_center",
-								"bh_tag_open",
-								"bh_tag_close",
-								"bh_tag_content",
-								"bh_default",
-								"bh_default_center",
-								"bh_default_open",
-								"bh_default_close",
-								"bh_default_content"
-							],
-							"origin_encoding": "ASCII",
-							"syntax": "Packages/Text/Plain text.tmLanguage"
 						},
 						"translation.x": 0.0,
 						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
 					"stack_index": 0,
-					"stack_multiselect": false,
-					"type": "text"
-				},
-				{
-					"buffer": 2,
-					"file": "/E/Work/result_npp/result1/NPP2018001.flt.hdr",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 198,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								0,
-								0
-							]
-						],
-						"settings":
-						{
-							"bracket_highlighter.busy": false,
-							"origin_encoding": "ASCII",
-							"syntax": "Packages/Text/Plain text.tmLanguage",
-							"tab_size": 2,
-							"translate_tabs_to_spaces": true
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 1,
 					"stack_multiselect": false,
 					"type": "text"
 				}
