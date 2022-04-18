@@ -3,20 +3,13 @@
 @version:
 author:monarch
 @time: 2021/10/22
-@file: data_year_to_day.py
+@file: temp.py
 @function:
 @modify:
 """
 
-import pandas as pd
-import numpy as np
-import geopandas as gpd
-import os
+from lxml import etree
 
-path = r'D:\meteodata'
-os.chdir(path)
-
-station = gpd.read_file('select_station.shp')
-station = station.iloc[:, :5]
-station = station.dropna()
-station.to_csv('station.txt', index=False)
+with open(r'D:\VPN\订阅\最新免费v2ray节点分享.html', encoding='utf-8') as fp:
+    page_text = fp.read()
+page_tree = etree.HTML(page_text)
