@@ -8,8 +8,9 @@ author:monarch
 @modify:
 """
 
-from lxml import etree
-
-with open(r'D:\VPN\订阅\最新免费v2ray节点分享.html', encoding='utf-8') as fp:
-    page_text = fp.read()
-page_tree = etree.HTML(page_text)
+n = int(input("请输入菱形的行数:"))
+print()
+for i in range(n//2+n%2):
+  print(" "*((n-(2*i+1))//2*2), "* "*(2*i+1))
+for i in range(n//2-1,-1,-1):
+  print(" "*((n-(2*i+1))//2*2), "* "*(2*i+1))

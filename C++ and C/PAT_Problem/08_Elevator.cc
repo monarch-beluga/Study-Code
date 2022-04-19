@@ -1,14 +1,10 @@
 #include<iostream>
 using namespace std;
-
 int main()
 {
-    #if ONLINE_JUDGE
-    #else
-    freopen("input.txt", "r", stdin);
-    #endif
-    int n, pre, next = 0, ts = 0, d;
+    int n, pre, next, ts = 0, d;
     cin >> n;
+    next = 0;
     for (int i = 0; i < n; ++i)
     {
         pre = next;
