@@ -7,19 +7,6 @@ int main()
     #else
     freopen("input.txt", "r", stdin);
     #endif
-    int n, pre, next = 0, ts = 0, d;
-    cin >> n;
-    for (int i = 0; i < n; ++i)
-    {
-        pre = next;
-        cin >> next;
-        d = next - pre;
-        if (d > 0)
-            ts += d*6;
-        else
-            ts -= d*4;
-        ts += 5;
-    }
-    cout << ts;
+    
     return 0;
 }
