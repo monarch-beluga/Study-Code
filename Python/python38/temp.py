@@ -8,9 +8,8 @@ author:monarch
 @modify:
 """
 
-n = int(input("请输入菱形的行数:"))
-print()
-for i in range(n//2+n%2):
-  print(" "*((n-(2*i+1))//2*2), "* "*(2*i+1))
-for i in range(n//2-1,-1,-1):
-  print(" "*((n-(2*i+1))//2*2), "* "*(2*i+1))
+import pandas as pd
+
+df = pd.read_csv(r"E:\Data\3S\all_points.dat", encoding='gbk', header=None)
+dzy_df = df.loc[df[0].str[:3] == '电子眼']
+dzy_df[1] = '165960'
