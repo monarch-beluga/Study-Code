@@ -1,73 +1,72 @@
 #include<iostream>
+using namespace std;
 #include<string>
 #include<cmath>
-using namespace std;
-int charToInt(char ch)
+int charToint(char ch)
 {
-    if(ch >= 'a')
-        return ch-'a'+10;
+    int num;
+    if (ch >= 'a')
+        num = ch -'a' + 10;
     else
-        return ch-'0';
+        num = ch - '0';
+    return num;
 }
-long long strToInt(string s, long long redix)
+long stringToint(string s, long r)
 {
-    unsigned long long num1 = 0;
-    int len = s.size();
-    for(int i = 0; i < len; i++)
-        num1 = num1*redix+charToInt(s[i]);
-    if(num1 >= 0)
-        return num1;
-    else
-        return -1;
+    long num = 0;
+    for (int i = 0; i < (int)s.size(); ++i)
+        num = num*r + charToint(s[i]);
+    return num;
 }
-int max_bit(string s)
+long dichotomy(string s, long num, long start, long end)
+{
+    long mid, n;
+    int flag = 0;
+    while(!flag && (start <= end))
+    {
+        mid = (start + end) / 2;
+        n = stringToint(s, mid);
+        if (n == num)
+            flag = 1;
+        else if(n > num)
+            end = mid-1;
+        else
+            start = mid+1;
+    }
+    if (flag)
+        return mid;
+    else
+        return 0;
+}
+int maxBit(string s)
 {
     int n_max = -1;
-    int len = s.size();
-    for(int i = 0; i < len; i++)
-        if(charToInt(s[i]) > n_max)
-            n_max = charToInt(s[i]);
+    for(int i = 0; i < (int)s.size(); i++)
+            n_max = max(charToint(s[i]), n_max);
     return n_max+1;
 }
+
 int main()
 {
-    string n[2];
-    int tag1, tag2;
-    long long redix1, redix2, num[2], redix, mid;
-    cin >> n[0] >> n[1] >> tag1 >> redix;
-    --tag1;
-    if(tag1)
-        tag2=0;
-    else
-        tag2=1;
-    num[tag1] = strToInt(n[tag1], redix);
-    if(n[0] == n[2])
+    string n1, n2;
+    int tag;
+    long radix1, radix2, num1=0, radix3, radix;
+    cin >> n1 >> n2 >> tag >> radix1;
+    if (tag != 1)
+        swap(n1, n2);
+    if (n1 == n2)
+        cout << radix1;
+    else 
     {
-        cout << redix;
-        return 0;
-    }
-    redix1 = (long long)pow(num[tag1]/(double)charToInt(n[tag2][0]), 1.0/(n[tag2].size()-1));
-    redix2 = max_bit(n[tag2]);
-    if(redix2 < 2)
-        redix2 = 2;
-    mid = redix1;
-    while(redix2 <= redix1)
-    {
-        num[tag2] = strToInt(n[tag2], mid);
-        if(num[0] == num[1])
-        {
-            if(mid >= max_bit(n[tag2]))
-                cout << mid;
-            else
-                break;
-            return 0;
-        }
-        else if(num[tag1] < num[tag2] || num[tag2]==-1)
-            redix1 = mid-1;
+        num1 = stringToint(n1, radix1);
+        radix2 = maxBit(n2);
+        radix3 = (long)pow(num1, 1.0/(n2.size()-1));
+        radix = dichotomy(n2, num1, radix2, radix3);
+        if (radix != 0)
+            cout << radix;
         else
-            redix2 = mid+1;
-        mid = (redix1+redix2)/2;
+            cout << "Impossible";
     }
-    cout << "Impossible";
     return 0;
 }
+ 

@@ -13,17 +13,17 @@ int charToint(char ch)
     return num;
 }
 
-long long stringToint(string s, long long r)
+long stringToint(string s, long r)
 {
-    long long num = 0;
+    long num = 0;
     for (int i = 0; i < (int)s.size(); ++i)
         num = num*r + charToint(s[i]);
     return num;
 }
 
-long long dichotomy(string s, int num, long long start, long long end)
+long dichotomy(string s, long num, long start, long end)
 {
-    long long mid = end, n;
+    long mid = end, n;
     int flag = 0;
     while(!flag && (start <= end))
     {
@@ -39,7 +39,7 @@ long long dichotomy(string s, int num, long long start, long long end)
     if (flag)
         return mid;
     else
-        return -1;
+        return 0;
 }
 
 int maxBit(string s)
@@ -58,7 +58,7 @@ int main()
     #endif
     string n1, n2;
     int tag;
-    long long radix1, radix2, num1=0, radix3, radix;
+    long radix1, radix2, num1=0, radix3, radix;
     cin >> n1 >> n2 >> tag >> radix1;
     if (tag != 1)
         swap(n1, n2);
@@ -67,14 +67,14 @@ int main()
     else 
     {
         num1 = stringToint(n1, radix1);
-        radix3 = (long long)pow(num1/(double)charToint(n2[0]), 1.0/(n2.size()-1));
         radix2 = maxBit(n2);
+        radix3 = (long)pow(num1, 1.0/(n2.size()-1));
+        cout << radix3;
         radix = dichotomy(n2, num1, radix2, radix3);
-        if (radix != -1)
+        if (radix != 0)
             cout << radix;
         else
             cout << "Impossible";
     }
     return 0;
 }
- 
