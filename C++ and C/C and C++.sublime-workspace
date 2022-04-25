@@ -4,6 +4,14 @@
 		"selected_items":
 		[
 			[
+				"D",
+				"DFScount"
+			],
+			[
+				"ci",
+				"city"
+			],
+			[
 				"pr",
 				"profit"
 			],
@@ -273,10 +281,19 @@
 			}
 		},
 		{
+			"file": "/E/System/Window_transparent.ahk",
+			"settings":
+			{
+				"buffer_size": 574,
+				"encoding": "UTF-8",
+				"line_ending": "Windows"
+			}
+		},
+		{
 			"file": "PAT_Problem/input.txt",
 			"settings":
 			{
-				"buffer_size": 126,
+				"buffer_size": 20,
 				"encoding": "UTF-8",
 				"line_ending": "Windows"
 			}
@@ -866,7 +883,7 @@
 			]
 		]
 	],
-	"build_varint": "Run",
+	"build_varint": "",
 	"command_palette":
 	{
 		"height": 0.0,
@@ -994,10 +1011,15 @@
 	"expanded_folders":
 	[
 		"/E/Study/Projects/C++ and C",
-		"/E/Study/Projects/C++ and C/PAT_Problem"
+		"/E/Study/Projects/C++ and C/Algorithm"
 	],
 	"file_history":
 	[
+		"/E/Study/Projects/C++ and C/PAT_Problem/13_Battle Over Cities.cc",
+		"/E/Study/Projects/C++ and C/Algorithm/07_Domino_piling.cc",
+		"/E/System/清空回收站.bat",
+		"/E/Data/zip_data/ENVI/重要说明-请务必查看!!!!!.txt",
+		"/E/Study/Projects/C++ and C/PAT_Problem/input.txt",
 		"/E/Study/Projects/C++ and C/PAT_Problem/12_The Best Rank.cc",
 		"/C/Windows/System32/drivers/etc/hosts",
 		"/E/Study/Projects/C++ and C/PAT_Problem/11_World Cup Betting.cc",
@@ -1041,7 +1063,6 @@
 		"/E/Study-tool/Sublime/Data/Packages/Python/Python.sublime-build",
 		"/E/Study-tool/Sublime/Data/Packages/ConvertToUTF8/ConvertToUTF8.sublime-settings",
 		"/E/Study-tool/Sublime/Data/Packages/User/ConvertToUTF8.sublime-settings",
-		"/E/Study/Projects/C++ and C/PAT_Problem/input.txt",
 		"/E/Study/Projects/C++ and C/PAT_Problem/05_Spell It Right.cc",
 		"/E/Study/Projects/C++ and C/PAT_Problem/04_ Counting Leaves.cc",
 		"/E/Study/Projects/C++ and C/PAT_Problem/temp.cc",
@@ -1121,11 +1142,7 @@
 		"/E/Study/Python/Python39/Lib/site-packages/selenium/webdriver/chrome/webdriver.py",
 		"/E/Study/Python/Python39/Lib/site-packages/selenium/webdriver/remote/webdriver.py",
 		"/E/Study/Python/Python39/Lib/site-packages/selenium/common/exceptions.py",
-		"/E/Study/Python/Python39/Lib/site-packages/selenium/common/__init__.py",
-		"/E/Study/Python/Python39/Lib/site-packages/selenium/webdriver/chrome/remote_connection.py",
-		"/E/Application/apache-tomcat/webapps/V2ray/get_sub.py",
-		"/E/Study/Python/Python39/Lib/site-packages/selenium/webdriver/chrome/service.py",
-		"/E/Application/apache-tomcat/webapps/V2ray/subscription/2022-03-31 (1).txt"
+		"/E/Study/Python/Python39/Lib/site-packages/selenium/common/__init__.py"
 	],
 	"find":
 	{
@@ -1143,6 +1160,7 @@
 		"case_sensitive": false,
 		"find_history":
 		[
+			"e",
 			"辅路11",
 			"辅路10",
 			"unsigned long long",
@@ -1229,7 +1247,7 @@
 	"groups":
 	[
 		{
-			"selected": 0,
+			"selected": 1,
 			"sheets":
 			[
 				{
@@ -1245,8 +1263,8 @@
 						"selection":
 						[
 							[
-								155,
-								155
+								51,
+								51
 							]
 						],
 						"settings":
@@ -1256,12 +1274,27 @@
 							{
 								"close":
 								{
+									"1":
+									[
+										50,
+										51
+									]
 								},
 								"icon":
 								{
+									"1":
+									[
+										"Packages/BracketHighlighter/icons/round_bracket.png",
+										"region.yellowish"
+									]
 								},
 								"open":
 								{
+									"1":
+									[
+										49,
+										50
+									]
 								},
 								"unmatched":
 								{
@@ -1269,61 +1302,61 @@
 							},
 							"bracket_highlighter.regions":
 							[
-								"bh_regex",
-								"bh_regex_center",
-								"bh_regex_open",
-								"bh_regex_close",
-								"bh_regex_content",
-								"bh_double_quote",
-								"bh_double_quote_center",
-								"bh_double_quote_open",
-								"bh_double_quote_close",
-								"bh_double_quote_content",
-								"bh_square",
-								"bh_square_center",
-								"bh_square_open",
-								"bh_square_close",
-								"bh_square_content",
-								"bh_angle",
-								"bh_angle_center",
-								"bh_angle_open",
-								"bh_angle_close",
-								"bh_angle_content",
-								"bh_curly",
-								"bh_curly_center",
-								"bh_curly_open",
-								"bh_curly_close",
-								"bh_curly_content",
-								"bh_c_define",
-								"bh_c_define_center",
-								"bh_c_define_open",
-								"bh_c_define_close",
-								"bh_c_define_content",
-								"bh_default",
-								"bh_default_center",
-								"bh_default_open",
-								"bh_default_close",
-								"bh_default_content",
-								"bh_tag",
-								"bh_tag_center",
-								"bh_tag_open",
-								"bh_tag_close",
-								"bh_tag_content",
-								"bh_round",
-								"bh_round_center",
-								"bh_round_open",
-								"bh_round_close",
-								"bh_round_content",
 								"bh_unmatched",
 								"bh_unmatched_center",
 								"bh_unmatched_open",
 								"bh_unmatched_close",
 								"bh_unmatched_content",
+								"bh_angle",
+								"bh_angle_center",
+								"bh_angle_open",
+								"bh_angle_close",
+								"bh_angle_content",
+								"bh_square",
+								"bh_square_center",
+								"bh_square_open",
+								"bh_square_close",
+								"bh_square_content",
+								"bh_curly",
+								"bh_curly_center",
+								"bh_curly_open",
+								"bh_curly_close",
+								"bh_curly_content",
 								"bh_single_quote",
 								"bh_single_quote_center",
 								"bh_single_quote_open",
 								"bh_single_quote_close",
-								"bh_single_quote_content"
+								"bh_single_quote_content",
+								"bh_regex",
+								"bh_regex_center",
+								"bh_regex_open",
+								"bh_regex_close",
+								"bh_regex_content",
+								"bh_round",
+								"bh_round_center",
+								"bh_round_open",
+								"bh_round_close",
+								"bh_round_content",
+								"bh_tag",
+								"bh_tag_center",
+								"bh_tag_open",
+								"bh_tag_close",
+								"bh_tag_content",
+								"bh_c_define",
+								"bh_c_define_center",
+								"bh_c_define_open",
+								"bh_c_define_close",
+								"bh_c_define_content",
+								"bh_double_quote",
+								"bh_double_quote_center",
+								"bh_double_quote_open",
+								"bh_double_quote_close",
+								"bh_double_quote_content",
+								"bh_default",
+								"bh_default_center",
+								"bh_default_open",
+								"bh_default_close",
+								"bh_default_content"
 							],
 							"c_time":
 							[
@@ -1383,24 +1416,24 @@
 						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 0,
+					"stack_index": 1,
 					"type": "text"
 				},
 				{
 					"buffer": 1,
-					"file": "PAT_Problem/input.txt",
+					"file": "/E/System/Window_transparent.ahk",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 126,
+						"buffer_size": 574,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								126,
-								126
+								536,
+								536
 							]
 						],
 						"settings":
@@ -1423,51 +1456,51 @@
 							},
 							"bracket_highlighter.regions":
 							[
-								"bh_regex",
-								"bh_regex_center",
-								"bh_regex_open",
-								"bh_regex_close",
-								"bh_regex_content",
-								"bh_double_quote",
-								"bh_double_quote_center",
-								"bh_double_quote_open",
-								"bh_double_quote_close",
-								"bh_double_quote_content",
 								"bh_square",
 								"bh_square_center",
 								"bh_square_open",
 								"bh_square_close",
 								"bh_square_content",
-								"bh_angle",
-								"bh_angle_center",
-								"bh_angle_open",
-								"bh_angle_close",
-								"bh_angle_content",
-								"bh_curly",
-								"bh_curly_center",
-								"bh_curly_open",
-								"bh_curly_close",
-								"bh_curly_content",
-								"bh_c_define",
-								"bh_c_define_center",
-								"bh_c_define_open",
-								"bh_c_define_close",
-								"bh_c_define_content",
-								"bh_default",
-								"bh_default_center",
-								"bh_default_open",
-								"bh_default_close",
-								"bh_default_content",
-								"bh_tag",
-								"bh_tag_center",
-								"bh_tag_open",
-								"bh_tag_close",
-								"bh_tag_content",
+								"bh_double_quote",
+								"bh_double_quote_center",
+								"bh_double_quote_open",
+								"bh_double_quote_close",
+								"bh_double_quote_content",
 								"bh_round",
 								"bh_round_center",
 								"bh_round_open",
 								"bh_round_close",
 								"bh_round_content",
+								"bh_regex",
+								"bh_regex_center",
+								"bh_regex_open",
+								"bh_regex_close",
+								"bh_regex_content",
+								"bh_c_define",
+								"bh_c_define_center",
+								"bh_c_define_open",
+								"bh_c_define_close",
+								"bh_c_define_content",
+								"bh_curly",
+								"bh_curly_center",
+								"bh_curly_open",
+								"bh_curly_close",
+								"bh_curly_content",
+								"bh_tag",
+								"bh_tag_center",
+								"bh_tag_open",
+								"bh_tag_close",
+								"bh_tag_content",
+								"bh_angle",
+								"bh_angle_center",
+								"bh_angle_open",
+								"bh_angle_close",
+								"bh_angle_content",
+								"bh_default",
+								"bh_default_center",
+								"bh_default_open",
+								"bh_default_close",
+								"bh_default_content",
 								"bh_unmatched",
 								"bh_unmatched_center",
 								"bh_unmatched_open",
@@ -1478,6 +1511,160 @@
 								"bh_single_quote_open",
 								"bh_single_quote_close",
 								"bh_single_quote_content"
+							],
+							"c_time":
+							[
+								128,
+								3,
+								99,
+								100,
+								97,
+								116,
+								101,
+								116,
+								105,
+								109,
+								101,
+								10,
+								100,
+								97,
+								116,
+								101,
+								116,
+								105,
+								109,
+								101,
+								10,
+								113,
+								0,
+								67,
+								10,
+								7,
+								229,
+								4,
+								28,
+								21,
+								6,
+								5,
+								9,
+								239,
+								93,
+								113,
+								1,
+								133,
+								113,
+								2,
+								82,
+								113,
+								3,
+								46
+							],
+							"is_init_dirty_state": false,
+							"origin_encoding": "ASCII",
+							"rainbowth.lispy": false,
+							"syntax": "Packages/Text/Plain text.tmLanguage",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 399.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 0,
+					"type": "text"
+				},
+				{
+					"buffer": 2,
+					"file": "PAT_Problem/input.txt",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 20,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								20,
+								20
+							]
+						],
+						"settings":
+						{
+							"bracket_highlighter.busy": false,
+							"bracket_highlighter.locations":
+							{
+								"close":
+								{
+								},
+								"icon":
+								{
+								},
+								"open":
+								{
+								},
+								"unmatched":
+								{
+								}
+							},
+							"bracket_highlighter.regions":
+							[
+								"bh_angle",
+								"bh_angle_center",
+								"bh_angle_open",
+								"bh_angle_close",
+								"bh_angle_content",
+								"bh_default",
+								"bh_default_center",
+								"bh_default_open",
+								"bh_default_close",
+								"bh_default_content",
+								"bh_single_quote",
+								"bh_single_quote_center",
+								"bh_single_quote_open",
+								"bh_single_quote_close",
+								"bh_single_quote_content",
+								"bh_square",
+								"bh_square_center",
+								"bh_square_open",
+								"bh_square_close",
+								"bh_square_content",
+								"bh_c_define",
+								"bh_c_define_center",
+								"bh_c_define_open",
+								"bh_c_define_close",
+								"bh_c_define_content",
+								"bh_curly",
+								"bh_curly_center",
+								"bh_curly_open",
+								"bh_curly_close",
+								"bh_curly_content",
+								"bh_round",
+								"bh_round_center",
+								"bh_round_open",
+								"bh_round_close",
+								"bh_round_content",
+								"bh_double_quote",
+								"bh_double_quote_center",
+								"bh_double_quote_open",
+								"bh_double_quote_close",
+								"bh_double_quote_content",
+								"bh_unmatched",
+								"bh_unmatched_center",
+								"bh_unmatched_open",
+								"bh_unmatched_close",
+								"bh_unmatched_content",
+								"bh_regex",
+								"bh_regex_center",
+								"bh_regex_open",
+								"bh_regex_close",
+								"bh_regex_content",
+								"bh_tag",
+								"bh_tag_center",
+								"bh_tag_open",
+								"bh_tag_close",
+								"bh_tag_content"
 							],
 							"c_time":
 							[
@@ -1535,7 +1722,7 @@
 						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 1,
+					"stack_index": 2,
 					"type": "text"
 				}
 			]

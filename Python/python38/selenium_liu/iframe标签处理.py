@@ -1,7 +1,7 @@
 
 from selenium import webdriver
 
-e_path = r'E:\study\python\anaconda3\Scripts\chromedriver'
+e_path = r'chromedriver'
 master = webdriver.Chrome(executable_path=e_path)
 
 master.get('https://qzone.qq.com/')
