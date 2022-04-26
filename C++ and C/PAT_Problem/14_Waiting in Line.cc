@@ -8,10 +8,6 @@ typedef struct queue
 
 int main()
 {
-    #if ONLINE_JUDGE
-    #else
-    freopen("input.txt", "r", stdin);
-    #endif
     int n, m, k, q, tmix, p;
     cin >> n >> m >> k >> q;
     Q *qs = new queue[n];
