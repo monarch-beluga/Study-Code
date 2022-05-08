@@ -1,14 +1,19 @@
 #include<iostream>
 using namespace std;
+#include<algorithm>
+#include<vector>
 
-int prime(int a)
+typedef struct record
 {
-    if(a == 1) return 0;
-    if(a == 2) return 1;
-    for (int i = 2; i*i < a; ++i)
-        if (a%i==0)
-            return 0;
-    return 1;
+    string name, type, month;
+    int time;
+}Rc;
+bool cmp(Rc a, Rc b)
+{
+    if(a.name != b.name)
+        return a.name < b.name;
+    else
+        return a.time < b.time;
 }
 
 int main()
@@ -17,19 +22,23 @@ int main()
     #else
     freopen("input.txt", "r", stdin);
     #endif
-    int n, d, sum;
+    int tolls[24], n, d, h, m, td = 0;
+    for (int i = 0; i < 24; td+=tolls[i++])
+        cin >> tolls[i];
     cin >> n;
-    while(n >= 0)
+    Rc *rs = new record[n];
+    for (int i = 0; i < n; ++i)
     {
-        cin >> d;
-        sum = 0;
-        for(int i = n; i > 0; i /= d)
-            sum = sum*d + i%d;
-        if(prime(n) && prime(sum))
-            cout << "Yes" << endl;
-        else
-            cout << "No" << endl;
-        cin >> n;
+        cin >> rs[i].name;
+        scanf("%d:%d:%d:%d", &rs[i].month, &d, &h, &m);
+        cin >> rs[i].type;
+        rs[i].time = d*10000+h*100+m;
+    }
+    sort(rs, rs+n, cmp);
+    int te, ts = rs[0].time;
+    for (int i = 0; i < n; ++i)
+    {
+        
     }
     return 0;
 }

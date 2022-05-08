@@ -272,10 +272,19 @@
 	"buffers":
 	[
 		{
-			"file": "PAT_Problem/temp.cc",
+			"file": "/E/Data/test.txt",
 			"settings":
 			{
-				"buffer_size": 614,
+				"buffer_size": 116,
+				"encoding": "UTF-8",
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "PAT_Problem/input.txt",
+			"settings":
+			{
+				"buffer_size": 325,
 				"encoding": "UTF-8",
 				"line_ending": "Windows"
 			}
@@ -993,10 +1002,13 @@
 	"expanded_folders":
 	[
 		"/E/Study/Projects/C++ and C",
-		"/E/Study/Projects/C++ and C/Algorithm"
+		"/E/Study/Projects/C++ and C/PAT_Problem"
 	],
 	"file_history":
 	[
+		"/E/Study/Projects/C++ and C/PAT_Problem/temp.cc",
+		"/E/log.txt",
+		"/E/Study/Projects/C++ and C/PAT_Problem/15_Reversible Primes.cc",
 		"/E/Study/Projects/Python/python38/work/StudySeat/Core.py",
 		"/E/Study/Projects/Python/python38/work/StudySeat/login_slider.pyw",
 		"/E/Work/HDF5/temp.dxf",
@@ -1059,7 +1071,6 @@
 		"/E/Study-tool/Sublime/Data/Packages/User/ConvertToUTF8.sublime-settings",
 		"/E/Study/Projects/C++ and C/PAT_Problem/05_Spell It Right.cc",
 		"/E/Study/Projects/C++ and C/PAT_Problem/04_ Counting Leaves.cc",
-		"/E/Study/Projects/C++ and C/PAT_Problem/temp.cc",
 		"/E/Study/Projects/C++ and C/PAT_Problem/03_Emergency.cc",
 		"/E/Study-tool/Sublime/Data/Packages/User/Package Control.sublime-settings",
 		"/E/第一天_063148.dat",
@@ -1122,9 +1133,7 @@
 		"/E/Work/studyseat-master/滑动验证码/ImageService/Test.py",
 		"/E/Work/studyseat-master/滑动验证码/ImageService/Test2.py",
 		"/E/Work/studyseat-master/滑动验证码/ImageService/SomeData.py",
-		"/E/Work/studyseat-master/LICENSE",
-		"/E/Work/studyseat-master/README.md",
-		"/E/Work/studyseat-master/2.0/.keep"
+		"/E/Work/studyseat-master/LICENSE"
 	],
 	"find":
 	{
@@ -1236,19 +1245,19 @@
 			[
 				{
 					"buffer": 0,
-					"file": "PAT_Problem/temp.cc",
+					"file": "/E/Data/test.txt",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 614,
+						"buffer_size": 116,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								201,
-								201
+								116,
+								116
 							]
 						],
 						"settings":
@@ -1258,27 +1267,12 @@
 							{
 								"close":
 								{
-									"1":
-									[
-										200,
-										201
-									]
 								},
 								"icon":
 								{
-									"1":
-									[
-										"Packages/BracketHighlighter/icons/curly_bracket.png",
-										"region.purplish"
-									]
 								},
 								"open":
 								{
-									"1":
-									[
-										58,
-										59
-									]
 								},
 								"unmatched":
 								{
@@ -1286,46 +1280,6 @@
 							},
 							"bracket_highlighter.regions":
 							[
-								"bh_default",
-								"bh_default_center",
-								"bh_default_open",
-								"bh_default_close",
-								"bh_default_content",
-								"bh_square",
-								"bh_square_center",
-								"bh_square_open",
-								"bh_square_close",
-								"bh_square_content",
-								"bh_unmatched",
-								"bh_unmatched_center",
-								"bh_unmatched_open",
-								"bh_unmatched_close",
-								"bh_unmatched_content",
-								"bh_round",
-								"bh_round_center",
-								"bh_round_open",
-								"bh_round_close",
-								"bh_round_content",
-								"bh_double_quote",
-								"bh_double_quote_center",
-								"bh_double_quote_open",
-								"bh_double_quote_close",
-								"bh_double_quote_content",
-								"bh_tag",
-								"bh_tag_center",
-								"bh_tag_open",
-								"bh_tag_close",
-								"bh_tag_content",
-								"bh_regex",
-								"bh_regex_center",
-								"bh_regex_open",
-								"bh_regex_close",
-								"bh_regex_content",
-								"bh_single_quote",
-								"bh_single_quote_center",
-								"bh_single_quote_open",
-								"bh_single_quote_close",
-								"bh_single_quote_content",
 								"bh_curly",
 								"bh_curly_center",
 								"bh_curly_open",
@@ -1340,7 +1294,197 @@
 								"bh_angle_center",
 								"bh_angle_open",
 								"bh_angle_close",
-								"bh_angle_content"
+								"bh_angle_content",
+								"bh_round",
+								"bh_round_center",
+								"bh_round_open",
+								"bh_round_close",
+								"bh_round_content",
+								"bh_double_quote",
+								"bh_double_quote_center",
+								"bh_double_quote_open",
+								"bh_double_quote_close",
+								"bh_double_quote_content",
+								"bh_square",
+								"bh_square_center",
+								"bh_square_open",
+								"bh_square_close",
+								"bh_square_content",
+								"bh_regex",
+								"bh_regex_center",
+								"bh_regex_open",
+								"bh_regex_close",
+								"bh_regex_content",
+								"bh_unmatched",
+								"bh_unmatched_center",
+								"bh_unmatched_open",
+								"bh_unmatched_close",
+								"bh_unmatched_content",
+								"bh_single_quote",
+								"bh_single_quote_center",
+								"bh_single_quote_open",
+								"bh_single_quote_close",
+								"bh_single_quote_content",
+								"bh_default",
+								"bh_default_center",
+								"bh_default_open",
+								"bh_default_close",
+								"bh_default_content",
+								"bh_tag",
+								"bh_tag_center",
+								"bh_tag_open",
+								"bh_tag_close",
+								"bh_tag_content"
+							],
+							"c_time":
+							[
+								128,
+								3,
+								99,
+								100,
+								97,
+								116,
+								101,
+								116,
+								105,
+								109,
+								101,
+								10,
+								100,
+								97,
+								116,
+								101,
+								116,
+								105,
+								109,
+								101,
+								10,
+								113,
+								0,
+								67,
+								10,
+								7,
+								230,
+								5,
+								8,
+								13,
+								46,
+								13,
+								12,
+								83,
+								91,
+								113,
+								1,
+								133,
+								113,
+								2,
+								82,
+								113,
+								3,
+								46
+							],
+							"rainbowth.lispy": false,
+							"syntax": "Packages/Text/Plain text.tmLanguage"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 0,
+					"type": "text"
+				},
+				{
+					"buffer": 1,
+					"file": "PAT_Problem/input.txt",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 325,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								250,
+								250
+							]
+						],
+						"settings":
+						{
+							"bracket_highlighter.busy": false,
+							"bracket_highlighter.locations":
+							{
+								"close":
+								{
+								},
+								"icon":
+								{
+								},
+								"open":
+								{
+								},
+								"unmatched":
+								{
+								}
+							},
+							"bracket_highlighter.regions":
+							[
+								"bh_unmatched",
+								"bh_unmatched_center",
+								"bh_unmatched_open",
+								"bh_unmatched_close",
+								"bh_unmatched_content",
+								"bh_angle",
+								"bh_angle_center",
+								"bh_angle_open",
+								"bh_angle_close",
+								"bh_angle_content",
+								"bh_default",
+								"bh_default_center",
+								"bh_default_open",
+								"bh_default_close",
+								"bh_default_content",
+								"bh_round",
+								"bh_round_center",
+								"bh_round_open",
+								"bh_round_close",
+								"bh_round_content",
+								"bh_tag",
+								"bh_tag_center",
+								"bh_tag_open",
+								"bh_tag_close",
+								"bh_tag_content",
+								"bh_double_quote",
+								"bh_double_quote_center",
+								"bh_double_quote_open",
+								"bh_double_quote_close",
+								"bh_double_quote_content",
+								"bh_square",
+								"bh_square_center",
+								"bh_square_open",
+								"bh_square_close",
+								"bh_square_content",
+								"bh_curly",
+								"bh_curly_center",
+								"bh_curly_open",
+								"bh_curly_close",
+								"bh_curly_content",
+								"bh_single_quote",
+								"bh_single_quote_center",
+								"bh_single_quote_open",
+								"bh_single_quote_close",
+								"bh_single_quote_content",
+								"bh_regex",
+								"bh_regex_center",
+								"bh_regex_open",
+								"bh_regex_close",
+								"bh_regex_content",
+								"bh_c_define",
+								"bh_c_define_center",
+								"bh_c_define_open",
+								"bh_c_define_close",
+								"bh_c_define_content"
 							],
 							"c_time":
 							[
@@ -1374,11 +1518,11 @@
 								4,
 								12,
 								21,
-								15,
+								16,
+								17,
 								13,
-								13,
-								110,
-								170,
+								98,
+								239,
 								113,
 								1,
 								133,
@@ -1392,15 +1536,13 @@
 							"is_init_dirty_state": false,
 							"origin_encoding": "ASCII",
 							"rainbowth.lispy": false,
-							"syntax": "Packages/C++/C++.sublime-syntax",
-							"tab_size": 4,
-							"translate_tabs_to_spaces": true
+							"syntax": "Packages/Text/Plain text.tmLanguage"
 						},
 						"translation.x": 0.0,
-						"translation.y": 42.0,
+						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 0,
+					"stack_index": 1,
 					"type": "text"
 				}
 			]
