@@ -18,10 +18,6 @@ bool cmp(Rc a, Rc b)
 
 int main()
 {
-    #if ONLINE_JUDGE
-    #else
-    freopen("input.txt", "r", stdin);
-    #endif
     int tolls[24], n, h, m;
     string s;
     for (int i = 0; i < 24; ++i)
