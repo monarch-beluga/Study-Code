@@ -70,7 +70,7 @@ class Invdisttree:
         self.z = z
         self.stat = stat
         self.wn = 0
-        self.wsum = None;
+        self.wsum = None
 
     def __call__(self, q, nnear=6, eps=0, p=1, weights=None):
         # nnear nearest neighbours of each query point --
