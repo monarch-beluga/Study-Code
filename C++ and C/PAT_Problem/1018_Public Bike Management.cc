@@ -1,7 +1,9 @@
+/*
+深度优先+回溯 求加权最短路径
+*/
 #include<iostream>
 using namespace std;
 #include<vector>
-#include<cmath>
 #define inf 9999999
 
 typedef struct road
@@ -32,7 +34,7 @@ void dfs(int s, int l, int sent, int back)
             minl=l, minsent=sent, minback=back, minpath=path;
         else if(l == minl&&minsent > sent)
             minsent=sent, minback=back, minpath=path;
-        else if(l == minl&&minsent == sent&&minback < back)
+        else if(l == minl&&minsent == sent&&minback > back)
             minback=back, minpath=path;
         return;
     }
@@ -56,10 +58,6 @@ void dfs(int s, int l, int sent, int back)
 
 int main()
 {
-    #if ONLINE_JUDGE
-    #else
-    freopen("input.txt", "r", stdin);
-    #endif
     int s, e, l;
     R *p;
     cin >> Cmax >> n >> Sp >> m;
