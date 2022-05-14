@@ -9,7 +9,7 @@ void dfs(int v, int l)
 {
     vis[v] = 0;
     if(l == maxl)
-    droot.push_back(v);
+        droot.push_back(v);
     if (l > maxl)
     {
         maxl = l;
@@ -54,10 +54,6 @@ void dfsCount(int v)
 
 int main()
 {
-    #if ONLINE_JUDGE
-    #else
-    freopen("input.txt", "r", stdin);
-    #endif
     int s, e;
     cin >> n;
     ++n;
