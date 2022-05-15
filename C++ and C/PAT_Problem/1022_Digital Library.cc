@@ -14,10 +14,6 @@ bool cmp(book a, book b)
 
 int main()
 {
-    #if ONLINE_JUDGE
-    #else
-    freopen("input.txt", "r", stdin);
-    #endif
     int n, m, q, flag;
     string s;
     scanf("%d\n", &n);

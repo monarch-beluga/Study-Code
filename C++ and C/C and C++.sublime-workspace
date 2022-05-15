@@ -4,6 +4,18 @@
 		"selected_items":
 		[
 			[
+				"in",
+				"infor"
+			],
+			[
+				"g",
+				"getline"
+			],
+			[
+				"m",
+				"m"
+			],
+			[
 				"dfs",
 				"dfsCount"
 			],
@@ -160,10 +172,6 @@
 				"nextval"
 			],
 			[
-				"g",
-				"get_next"
-			],
-			[
 				"OL",
 				"OLink"
 			],
@@ -206,10 +214,6 @@
 			[
 				"su",
 				"stuId"
-			],
-			[
-				"m",
-				"memoryAdd"
 			],
 			[
 				"Ne",
@@ -291,30 +295,22 @@
 			"file": "PAT_Problem/temp.cc",
 			"settings":
 			{
-				"buffer_size": 1572,
+				"buffer_size": 1000,
 				"encoding": "UTF-8",
 				"line_ending": "Windows"
 			}
 		},
 		{
-			"file": "PAT_Problem/1013_Battle Over Cities.cc",
+			"file": "/E/Study/Projects/Python/python38/temp.py",
 			"settings":
 			{
-				"buffer_size": 887,
-				"line_ending": "Windows"
-			}
-		},
-		{
-			"file": "PAT_Problem/input.txt",
-			"settings":
-			{
-				"buffer_size": 18,
+				"buffer_size": 137,
 				"encoding": "UTF-8",
 				"line_ending": "Windows"
 			}
 		}
 	],
-	"build_system": "Packages/C++/C++ Single File.sublime-build",
+	"build_system": "Packages/Python/Python.sublime-build",
 	"build_system_choices":
 	[
 		[
@@ -889,12 +885,48 @@
 				],
 				[
 					"Packages/Python/Python.sublime-build",
+					"Run"
+				]
+			],
+			[
+				"Packages/Python/Python.sublime-build",
+				"Run"
+			]
+		],
+		[
+			[
+				[
+					"Packages/Python/Python.sublime-build",
+					""
+				],
+				[
+					"Packages/Python/Python.sublime-build",
 					"Syntax Check"
 				]
 			],
 			[
 				"Packages/Python/Python.sublime-build",
 				""
+			]
+		],
+		[
+			[
+				[
+					"Packages/Python/Python.sublime-build",
+					""
+				],
+				[
+					"Packages/Python/Python.sublime-build",
+					"Syntax Check"
+				],
+				[
+					"Packages/Python/Python.sublime-build",
+					"Run"
+				]
+			],
+			[
+				"Packages/Python/Python.sublime-build",
+				"Run"
 			]
 		]
 	],
@@ -906,11 +938,11 @@
 		"selected_items":
 		[
 			[
-				"pc",
+				"p",
 				"PackageResourceViewer: Open Resource"
 			],
 			[
-				"p",
+				"pc",
 				"PackageResourceViewer: Open Resource"
 			],
 			[
@@ -1029,6 +1061,13 @@
 	],
 	"file_history":
 	[
+		"/E/Study-tool/Sublime/Data/Packages/Python/Python.sublime-build",
+		"/E/Study/Projects/Python/python38/temp.py",
+		"/E/Study-tool/Sublime/Data/Packages/User/Color Schemes/RainbowBrackets/Predawn Monokai.sublime-color-scheme",
+		"/E/Study-tool/Sublime/Data/Packages/C++/C++ Single File.sublime-build",
+		"/E/Study/Projects/C++ and C/PAT_Problem/input.txt",
+		"/E/Study/Projects/C++ and C/PAT_Problem/1022_Digital Library.cc",
+		"/E/Study/Projects/C++ and C/PAT_Problem/1021_Deepest Root.cc",
 		"/E/Study/Projects/C++ and C/PAT_Problem/1020_Tree Traversals.cc",
 		"/E/Study/Projects/C++ and C/PAT_Problem/1019_General Palindromic Number.cc",
 		"/E/Study/Projects/C++ and C/PAT_Problem/1018_Public Bike Management.cc",
@@ -1055,7 +1094,6 @@
 		"/E/Work/HDF5/temp.dxf",
 		"/E/Data/Remote sensing/data/tree.txt",
 		"/E/Study/Projects/Python/jupyter-notebook/work/Untitled.ipynb",
-		"/E/Study/Projects/C++ and C/PAT_Problem/input.txt",
 		"/E/Data/Remote sensing/data/精度验证.txt",
 		"/D/VPN/订阅/2022年4月22日订阅链接V2 Cla（后台持续动态更新）.txt",
 		"/E/Data/Remote sensing/data/2019-09.hdr",
@@ -1071,7 +1109,6 @@
 		"/C/Windows/System32/drivers/etc/hosts",
 		"/E/Study/Projects/C++ and C/PAT_Problem/11_World Cup Betting.cc",
 		"/E/Data/3S/all_井盖.dat",
-		"/E/Study/Projects/Python/python38/temp.py",
 		"/E/Data/3S/all_points.dat",
 		"/E/Data/3S/修改点.txt",
 		"/E/Data/3S/修改.dat",
@@ -1079,7 +1116,6 @@
 		"/E/Data/3S/all_路灯.dat",
 		"/E/Study/Projects/C++ and C/PAT_Problem/10_Radix.cc",
 		"/E/Study/Projects/C++ and C/PAT_Problem/09_Product of Polynomials.cc",
-		"/E/Study-tool/Sublime/Data/Packages/User/Color Schemes/RainbowBrackets/Predawn Monokai.sublime-color-scheme",
 		"/E/Study-tool/Sublime/Data/Packages/Color Scheme - Default/Mariana.sublime-color-scheme",
 		"/E/Study-tool/Sublime/Data/Packages/Color Scheme - Default/Monokai.sublime-color-scheme",
 		"/E/Study-tool/Sublime/Data/Packages/Predawn Monokai/Predawn Monokai.tmTheme",
@@ -1106,7 +1142,6 @@
 		"/E/Data/zip_data/CAD2020/CASS11免锁版激活步骤.txt",
 		"/E/Data/zip_data/CAD2020/AutoCAD2020x64/使用说明.txt",
 		"/D/Life/WeChat/news/WeChat Files/wxid_241521i70k3r22/FileStorage/File/2022-04/输出菱形.py",
-		"/E/Study-tool/Sublime/Data/Packages/Python/Python.sublime-build",
 		"/E/Study-tool/Sublime/Data/Packages/ConvertToUTF8/ConvertToUTF8.sublime-settings",
 		"/E/Study-tool/Sublime/Data/Packages/User/ConvertToUTF8.sublime-settings",
 		"/E/Study/Projects/C++ and C/PAT_Problem/05_Spell It Right.cc",
@@ -1135,7 +1170,6 @@
 		"/E/Study/Projects/C++ and C/C language/Figure/ljjz.c",
 		"/E/Study-tool/Sublime/Data/Packages/User/CloseFile.py",
 		"/C/Users/Monarch/AppData/Roaming/Sublime Text 3/Packages/User/CloseFile.py",
-		"/E/Study-tool/Sublime/Data/Packages/C++/C++ Single File.sublime-build",
 		"/E/Data/GIS/roi_gcs.shp",
 		"/E/Study/Projects/C++ and C/C基础/extern用法.cpp",
 		"/C/Users/Monarch/AppData/Roaming/Sublime Text 3/Packages/User/Package Control.user-ca-bundle",
@@ -1154,9 +1188,7 @@
 		"/E/Application/apache-tomcat/webapps/V2ray/subscription/2022-04-10.txt",
 		"/E/Application/apache-tomcat/webapps/V2ray/subscription/最新免费v2ray节点分享.txt",
 		"/E/Application/apache-tomcat/webapps/V2ray/subscription/newest_p.txt",
-		"/D/VPN/订阅/最新免费v2ray节点分享.html",
-		"/D/VPN/订阅/最新免费v2ray节点分享.txt",
-		"/E/Application/apache-tomcat/webapps/V2ray/subscription/2022-04-08.txt"
+		"/D/VPN/订阅/最新免费v2ray节点分享.html"
 	],
 	"find":
 	{
@@ -1269,7 +1301,7 @@
 	"groups":
 	[
 		{
-			"selected": 0,
+			"selected": 1,
 			"sheets":
 			[
 				{
@@ -1278,15 +1310,15 @@
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 1572,
+						"buffer_size": 1000,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								1307,
-								1307
+								368,
+								368
 							]
 						],
 						"settings":
@@ -1298,8 +1330,8 @@
 								{
 									"1":
 									[
-										1570,
-										1571
+										998,
+										999
 									]
 								},
 								"icon":
@@ -1314,8 +1346,8 @@
 								{
 									"1":
 									[
-										967,
-										968
+										203,
+										204
 									]
 								},
 								"unmatched":
@@ -1324,6 +1356,21 @@
 							},
 							"bracket_highlighter.regions":
 							[
+								"bh_curly",
+								"bh_curly_center",
+								"bh_curly_open",
+								"bh_curly_close",
+								"bh_curly_content",
+								"bh_default",
+								"bh_default_center",
+								"bh_default_open",
+								"bh_default_close",
+								"bh_default_content",
+								"bh_single_quote",
+								"bh_single_quote_center",
+								"bh_single_quote_open",
+								"bh_single_quote_close",
+								"bh_single_quote_content",
 								"bh_round",
 								"bh_round_center",
 								"bh_round_open",
@@ -1334,41 +1381,16 @@
 								"bh_unmatched_open",
 								"bh_unmatched_close",
 								"bh_unmatched_content",
-								"bh_default",
-								"bh_default_center",
-								"bh_default_open",
-								"bh_default_close",
-								"bh_default_content",
-								"bh_square",
-								"bh_square_center",
-								"bh_square_open",
-								"bh_square_close",
-								"bh_square_content",
-								"bh_single_quote",
-								"bh_single_quote_center",
-								"bh_single_quote_open",
-								"bh_single_quote_close",
-								"bh_single_quote_content",
-								"bh_angle",
-								"bh_angle_center",
-								"bh_angle_open",
-								"bh_angle_close",
-								"bh_angle_content",
-								"bh_curly",
-								"bh_curly_center",
-								"bh_curly_open",
-								"bh_curly_close",
-								"bh_curly_content",
-								"bh_c_define",
-								"bh_c_define_center",
-								"bh_c_define_open",
-								"bh_c_define_close",
-								"bh_c_define_content",
 								"bh_regex",
 								"bh_regex_center",
 								"bh_regex_open",
 								"bh_regex_close",
 								"bh_regex_content",
+								"bh_square",
+								"bh_square_center",
+								"bh_square_open",
+								"bh_square_close",
+								"bh_square_content",
 								"bh_double_quote",
 								"bh_double_quote_center",
 								"bh_double_quote_open",
@@ -1378,7 +1400,17 @@
 								"bh_tag_center",
 								"bh_tag_open",
 								"bh_tag_close",
-								"bh_tag_content"
+								"bh_tag_content",
+								"bh_c_define",
+								"bh_c_define_center",
+								"bh_c_define_open",
+								"bh_c_define_close",
+								"bh_c_define_content",
+								"bh_angle",
+								"bh_angle_center",
+								"bh_angle_open",
+								"bh_angle_close",
+								"bh_angle_content"
 							],
 							"c_time":
 							[
@@ -1435,195 +1467,27 @@
 							"translate_tabs_to_spaces": true
 						},
 						"translation.x": 0.0,
-						"translation.y": 1140.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 0,
-					"type": "text"
-				},
-				{
-					"buffer": 1,
-					"file": "PAT_Problem/1013_Battle Over Cities.cc",
-					"semi_transient": true,
-					"settings":
-					{
-						"buffer_size": 887,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								200,
-								200
-							]
-						],
-						"settings":
-						{
-							"bracket_highlighter.busy": false,
-							"bracket_highlighter.locations":
-							{
-								"close":
-								{
-									"1":
-									[
-										199,
-										200
-									]
-								},
-								"icon":
-								{
-									"1":
-									[
-										"Packages/BracketHighlighter/icons/square_bracket.png",
-										"region.bluish"
-									]
-								},
-								"open":
-								{
-									"1":
-									[
-										197,
-										198
-									]
-								},
-								"unmatched":
-								{
-								}
-							},
-							"bracket_highlighter.regions":
-							[
-								"bh_round",
-								"bh_round_center",
-								"bh_round_open",
-								"bh_round_close",
-								"bh_round_content",
-								"bh_unmatched",
-								"bh_unmatched_center",
-								"bh_unmatched_open",
-								"bh_unmatched_close",
-								"bh_unmatched_content",
-								"bh_default",
-								"bh_default_center",
-								"bh_default_open",
-								"bh_default_close",
-								"bh_default_content",
-								"bh_square",
-								"bh_square_center",
-								"bh_square_open",
-								"bh_square_close",
-								"bh_square_content",
-								"bh_single_quote",
-								"bh_single_quote_center",
-								"bh_single_quote_open",
-								"bh_single_quote_close",
-								"bh_single_quote_content",
-								"bh_angle",
-								"bh_angle_center",
-								"bh_angle_open",
-								"bh_angle_close",
-								"bh_angle_content",
-								"bh_curly",
-								"bh_curly_center",
-								"bh_curly_open",
-								"bh_curly_close",
-								"bh_curly_content",
-								"bh_c_define",
-								"bh_c_define_center",
-								"bh_c_define_open",
-								"bh_c_define_close",
-								"bh_c_define_content",
-								"bh_regex",
-								"bh_regex_center",
-								"bh_regex_open",
-								"bh_regex_close",
-								"bh_regex_content",
-								"bh_double_quote",
-								"bh_double_quote_center",
-								"bh_double_quote_open",
-								"bh_double_quote_close",
-								"bh_double_quote_content",
-								"bh_tag",
-								"bh_tag_center",
-								"bh_tag_open",
-								"bh_tag_close",
-								"bh_tag_content"
-							],
-							"c_time":
-							[
-								128,
-								3,
-								99,
-								100,
-								97,
-								116,
-								101,
-								116,
-								105,
-								109,
-								101,
-								10,
-								100,
-								97,
-								116,
-								101,
-								116,
-								105,
-								109,
-								101,
-								10,
-								113,
-								0,
-								67,
-								10,
-								7,
-								230,
-								4,
-								25,
-								9,
-								56,
-								13,
-								3,
-								255,
-								135,
-								113,
-								1,
-								133,
-								113,
-								2,
-								82,
-								113,
-								3,
-								46
-							],
-							"origin_encoding": "ASCII",
-							"rainbowth.lispy": false,
-							"syntax": "Packages/C++/C++.sublime-syntax",
-							"tab_size": 4,
-							"translate_tabs_to_spaces": true
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
+						"translation.y": 324.0,
 						"zoom_level": 1.0
 					},
 					"stack_index": 1,
 					"type": "text"
 				},
 				{
-					"buffer": 2,
-					"file": "PAT_Problem/input.txt",
+					"buffer": 1,
+					"file": "/E/Study/Projects/Python/python38/temp.py",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 18,
+						"buffer_size": 137,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								18,
-								18
+								127,
+								136
 							]
 						],
 						"settings":
@@ -1646,6 +1510,21 @@
 							},
 							"bracket_highlighter.regions":
 							[
+								"bh_curly",
+								"bh_curly_center",
+								"bh_curly_open",
+								"bh_curly_close",
+								"bh_curly_content",
+								"bh_default",
+								"bh_default_center",
+								"bh_default_open",
+								"bh_default_close",
+								"bh_default_content",
+								"bh_single_quote",
+								"bh_single_quote_center",
+								"bh_single_quote_open",
+								"bh_single_quote_close",
+								"bh_single_quote_content",
 								"bh_round",
 								"bh_round_center",
 								"bh_round_open",
@@ -1656,41 +1535,16 @@
 								"bh_unmatched_open",
 								"bh_unmatched_close",
 								"bh_unmatched_content",
-								"bh_default",
-								"bh_default_center",
-								"bh_default_open",
-								"bh_default_close",
-								"bh_default_content",
-								"bh_square",
-								"bh_square_center",
-								"bh_square_open",
-								"bh_square_close",
-								"bh_square_content",
-								"bh_single_quote",
-								"bh_single_quote_center",
-								"bh_single_quote_open",
-								"bh_single_quote_close",
-								"bh_single_quote_content",
-								"bh_angle",
-								"bh_angle_center",
-								"bh_angle_open",
-								"bh_angle_close",
-								"bh_angle_content",
-								"bh_curly",
-								"bh_curly_center",
-								"bh_curly_open",
-								"bh_curly_close",
-								"bh_curly_content",
-								"bh_c_define",
-								"bh_c_define_center",
-								"bh_c_define_open",
-								"bh_c_define_close",
-								"bh_c_define_content",
 								"bh_regex",
 								"bh_regex_center",
 								"bh_regex_open",
 								"bh_regex_close",
 								"bh_regex_content",
+								"bh_square",
+								"bh_square_center",
+								"bh_square_open",
+								"bh_square_close",
+								"bh_square_content",
 								"bh_double_quote",
 								"bh_double_quote_center",
 								"bh_double_quote_open",
@@ -1700,7 +1554,17 @@
 								"bh_tag_center",
 								"bh_tag_open",
 								"bh_tag_close",
-								"bh_tag_content"
+								"bh_tag_content",
+								"bh_c_define",
+								"bh_c_define_center",
+								"bh_c_define_open",
+								"bh_c_define_close",
+								"bh_c_define_content",
+								"bh_angle",
+								"bh_angle_center",
+								"bh_angle_open",
+								"bh_angle_close",
+								"bh_angle_content"
 							],
 							"c_time":
 							[
@@ -1730,15 +1594,15 @@
 								67,
 								10,
 								7,
-								230,
-								4,
+								229,
 								12,
+								27,
 								21,
-								16,
-								17,
-								13,
-								98,
-								239,
+								43,
+								28,
+								1,
+								115,
+								166,
 								113,
 								1,
 								133,
@@ -1749,16 +1613,14 @@
 								3,
 								46
 							],
-							"is_init_dirty_state": false,
-							"origin_encoding": "ASCII",
 							"rainbowth.lispy": false,
-							"syntax": "Packages/Text/Plain text.tmLanguage"
+							"syntax": "Packages/Python/Python.sublime-syntax"
 						},
 						"translation.x": 0.0,
 						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 2,
+					"stack_index": 0,
 					"type": "text"
 				}
 			]
