@@ -3,10 +3,6 @@ using namespace std;
 
 int main()
 {
-    #if ONLINE_JUDGE
-    #else
-    freopen("input.txt", "r", stdin);
-    #endif
     int arr[21] = {0}, n = 0, s = 0, flag = 1, count[10] = {0};
     char ch;
     while((ch = cin.get()) != '\n')
