@@ -1,13 +1,8 @@
 #include<iostream>
 using namespace std;
-#include<string>
 
 int main()
 {
-    #if ONLINE_JUDGE
-    #else
-    freopen("input.txt", "r", stdin);
-    #endif
     int pre[100] = {0}, n[100], e = -1, k, i, s, flag;
     string Sn;
     cin >> Sn >> k;
