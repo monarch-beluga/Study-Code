@@ -27,7 +27,7 @@ def get(href):
     print(name, "爬取成功！！！")
 
 
-for page in range(1, 10):
+for page in range(1, 2):
     param = {
         'q': 'id:5',
         'categories': '110',

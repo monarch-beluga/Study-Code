@@ -18,10 +18,6 @@ bool cmp(R a, R b)
 
 int main()
 {
-    #if ONLINE_JUDGE
-    #else
-    freopen("input.txt", "r", stdin);
-    #endif
     int n, k, ln;
     R *p;
     vector<R> rs;
