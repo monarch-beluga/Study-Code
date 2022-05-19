@@ -1,19 +1,25 @@
 #include<iostream>
 using namespace std;
-#include<vector>
 #include<algorithm>
 
-typedef struct rank
+typedef struct player
 {
-    string reg_n;
-    int score, ln;
-}R;
-bool cmp(R a, R b)
+    int time, p, tag;
+}Pl;
+typedef struct table
 {
-    if (a.score != b.score)
-        return a.score > b.score;
-    else 
-        return a.reg_n < b.reg_n;
+    int e_time, tag, count;
+}T;
+bool cmp(Pl a, Pl b)
+{
+    return a.time < b.time;
+}
+bool cmp1(Pl a, Pl b)
+{
+    if (a.tag != b.tag)
+        return a.tag > b.tag;
+    else
+        return a.time < b.time;
 }
 
 int main()
@@ -22,37 +28,62 @@ int main()
     #else
     freopen("input.txt", "r", stdin);
     #endif
-    int n, k, ln;
-    R *p;
-    vector<R> rs;
+    int n, m, k, H, M, S;
+    int e_time = 3600*21;
     cin >> n;
-    int fr = 0, *lr = new int[n], fpre = -1, *lpre = new int[n], *lnc = new int[n];
+    Pl *ps = new player[n];
     for (int i = 0; i < n; ++i)
     {
-        cin >> k;
-        lnc[i] = lr[i] = 0;
-        lpre[i] = -1;
-        for (int j = 0; j < k; ++j)
-        {
-            p = new R;
-            cin >> p->reg_n >> p->score;
-            p->ln = i;
-            rs.push_back(*p);
-        }
+        scanf("%d:%d:%d %d %d", &H, &M, &S, &ps[i].p, &ps[i].tag);
+        ps[i].time = H*3600+M*60+S;
     }
-    k = rs.size();
-    sort(rs.begin(), rs.end(), cmp);
-    printf("%d\n", k);
-    for (int i = 0; i < (int)rs.size(); ++i)
+    cin >> k >> m;
+    T *ts = new table[k];
+    for (int i = 0; i < k; ++i)
+        ts[i].count = ts[i].tag = 0;
+    for (int i = 0; i < m; ++i)
     {
-        ln = rs[i].ln;
-        ++lnc[ln];
-        if (rs[i].score != fpre)
-            fr = i+1, fpre = rs[i].score;
-        if (rs[i].score != lpre[ln])
-            lr[ln] = lnc[ln], lpre[ln] = rs[i].score;
-        cout << rs[i].reg_n;
-        printf(" %d %d %d\n", fr, ln+1, lr[ln]);
+        cin >> H;
+        ts[H-1].tag = 1;
     }
+    sort(ps, ps+n, cmp);
+    int min_time, t, j, s, wait;
+    for (int i = 0; i < n; ++i)
+    {
+        if (i < k)
+        {
+            t = i;
+            s = ps[i].time;
+        }
+        else
+        {
+            min_time = ts[0].e_time;
+            t = 0;
+            for (j = 0; j < k && min_time > ps[i].time; ++j)
+                if (min_time > ts[j].e_time)
+                {
+                    t = j;
+                    min_time = ts[j].e_time;
+                }
+            if (ts[t].tag && min_time > ps[i].time)
+            {
+                cout << t << endl;
+                for (j = i; ps[j].time <= min_time && !ps[j].tag; ++j);
+                if(i != j && ps[j].tag)
+                    sort(ps+i, ps+j+1, cmp1);
+            }
+            s = max(min_time, ps[i].time);
+        }
+        if (s > e_time)
+            break;
+        ts[t].e_time = s + ps[i].p*60;
+        ++ts[t].count;
+        wait = (s*1.0 - ps[i].time)/60 + 0.5;
+        printf("%02d:%02d:%02d", ps[i].time/3600, (ps[i].time%3600)/60, ps[i].time%60);
+        printf(" %02d:%02d:%02d %d\n", s/3600, (s%3600)/60, s%60, wait);
+    }
+    cout << ts[0].count;
+    for (int i = 1; i < k; ++i)
+        cout << " " << ts[i].count;
     return 0;
 }
