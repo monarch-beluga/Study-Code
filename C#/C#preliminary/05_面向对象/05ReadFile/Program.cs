@@ -12,14 +12,17 @@ namespace _05ReadFile
         static void Main(string[] args)
         {
 
-            string[] array = { "123", "-12.5", "-154", "kjf", "卡卡给" };
+            /*string[] array = { "123", "-12.5", "-154", "kjf", "卡卡给" };
             for (int i = 0; i < array.Length; i++)
             {
                 Console.WriteLine(IsNumber(array[i]));
                 Console.WriteLine(IsFloat(array[i]));
-            }
-                
-            
+            }*/
+            int L = 2;
+            String strOut = "([raster2] - [raster1])" + " * " + "(1 + " + L + ")" + " / " + "(([raster1] + [raster2]" + " + " + L + ")" + " * " + "1.00)";
+            Console.WriteLine(strOut);
+
+
         }
 
         public static bool IsNumber(String strNumber)

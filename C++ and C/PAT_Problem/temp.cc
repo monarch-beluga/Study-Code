@@ -12,7 +12,10 @@ typedef struct table
 }T;
 bool cmp(Pl a, Pl b)
 {
-    return a.time < b.time;
+    if (a.time != b.time)
+        return a.time < b.time;
+    else
+        return a.tag > b.tag;
 }
 bool cmp1(Pl a, Pl b)
 {
@@ -35,6 +38,7 @@ int main()
     for (int i = 0; i < n; ++i)
     {
         scanf("%d:%d:%d %d %d", &H, &M, &S, &ps[i].p, &ps[i].tag);
+        ps[i].p = min(ps[i].p, 120);
         ps[i].time = H*3600+M*60+S;
     }
     cin >> k >> m;
@@ -55,32 +59,45 @@ int main()
             t = i;
             s = ps[i].time;
         }
-        else
+        else 
         {
             min_time = ts[0].e_time;
             t = 0;
-            for (j = 0; j < k && min_time > ps[i].time; ++j)
-                if (min_time > ts[j].e_time)
+            for (j = 1; j < k; ++j)
                 {
-                    t = j;
-                    min_time = ts[j].e_time;
+                    if (min_time > ts[j].e_time)
+                    {
+                        t = j;
+                        min_time = ts[j].e_time;
+                    }
                 }
+            if (min_time > ps[i].time)
+            {
+                /* code */
+            }
+            // for (j = 1; j < k && !(min_time <= ps[i].time && ((ps[i].tag && ts[t].tag == ps[i].tag) || !ps[i].tag)); ++j)
+            //     {
+            //         if ((min_time > ts[j].e_time && min_time > ps[i].time) || (ts[j].e_time <= ps[i].time && ((ps[i].tag && ts[j].tag == ps[i].tag) || !ps[i].tag)))
+            //         {
+            //             t = j;
+            //             min_time = ts[j].e_time;
+            //         }
+            //     }
             if (ts[t].tag && min_time > ps[i].time)
             {
-                cout << t << endl;
                 for (j = i; ps[j].time <= min_time && !ps[j].tag; ++j);
                 if(i != j && ps[j].tag)
                     sort(ps+i, ps+j+1, cmp1);
             }
             s = max(min_time, ps[i].time);
         }
-        if (s > e_time)
+        if (s >= e_time)
             break;
         ts[t].e_time = s + ps[i].p*60;
         ++ts[t].count;
-        wait = (s*1.0 - ps[i].time)/60 + 0.5;
+        wait = (s - ps[i].time)*1.0/60 + 0.5;
         printf("%02d:%02d:%02d", ps[i].time/3600, (ps[i].time%3600)/60, ps[i].time%60);
-        printf(" %02d:%02d:%02d %d\n", s/3600, (s%3600)/60, s%60, wait);
+        printf(" %02d:%02d:%02d %d %d\n", s/3600, (s%3600)/60, s%60, wait, t);
     }
     cout << ts[0].count;
     for (int i = 1; i < k; ++i)
