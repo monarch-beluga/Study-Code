@@ -8,5 +8,9 @@ author:monarch
 @modify:
 """
 a = input("请输入:")
-print(a)
+d = 0
+while a:
+    d = d*2+int(a[0])
+    a = a[1:]
+print("{}".format(d))
 

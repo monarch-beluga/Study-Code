@@ -51,7 +51,7 @@ int main()
         ts[H-1].tag = 1;
     }
     sort(ps, ps+n, cmp);
-    int min_time, t, j, s, wait;
+    int min_t1, min_t2, min_t, t, t1, t2, j, s, wait;
     for (int i = 0; i < n; ++i)
     {
         if (i < k)
@@ -61,20 +61,15 @@ int main()
         }
         else 
         {
-            min_time = ts[0].e_time;
-            t = 0;
-            for (j = 1; j < k; ++j)
-                {
-                    if (min_time > ts[j].e_time)
-                    {
-                        t = j;
-                        min_time = ts[j].e_time;
-                    }
-                }
-            if (min_time > ps[i].time)
+            min_t1 = min_t2 = e_time;
+            for (j = 0; j < k; ++j)
             {
-                /* code */
+                if (ts[j].tag && min_t1 > ps[i].time && min_t1 < ts[j].e_time)
+                    t1 = j, min_t1 = ts[j].e_time;
+                if (!ts[j].tag && min_t2 > ps[i].time && min_t2 < ts[j].e_time)
+                    t2 = j, min_t2 = ts[j].e_time;
             }
+            mint = min(min_t1, min_t2);
             // for (j = 1; j < k && !(min_time <= ps[i].time && ((ps[i].tag && ts[t].tag == ps[i].tag) || !ps[i].tag)); ++j)
             //     {
             //         if ((min_time > ts[j].e_time && min_time > ps[i].time) || (ts[j].e_time <= ps[i].time && ((ps[i].tag && ts[j].tag == ps[i].tag) || !ps[i].tag)))
