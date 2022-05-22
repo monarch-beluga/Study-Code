@@ -5,7 +5,7 @@
 		[
 			[
 				"min",
-				"min_time"
+				"min_t1"
 			],
 			[
 				"t",
@@ -292,13 +292,13 @@
 	"buffers":
 	[
 		{
-			"contents": "#include<iostream>\nusing namespace std;\n#include<algorithm>\n\ntypedef struct player\n{\n    int time, p, tag;\n}Pl;\ntypedef struct table\n{\n    int e_time, tag, count;\n}T;\nbool cmp(Pl a, Pl b)\n{\n    if (a.time != b.time)\n        return a.time < b.time;\n    else\n        return a.tag > b.tag;\n}\nbool cmp1(Pl a, Pl b)\n{\n    if (a.tag != b.tag)\n        return a.tag > b.tag;\n    else\n        return a.time < b.time;\n}\n\nint main()\n{\n    #if ONLINE_JUDGE\n    #else\n    freopen(\"input.txt\", \"r\", stdin);\n    #endif\n    int n, m, k, H, M, S;\n    int e_time = 3600*21;\n    cin >> n;\n    Pl *ps = new player[n];\n    for (int i = 0; i < n; ++i)\n    {\n        scanf(\"%d:%d:%d %d %d\", &H, &M, &S, &ps[i].p, &ps[i].tag);\n        ps[i].p = min(ps[i].p, 120);\n        ps[i].time = H*3600+M*60+S;\n    }\n    cin >> k >> m;\n    T *ts = new table[k];\n    for (int i = 0; i < k; ++i)\n        ts[i].count = ts[i].tag = 0;\n    for (int i = 0; i < m; ++i)\n    {\n        cin >> H;\n        ts[H-1].tag = 1;\n    }\n    sort(ps, ps+n, cmp);\n    int min_time, t, j, s, wait;\n    for (int i = 0; i < n; ++i)\n    {\n        if (i < k)\n        {\n            t = i;\n            s = ps[i].time;\n        }\n        else \n        {\n            min_time = ts[0].e_time;\n            t = 0;\n            for (j = 1; j < k; ++j)\n                if (min_time > ts[j].e_time)\n                {\n                    t = j;\n                    min_time = ts[j].e_time;\n                }\n            if (min_time > ps[i].time)\n            {\n                \n            }\n            // for (j = 1; j < k && !(min_time <= ps[i].time && ((ps[i].tag && ts[t].tag == ps[i].tag) || !ps[i].tag)); ++j)\n            //     {\n            //         if ((min_time > ts[j].e_time && min_time > ps[i].time) || (ts[j].e_time <= ps[i].time && ((ps[i].tag && ts[j].tag == ps[i].tag) || !ps[i].tag)))\n            //         {\n            //             t = j;\n            //             min_time = ts[j].e_time;\n            //         }\n            //     }\n            if (ts[t].tag && min_time > ps[i].time)\n            {\n                for (j = i; ps[j].time <= min_time && !ps[j].tag; ++j);\n                if(i != j && ps[j].tag)\n                    sort(ps+i, ps+j+1, cmp1);\n            }\n            s = max(min_time, ps[i].time);\n        }\n        if (s >= e_time)\n            break;\n        ts[t].e_time = s + ps[i].p*60;\n        ++ts[t].count;\n        wait = (s - ps[i].time)*1.0/60 + 0.5;\n        printf(\"%02d:%02d:%02d\", ps[i].time/3600, (ps[i].time%3600)/60, ps[i].time%60);\n        printf(\" %02d:%02d:%02d %d %d\\n\", s/3600, (s%3600)/60, s%60, wait, t);\n    }\n    cout << ts[0].count;\n    for (int i = 1; i < k; ++i)\n        cout << \" \" << ts[i].count;\n    return 0;\n}\n",
+			"contents": "#include<iostream>\nusing namespace std;\n#include<algorithm>\n\ntypedef struct player\n{\n    int time, p, tag;\n}Pl;\ntypedef struct table\n{\n    int e_time, tag, count;\n}T;\nbool cmp(Pl a, Pl b)\n{\n    if (a.time != b.time)\n        return a.time < b.time;\n    else\n        return a.tag > b.tag;\n}\nbool cmp1(Pl a, Pl b)\n{\n    if (a.tag != b.tag)\n        return a.tag > b.tag;\n    else\n        return a.time < b.time;\n}\n\nint main()\n{\n    #if ONLINE_JUDGE\n    #else\n    freopen(\"input.txt\", \"r\", stdin);\n    #endif\n    int n, m, k, H, M, S;\n    int e_time = 3600*21;\n    cin >> n;\n    Pl *ps = new player[n];\n    for (int i = 0; i < n; ++i)\n    {\n        scanf(\"%d:%d:%d %d %d\", &H, &M, &S, &ps[i].p, &ps[i].tag);\n        ps[i].p = min(ps[i].p, 120);\n        ps[i].time = H*3600+M*60+S;\n    }\n    cin >> k >> m;\n    T *ts = new table[k];\n    for (int i = 0; i < k; ++i)\n        ts[i].count = ts[i].tag = 0;\n    for (int i = 0; i < m; ++i)\n    {\n        cin >> H;\n        ts[H-1].tag = 1;\n    }\n    sort(ps, ps+n, cmp);\n    int min_t1, min_t2, min_t, t, t1, t2, j, s, wait;\n    for (int i = 0; i < n; ++i)\n    {\n        if (i < k)\n        {\n            t = i;\n            s = ps[i].time;\n        }\n        else \n        {\n            min_t1 = min_t2 = e_time;\n            for (j = 0; j < k; ++j)\n            {\n                if (ts[j].tag && min_t1 > ps[i].time && min_t1 < ts[j].e_time)\n                    t1 = j, min_t1 = ts[j].e_time;\n                if (!ts[j].tag && min_t2 > ps[i].time && min_t2 < ts[j].e_time)\n                    t2 = j, min_t2 = ts[j].e_time;\n            }\n            min_t = min(min_t1, min_t2);\n            \n            // for (j = 1; j < k && !(min_time <= ps[i].time && ((ps[i].tag && ts[t].tag == ps[i].tag) || !ps[i].tag)); ++j)\n            //     {\n            //         if ((min_time > ts[j].e_time && min_time > ps[i].time) || (ts[j].e_time <= ps[i].time && ((ps[i].tag && ts[j].tag == ps[i].tag) || !ps[i].tag)))\n            //         {\n            //             t = j;\n            //             min_time = ts[j].e_time;\n            //         }\n            //     }\n            if (ts[t].tag && min_time > ps[i].time)\n            {\n                for (j = i; ps[j].time <= min_time && !ps[j].tag; ++j);\n                if(i != j && ps[j].tag)\n                    sort(ps+i, ps+j+1, cmp1);\n            }\n            s = max(min_time, ps[i].time);\n        }\n        if (s >= e_time)\n            break;\n        ts[t].e_time = s + ps[i].p*60;\n        ++ts[t].count;\n        wait = (s - ps[i].time)*1.0/60 + 0.5;\n        printf(\"%02d:%02d:%02d\", ps[i].time/3600, (ps[i].time%3600)/60, ps[i].time%60);\n        printf(\" %02d:%02d:%02d %d %d\\n\", s/3600, (s%3600)/60, s%60, wait, t);\n    }\n    cout << ts[0].count;\n    for (int i = 1; i < k; ++i)\n        cout << \" \" << ts[i].count;\n    return 0;\n}\n",
 			"file": "PAT_Problem/temp.cc",
-			"file_size": 2886,
-			"file_write_time": 132975243673546771,
+			"file_size": 2910,
+			"file_write_time": 132975982193393511,
 			"settings":
 			{
-				"buffer_size": 2714,
+				"buffer_size": 2823,
 				"encoding": "UTF-8",
 				"line_ending": "Windows"
 			}
@@ -933,7 +933,7 @@
 			]
 		]
 	],
-	"build_varint": "Run",
+	"build_varint": "",
 	"command_palette":
 	{
 		"height": 0.0,
@@ -1314,15 +1314,15 @@
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 2714,
+						"buffer_size": 2823,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								1856,
-								1856
+								1626,
+								1626
 							]
 						],
 						"settings":
@@ -1334,8 +1334,8 @@
 								{
 									"1":
 									[
-										2278,
-										2279
+										2387,
+										2388
 									]
 								},
 								"icon":
@@ -1350,8 +1350,8 @@
 								{
 									"1":
 									[
-										1187,
-										1188
+										1208,
+										1209
 									]
 								},
 								"unmatched":
@@ -1360,6 +1360,41 @@
 							},
 							"bracket_highlighter.regions":
 							[
+								"bh_curly",
+								"bh_curly_center",
+								"bh_curly_open",
+								"bh_curly_close",
+								"bh_curly_content",
+								"bh_single_quote",
+								"bh_single_quote_center",
+								"bh_single_quote_open",
+								"bh_single_quote_close",
+								"bh_single_quote_content",
+								"bh_default",
+								"bh_default_center",
+								"bh_default_open",
+								"bh_default_close",
+								"bh_default_content",
+								"bh_c_define",
+								"bh_c_define_center",
+								"bh_c_define_open",
+								"bh_c_define_close",
+								"bh_c_define_content",
+								"bh_tag",
+								"bh_tag_center",
+								"bh_tag_open",
+								"bh_tag_close",
+								"bh_tag_content",
+								"bh_double_quote",
+								"bh_double_quote_center",
+								"bh_double_quote_open",
+								"bh_double_quote_close",
+								"bh_double_quote_content",
+								"bh_regex",
+								"bh_regex_center",
+								"bh_regex_open",
+								"bh_regex_close",
+								"bh_regex_content",
 								"bh_round",
 								"bh_round_center",
 								"bh_round_open",
@@ -1370,51 +1405,16 @@
 								"bh_square_open",
 								"bh_square_close",
 								"bh_square_content",
-								"bh_single_quote",
-								"bh_single_quote_center",
-								"bh_single_quote_open",
-								"bh_single_quote_close",
-								"bh_single_quote_content",
 								"bh_angle",
 								"bh_angle_center",
 								"bh_angle_open",
 								"bh_angle_close",
 								"bh_angle_content",
-								"bh_default",
-								"bh_default_center",
-								"bh_default_open",
-								"bh_default_close",
-								"bh_default_content",
-								"bh_curly",
-								"bh_curly_center",
-								"bh_curly_open",
-								"bh_curly_close",
-								"bh_curly_content",
-								"bh_c_define",
-								"bh_c_define_center",
-								"bh_c_define_open",
-								"bh_c_define_close",
-								"bh_c_define_content",
-								"bh_regex",
-								"bh_regex_center",
-								"bh_regex_open",
-								"bh_regex_close",
-								"bh_regex_content",
 								"bh_unmatched",
 								"bh_unmatched_center",
 								"bh_unmatched_open",
 								"bh_unmatched_close",
-								"bh_unmatched_content",
-								"bh_double_quote",
-								"bh_double_quote_center",
-								"bh_double_quote_open",
-								"bh_double_quote_close",
-								"bh_double_quote_content",
-								"bh_tag",
-								"bh_tag_center",
-								"bh_tag_open",
-								"bh_tag_close",
-								"bh_tag_content"
+								"bh_unmatched_content"
 							],
 							"c_time":
 							[
@@ -1471,7 +1471,7 @@
 							"translate_tabs_to_spaces": true
 						},
 						"translation.x": 0.0,
-						"translation.y": 435.0,
+						"translation.y": 840.0,
 						"zoom_level": 1.0
 					},
 					"stack_index": 0,
