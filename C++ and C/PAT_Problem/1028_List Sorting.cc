@@ -19,10 +19,6 @@ bool cmp(S a, S b)
 
 int main()
 {
-    #if ONLINE_JUDGE
-    #else
-    freopen("input.txt", "r", stdin);
-    #endif
     cin >> n >> c;
     S *ss = new student[n];
     for (int i = 0; i < n; ++i)
