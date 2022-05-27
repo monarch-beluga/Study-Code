@@ -1,0 +1,60 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<title>DES 加密</title>
+<link href="css/style.css" rel="stylesheet" type="text/css" media="all" />
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" /> 
+<!-- -->
+<script src="https://cdn.bootcdn.net/ajax/libs/jquery/3.6.0/jquery.js"></script>
+<script src="https://cdn.bootcss.com/crypto-js/3.1.9-1/crypto-js.min.js"></script>
+</head>
+<body>
+<!-- contact-form -->	
+<div class="message warning">
+<div class="inset">
+	<div class="login-head">
+		<h1>DES 加密</h1>
+	</div>
+		<form>
+			<li>
+				<input id="pwd" type="text" class="text" value="Password" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Password';}"><a href="#" class=" icon lock"></a>
+			</li>
+				<div class="clear"> </div>
+			<li>
+				<input type="text" id="transferKey" value="transferKey" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'u2oh6Vu^HWe40fj';}"> <a href="#" class="icon lock"></a>
+			</li>
+			<div class="clear"> </div>
+            <h4 id="despwd"></h4>
+            <div class="clear"> </div>
+			<div class="submit">
+				<input type="button" onclick="myFunction()" value="加密" >
+                <div class="clear">  </div>
+			</div>
+				
+		</form>
+		</div>					
+	</div>
+	<div class="clear"> </div>
+
+</body>
+<script>
+    function encryptByDES(message, key){
+        var keyHex = CryptoJS.enc.Utf8.parse(key);
+        var encrypted = CryptoJS.DES.encrypt(message, keyHex, {
+            mode: CryptoJS.mode.ECB,
+            padding: CryptoJS.pad.Pkcs7
+        });
+        return encrypted.ciphertext.toString();
+    }
+    function myFunction(){       // 绑定事件
+        var pwd = $("#pwd").val();
+        var transferKey = $("#transferKey").val();
+        if (transferKey === "transferKey")
+            transferKey = 'u2oh6Vu^HWe40fj';
+        pwd = encryptByDES(pwd, transferKey);
+        $("#despwd").text("加密密码："+pwd)
+    }
+</script>
+</html>

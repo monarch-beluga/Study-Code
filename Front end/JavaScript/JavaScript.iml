@@ -7,5 +7,6 @@
     <orderEntry type="library" name="md5" level="application" />
     <orderEntry type="library" name="jquery" level="application" />
     <orderEntry type="library" name="jquery-1.7.1" level="application" />
+    <orderEntry type="library" name="crypto-js" level="application" />
   </component>
 </module>

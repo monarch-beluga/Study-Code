@@ -5,10 +5,6 @@ using namespace std;
 
 int main()
 {
-    #if ONLINE_JUDGE
-    #else
-    freopen("input.txt", "r", stdin);
-    #endif
     vector<int> arr;
     int n1, n2, t;
     cin >> n1;
