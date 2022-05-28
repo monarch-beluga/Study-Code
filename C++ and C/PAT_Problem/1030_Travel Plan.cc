@@ -46,10 +46,6 @@ void dfs(int v, int l, int cost)
 
 int main()
 {
-    #if ONLINE_JUDGE
-    #else
-    freopen("input.txt", "r", stdin);
-    #endif
     int c1, c2, distance, cost;
     r p;
     cin >> n >> m >> s >> d;
