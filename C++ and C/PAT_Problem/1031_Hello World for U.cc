@@ -3,10 +3,6 @@ using namespace std;
 
 int main()
 {
-    #if ONLINE_JUDGE
-    #else
-    freopen("input.txt", "r", stdin);
-    #endif
     int line, n2, n;
     string s;
     cin >> s;
