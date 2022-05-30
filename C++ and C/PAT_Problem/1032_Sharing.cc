@@ -4,10 +4,6 @@ using namespace std;
 
 int main()
 {
-    #if ONLINE_JUDGE
-    #else
-    freopen("input.txt", "r", stdin);
-    #endif
     int w1, w2, n, address, next, ll[Max][2], p;
     char data;
     cin >> w1 >> w2 >> n;
