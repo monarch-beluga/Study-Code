@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <dataSource name="@localhost">
-  <database-model serializer="dbm" dbms="MYSQL" family-id="MYSQL" format-version="4.23">
+  <database-model serializer="dbm" dbms="MYSQL" family-id="MYSQL" format-version="4.21">
     <root id="1">
       <ServerVersion>8.0.24</ServerVersion>
       <Grants>|root||root||ALTER|G
