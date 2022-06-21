@@ -8,10 +8,20 @@ author:monarch
 @modify:
 """
 
-import pandas as pd
+from datetime import datetime
+from datetime import timedelta
 
-df = pd.read_csv(r'E:\Data\class\R语言区域分析\人口数据.csv', header=0, index_col=0)
-df1 = df.T
-df2 = df1.sort_index()
-df2.insert(2, 'time', range(2000, 2021))
-df2.to_csv(r'E:\Data\class\R语言区域分析\人口数据1.csv', header=True, index=True)
+start_time = datetime.strptime("2021-06", "%Y-%m")
+end_time = datetime.strptime("2021-08", "%Y-%m")
+
+sep = 5
+s_time = start_time
+e_time = start_time+timedelta(days=sep)
+
+while e_time < end_time:
+    print(s_time.strftime("%Y-%m-%d"), e_time.strftime("%Y-%m-%d"))
+    s_time = e_time
+    e_time += timedelta(days=sep)
+
+
+
