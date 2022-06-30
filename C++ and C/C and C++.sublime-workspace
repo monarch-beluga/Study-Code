@@ -312,15 +312,6 @@
 				"encoding": "UTF-8",
 				"line_ending": "Windows"
 			}
-		},
-		{
-			"file": "/E/Data/class/R语言区域分析/人口数据.csv",
-			"settings":
-			{
-				"buffer_size": 399,
-				"encoding": "UTF-8",
-				"line_ending": "Windows"
-			}
 		}
 	],
 	"build_system": "Packages/C++/C++ Single File.sublime-build",
@@ -1074,6 +1065,8 @@
 	],
 	"file_history":
 	[
+		"/E/Study/Python/Python39/Lib/site-packages/geemap/common.py",
+		"/E/Data/class/R语言区域分析/人口数据.csv",
 		"/E/Work/Sample_points/GLDAS_2019.txt",
 		"/E/Data/class/GIS空间分析/期末/area_sum.csv",
 		"/E/Data/class/GPS_class/第四组点数据.dat",
@@ -1088,7 +1081,6 @@
 		"/C/Users/Monarch/.ipython/profile_default/startup/startup.py",
 		"/E/Study/Projects/Python/python38/爬虫/requests_liu/通用爬虫/破解百度翻译.py",
 		"/E/Study/Projects/Python/python38/爬虫/requests_liu/实践/爬取课件.py",
-		"/E/Study/Python/Python39/Lib/site-packages/geemap/common.py",
 		"/D/VPN/订阅/2022年5月28日订阅链接V2 Cla（后台持续动态更新）.txt",
 		"/C/Users/Monarch/AppData/Roaming/Typora/themes/github-user.css",
 		"/C/Users/Monarch/.config/clash/profiles/1654416251342.yml",
@@ -1200,8 +1192,7 @@
 		"/E/Study-tool/Sublime/Data/Packages/User/ConvertToUTF8.sublime-settings",
 		"/E/Study/Projects/C++ and C/PAT_Problem/05_Spell It Right.cc",
 		"/E/Study/Projects/C++ and C/PAT_Problem/04_ Counting Leaves.cc",
-		"/E/Study/Projects/C++ and C/PAT_Problem/03_Emergency.cc",
-		"/E/Study-tool/Sublime/Data/Packages/User/Package Control.sublime-settings"
+		"/E/Study/Projects/C++ and C/PAT_Problem/03_Emergency.cc"
 	],
 	"find":
 	{
@@ -1219,6 +1210,7 @@
 		"case_sensitive": false,
 		"find_history":
 		[
+			"ee_to_df",
 			"box-shadow",
 			"c-1",
 			"{\n",
@@ -1318,7 +1310,7 @@
 	"groups":
 	[
 		{
-			"selected": 2,
+			"selected": 1,
 			"sheets":
 			[
 				{
@@ -1487,7 +1479,7 @@
 						"translation.y": 720.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 2,
+					"stack_index": 1,
 					"type": "text"
 				},
 				{
@@ -1503,8 +1495,8 @@
 						"selection":
 						[
 							[
-								56,
-								56
+								85,
+								85
 							]
 						],
 						"settings":
@@ -1527,61 +1519,61 @@
 							},
 							"bracket_highlighter.regions":
 							[
-								"bh_unmatched",
-								"bh_unmatched_center",
-								"bh_unmatched_open",
-								"bh_unmatched_close",
-								"bh_unmatched_content",
-								"bh_angle",
-								"bh_angle_center",
-								"bh_angle_open",
-								"bh_angle_close",
-								"bh_angle_content",
-								"bh_round",
-								"bh_round_center",
-								"bh_round_open",
-								"bh_round_close",
-								"bh_round_content",
-								"bh_default",
-								"bh_default_center",
-								"bh_default_open",
-								"bh_default_close",
-								"bh_default_content",
 								"bh_curly",
 								"bh_curly_center",
 								"bh_curly_open",
 								"bh_curly_close",
 								"bh_curly_content",
-								"bh_single_quote",
-								"bh_single_quote_center",
-								"bh_single_quote_open",
-								"bh_single_quote_close",
-								"bh_single_quote_content",
-								"bh_square",
-								"bh_square_center",
-								"bh_square_open",
-								"bh_square_close",
-								"bh_square_content",
-								"bh_regex",
-								"bh_regex_center",
-								"bh_regex_open",
-								"bh_regex_close",
-								"bh_regex_content",
+								"bh_default",
+								"bh_default_center",
+								"bh_default_open",
+								"bh_default_close",
+								"bh_default_content",
 								"bh_tag",
 								"bh_tag_center",
 								"bh_tag_open",
 								"bh_tag_close",
 								"bh_tag_content",
+								"bh_angle",
+								"bh_angle_center",
+								"bh_angle_open",
+								"bh_angle_close",
+								"bh_angle_content",
+								"bh_c_define",
+								"bh_c_define_center",
+								"bh_c_define_open",
+								"bh_c_define_close",
+								"bh_c_define_content",
+								"bh_unmatched",
+								"bh_unmatched_center",
+								"bh_unmatched_open",
+								"bh_unmatched_close",
+								"bh_unmatched_content",
+								"bh_single_quote",
+								"bh_single_quote_center",
+								"bh_single_quote_open",
+								"bh_single_quote_close",
+								"bh_single_quote_content",
+								"bh_regex",
+								"bh_regex_center",
+								"bh_regex_open",
+								"bh_regex_close",
+								"bh_regex_content",
+								"bh_round",
+								"bh_round_center",
+								"bh_round_open",
+								"bh_round_close",
+								"bh_round_content",
 								"bh_double_quote",
 								"bh_double_quote_center",
 								"bh_double_quote_open",
 								"bh_double_quote_close",
 								"bh_double_quote_content",
-								"bh_c_define",
-								"bh_c_define_center",
-								"bh_c_define_open",
-								"bh_c_define_close",
-								"bh_c_define_content"
+								"bh_square",
+								"bh_square_center",
+								"bh_square_open",
+								"bh_square_close",
+								"bh_square_content"
 							],
 							"c_time":
 							[
@@ -1634,162 +1626,6 @@
 							"origin_encoding": "ASCII",
 							"rainbowth.lispy": false,
 							"syntax": "Packages/Text/Plain text.tmLanguage"
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 1,
-					"type": "text"
-				},
-				{
-					"buffer": 2,
-					"file": "/E/Data/class/R语言区域分析/人口数据.csv",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 399,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								399,
-								399
-							]
-						],
-						"settings":
-						{
-							"bracket_highlighter.busy": false,
-							"bracket_highlighter.locations":
-							{
-								"close":
-								{
-								},
-								"icon":
-								{
-								},
-								"open":
-								{
-								},
-								"unmatched":
-								{
-								}
-							},
-							"bracket_highlighter.regions":
-							[
-								"bh_curly",
-								"bh_curly_center",
-								"bh_curly_open",
-								"bh_curly_close",
-								"bh_curly_content",
-								"bh_c_define",
-								"bh_c_define_center",
-								"bh_c_define_open",
-								"bh_c_define_close",
-								"bh_c_define_content",
-								"bh_angle",
-								"bh_angle_center",
-								"bh_angle_open",
-								"bh_angle_close",
-								"bh_angle_content",
-								"bh_round",
-								"bh_round_center",
-								"bh_round_open",
-								"bh_round_close",
-								"bh_round_content",
-								"bh_double_quote",
-								"bh_double_quote_center",
-								"bh_double_quote_open",
-								"bh_double_quote_close",
-								"bh_double_quote_content",
-								"bh_square",
-								"bh_square_center",
-								"bh_square_open",
-								"bh_square_close",
-								"bh_square_content",
-								"bh_regex",
-								"bh_regex_center",
-								"bh_regex_open",
-								"bh_regex_close",
-								"bh_regex_content",
-								"bh_unmatched",
-								"bh_unmatched_center",
-								"bh_unmatched_open",
-								"bh_unmatched_close",
-								"bh_unmatched_content",
-								"bh_single_quote",
-								"bh_single_quote_center",
-								"bh_single_quote_open",
-								"bh_single_quote_close",
-								"bh_single_quote_content",
-								"bh_default",
-								"bh_default_center",
-								"bh_default_open",
-								"bh_default_close",
-								"bh_default_content",
-								"bh_tag",
-								"bh_tag_center",
-								"bh_tag_open",
-								"bh_tag_close",
-								"bh_tag_content"
-							],
-							"c_time":
-							[
-								128,
-								3,
-								99,
-								100,
-								97,
-								116,
-								101,
-								116,
-								105,
-								109,
-								101,
-								10,
-								100,
-								97,
-								116,
-								101,
-								116,
-								105,
-								109,
-								101,
-								10,
-								113,
-								0,
-								67,
-								10,
-								7,
-								230,
-								6,
-								16,
-								13,
-								35,
-								40,
-								0,
-								59,
-								11,
-								113,
-								1,
-								133,
-								113,
-								2,
-								82,
-								113,
-								3,
-								46
-							],
-							"force_encoding": "UTF-8",
-							"in_converting": true,
-							"is_init_dirty_state": false,
-							"origin_content": "指标,2020年,2019年,2018年,2017年,2016年,2015年,2014年,2013年,2012年,2011年,2010年,2009年,2008年,2007年,2006年,2005年,2004年,2003年,2002年,2001年,2000年\n年末总人口(万人),141212,141008,140541,140011,139232,138326,137646,136726,135922,134916,134091,133450,132802,132129,131448,130756,129988,129227,128453,127627,126743\n男性人口(万人),72357,72039,71864,71650,71307,70857,70522,70063,69660,69161,68748,68647,68357,68048,67728,67375,66976,66556,66115,65672,65437\n女性人口(万人),68855,68969,68677,68361,67925,67469,67124,66663,66262,65755,65343,64803,64445,64081,63720,63381,63012,62671,62338,61955,61306\n城镇人口(万人),90220,88426,86433,84343,81924,79302,76738,74502,72175,69927,66978,64512,62403,60633,58288,56212,54283,52376,50212,48064,45906\n乡村人口(万人),50992,52582,54108,55668,57308,59024,60908,62224,63747,64989,67113,68938,70399,71496,73160,74544,75705,76851,78241,79563,80837\n,,,,,,,,,,,,,,,,,,,,,\n,,,,,,,,,,,,,,,,,,,,,\n,,,,,,,,,,,,,,,,,,,,,\n",
-							"origin_encoding": "UTF-8",
-							"rainbowth.lispy": false,
-							"syntax": "Packages/zzz A File Icon zzz/aliases/Plain Text (CSV).sublime-syntax",
-							"translate_tabs_to_spaces": false
 						},
 						"translation.x": 0.0,
 						"translation.y": 0.0,
