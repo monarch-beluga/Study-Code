@@ -7,7 +7,7 @@ data_address = r'H:\Monarch\paper\Data\九江.shp'
 file = shapefile.Writer(data_address, encoding='utf-8')
 file.field('ProvinceName', 'C', '40')
 file.field('Name', 'C', '40')
-key = r'2e49c5e1b5c8d7331a3f25cf0166fceb'
+key = r''
 keywords = '九江'
 subdistrict = '1'
 output = 'json'

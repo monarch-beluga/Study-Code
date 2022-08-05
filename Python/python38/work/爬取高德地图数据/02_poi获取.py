@@ -11,7 +11,7 @@ file.field('CityName', 'C', '40')
 file.field('AdName', 'C', '40')
 file.field('Name', 'C', '40')
 
-key = r'2e49c5e1b5c8d7331a3f25cf0166fceb'
+key = r''
 keywords = '中国'
 subdistrict = '1'
 output = 'json'
