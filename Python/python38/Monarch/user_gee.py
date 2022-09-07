@@ -152,8 +152,8 @@ def clip_dow_merge(geo: ee.Geometry, image: ee.Image, outfile: str, scale: int,
     min_y = poy[:, 1].min()
     max_y = poy[:, 1].max()
     step = scale / 10 * sep / (int(math.sqrt(bands))+1)
-    end_x = int((max_x - min_x) / step) + 1
-    end_y = int((max_y - min_y) / step) + 1
+    end_x = (max_x - min_x) / step
+    end_y = (max_y - min_y) / step
     polys = []
     for i in range(end_y):
         y1 = min_y + step * i
