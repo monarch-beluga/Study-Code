@@ -123,7 +123,7 @@ def rm_cloud_s2_sr(image):
 
 
 def clip_dow_merge(geo: ee.Geometry, image: ee.Image, outfile: str, scale: int,
-                   crs='epsg:4326', sep=0.25):
+                   data_type_bytes: int, crs='EPSG:3857', max_bytes = 40000000):
     """
 
     Args:
@@ -131,8 +131,9 @@ def clip_dow_merge(geo: ee.Geometry, image: ee.Image, outfile: str, scale: int,
         image: ee.Image, 需要下载的影像
         outfile: str, 输出文件路径和名称，不需要文件后缀，下载的影响默认后缀为tif
         scale: int, 下载时的像元大小
-        crs: str, 下载影像的投影，默认为 'epsg:4326' wgs1984投影
-        sep: float, 单波段10m分辨率像元的影像裁剪大小(单位：经纬度)，默认为0.25
+        data_type_bytes: int, 像元数据类型所占byres数, 如：16位整数占2位bytes，float浮点数占4bytes
+        crs: str, 下载影像的投影，默认为 'EPSG:3857'
+        max_bytes: int, 数据块最大请求大小, GEE限制为50331648byres, 即48MB
     Returns: None
 
     """
@@ -143,30 +144,25 @@ def clip_dow_merge(geo: ee.Geometry, image: ee.Image, outfile: str, scale: int,
     from rasterio.merge import merge
     import shutil
     import geemap
-    import math
-    bounds = geo.bounds()
+    import time
+    bounds = geo.bounds(maxError=0.1, proj=ee.Projection(crs))
     bands = image.bandNames().size().getInfo()
     poy = np.array(bounds.coordinates().getInfo()[0])
     min_x = poy[:, 0].min()
     max_x = poy[:, 0].max()
     min_y = poy[:, 1].min()
     max_y = poy[:, 1].max()
-    step = scale / 10 * sep / (int(math.sqrt(bands))+1)
-    end_x = (max_x - min_x) / step
-    end_y = (max_y - min_y) / step
+    max_region = max_bytes * (scale*scale) / bands / (data_type_bytes+1)
+    region_area = region.area(maxError=0.1, proj=ee.Projection(crs)).getInfo()
+    block = int(region_area / max_region)+1
+    sep_p = [i for i in np.linspace(min_x, max_x, block+1, endpoint = True)]
     polys = []
-    for i in range(end_y):
-        y1 = min_y + step * i
-        y2 = min_y + step * (i + 1)
-        if y2 > max_y:
-            y2 = max_y
-        for j in range(end_x):
-            x1 = min_x + step * j
-            x2 = min_x + step * (j + 1)
-            if x2 > max_x:
-                x2 = max_x
-            poly = ee.Geometry(ee.Geometry.Rectangle([float(x1), float(y1), float(x2), float(y2)]), None, False)
-            polys.append(poly)
+    for i in range(block):
+        x1 = sep_p[i]
+        x2 = sep_p[i+1]
+        poly = ee.Geometry(ee.Geometry.Rectangle([float(x1), float(min_y), float(x2), float(max_y)]), ee.Projection('EPSG:3857'), False)
+        Map.addLayer(poly, {'color':'00ff00'}, f'poly{i}')
+        polys.append(poly)
     if len(polys) > 1:
         print(f"分割成{len(polys)}份, 开始下载:")
         path = outfile+'_mk'
