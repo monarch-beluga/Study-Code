@@ -1,12 +1,3 @@
-# -*- coding:utf-8 _*-
-"""
-@version:
-author:Monarch
-@time: 2021/07/19
-@file: user_gee.py
-@function:
-@modify:
-"""
 import ee
 
 def clip_big_image(geo: ee.Geometry, image: ee.Image, scale: int, data_type_bytes: int,
@@ -60,18 +51,15 @@ def clip_big_image(geo: ee.Geometry, image: ee.Image, scale: int, data_type_byte
                     ee.Projection(crs), False)
                 polys.append(poly)
         return polys
-    
-    
+
+
 def dow_Collection(clip_images, count, path, scale, crs):
     from concurrent.futures import ThreadPoolExecutor,  wait, ALL_COMPLETED
-    import os
-    if not os.path.exists(path):
-        os.makedirs(path)
-    print(f"Total number of images: {count}\n")
     with ThreadPoolExecutor(5) as pool:
         pool.map(dow, [[clip_images.get(i), i, path, scale, crs] for i in range(count)])
 
-        
+
+
 def clip_dow_merge(geo: ee.Geometry, image: ee.Image, outfile: str, scale: int,
                    data_type_bytes: int, crs='EPSG:3857', max_bytes=40000000):
     """
@@ -87,24 +75,26 @@ def clip_dow_merge(geo: ee.Geometry, image: ee.Image, outfile: str, scale: int,
     Returns: None
 
     """
+    import os
     import geemap
     import time
     from glob import glob
-    
+    from concurrent.futures import ThreadPoolExecutor,  wait, ALL_COMPLETED, FIRST_COMPLETED
     start = time.time()
     polys = clip_big_image(geo, image, scale, data_type_bytes, crs, max_bytes)
     if polys:
         ee_polys = ee.FeatureCollection(polys).filterBounds(geo)
-        path = outfile + '_mk'
         count = ee_polys.size().getInfo()
         clip_images = ee.ImageCollection(ee_polys.map(lambda x: image.clip(x.geometry()))).toList(count)
-        dow_Collection(clip_images, count, path, scale, crs)
-        # geemap.ee_export_image_collection(clip_images, path, scale, crs)
-        files = glob(path+"/*.tif")
-        while len(files) != count:
+        path = outfile + '_mk'
+        if not os.path.exists(path):
+            os.makedirs(path)
+        files = len(glob(path+"/*.tif"))
+        while files != count:
+            print(f"需要下载的影像数: {count-files}\n")
             dow_Collection(clip_images, count, path, scale, crs)
+            files = len(glob(path+"/*.tif"))
         merge_img(path, outfile)
-        print("下载成功 !!!")
     else:
         geemap.ee_export_image(image, outfile + '.tif', scale, crs)
     t_con = time.time()-start
@@ -117,6 +107,7 @@ def dow(agrs):
     img, img_count, path, scale, crs = agrs
     if not os.path.exists(path+f'/{img_count}.tif'):
         geemap.ee_export_image(ee.Image(img), path+f'/{img_count}.tif', scale, crs)
+        print(path+f'/{img_count}.tif 下载成功！！！')
 
 
 def merge_img(path: str, outfile):
@@ -151,4 +142,3 @@ def merge_img(path: str, outfile):
     for src in src_files_to_mosaic:
         src.close()
     shutil.rmtree(path)
-
