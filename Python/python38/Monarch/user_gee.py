@@ -184,7 +184,7 @@ def clip_big_image(geo: ee.Geometry, image: ee.Image, scale: int, data_type_byte
 
 def dow_Collection(image, ee_polys, count, path, scale, crs):
     from concurrent.futures import ThreadPoolExecutor,  wait, ALL_COMPLETED
-    with ThreadPoolExecutor(3) as pool:
+    with ThreadPoolExecutor(2) as pool:
         pool.map(dow, [[image, ee_polys.get(i), i, path, scale, crs] for i in range(count)])
 
 
@@ -221,6 +221,8 @@ def clip_dow_merge(geo: ee.Geometry, image: ee.Image, outfile: str, scale: int,
         if not os.path.exists(path):
             os.makedirs(path)
         files = len(glob(path+"/*.tif"))
+        # print(f"需要下载的影像数: {count-files}\n")
+        # dow_Collection(image, ee_polys.toList(count), count, path, scale, crs)
         while files != count:
             print(f"需要下载的影像数: {count-files}\n")
             # dow_Collection(clip_images, count, path, scale, crs)
@@ -240,7 +242,9 @@ def dow(agrs):
     import time
     img, geo, img_count, path, scale, crs = agrs
     if not os.path.exists(path+f'/{img_count}.tif'):
-        geemap.ee_export_image(img, path+f'/{img_count}.tif', scale, crs, region=ee.Feature(geo).geometry())
+        # time.sleep(img_count%30)
+        geemap.ee_export_image(img, path+f'/{img_count}.tif', scale, crs, 
+            region=ee.Feature(geo).geometry())
         
 
 
@@ -265,6 +269,7 @@ def merge_img(path: str, outfile, x_offset, y_offset, height, width, transform):
     out_meta.update({"driver": "GTiff",
                      "height": height,
                      "width": width,
+                     "compress": 'lzw',
                      "transform": transform,
                      })
     with rasterio.open(outfile + ".tif", "w", **out_meta) as dest:
