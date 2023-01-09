@@ -8,38 +8,33 @@ author:monarch
 @modify:
 """
 
+from glob import glob
 import rasterio
+from rasterio_liu import prj_transform
 import os
-import numpy as np
 
-os.chdir(r'H:\Monarch\Work\土壤碳')
+os.chdir(r'Y:\ECA\NDVI初始')
 
-src = rasterio.open('SOC.tif')
-profile = src.profile
-windows = [window for ij, window in src.block_windows()]
+prj_file = r'Y:\ECA\project\PRCP_2018001.flt'
+with rasterio.open(prj_file) as src:
+    crs = src.crs
 
-polc0_src = rasterio.open('polc20191.tif', 'w', **profile)
-polc2_src = rasterio.open('polc20193.tif', 'w', **profile)
-polc6_src = rasterio.open('polc20197.tif', 'w', **profile)
-polc7_src = rasterio.open('polc20198.tif', 'w', **profile)
+if not os.path.exists(r'result'):
+    os.mkdir('result')
 
-for win in windows:
-    insc = src.read(1, window=win)
-    insc[insc == profile['nodata']] = np.nan
-
-    polc0 = 0.05*0.2*insc
-    polc2 = 0.2*insc
-    polc6 = 0.4*insc
-    polc7 = 0.4*insc
-
-    polc0_src.write(polc0, 1, window=win)
-    polc2_src.write(polc2, 1, window=win)
-    polc6_src.write(polc6, 1, window=win)
-    polc7_src.write(polc7, 1, window=win)
-
-src.close()
-polc0_src.close()
-polc2_src.close()
-polc6_src.close()
-polc7_src.close()
+i = 0
+files = glob(r'*.tif')
+for file in files:
+    if os.path.exists(f'result/{file}'):
+        i += 1
+        continue
+    dst_data, profile = prj_transform.project_transform(file, crs, 1000)
+    if file[:4] == 'temp':
+        profile['dtype'] = 'float32'
+        dst_data = dst_data.astype(profile['dtype'])
+        dst_data[dst_data != profile['nodata']] /= 10000
+    with rasterio.open(f'result/{file}', 'w', **profile) as dst_src:
+        dst_src.write(dst_data)
+    i += 1
+    print(f'{i} {file} 投影转换成功！！！')
 

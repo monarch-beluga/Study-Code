@@ -36,14 +36,14 @@ def get_districts(f, res, dis, k):
 
 
 # shp保持地址
-data_address = r'H:\Monarch\paper\Data\江西.shp'
+data_address = r'H:\Monarch\Work\甘肃.shp'
 
 # 需要下载的最高级行政区名
-keywords = '江西'
+keywords = '甘肃'
 # 高德地图API的Key
 key = input('Key:')
 # 返回下几级行政区
-subdistrict = 2
+subdistrict = 0
 output = 'json'
 extensions = 'base'
 # 使用requests进行爬取

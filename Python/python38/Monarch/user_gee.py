@@ -188,8 +188,6 @@ def dow_Collection(image, ee_polys, count, path, scale, crs):
         pool.map(dow, [[image, ee_polys.get(i), i, path, scale, crs] for i in range(count)])
 
 
-
-
 def clip_dow_merge(geo: ee.Geometry, image: ee.Image, outfile: str, scale: int,
                    data_type_bytes: int, crs='EPSG:3857', max_bytes=40000000, flag=True):
     """
@@ -229,7 +227,7 @@ def clip_dow_merge(geo: ee.Geometry, image: ee.Image, outfile: str, scale: int,
             dow_Collection(image, ee_polys.toList(count), count, path, scale, crs)
             files = len(glob(path+"/*.tif"))
         if flag:
-            merge_img(path, outfile, x_offset, y_offset, height, width, transform)
+            merge_img(path, outfile, scale, x_offset, y_offset, height, width, transform)
     else:
         geemap.ee_export_image(image, outfile + '.tif', scale, crs)
     t_con = time.time()-start
@@ -247,8 +245,7 @@ def dow(agrs):
             region=ee.Feature(geo).geometry())
         
 
-
-def merge_img(path: str, outfile, x_offset, y_offset, height, width, transform):
+def merge_img(path: str, outfile, scale, x_offset, y_offset, height, width, transform):
     """
 
     Args:
