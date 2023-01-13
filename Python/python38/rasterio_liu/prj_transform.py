@@ -11,14 +11,14 @@ from rasterio.warp import calculate_default_transform, reproject
 import numpy as np
 
 
-def project_transform(in_raster, dst_crs, pixel_size=None, nodata=None, compress='lzw'):
+def project_transform(in_raster, dst_crs, pixel_size=None, dtype=None, compress='lzw'):
     """
 
     Args:
         in_raster: 输入栅格文件路径
         dst_crs: 转换的投影
         pixel_size: 像元大小, 默认为None
-        nodata: nodata无效值, 默认为-3.402823e+038
+        dtype: 要转换的数据类型, 默认为None, 即不转换数据类型
         compress: 压缩方式, 默认为 lzw
 
 
@@ -33,15 +33,14 @@ def project_transform(in_raster, dst_crs, pixel_size=None, nodata=None, compress
         resolution = None
     with rasterio.open(in_raster) as src:
         profile = src.profile
-        src_crs = src.crs
-        src_transform = src.transform
-        src_nodata = profile['nodata']
 
-        if not nodata:
-            if src_nodata:
-                nodata = src_nodata
-            else:
-                nodata = -3.402823e+038
+        if dtype:
+            profile['dtype'] = dtype
+
+        if np.issubdtype(profile['dtype'], np.integer):
+            nodata = np.iinfo(profile['dtype']).min
+        else:
+            nodata = np.finfo(profile['dtype']).min
 
         dst_transform, dst_width, dst_height = calculate_default_transform(
             src.crs,
@@ -62,11 +61,13 @@ def project_transform(in_raster, dst_crs, pixel_size=None, nodata=None, compress
 
         dst_data = np.empty((src.count, dst_height, dst_width), dtype=profile['dtype'])
         data = src.read()
+        if not dtype:
+            data = data.astype(profile['dtype'])
         reproject(
             source=data,
-            src_crs=src_crs,
-            src_transform=src_transform,
-            src_nodata=src_nodata,
+            src_crs=src.crs,
+            src_transform=src.transform,
+            src_nodata=src.nodata,
 
             destination=dst_data,
             dst_transform=profile['transform'],

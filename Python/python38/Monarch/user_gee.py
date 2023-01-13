@@ -22,12 +22,12 @@ def savitzky_golay(y: ee.List, window_size: int, order: int, deriv=0) -> ee.List
     Returns: ee.List, 滤波后的数据
 
     """
-    half_window = (window_size - 1) / 2
+    half_window = window_size // 2
     order_range = ee.List.sequence(0, order)
     k_range = ee.List.sequence(-half_window, half_window)
     b = ee.Array(k_range.map(lambda k: order_range.map(lambda o: ee.Number(k).pow(o))))
     m_pi = ee.Array(b.matrixPseudoInverse())
-    impulse_response = (m_pi.slice(**{'axis': 0, 'start': deriv, 'end': deriv + 1 })).project([1])
+    impulse_response = (m_pi.slice(**{'axis': 0, 'start': deriv, 'end': deriv + 1})).project([1])
     y0 = y.get(0)
     first_filling = y.slice(1, half_window + 1).reverse().map(
         lambda e: ee.Number(e).subtract(y0).abs().multiply(-1).add(y0))
@@ -37,7 +37,8 @@ def savitzky_golay(y: ee.List, window_size: int, order: int, deriv=0) -> ee.List
     y_ext = first_filling.cat(y).cat(last_filling)
     run_length = ee.List.sequence(0, y_ext.length().subtract(window_size))
     smooth = run_length.map(
-        lambda i: ee.Array(y_ext.slice(ee.Number(i), ee.Number(i).add(window_size))).multiply(impulse_response).reduce("sum", [0]).get([0])
+        lambda i: ee.Array(y_ext.slice(ee.Number(i), ee.Number(i).add(window_size))).multiply(impulse_response).reduce(
+            "sum", [0]).get([0])
     )
     return smooth
 
@@ -47,14 +48,14 @@ def sg_images(images: ee.ImageCollection, window_size: int, order: int, deriv=0)
     基于影像的sg滤波处理
     Args:
         images: ee.ImageCollection, 需要处理的影像集, 注意请影像集中的每张影像的波段应处理为只有一个波段
-        window_size: int, 窗口大小
+        window_size: int, 窗口大小, 最好为奇数
         order: int, 多项式阶数, 必须小于window_size
         deriv: int, 求导数的阶数, 默认为0
 
     Returns: list, 包含滤波处理后的image的list
 
     """
-    half_window = (window_size - 1) / 2
+    half_window = window_size // 2
     order_range = ee.List.sequence(0, order)
     k_range = ee.List.sequence(-half_window, half_window)
     b = ee.Array(k_range.map(lambda k: order_range.map(lambda o: ee.Number(k).pow(o))))
@@ -63,19 +64,18 @@ def sg_images(images: ee.ImageCollection, window_size: int, order: int, deriv=0)
     y = images.sort('system:time_start', False).toBands().toArray()
     times = images.aggregate_array('system:time_start')
     ids = images.aggregate_array('system:id')
-    band_name = images.first().bandNames().get(0).getInfo()
     y1 = images.sort('system:time_start', True).toBands().toArray()
     y0 = y1.arrayGet(0)
     first_filling = y.arraySlice(0, -half_window - 1, -1).subtract(y0).abs().multiply(-1).add(y0)
     y_end = y.arrayGet(0)
-    last_filling = y.arraySlice(0, 1, half_window+1).subtract(y_end).abs().add(y_end)
+    last_filling = y.arraySlice(0, 1, half_window + 1).subtract(y_end).abs().add(y_end)
     y_ext = first_filling.arrayCat(y1, 0).arrayCat(last_filling, 0)
     run_length = ee.List.sequence(0, images.size().subtract(1))
     smooth = []
     for i in run_length.getInfo():
-        smooth.append(y_ext.arraySlice(0, ee.Number(i), ee.Number(i).add(window_size))
-                      .multiply(impulse_response).arrayReduce("sum", [0]).arrayGet([0]).rename(band_name+f'_{i}')
-                      .set({'system:time_start': times.get(i), 'system:id': ids.get(i)}))
+        smooth.append(ee.Image(y_ext.arraySlice(0, i, i + window_size)
+                               .multiply(impulse_response).arrayReduce("sum", [0]).arrayGet([0])
+                               .set({'system:time_start': times.get(i), 'system:id': ids.get(i)})))
     return smooth
 
 
@@ -108,8 +108,8 @@ def cloud_free_landsat_sr(img):
     """
     # qa = img.select('pixel_qa')                         # 特定的landsat 影像才有这一波段
     qa = img.select('QA_PIXEL')
-    cloud_state = bitwise_extract(qa, 5)                # 云掩码
-    cloud_shadow_state = bitwise_extract(qa, 3)         # 云影掩码
+    cloud_state = bitwise_extract(qa, 5)  # 云掩码
+    cloud_shadow_state = bitwise_extract(qa, 3)  # 云影掩码
     mask = cloud_state.eq(0).And(cloud_shadow_state.eq(0))
     return img.updateMask(mask)
 
@@ -123,7 +123,7 @@ def rm_cloud_s2_sr(image):
 
 
 def clip_big_image(geo: ee.Geometry, image: ee.Image, scale: int, data_type_bytes: int,
-                     crs='EPSG:3857', max_bytes=40000000):
+                   crs='EPSG:3857', max_bytes=40000000):
     """
 
     Args:
@@ -139,7 +139,7 @@ def clip_big_image(geo: ee.Geometry, image: ee.Image, scale: int, data_type_byte
     """
     import numpy as np
     import math
-    bounds = geo.bounds(maxError=0.1, proj=ee.Projection(crs))
+    bounds = geo.bounds(maxError=0.001, proj=ee.Projection(crs))
     bands = image.bandNames().size().getInfo()
     poy = np.array(bounds.coordinates().getInfo()[0])
     min_x = poy[:, 0].min()
@@ -151,11 +151,11 @@ def clip_big_image(geo: ee.Geometry, image: ee.Image, scale: int, data_type_byte
     y_offset = int(max_y / scale) + 1
     height = y_offset - int(min_y / scale)
     width = int(max_x / scale) - x_offset + 1
-    transform = [scale, 0, x_offset * scale , 0, -scale, y_offset * scale]
+    transform = [scale, 0, x_offset * scale, 0, -scale, y_offset * scale]
 
     x_interval = max_x - min_x
     y_interval = max_y - min_y
-    max_region = max_bytes * (scale*scale) / bands / (data_type_bytes+1)
+    max_region = max_bytes * (scale * scale) / bands / (data_type_bytes + 1)
     max_length = int(math.sqrt(max_region))
     region_area = geo.area(maxError=0.1, proj=ee.Projection(crs)).getInfo()
     if max_region > region_area:
@@ -183,8 +183,8 @@ def clip_big_image(geo: ee.Geometry, image: ee.Image, scale: int, data_type_byte
 
 
 def dow_Collection(image, ee_polys, count, path, scale, crs):
-    from concurrent.futures import ThreadPoolExecutor,  wait, ALL_COMPLETED
-    with ThreadPoolExecutor(2) as pool:
+    from concurrent.futures import ThreadPoolExecutor, wait, ALL_COMPLETED
+    with ThreadPoolExecutor(1) as pool:
         pool.map(dow, [[image, ee_polys.get(i), i, path, scale, crs] for i in range(count)])
 
 
@@ -193,6 +193,7 @@ def clip_dow_merge(geo: ee.Geometry, image: ee.Image, outfile: str, scale: int,
     """
 
     Args:
+        flag:
         geo: ee.Geometry, 需要下载的区域矢量几何
         image: ee.Image, 需要下载的影像
         outfile: str, 输出文件路径和名称，不需要文件后缀，下载的影响默认后缀为tif
@@ -207,31 +208,34 @@ def clip_dow_merge(geo: ee.Geometry, image: ee.Image, outfile: str, scale: int,
     import geemap
     import time
     from glob import glob
-    from concurrent.futures import ThreadPoolExecutor,  wait, ALL_COMPLETED, FIRST_COMPLETED
     start = time.time()
-    polys, x_offset, y_offset, height, width, transform = clip_big_image(geo, image, scale, data_type_bytes, crs, max_bytes)
+    polys, x_offset, y_offset, height, width, transform = clip_big_image(geo, image, scale, data_type_bytes, crs,
+                                                                         max_bytes)
     if polys:
         ee_polys = ee.FeatureCollection(polys).filterBounds(geo)
         count = ee_polys.size().getInfo()
+        ee_polys_list = ee_polys.toList(count)
         # clip_images = ee.ImageCollection(ee_polys.map(lambda x: image.clip(x.geometry()))).toList(count)
         print("影像切割完毕！！！")
         path = outfile + '_mk'
         if not os.path.exists(path):
             os.makedirs(path)
-        files = len(glob(path+"/*.tif"))
+        files = len(glob(path + "/*.tif"))
         # print(f"需要下载的影像数: {count-files}\n")
         # dow_Collection(image, ee_polys.toList(count), count, path, scale, crs)
         while files != count:
-            print(f"需要下载的影像数: {count-files}\n")
+            print(f"需要下载的影像数: {count - files}\n")
             # dow_Collection(clip_images, count, path, scale, crs)
-            dow_Collection(image, ee_polys.toList(count), count, path, scale, crs)
-            files = len(glob(path+"/*.tif"))
+            for i in range(count):
+                dow([image, ee_polys_list.get(i), i, path, scale, crs])
+            # dow_Collection(image, ee_polys, count, path, scale, crs)
+            files = len(glob(path + "/*.tif"))
         if flag:
             merge_img(path, outfile, scale, x_offset, y_offset, height, width, transform)
     else:
         geemap.ee_export_image(image, outfile + '.tif', scale, crs)
-    t_con = time.time()-start
-    print(f'总耗时:{int(t_con/3600):02d}h{int(t_con%3600/60):02d}m{int(t_con%3600%60):02d}s')
+    t_con = time.time() - start
+    print(f'总耗时:{int(t_con / 3600):02d}h{int(t_con % 3600 / 60):02d}m{int(t_con % 3600 % 60):02d}s')
 
 
 def dow(agrs):
@@ -239,11 +243,11 @@ def dow(agrs):
     import os
     import time
     img, geo, img_count, path, scale, crs = agrs
-    if not os.path.exists(path+f'/{img_count}.tif'):
+    if not os.path.exists(path + f'/{img_count}.tif'):
         # time.sleep(img_count%30)
-        geemap.ee_export_image(img, path+f'/{img_count}.tif', scale, crs, 
-            region=ee.Feature(geo).geometry())
-        
+        geemap.ee_export_image(img, path + f'/{img_count}.tif', scale, crs,
+                               region=ee.Feature(geo).geometry())
+
 
 def merge_img(path: str, outfile, scale, x_offset, y_offset, height, width, transform):
     """
@@ -280,3 +284,21 @@ def merge_img(path: str, outfile, scale, x_offset, y_offset, height, width, tran
             dest.write(data, window=rasterio.windows.Window(col_offset, row_offset, src_width, src_height))
     shutil.rmtree(path)
 
+
+def sample_points_to_list(img, ps):
+    ps_data = img.sampleRegions(ps,
+                                geometries=True,
+                                scale=img.projection().nominalScale())
+    values_list = [f['properties'] for f in ps_data.getInfo()["features"]]
+    return values_list
+
+
+def sample_points_to_df(img, ps, col_names=None):
+    import pandas as pd
+
+    values_list = sample_points_to_list(img, ps)
+    if col_names is None:
+        values_df = pd.DataFrame(values_list)
+    else:
+        values_df = pd.DataFrame(values_list)[col_names]
+    return values_df
