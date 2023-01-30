@@ -9,6 +9,7 @@ author:Monarch
 """
 
 from selenium import webdriver
+from selenium.webdriver.common.by import By
 import requests
 import os
 import time
@@ -31,8 +32,8 @@ headers = {
 outpath = 'E:/images/'
 if not os.path.exists(outpath):
     os.makedirs(outpath)
-e_path = r'msedgedriver'
-master = webdriver.Edge(executable_path=e_path)
+# e_path = r'msedgedriver'
+master = webdriver.Chrome()
 
 url = r'https://www.bilibili.com/video/BV1554y177Sf?spm_id_from=333.851.b_7265636f6d6d656e64.1'
 
@@ -40,7 +41,7 @@ master.get(url)
 master.execute_script('window.scrollTo(0, 500)')
 while 1:
     try:
-        btn = master.find_element_by_xpath('//div[@class="comment-emoji"]')
+        btn = master.find_element(By.XPATH, '//div[@class="comment-emoji"]')
     except:
         time.sleep(1)
     else:
@@ -49,7 +50,7 @@ btn.click()
 time.sleep(1)
 while 1:
     try:
-        imgs = master.find_elements_by_xpath('//div[@class="emoji-wrap"]/a/img')
+        imgs = master.find_elements(By.XPATH, '//div[@class="emoji-wrap"]/a/img')
     except:
         time.sleep(1)
     else:
