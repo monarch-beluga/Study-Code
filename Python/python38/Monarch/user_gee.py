@@ -123,7 +123,7 @@ def rm_cloud_s2_sr(image):
 
 
 def clip_big_image(geo: ee.Geometry, image: ee.Image, scale: int, data_type_bytes: int,
-                   crs='EPSG:3857', max_bytes=40000000):
+                   crs='EPSG:4326', max_bytes=40000000):
     """
 
     Args:
@@ -139,39 +139,46 @@ def clip_big_image(geo: ee.Geometry, image: ee.Image, scale: int, data_type_byte
     """
     import numpy as np
     import math
-    bounds = geo.bounds(maxError=0.001, proj=ee.Projection(crs))
-    bands = image.bandNames().size().getInfo()
-    poy = np.array(bounds.coordinates().getInfo()[0])
+    image_pro = image.reproject(**{'crs': crs, 'scale': scale}).clip(geo).getInfo()
+    bands = image_pro['bands'][0]
+    height = bands['dimensions'][1]
+    width = bands['dimensions'][0]
+    crs_transform = bands['crs_transform']
+    scale = crs_transform[0]
+    bounds = image_pro['properties']['system:footprint']['coordinates']
+
+    # bands = image.bandNames().size().getInfo()
+    poy = np.array(bounds[0])
     min_x = poy[:, 0].min()
     max_x = poy[:, 0].max()
     min_y = poy[:, 1].min()
     max_y = poy[:, 1].max()
 
-    x_offset = int(min_x / scale)
-    y_offset = int(max_y / scale) + 1
-    height = y_offset - int(min_y / scale)
-    width = int(max_x / scale) - x_offset + 1
+    x_offset = min_x // scale
+    y_offset = max_y // scale + 1
+    # height = y_offset - int(min_y / scale)
+    # width = int(max_x / scale) - x_offset + 1
     transform = [scale, 0, x_offset * scale, 0, -scale, y_offset * scale]
 
     x_interval = max_x - min_x
     y_interval = max_y - min_y
-    max_region = max_bytes * (scale * scale) / bands / (data_type_bytes + 1)
-    max_length = int(math.sqrt(max_region))
-    region_area = geo.area(maxError=0.1, proj=ee.Projection(crs)).getInfo()
+    max_region = max_bytes / (data_type_bytes * 2)
+    region_area = height * width
     if max_region > region_area:
         print("不需要裁剪，可直接下载")
         return None, None, None, None, None, None
     else:
-        sep_x = max_length
-        sep_y = max_length
-        if x_interval < max_length:
-            sep_x = x_interval
-            sep_y = max_region / x_interval
-        if y_interval < max_length:
-            sep_y = y_interval
-            sep_x = max_region / y_interval
-        p_x = [i for i in np.arange(min_x, max_x, sep_x)] + [max_x]
-        p_y = [i for i in np.arange(min_y, max_y, sep_y)] + [max_y]
+        sep_scale = math.sqrt(region_area // max_region + 1)
+        sep_x = x_interval / sep_scale
+        sep_y = y_interval / sep_scale
+        # if x_interval < max_length:
+        #     sep_x = x_interval
+        #     sep_y = max_region / x_interval
+        # if y_interval < max_length:
+        #     sep_y = y_interval
+        #     sep_x = max_region / y_interval
+        p_x = np.arange(min_x, max_x, sep_x).tolist() + [max_x]
+        p_y = np.arange(min_y, max_y, sep_y).tolist() + [max_y]
         polys = []
         for i in range(len(p_x) - 1):
             for j in range(len(p_y) - 1):
@@ -182,14 +189,14 @@ def clip_big_image(geo: ee.Geometry, image: ee.Image, scale: int, data_type_byte
         return polys, x_offset, y_offset, height, width, transform
 
 
-def dow_Collection(image, ee_polys, count, path, scale, crs):
-    from concurrent.futures import ThreadPoolExecutor, wait, ALL_COMPLETED
-    with ThreadPoolExecutor(1) as pool:
+def dow_Collection(image, ee_polys, count, path, scale, crs, max_worker=1):
+    from concurrent.futures import ThreadPoolExecutor
+    with ThreadPoolExecutor(max_worker) as pool:
         pool.map(dow, [[image, ee_polys.get(i), i, path, scale, crs] for i in range(count)])
 
 
 def clip_dow_merge(geo: ee.Geometry, image: ee.Image, outfile: str, scale: int,
-                   data_type_bytes: int, crs='EPSG:3857', max_bytes=40000000, flag=True):
+                   data_type_bytes: int, crs='EPSG:4326', max_bytes=40000000, max_worker=1, flag=True):
     """
 
     Args:
@@ -228,10 +235,10 @@ def clip_dow_merge(geo: ee.Geometry, image: ee.Image, outfile: str, scale: int,
             # dow_Collection(clip_images, count, path, scale, crs)
             for i in range(count):
                 dow([image, ee_polys_list.get(i), i, path, scale, crs])
-            # dow_Collection(image, ee_polys, count, path, scale, crs)
+            # dow_Collection(image, ee_polys_list, count, path, scale, crs, max_worker)
             files = len(glob(path + "/*.tif"))
         if flag:
-            merge_img(path, outfile, scale, x_offset, y_offset, height, width, transform)
+            merge_img(path, outfile, x_offset, y_offset, height, width, transform)
     else:
         geemap.ee_export_image(image, outfile + '.tif', scale, crs)
     t_con = time.time() - start
@@ -243,13 +250,14 @@ def dow(agrs):
     import os
     import time
     img, geo, img_count, path, scale, crs = agrs
+    geo = ee.Feature(geo).geometry()
     if not os.path.exists(path + f'/{img_count}.tif'):
         # time.sleep(img_count%30)
-        geemap.ee_export_image(img, path + f'/{img_count}.tif', scale, crs,
-                               region=ee.Feature(geo).geometry())
+        geemap.ee_export_image(img.clip(geo), path + f'/{img_count}.tif', scale, crs=crs,
+                               region=geo)
 
 
-def merge_img(path: str, outfile, scale, x_offset, y_offset, height, width, transform):
+def merge_img(path: str, outfile, x_offset, y_offset, height, width, transform):
     """
 
     Args:
@@ -267,6 +275,7 @@ def merge_img(path: str, outfile, scale, x_offset, y_offset, height, width, tran
     files = glob(path + "/*.tif")
     with rasterio.open(files[0]) as src:
         out_meta = src.meta.copy()
+    scale = transform[0]
     out_meta.update({"driver": "GTiff",
                      "height": height,
                      "width": width,
@@ -281,7 +290,27 @@ def merge_img(path: str, outfile, scale, x_offset, y_offset, height, width, tran
                 src_height = src.height
                 src_width = src.width
                 data = src.read()
-            dest.write(data, window=rasterio.windows.Window(col_offset, row_offset, src_width, src_height))
+                row_start = 0
+                row_end = src_height
+                col_start = 0
+                col_end = src_width
+            if row_offset < 0:
+                row_start = -row_offset
+                src_height += row_offset
+                row_offset = 0
+            elif row_offset + src_height > height:
+                src_height -= row_offset + src_height - height
+                row_end = src_height
+            if col_offset < 0:
+                col_start = -col_offset
+                src_width += col_offset
+                col_offset = 0
+            elif col_offset + src_width > width:
+                src_width -= col_offset + src_width - width
+                col_end = src_width
+            # print(tif_f)
+            dest.write(data[:, int(row_start):int(row_end), int(col_start):int(col_end)],
+                       window=rasterio.windows.Window(col_offset, row_offset, src_width, src_height))
     shutil.rmtree(path)
 
 
