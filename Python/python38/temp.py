@@ -8,10 +8,22 @@ author:monarch
 @modify:
 """
 
-import numpy as np
-from scipy.interpolate import CubicSpline
+import time
 
-x = np.arange(10)
-y = np.sin(x)
-cs = CubicSpline(x, y)
+
+def parse_p():
+    time.sleep(1)
+    print(1)
+
+
+def parse(ls):
+    for i in ls:
+        yield parse_p()
+        print(i)
+
+
+url_list = ['a', 'b', 'c', 'd']
+
+for i in parse(url_list):
+    i = 0
 
