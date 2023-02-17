@@ -1516,3 +1516,4 @@
 202301051741   1     3     0monarch H:\Monarch\Work\Õ¡»¿Ãº\polc20198.flt = GRIDFLOAT ( H:\Monarch\Work\Õ¡»¿Ãº\polc20198.tif )
 202301301433   0     0     0monarch H:\Monarch\Work\clip\TMAX_out\TMAX_2018001.flt = GRIDFLOAT ( H:\Monarch\Work\clip\clip_temp.tif )
 202301301433   0     0     0monarch H:\Monarch\Work\clip\TMAX_out\TMAX_2018009.flt = GRIDFLOAT ( H:\Monarch\Work\clip\clip_temp.tif )
+202302061305   0     1     0monarch D:\MCD_dow\TMAX_out\TMAX_2018001.flt = GRIDFLOAT ( D:\MCD_dow\porj_temp.tif )

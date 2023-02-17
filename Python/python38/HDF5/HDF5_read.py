@@ -17,11 +17,11 @@ import os
 
 def Write(file, data, prj, tr):
     driver = gdal.GetDriverByName('GTiff')
-    Size = data.shape
+    size = data.shape
     out_ds = driver.Create(
         file,
-        Size[1],
-        Size[0],
+        size[1],
+        size[0],
         1,
         gdal.GDT_Float32)
 
