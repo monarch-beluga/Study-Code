@@ -17,7 +17,6 @@ import os
 
 os.chdir(r'Z:\ECA\GLASS_temperature')
 
-out_path = r'Z:\ECA\temperature(初始)'
 
 
 
