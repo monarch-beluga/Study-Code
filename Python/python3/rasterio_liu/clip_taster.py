@@ -43,7 +43,7 @@ for var in Vars:
                     src_profile = src.profile
                     data = src.read()
             else:
-                data, src_profile = re_transform(file, 1000)
+                data, src_profile = re_raster_to_file(file, 1000)
 
             row_start, row_end, col_start, col_end = clip_to_raster(src_profile, clip_profile)
 
