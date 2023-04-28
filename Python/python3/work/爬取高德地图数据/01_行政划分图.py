@@ -36,12 +36,14 @@ def get_districts(f, res, dis, k):
 
 
 # shp保持地址
-data_address = r'H:\Monarch\Work\甘肃.shp'
+data_address = r'D:\Work\naqu\naqu.shp'
 
 # 需要下载的最高级行政区名
-keywords = '甘肃'
+keywords = '那曲市'
 # 高德地图API的Key
-key = input('Key:')
+key_file = r'D:\System_Path\高德地图Key\Key.txt'
+with open(key_file) as fp:
+    key = fp.readline()
 # 返回下几级行政区
 subdistrict = 0
 output = 'json'
@@ -52,7 +54,7 @@ url = u.format(key, keywords, subdistrict, output, extensions)
 r = requests.get(url)
 s = r.json()
 
-file = shapefile.Writer(data_address, encoding='GBK')
+file = shapefile.Writer(data_address, encoding='utf-8')
 create_field(file, s['districts'][0])
 get_districts(file, [], s['districts'][0], key)
 file.close()
@@ -60,7 +62,7 @@ file.close()
 proj = osr.SpatialReference()
 proj.ImportFromEPSG(4326)
 wkt = proj.ExportToWkt()
-fp = open(data_address.replace(".shp", ".prj"), 'w', encoding='GBK')
+fp = open(data_address.replace(".shp", ".prj"), 'w', encoding='utf-8')
 fp.write(wkt)
 fp.close()
 
