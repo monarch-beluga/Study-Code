@@ -11,5 +11,4 @@ import geopandas as gpd
 os.chdir(r'D:\Work\ECA\站点TAVG数据')
 df = pd.read_csv('1980.txt')
 
-gdf =
 
