@@ -1,54 +1,69 @@
 #include<iostream>
-#include<stdio.h>
+#include <algorithm>
 using namespace std;
 
-typedef struct A
-{
-    int *p;
-    int len;
-}List;
+typedef struct ListNote{
+    int val;
+    ListNote* next;
+}*Node;
 
-void fun(List* l)
+void PrintList(Node head)
 {
-    l->len++;
-    int *p = new int[l->len]();
-    for (int i = 1; i < l->len-1; i++)
-        p[i] = l->p[i-1] + l->p[i];
+    Node p = head;
+    while(p != NULL)
+    {
+        cout << p->val << " ";
+        p = p->next;
+    }
+    cout << "\n";
+}
 
-    delete[] l->p;
-    l->p = p;
+Node swapNote(Node head)
+{
+    Node p1, p2, p3;
+    p1 = head;
+    int i = 0;
+    while(p1 != NULL)
+    {
+        p2 = p1->next;
+        p1->next = p2->next;
+        p2->next = p1;
+        if (i == 0)
+            head = p2;
+        else
+            p3->next = p2;
+        p3 = p1;
+        p1 = p1->next;
+        ++i;
+    }
+    return head;
 }
 
 
 int main()
-{
-    // #if ONLINE_JUDGE
-    // #else
-    // freopen("input.txt", "r", stdin);
-    // #endif
-    int N, n;
-    List yh;
-    cin >> N;
-    yh.len = 3;
-    yh.p = new int[3]();
-    yh.p[1] = 1;
-    n = 1;
-    while(1)
+{ 
+    #if ONLINE_JUDGE
+    #else
+    freopen("input.txt", "r", stdin);
+    #endif
+    Node head, p1, p2;
+    int n;
+    cin >> n;
+    for (int i = 0; i < n; ++i)
     {
-        for (int i = 1; i < yh.len-1; i++, n++)
-        {
-            // cout << yh.p[i] << ' ';
-            if (yh.p[i] == N)
-            {
-                cout << n;
-                return 0;
-            }
-        }
-        fun(&yh);
-        cout << yh.len << '\n';
+        p1 = new ListNote();
+        cin >> p1->val;
+        if (i == 0)
+            head = p1;
+        else
+            p2->next = p1;
+        p2 = p1;
     }
-    
-    delete[] yh.p;
+
+    PrintList(head);
+    head = swapNote(head);
+    PrintList(head);
+
     return 0;
 }
 

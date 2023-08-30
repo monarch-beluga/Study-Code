@@ -36,10 +36,10 @@ def get_districts(f, res, dis, k):
 
 
 # shp保持地址
-data_address = r'D:\Work\naqu\naqu.shp'
+data_address = r'D:\Work\Starfm\jiujiang.shp'
 
 # 需要下载的最高级行政区名
-keywords = '那曲市'
+keywords = '九江'
 # 高德地图API的Key
 key_file = r'D:\System_Path\高德地图Key\Key.txt'
 with open(key_file) as fp:

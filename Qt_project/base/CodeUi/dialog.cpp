@@ -8,6 +8,7 @@ Dialog::Dialog(QWidget *parent)
 {
     resize(300, 400);
     initUi();
+    iniSignalSlots();
 }
 
 Dialog::~Dialog()
@@ -62,7 +63,66 @@ void Dialog::initUi()
     vBoxLayout->addWidget(groupFontColor);
     vBoxLayout->addWidget(textEdit);
     vBoxLayout->addLayout(hBoxLayout3);
-    setLayout(vBoxLayout);
+    this->setLayout(vBoxLayout);
+}
+
+void Dialog::iniSignalSlots()
+{
+    // 关联qt自带槽
+    connect(buttonSure, SIGNAL(clicked()), this, SLOT(accept()));
+    connect(buttonQuit, SIGNAL(clicked()), this, SLOT(reject()));
+    connect(buttonCancel, SIGNAL(clicked()), this, SLOT(close()));
+
+    // 关联自定义槽
+    connect(checkBoxUnderLine, SIGNAL(clicked(bool)), this, SLOT(on_checkBoxUnderLine(bool)));
+    connect(checkBoxBold, SIGNAL(clicked(bool)), this, SLOT(on_checkBoxBold(bool)));
+    connect(checkBoxItalic, SIGNAL(clicked(bool)), this, SLOT(on_checkBoxItalic(bool)));
+
+    // 多控件绑定一个槽
+    connect(radioButtonBlack, SIGNAL(clicked()), this, SLOT(setTextFontColor()));
+    connect(radioButtonRed, SIGNAL(clicked()), this, SLOT(setTextFontColor()));
+    connect(radioButtonBlue, SIGNAL(clicked()), this, SLOT(setTextFontColor()));
+
+}
+
+void Dialog::on_checkBoxUnderLine(bool checked)
+{
+    QFont font = textEdit->font();
+    font.setUnderline(checked);
+    textEdit->setFont(font);
+}
+
+void Dialog::on_checkBoxBold(bool checked)
+{
+    QFont font = textEdit->font();
+    font.setBold(checked);
+    textEdit->setFont(font);
+}
+
+void Dialog::on_checkBoxItalic(bool checked)
+{
+    QFont font = textEdit->font();
+    font.setItalic(checked);
+    textEdit->setFont(font);
+}
+
+void Dialog::setTextFontColor()
+{
+    // 获取文本框的Palette
+    QPalette plet = textEdit->palette();
+    // 默认情况下设置颜色为black
+    plet.setColor(QPalette::Text, Qt::black);
+
+    // 判断三个控件的选取情况
+    if(radioButtonBlack->isChecked())                   // 判断是否勾选
+        plet.setColor(QPalette::Text, Qt::black);           // 设置颜色为black
+    else if(radioButtonRed->isChecked())
+        plet.setColor(QPalette::Text, Qt::red);             // 设置颜色为red
+    else if(radioButtonBlue->isChecked())
+        plet.setColor(QPalette::Text, Qt::blue);            // 设置颜色为blue
+
+    // 设置文本框的Palette
+    textEdit->setPalette(plet);
 }
 
 

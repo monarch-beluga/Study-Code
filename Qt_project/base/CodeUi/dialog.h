@@ -39,5 +39,14 @@ private:
     QSpacerItem *spacer2;
 
     void initUi();
+    void iniSignalSlots();
+
+private slots:
+    void on_checkBoxUnderLine(bool checked);
+    void on_checkBoxBold(bool checked);
+    void on_checkBoxItalic(bool checked);
+
+    void setTextFontColor();
+
 };
 #endif // DIALOG_H

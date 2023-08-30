@@ -17,7 +17,6 @@ VisDialog::VisDialog(QWidget *parent)
         第三个为接受窗口，这里的this为VisDialog，表示这个窗体类本身
         第四个为定义的函数
     */
-    ui->openGLWidget
 }
 
 VisDialog::~VisDialog()
