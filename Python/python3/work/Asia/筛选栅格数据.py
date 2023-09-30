@@ -1,4 +1,4 @@
-# 是一个筛选函数，主要时通过时间来筛选，应用在后面的几道程序中
+# 是一个筛选函数，主要是通过时间来筛选，应用在后面的几道程序中
 # 这个时ECA处理的第一个程序
 from datetime import datetime
 from datetime import date

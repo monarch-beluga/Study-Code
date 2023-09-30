@@ -1,4 +1,4 @@
-# 数据的缺失值处理，这个时计算 极端时件 前的操作
+# 数据的缺失值处理,这个是计算 极端事件 前的操作
 import pandas as pd
 import rasterio
 import os
