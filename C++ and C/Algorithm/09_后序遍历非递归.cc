@@ -22,7 +22,7 @@ void Creat(Tr &T)
         T = NULL;
     else
     {
-        T = (Tree *) malloc(sizeof(Tree));
+        T = new Tree();
         T->data = ch;
         Creat(T->l);
         Creat(T->r);
@@ -44,18 +44,15 @@ void Print(Tr T)            // 后序遍历，非递归
         else
         {
             p = S.top();
-            S.pop();
             if(((!p->r) || (pr==p->r))) // 如果右节点为空或者已访问
             {
+                S.pop();
                 cout << p->data << " ";     // 访问
                 pr = p;
                 p = NULL;
             }
             else                // 否则访问右节点
-            {
-                S.push(p); 
                 p = p->r;
-            }
         }
     }
 
