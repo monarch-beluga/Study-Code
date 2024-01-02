@@ -18,7 +18,7 @@ void PrintList(Node head)
     cout << "\n";
 }
 
-Node swapNote(Node head)
+void swapNote(Node& head)
 {
     Node p1, p2, p3;
     p1 = head;
@@ -36,7 +36,6 @@ Node swapNote(Node head)
         p1 = p1->next;
         ++i;
     }
-    return head;
 }
 
 
@@ -61,7 +60,7 @@ int main()
     }
 
     PrintList(head);
-    head = swapNote(head);
+    swapNote(head);
     PrintList(head);
 
     return 0;
