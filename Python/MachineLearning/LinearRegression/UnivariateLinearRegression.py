@@ -19,9 +19,11 @@ test_data = data.drop(train_data.index)
 input_param_name = 'Economy..GDP.per.Capita.'
 output_param_name = 'Happiness.Score'
 
+# 获取训练数据的特征值和目标值
 x_train = train_data[[input_param_name]].values
 y_train = train_data[[output_param_name]].values
 
+# 获取测试数据的特征值和目标值
 x_test = test_data[[input_param_name]].values
 y_test = test_data[[output_param_name]].values
 

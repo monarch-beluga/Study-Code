@@ -109,7 +109,6 @@ class LinearRegression:
         return predictions
 
     def get_cost(self, data, labels):
-        data_processed = data
         data_processed = prepare_for_training(data,
                                               self.polynomial_degree,
                                               self.sinusoid_degree,
@@ -123,7 +122,6 @@ class LinearRegression:
         :return: 回归值
         """
 
-        data_processed = data
         data_processed = prepare_for_training(data,
                                               self.polynomial_degree,
                                               self.sinusoid_degree,
