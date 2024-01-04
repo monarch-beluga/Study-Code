@@ -82,7 +82,7 @@ plotly.offline.plot(plot_figure)
 num_iterations = 500
 learning_rate = 0.01
 
-# 模型训练
+#  模型训练
 linear_regression = LinearRegression(x_train, y_train)
 theta, cost_history = linear_regression.train(learning_rate, num_iterations)
 
