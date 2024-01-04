@@ -9,7 +9,7 @@ import pandas as pd
 import matplotlib.pyplot as plt
 
 from sklearn.linear_model import LinearRegression
-import scipy.stats as st
+from utils.prepare_for_training import prepare_for_training
 
 
 data = pd.read_csv("data/world-happiness-report-2017.csv")
@@ -37,24 +37,29 @@ y_test = test_data[[output_param_name]].values
 # plt.legend()
 # plt.show()
 
+(data_processed,
+ features_mean,
+ features_deviation) = prepare_for_training(x_train, 0, 0, True)
+
 regr = LinearRegression()
-regr.fit(x_train, y_train)
-y_pred = regr.predict(x_train)
+regr.fit(data_processed, y_train)
+y_pred = regr.predict(data_processed)
 
 slope = regr.coef_[0]
 intercept = regr.intercept_[0]
 predictions_num = 100
 x_predictions = np.linspace(x_train.min(), x_train.max(), predictions_num).reshape(-1, 1)
-y_predictions = regr.predict(x_predictions)
+x_processed = prepare_for_training(x_predictions, 0, 0, True)[0]
+y_predictions = regr.predict(x_processed)
 
-# plt.scatter(x_train, y_train, label='Train data')
-# plt.scatter(x_test, y_test, label='Test data')
-# plt.plot(x_predictions, y_predictions, 'r', label='Prediction')
-# plt.xlabel(input_param_name)
-# plt.ylabel(output_param_name)
-# plt.title('City happiness')
-# plt.legend()
-# plt.show()
+plt.scatter(x_train, y_train, label='Train data')
+plt.scatter(x_test, y_test, label='Test data')
+plt.plot(x_predictions, y_predictions, 'r', label='Prediction')
+plt.xlabel(input_param_name)
+plt.ylabel(output_param_name)
+plt.title('City happiness')
+plt.legend()
+plt.show()
 
 num_examples = x_train.shape[0]
 delta = y_pred - y_train
