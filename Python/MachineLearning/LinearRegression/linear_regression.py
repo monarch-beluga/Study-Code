@@ -90,9 +90,9 @@ class LinearRegression:
         :param labels: 目标值数据
         :return: 损失值
         """
-        num_examples = self.data.shape[0]
-        prediction = LinearRegression.hypothesis(self.data, self.theta)
-        delta = prediction - self.labels
+        num_examples = data.shape[0]
+        prediction = LinearRegression.hypothesis(data, self.theta)
+        delta = prediction - labels
         # 最小二乘法损失函数
         cost = (1 / 2) * np.dot(delta.T, delta) / num_examples
         return cost[0][0]

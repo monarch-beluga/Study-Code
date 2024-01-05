@@ -19,6 +19,7 @@ data = pd.read_csv("../data/world-happiness-report-2017.csv")
 train_data = data.sample(frac=0.8)
 test_data = data.drop(train_data.index)
 
+# 使用两列数据作为输入的特征数据
 input_param_name_1 = 'Economy..GDP.per.Capita.'
 input_param_name_2 = 'Freedom'
 output_param_name = 'Happiness.Score'
