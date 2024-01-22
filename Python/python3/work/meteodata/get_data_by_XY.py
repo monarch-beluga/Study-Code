@@ -12,9 +12,9 @@ from Monarch.import_me_data import *
 import pymysql
 import pandas as pd
 
-host = "103.46.128.21"
+host = "192.168.118.158"
 pwd = "123456"
-port = 29611
+port = 3066
 sql_name = "root"
 database = "meteodata"
 conn = pymysql.connect(host=host, password=pwd, port=port, user=sql_name, db=database)
