@@ -1,8 +1,13 @@
 {
   "version": 2,
-  "dgSpecHash": "3KrykfDG12cIeqyNqMIQWB0CKoys8MmLOddoJqXIv+LemteCYR443goTpuFT6QnRoDVeYeSI9I/3ne7cXd1U/A==",
+  "dgSpecHash": "OS065QSd4VlNh+PLwOCGJMvSMEDO3uupD/ODEKKTMn0fogLq5USuptBNiKVfBmV7HgHtbCRQ5gGyk2bM3QciqA==",
   "success": true,
-  "projectFilePath": "E:\\Study\\Projects\\C#\\C#preliminary\\05_面向对象\\01Classs\\01Classs.csproj",
-  "expectedPackageFiles": [],
+  "projectFilePath": "D:\\Study\\Project\\Study-Code\\C#\\C#preliminary\\05_面向对象\\01Classs\\01Classs.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\Monarch\\.nuget\\packages\\microsoft.netcore.app.ref\\5.0.0\\microsoft.netcore.app.ref.5.0.0.nupkg.sha512",
+    "C:\\Users\\Monarch\\.nuget\\packages\\microsoft.windowsdesktop.app.ref\\5.0.0\\microsoft.windowsdesktop.app.ref.5.0.0.nupkg.sha512",
+    "C:\\Users\\Monarch\\.nuget\\packages\\microsoft.aspnetcore.app.ref\\5.0.0\\microsoft.aspnetcore.app.ref.5.0.0.nupkg.sha512",
+    "C:\\Users\\Monarch\\.nuget\\packages\\microsoft.netcore.app.host.win-x64\\5.0.17\\microsoft.netcore.app.host.win-x64.5.0.17.nupkg.sha512"
+  ],
   "logs": []
 }

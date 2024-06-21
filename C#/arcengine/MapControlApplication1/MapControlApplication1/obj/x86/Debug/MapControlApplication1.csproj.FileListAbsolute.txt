@@ -1,0 +1,9 @@
+D:\Study\Project\Study-Code\C#\arcengine\MapControlApplication1\MapControlApplication1\obj\x86\Debug\MapControlApplication1.csproj.AssemblyReference.cache
+D:\Study\Project\Study-Code\C#\arcengine\MapControlApplication1\MapControlApplication1\obj\x86\Debug\MapControlApplication1.MainForm.resources
+D:\Study\Project\Study-Code\C#\arcengine\MapControlApplication1\MapControlApplication1\obj\x86\Debug\MapControlApplication1.Properties.Resources.resources
+D:\Study\Project\Study-Code\C#\arcengine\MapControlApplication1\MapControlApplication1\obj\x86\Debug\MapControlApplication1.csproj.GenerateResource.cache
+D:\Study\Project\Study-Code\C#\arcengine\MapControlApplication1\MapControlApplication1\obj\x86\Debug\MapControlApplication1.csproj.CoreCompileInputs.cache
+D:\Study\Project\Study-Code\C#\arcengine\MapControlApplication1\MapControlApplication1\bin\Debug\MapControlApplication1.exe
+D:\Study\Project\Study-Code\C#\arcengine\MapControlApplication1\MapControlApplication1\bin\Debug\MapControlApplication1.pdb
+D:\Study\Project\Study-Code\C#\arcengine\MapControlApplication1\MapControlApplication1\obj\x86\Debug\MapControlApplication1.exe
+D:\Study\Project\Study-Code\C#\arcengine\MapControlApplication1\MapControlApplication1\obj\x86\Debug\MapControlApplication1.pdb

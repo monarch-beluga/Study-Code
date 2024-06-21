@@ -4,15 +4,17 @@
 # @File    : temp.py
 # @Software: PyChar
 
-from Monarch import import_me_data
+import rasterio
+import os
+from glob import glob
+import numpy as np
 
-roi_shp = r'D:/Data/parper/data/shp/JX.shp'
-types = ['MTEM']
-start_time = '2010-01-01'
-end_time = '2020-12-31'
-db = 'meteodata'
-host = '192.168.118.158'
-df = import_me_data.get_data_by_shp(roi_shp, types, start_time, end_time, db=db, host=host)
+path = r'D:\Work\LakeAreaChanges'
+os.chdir(path)
 
-
-
+with rasterio.open('gdp/gdp_1995.tif') as src:
+    profile = src.profile
+    data = src.read()
+data[data != profile['nodata']] /= 10
+with rasterio.open('gdp/gdp_1995.tif', 'w', **profile) as dst:
+    dst.write(data)

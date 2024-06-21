@@ -13,9 +13,9 @@ flag = 0
 for f in range(m):
     for i in range(100):
         k = randint(0, 99)
-        if n[i] != 0:
-            n[k] += 1
-            n[i] -= 1
+        # if n[i] != 0:
+        n[k] += 1
+        n[i] -= 1
 n.sort()
 fig = plt.figure(figsize=(16, 8))
 plt.bar(list(range(100)), n)

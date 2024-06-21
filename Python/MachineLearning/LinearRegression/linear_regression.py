@@ -14,7 +14,6 @@ class LinearRegression:
         模型初始化
         :param data: 特征值数据
         :param labels: 目标值数据
-        :param prepare: 是否进行预处理
         :param polynomial_degree:
         :param sinusoid_degree:
         :param normalize_data:
