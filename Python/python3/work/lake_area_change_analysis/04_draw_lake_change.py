@@ -47,7 +47,7 @@ for lake in lakes:
     X = lake_data.index.values
     y = lake_data['area'].values
     ax = fig.add_subplot(grid[2, 1:3])
-    ax.set_title("1995 - 2020年" + f"{lake}水域面积变化", weight="bold", size=16)
+    ax.set_title("1990 - 2020年" + f"{lake}水域面积变化", weight="bold", size=16)
     ax.set_xlabel('时间 $\mathrm{(year)}$', size=12)
     ax.set_ylabel('面积 $\mathrm{(km^2)}$', size=12)
     ax.tick_params("both", direction='in')

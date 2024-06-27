@@ -15,10 +15,11 @@ out_path = "csv_data"
 if not os.path.exists(out_path):
     os.mkdir(out_path)
 
-lakes = ['太湖', '梁子湖', '洞庭湖', '洪泽湖', '鄱阳湖', "巢湖"]
-data = pd.DataFrame()
-data['lake_name'] = lakes
+# lakes = ['太湖', '梁子湖', '洞庭湖', '洪泽湖', '鄱阳湖', "巢湖"]
+lakes = ['鄱阳湖']
 for lake in lakes:
+    data = pd.DataFrame()
+    data['lake_name'] = [lake]
     for year in range(1990, 2021, 5):
         shp_file = f"inter_lake/{lake}_{year}.shp"
         shp = gpd.read_file(shp_file)
@@ -27,8 +28,8 @@ for lake in lakes:
 
         for key in ['TAVG', 'PRCP', 'pop', 'gdp']:
             raster_file = f'{key}/{key}_{year}.tif'
-            zonal_method = pd.DataFrame(zonal_stats(shp_buff, raster_file, stats='sum'))
-            data[f'{key}_{year}'] = zonal_method['sum'] / (shp.buffer(5000).area / 1000000)
+            zonal_method = pd.DataFrame(zonal_stats(shp_buff, raster_file, stats='mean'))
+            data[f'{key}_{year}'] = zonal_method['mean']
 
     data.to_csv(f'{out_path}/{lake}_zonal_statistics.csv', encoding='gbk')
 

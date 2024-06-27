@@ -22,8 +22,8 @@ out_path = "csv_data"
 if not os.path.exists(out_path):
     os.mkdir(out_path)
 
-lakes = ['太湖', '梁子湖', '洞庭湖', '洪泽湖', '鄱阳湖', "巢湖"]
-# lakes = ["巢湖"]
+# lakes = ['太湖', '梁子湖', '洞庭湖', '洪泽湖', '鄱阳湖', "巢湖"]
+lakes = ['鄱阳湖']
 index = ["TAVG", "PRCP", 'pop', 'gdp']
 
 for lake in lakes:
