@@ -26,7 +26,7 @@ if not os.path.exists(out_path):
     os.mkdir(out_path)
 
 lakes = ['太湖', '梁子湖', '洞庭湖', '洪泽湖', '鄱阳湖', "巢湖"]
-# lakes = ["巢湖"]
+
 for lake in lakes:
     fig = plt.figure(figsize=(15, 15))
     grid = GridSpec(3, 3)
