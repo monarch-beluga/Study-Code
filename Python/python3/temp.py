@@ -37,7 +37,7 @@ master.get(url)
 
 time.sleep(1)
 imgs = master.find_elements(By.XPATH, '//*[@id="app"]/div[4]/div[1]/div[2]/p/img')
-for i in imgs[1,-1]:
+for i in imgs[1, -1]:
     get(i)
 master.quit()
 

@@ -1,0 +1,747 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>ESRI.ArcGIS.EditingTools</name>
+    </assembly>
+    <members>
+        <member name="T:ESRI.ArcGIS.EditingTools.Densify">
+            <summary>Adds vertices along line or polygon features. Also replaces curve segments (Bezier, circular arcs, and elliptical arcs) with line segments.</summary>
+        </member>
+        <member name="M:ESRI.ArcGIS.EditingTools.Densify.#ctor(System.Object)">
+            <summary>Constructor that takes all required parameters for geoprocessor execution.</summary>
+            <param name="in_features">The polygon or line feature class to be densified. (In, Required)</param>
+        </member>
+        <member name="P:ESRI.ArcGIS.EditingTools.Densify.in_features">
+            <summary>The polygon or line feature class to be densified. (In, Required)</summary>
+        </member>
+        <member name="P:ESRI.ArcGIS.EditingTools.Densify.densification_method">
+            <summary>The method selected to handle feature densification. (In, Optional)</summary>
+        </member>
+        <member name="P:ESRI.ArcGIS.EditingTools.Densify.distance">
+            <summary> The maximum linear distance between vertices. This distance will always be applied to line segments and to simplify curves.  The default value is a function of the data's xy tolerance.   (In, Optional)</summary>
+        </member>
+        <member name="P:ESRI.ArcGIS.EditingTools.Densify.max_deviation">
+            <summary>The maximum distance the output segment can be from the original. This parameter only affects curves.   The default value is a function of the data's xy tolerance.   (In, Optional)</summary>
+        </member>
+        <member name="P:ESRI.ArcGIS.EditingTools.Densify.max_angle">
+            <summary>The maximum angle that the output geometry can be from the input geometry. The valid range is from 0 to 90. The default value is 10.  This parameter only affects curves.   (In, Optional)</summary>
+        </member>
+        <member name="P:ESRI.ArcGIS.EditingTools.Densify.out_feature_class">
+            <summary>Output Feature Class (out, Optional)</summary>
+        </member>
+        <member name="P:ESRI.ArcGIS.EditingTools.Densify.ToolboxDirectory">
+            <summary>The directory of this tool's toolbox.</summary>
+        </member>
+        <member name="P:ESRI.ArcGIS.EditingTools.Densify.ToolboxName">
+            <summary>The name of this tool's toolbox.</summary>
+        </member>
+        <member name="P:ESRI.ArcGIS.EditingTools.Densify.ToolName">
+            <summary>The name of this tool.</summary>
+        </member>
+        <member name="P:ESRI.ArcGIS.EditingTools.Densify.Alias">
+            <summary>The alias for this tool's toolbox.</summary>
+        </member>
+        <member name="P:ESRI.ArcGIS.EditingTools.Densify.ParameterInfo">
+            <summary>The parameters used by this tool. For internal use only.</summary>
+        </member>
+        <member name="T:ESRI.ArcGIS.EditingTools.ErasePoint">
+            <summary>Deletes points from the input that are either inside or outside the Remove Features, depending on the Operation Type.</summary>
+        </member>
+        <member name="M:ESRI.ArcGIS.EditingTools.ErasePoint.#ctor(System.Object,System.Object)">
+            <summary>Constructor that takes all required parameters for geoprocessor execution.</summary>
+            <param name="in_features">The input point features. (In, Required)</param>
+            <param name="remove_features">Input features inside or outside the Remove Features will be deleted, depending on the Operation Type parameter. (In, Required)</param>
+        </member>
+        <member name="P:ESRI.ArcGIS.EditingTools.ErasePoint.in_features">
+            <summary>The input point features. (In, Required)</summary>
+        </member>
+        <member name="P:ESRI.ArcGIS.EditingTools.ErasePoint.remove_features">
+            <summary>Input features inside or outside the Remove Features will be deleted, depending on the Operation Type parameter. (In, Required)</summary>
+        </member>
+        <member name="P:ESRI.ArcGIS.EditingTools.ErasePoint.operation_type">
+            <summary>Determines if points inside or outside the remove features will be deleted. (In, Optional)</summary>
+        </member>
+        <member name="P:ESRI.ArcGIS.EditingTools.ErasePoint.out_feature_class">
+            <summary>Output Feature Class (out, Optional)</summary>
+        </member>
+        <member name="P:ESRI.ArcGIS.EditingTools.ErasePoint.ToolboxDirectory">
+            <summary>The directory of this tool's toolbox.</summary>
+        </member>
+        <member name="P:ESRI.ArcGIS.EditingTools.ErasePoint.ToolboxName">
+            <summary>The name of this tool's toolbox.</summary>
+        </member>
+        <member name="P:ESRI.ArcGIS.EditingTools.ErasePoint.ToolName">
+            <summary>The name of this tool.</summary>
+        </member>
+        <member name="P:ESRI.ArcGIS.EditingTools.ErasePoint.Alias">
+            <summary>The alias for this tool's toolbox.</summary>
+        </member>
+        <member name="P:ESRI.ArcGIS.EditingTools.ErasePoint.ParameterInfo">
+            <summary>The parameters used by this tool. For internal use only.</summary>
+        </member>
+        <member name="T:ESRI.ArcGIS.EditingTools.ExtendLine">
+            <summary>This tool extends line segments to the first intersecting feature within a specified distance. If no intersecting feature is within the specified distance, the line segment will not be extended. Tool use is intended for quality control tasks such as cleaning up topology errors in features that were digitized without having set proper snapping environments.</summary>
+        </member>
+        <member name="M:ESRI.ArcGIS.EditingTools.ExtendLine.#ctor(System.Object)">
+            <summary>Constructor that takes all required parameters for geoprocessor execution.</summary>
+            <param name="in_features">The line input features to be extended. (In, Required)</param>
+        </member>
+        <member name="P:ESRI.ArcGIS.EditingTools.ExtendLine.in_features">
+            <summary>The line input features to be extended. (In, Required)</summary>
+        </member>
+        <member name="P:ESRI.ArcGIS.EditingTools.ExtendLine.length">
+            <summary>The maximum distance a line segment can be extended to an intersecting feature. (In, Optional)</summary>
+        </member>
+        <member name="P:ESRI.ArcGIS.EditingTools.ExtendLine.extend_to">
+            <summary>Controls whether line segments can be extended to other extended line segments within the specified extend length.
+            (In, Optional)</summary>
+        </member>
+        <member name="P:ESRI.ArcGIS.EditingTools.ExtendLine.out_feature_class">
+            <summary>Output Feature Class (out, Optional)</summary>
+        </member>
+        <member name="P:ESRI.ArcGIS.EditingTools.ExtendLine.ToolboxDirectory">
+            <summary>The directory of this tool's toolbox.</summary>
+        </member>
+        <member name="P:ESRI.ArcGIS.EditingTools.ExtendLine.ToolboxName">
+            <summary>The name of this tool's toolbox.</summary>
+        </member>
+        <member name="P:ESRI.ArcGIS.EditingTools.ExtendLine.ToolName">
+            <summary>The name of this tool.</summary>
+        </member>
+        <member name="P:ESRI.ArcGIS.EditingTools.ExtendLine.Alias">
+            <summary>The alias for this tool's toolbox.</summary>
+        </member>
+        <member name="P:ESRI.ArcGIS.EditingTools.ExtendLine.ParameterInfo">
+            <summary>The parameters used by this tool. For internal use only.</summary>
+        </member>
+        <member name="T:ESRI.ArcGIS.EditingTools.FlipLine">
+            <summary>Reverses the from-to direction of line features.</summary>
+        </member>
+        <member name="M:ESRI.ArcGIS.EditingTools.FlipLine.#ctor(System.Object)">
+            <summary>Constructor that takes all required parameters for geoprocessor execution.</summary>
+            <param name="in_features">The input line feature class or layer.  (In, Required)</param>
+        </member>
+        <member name="P:ESRI.ArcGIS.EditingTools.FlipLine.in_features">
+            <summary>The input line feature class or layer.  (In, Required)</summary>
+        </member>
+        <member name="P:ESRI.ArcGIS.EditingTools.FlipLine.out_feature_class">
+            <summary>Output Feature Class (out, Optional)</summary>
+        </member>
+        <member name="P:ESRI.ArcGIS.EditingTools.FlipLine.ToolboxDirectory">
+            <summary>The directory of this tool's toolbox.</summary>
+        </member>
+        <member name="P:ESRI.ArcGIS.EditingTools.FlipLine.ToolboxName">
+            <summary>The name of this tool's toolbox.</summary>
+        </member>
+        <member name="P:ESRI.ArcGIS.EditingTools.FlipLine.ToolName">
+            <summary>The name of this tool.</summary>
+        </member>
+        <member name="P:ESRI.ArcGIS.EditingTools.FlipLine.Alias">
+            <summary>The alias for this tool's toolbox.</summary>
+        </member>
+        <member name="P:ESRI.ArcGIS.EditingTools.FlipLine.ParameterInfo">
+            <summary>The parameters used by this tool. For internal use only.</summary>
+        </member>
+        <member name="T:ESRI.ArcGIS.EditingTools.Snap">
+            <summary>Moves points or vertices to coincide exactly with the vertices, edges, or end points of other features. Snapping rules can be specified to control whether the input vertices are snapped to the nearest vertex, edge, or endpoint within a specified distance.</summary>
+        </member>
+        <member name="M:ESRI.ArcGIS.EditingTools.Snap.#ctor(System.Object,System.Object)">
+            <summary>Constructor that takes all required parameters for geoprocessor execution.</summary>
+            <param name="in_features">The input features whose vertices will be snapped to the vertices, edges, or end points of other features. The input features can be points, multipoints, lines, or polygons. (In, Required)</param>
+            <param name="snap_environment">Enter the feature classes or feature layers containing the features you wish to snap to.     (In, Required)</param>
+        </member>
+        <member name="P:ESRI.ArcGIS.EditingTools.Snap.in_features">
+            <summary>The input features whose vertices will be snapped to the vertices, edges, or end points of other features. The input features can be points, multipoints, lines, or polygons. (In, Required)</summary>
+        </member>
+        <member name="P:ESRI.ArcGIS.EditingTools.Snap.snap_environment">
+            <summary>Enter the feature classes or feature layers containing the features you wish to snap to.     (In, Required)</summary>
+        </member>
+        <member name="P:ESRI.ArcGIS.EditingTools.Snap.out_feature_class">
+            <summary>Output Feature Class (out, Optional)</summary>
+        </member>
+        <member name="P:ESRI.ArcGIS.EditingTools.Snap.ToolboxDirectory">
+            <summary>The directory of this tool's toolbox.</summary>
+        </member>
+        <member name="P:ESRI.ArcGIS.EditingTools.Snap.ToolboxName">
+            <summary>The name of this tool's toolbox.</summary>
+        </member>
+        <member name="P:ESRI.ArcGIS.EditingTools.Snap.ToolName">
+            <summary>The name of this tool.</summary>
+        </member>
+        <member name="P:ESRI.ArcGIS.EditingTools.Snap.Alias">
+            <summary>The alias for this tool's toolbox.</summary>
+        </member>
+        <member name="P:ESRI.ArcGIS.EditingTools.Snap.ParameterInfo">
+            <summary>The parameters used by this tool. For internal use only.</summary>
+        </member>
+        <member name="T:ESRI.ArcGIS.EditingTools.TrimLine">
+            <summary> Removes portions of a line that extend a specified distance past a line intersection (dangles). Any line that does not touch another line at both endpoints can be trimmed, but only the portion of the line that extends past the intersection by the specified distance will be removed.</summary>
+        </member>
+        <member name="M:ESRI.ArcGIS.EditingTools.TrimLine.#ctor(System.Object)">
+            <summary>Constructor that takes all required parameters for geoprocessor execution.</summary>
+            <param name="in_features">The line input features to be trimmed. (In, Required)</param>
+        </member>
+        <member name="P:ESRI.ArcGIS.EditingTools.TrimLine.in_features">
+            <summary>The line input features to be trimmed. (In, Required)</summary>
+        </member>
+        <member name="P:ESRI.ArcGIS.EditingTools.TrimLine.dangle_length">
+            <summary>Line segments that are shorter than the specified Dangle Length and do not touch another line at both endpoints (dangles) will be trimmed. (In, Optional)</summary>
+        </member>
+        <member name="P:ESRI.ArcGIS.EditingTools.TrimLine.delete_shorts">
+            <summary>Controls whether line segments which are less than the dangle length and are free-standing will be deleted.
+            (In, Optional)</summary>
+        </member>
+        <member name="P:ESRI.ArcGIS.EditingTools.TrimLine.out_feature_class">
+            <summary>Output Feature Class (out, Optional)</summary>
+        </member>
+        <member name="P:ESRI.ArcGIS.EditingTools.TrimLine.ToolboxDirectory">
+            <summary>The directory of this tool's toolbox.</summary>
+        </member>
+        <member name="P:ESRI.ArcGIS.EditingTools.TrimLine.ToolboxName">
+            <summary>The name of this tool's toolbox.</summary>
+        </member>
+        <member name="P:ESRI.ArcGIS.EditingTools.TrimLine.ToolName">
+            <summary>The name of this tool.</summary>
+        </member>
+        <member name="P:ESRI.ArcGIS.EditingTools.TrimLine.Alias">
+            <summary>The alias for this tool's toolbox.</summary>
+        </member>
+        <member name="P:ESRI.ArcGIS.EditingTools.TrimLine.ParameterInfo">
+            <summary>The parameters used by this tool. For internal use only.</summary>
+        </member>
+        <member name="T:ESRI.ArcGIS.EditingTools.Generalize">
+            <summary>Simplifies the input features using a specified maximum offset tolerance. The output features will contain a subset of the original input vertices. </summary>
+        </member>
+        <member name="M:ESRI.ArcGIS.EditingTools.Generalize.#ctor(System.Object)">
+            <summary>Constructor that takes all required parameters for geoprocessor execution.</summary>
+            <param name="in_features">The polygon or line features to be generalized. (In, Required)</param>
+        </member>
+        <member name="P:ESRI.ArcGIS.EditingTools.Generalize.in_features">
+            <summary>The polygon or line features to be generalized. (In, Required)</summary>
+        </member>
+        <member name="P:ESRI.ArcGIS.EditingTools.Generalize.tolerance">
+            <summary>The tolerance sets the maximum allowable offset, which will determine the degree of simplification. This value limits the distance the output geometry can differ from the input geometry. You can specify a preferred unit of measurement. The default is the feature unit. (In, Optional)</summary>
+        </member>
+        <member name="P:ESRI.ArcGIS.EditingTools.Generalize.out_feature_class">
+            <summary>Output Feature Class (out, Optional)</summary>
+        </member>
+        <member name="P:ESRI.ArcGIS.EditingTools.Generalize.ToolboxDirectory">
+            <summary>The directory of this tool's toolbox.</summary>
+        </member>
+        <member name="P:ESRI.ArcGIS.EditingTools.Generalize.ToolboxName">
+            <summary>The name of this tool's toolbox.</summary>
+        </member>
+        <member name="P:ESRI.ArcGIS.EditingTools.Generalize.ToolName">
+            <summary>The name of this tool.</summary>
+        </member>
+        <member name="P:ESRI.ArcGIS.EditingTools.Generalize.Alias">
+            <summary>The alias for this tool's toolbox.</summary>
+        </member>
+        <member name="P:ESRI.ArcGIS.EditingTools.Generalize.ParameterInfo">
+            <summary>The parameters used by this tool. For internal use only.</summary>
+        </member>
+        <member name="T:ESRI.ArcGIS.EditingTools.EdgematchFeatures">
+             <summary>
+            Modifies input line features by spatially adjusting their shapes, guided by the specified edgematch links, so they become connected with the lines in the adjacent dataset.
+            </summary>
+        </member>
+        <member name="M:ESRI.ArcGIS.EditingTools.EdgematchFeatures.#ctor(System.Object,System.Object)">
+             <summary>Constructor that takes all required parameters for geoprocessor execution.</summary>
+             <param name="in_features"><summary>
+            Input line features to be adjusted. (In, Required)</summary></param>
+             <param name="in_link_features"><summary>
+            Input line features representing edgematch links. (In, Required)</summary></param>
+        </member>
+        <member name="P:ESRI.ArcGIS.EditingTools.EdgematchFeatures.in_features">
+             <summary>
+            Input line features to be adjusted. (In, Required)</summary>
+        </member>
+        <member name="P:ESRI.ArcGIS.EditingTools.EdgematchFeatures.in_link_features">
+             <summary>
+            Input line features representing edgematch links. (In, Required)</summary>
+        </member>
+        <member name="P:ESRI.ArcGIS.EditingTools.EdgematchFeatures.method">
+             <summary>
+            Edgematch method to be used to adjust either input features only or both input features and adjacent features to new connecting locations.  (In, Optional)</summary>
+        </member>
+        <member name="P:ESRI.ArcGIS.EditingTools.EdgematchFeatures.adjacent_features">
+             <summary>
+            Line features that are adjacent to input features. If specified, both the input and adjacent features are adjusted to meet at new connecting locations, either the midpoints of the edgematch links or locations nearest to the midpoints of the links on the border features (if specified).  (In, Optional)</summary>
+        </member>
+        <member name="P:ESRI.ArcGIS.EditingTools.EdgematchFeatures.border_features">
+             <summary>
+            Line or polygon features representing borders between the input and adjacent features. When you specify  border features, both input and adjacent features  are adjusted to meet at new connecting locations  nearest to the midpoints of the links on the border features. (In, Optional)</summary>
+        </member>
+        <member name="P:ESRI.ArcGIS.EditingTools.EdgematchFeatures.out_feature_class">
+            <summary>Output Features (out, Optional)</summary>
+        </member>
+        <member name="P:ESRI.ArcGIS.EditingTools.EdgematchFeatures.ToolboxDirectory">
+            <summary>The directory of this tool's toolbox.</summary>
+        </member>
+        <member name="P:ESRI.ArcGIS.EditingTools.EdgematchFeatures.ToolboxName">
+            <summary>The name of this tool's toolbox.</summary>
+        </member>
+        <member name="P:ESRI.ArcGIS.EditingTools.EdgematchFeatures.ToolName">
+            <summary>The name of this tool.</summary>
+        </member>
+        <member name="P:ESRI.ArcGIS.EditingTools.EdgematchFeatures.Alias">
+            <summary>The alias for this tool's toolbox.</summary>
+        </member>
+        <member name="P:ESRI.ArcGIS.EditingTools.EdgematchFeatures.ParameterInfo">
+            <summary>The parameters used by this tool. For internal use only.</summary>
+        </member>
+        <member name="T:ESRI.ArcGIS.EditingTools.GenerateEdgematchLinks">
+             <summary>
+            Finds matching but disconnected line features along the edges of the source data's area and its adjacent data's area, and generates edgematch links from the source lines to the matched adjacent lines.</summary>
+        </member>
+        <member name="M:ESRI.ArcGIS.EditingTools.GenerateEdgematchLinks.#ctor(System.Object,System.Object,System.Object,System.Object)">
+             <summary>Constructor that takes all required parameters for geoprocessor execution.</summary>
+             <param name="source_features"><summary>
+            Line features as edgematching source features.
+            All edgematch links start at source features. (In, Required)</summary></param>
+             <param name="adjacent_features"><summary>
+            Line features adjacent to source features.
+            All edgematch links end at matched adjacent features. (In, Required)</summary></param>
+             <param name="out_feature_class"><summary>
+            Output feature class 
+            containing lines representing edgematch links. (Out, Required)</summary></param>
+             <param name="search_distance"><summary>
+            The distance used to search for match candidates. 
+            A distance must be specified and it must be greater than zero.
+            You can choose a preferred unit; the default is the feature unit. (In, Required)</summary></param>
+        </member>
+        <member name="P:ESRI.ArcGIS.EditingTools.GenerateEdgematchLinks.source_features">
+             <summary>
+            Line features as edgematching source features.
+            All edgematch links start at source features. (In, Required)</summary>
+        </member>
+        <member name="P:ESRI.ArcGIS.EditingTools.GenerateEdgematchLinks.adjacent_features">
+             <summary>
+            Line features adjacent to source features.
+            All edgematch links end at matched adjacent features. (In, Required)</summary>
+        </member>
+        <member name="P:ESRI.ArcGIS.EditingTools.GenerateEdgematchLinks.out_feature_class">
+             <summary>
+            Output feature class 
+            containing lines representing edgematch links. (Out, Required)</summary>
+        </member>
+        <member name="P:ESRI.ArcGIS.EditingTools.GenerateEdgematchLinks.search_distance">
+             <summary>
+            The distance used to search for match candidates. 
+            A distance must be specified and it must be greater than zero.
+            You can choose a preferred unit; the default is the feature unit. (In, Required)</summary>
+        </member>
+        <member name="P:ESRI.ArcGIS.EditingTools.GenerateEdgematchLinks.match_fields">
+            <summary>Fields from source and target features, where target fields are from the adjacent features. If specified, each pair of fields are checked for match candidates to help determine the right match. (In, Optional)</summary>
+        </member>
+        <member name="P:ESRI.ArcGIS.EditingTools.GenerateEdgematchLinks.ToolboxDirectory">
+            <summary>The directory of this tool's toolbox.</summary>
+        </member>
+        <member name="P:ESRI.ArcGIS.EditingTools.GenerateEdgematchLinks.ToolboxName">
+            <summary>The name of this tool's toolbox.</summary>
+        </member>
+        <member name="P:ESRI.ArcGIS.EditingTools.GenerateEdgematchLinks.ToolName">
+            <summary>The name of this tool.</summary>
+        </member>
+        <member name="P:ESRI.ArcGIS.EditingTools.GenerateEdgematchLinks.Alias">
+            <summary>The alias for this tool's toolbox.</summary>
+        </member>
+        <member name="P:ESRI.ArcGIS.EditingTools.GenerateEdgematchLinks.ParameterInfo">
+            <summary>The parameters used by this tool. For internal use only.</summary>
+        </member>
+        <member name="T:ESRI.ArcGIS.EditingTools.GenerateRubbersheetLinks">
+            <summary>
+            Finds where the source line features spatially match the target line features and generates lines representing links from source locations to corresponding target locations for rubbersheeting.</summary>
+        </member>
+        <member name="M:ESRI.ArcGIS.EditingTools.GenerateRubbersheetLinks.#ctor(System.Object,System.Object,System.Object,System.Object)">
+             <summary>Constructor that takes all required parameters for geoprocessor execution.</summary>
+             <param name="source_features"><summary>
+            Line features as source features for generating rubbersheet links.
+            All links start at source features. (In, Required)</summary></param>
+             <param name="target_features"><summary>
+            Line features as target features for generating rubbersheet links.
+            All links end at matched target features. (In, Required)</summary></param>
+             <param name="out_feature_class"><summary>
+            Output feature class 
+            containing lines representing regular rubbersheet links. (Out, Required)</summary></param>
+             <param name="search_distance"><summary>
+            The distance used to search for match candidates. 
+            A distance must be specified and it must be greater than zero.
+            You can choose a preferred unit; the default is the feature unit. (In, Required)</summary></param>
+        </member>
+        <member name="P:ESRI.ArcGIS.EditingTools.GenerateRubbersheetLinks.source_features">
+             <summary>
+            Line features as source features for generating rubbersheet links.
+            All links start at source features. (In, Required)</summary>
+        </member>
+        <member name="P:ESRI.ArcGIS.EditingTools.GenerateRubbersheetLinks.target_features">
+             <summary>
+            Line features as target features for generating rubbersheet links.
+            All links end at matched target features. (In, Required)</summary>
+        </member>
+        <member name="P:ESRI.ArcGIS.EditingTools.GenerateRubbersheetLinks.out_feature_class">
+             <summary>
+            Output feature class 
+            containing lines representing regular rubbersheet links. (Out, Required)</summary>
+        </member>
+        <member name="P:ESRI.ArcGIS.EditingTools.GenerateRubbersheetLinks.search_distance">
+             <summary>
+            The distance used to search for match candidates. 
+            A distance must be specified and it must be greater than zero.
+            You can choose a preferred unit; the default is the feature unit. (In, Required)</summary>
+        </member>
+        <member name="P:ESRI.ArcGIS.EditingTools.GenerateRubbersheetLinks.match_fields">
+             <summary>
+            Lists of fields from source and target features. If specified, each pair of fields are checked for match candidates to help determine the right match. (In, Optional)</summary>
+        </member>
+        <member name="P:ESRI.ArcGIS.EditingTools.GenerateRubbersheetLinks.out_match_table">
+             <summary>
+            The output table containing complete feature matching information. (Out, Optional)</summary>
+        </member>
+        <member name="P:ESRI.ArcGIS.EditingTools.GenerateRubbersheetLinks.out_point_feature_class">
+            <summary>Output Point Feature Class (out, Optional)</summary>
+        </member>
+        <member name="P:ESRI.ArcGIS.EditingTools.GenerateRubbersheetLinks.ToolboxDirectory">
+            <summary>The directory of this tool's toolbox.</summary>
+        </member>
+        <member name="P:ESRI.ArcGIS.EditingTools.GenerateRubbersheetLinks.ToolboxName">
+            <summary>The name of this tool's toolbox.</summary>
+        </member>
+        <member name="P:ESRI.ArcGIS.EditingTools.GenerateRubbersheetLinks.ToolName">
+            <summary>The name of this tool.</summary>
+        </member>
+        <member name="P:ESRI.ArcGIS.EditingTools.GenerateRubbersheetLinks.Alias">
+            <summary>The alias for this tool's toolbox.</summary>
+        </member>
+        <member name="P:ESRI.ArcGIS.EditingTools.GenerateRubbersheetLinks.ParameterInfo">
+            <summary>The parameters used by this tool. For internal use only.</summary>
+        </member>
+        <member name="T:ESRI.ArcGIS.EditingTools.RubbersheetFeatures">
+             <summary>
+            Modifies input features by spatially adjusting them through rubbersheeting, using the specified rubbersheet links, so they are better aligned with the intended target features.</summary>
+        </member>
+        <member name="M:ESRI.ArcGIS.EditingTools.RubbersheetFeatures.#ctor(System.Object,System.Object)">
+             <summary>Constructor that takes all required parameters for geoprocessor execution.</summary>
+             <param name="in_features"><summary>
+            Input features to be adjusted. They can be points, lines, or polygons. (In, Required)</summary></param>
+             <param name="in_link_features"><summary>
+            Input line features representing regular links for rubbersheeting. (In, Required)</summary></param>
+        </member>
+        <member name="P:ESRI.ArcGIS.EditingTools.RubbersheetFeatures.in_features">
+             <summary>
+            Input features to be adjusted. They can be points, lines, or polygons. (In, Required)</summary>
+        </member>
+        <member name="P:ESRI.ArcGIS.EditingTools.RubbersheetFeatures.in_link_features">
+             <summary>
+            Input line features representing regular links for rubbersheeting. (In, Required)</summary>
+        </member>
+        <member name="P:ESRI.ArcGIS.EditingTools.RubbersheetFeatures.in_identity_links">
+             <summary>
+            Input point features representing identity links for rubbersheeting. (In, Optional)</summary>
+        </member>
+        <member name="P:ESRI.ArcGIS.EditingTools.RubbersheetFeatures.method">
+             <summary>
+            Rubbersheeting method to be used to adjust features. (In, Optional)</summary>
+        </member>
+        <member name="P:ESRI.ArcGIS.EditingTools.RubbersheetFeatures.out_feature_class">
+            <summary>Output Feature Class (out, Optional)</summary>
+        </member>
+        <member name="P:ESRI.ArcGIS.EditingTools.RubbersheetFeatures.ToolboxDirectory">
+            <summary>The directory of this tool's toolbox.</summary>
+        </member>
+        <member name="P:ESRI.ArcGIS.EditingTools.RubbersheetFeatures.ToolboxName">
+            <summary>The name of this tool's toolbox.</summary>
+        </member>
+        <member name="P:ESRI.ArcGIS.EditingTools.RubbersheetFeatures.ToolName">
+            <summary>The name of this tool.</summary>
+        </member>
+        <member name="P:ESRI.ArcGIS.EditingTools.RubbersheetFeatures.Alias">
+            <summary>The alias for this tool's toolbox.</summary>
+        </member>
+        <member name="P:ESRI.ArcGIS.EditingTools.RubbersheetFeatures.ParameterInfo">
+            <summary>The parameters used by this tool. For internal use only.</summary>
+        </member>
+        <member name="T:ESRI.ArcGIS.EditingTools.TransferAttributes">
+             <summary>
+            Finds where the source line features spatially match the target line features and transfers specified attributes from source features to matched target features.
+            </summary>
+        </member>
+        <member name="M:ESRI.ArcGIS.EditingTools.TransferAttributes.#ctor(System.Object,System.Object,System.Object,System.Object)">
+             <summary>Constructor that takes all required parameters for geoprocessor execution.</summary>
+             <param name="source_features"><summary>
+            Line features from which to transfer attributes. (In, Required)</summary></param>
+             <param name="target_features"><summary>
+            Line features to which to transfer attributes. The specified transfer fields are added to the target features. (In, Required)</summary></param>
+             <param name="transfer_fields"><summary>
+            List of source fields to be transferred to target features. At least one field must be specified. (In, Required)</summary></param>
+             <param name="search_distance"><summary>
+            The distance used to search for match candidates. 
+            A distance must be specified and it must be greater than zero.
+            You can choose a preferred unit; the default is the feature unit. (In, Required)</summary></param>
+        </member>
+        <member name="P:ESRI.ArcGIS.EditingTools.TransferAttributes.source_features">
+             <summary>
+            Line features from which to transfer attributes. (In, Required)</summary>
+        </member>
+        <member name="P:ESRI.ArcGIS.EditingTools.TransferAttributes.target_features">
+             <summary>
+            Line features to which to transfer attributes. The specified transfer fields are added to the target features. (In, Required)</summary>
+        </member>
+        <member name="P:ESRI.ArcGIS.EditingTools.TransferAttributes.transfer_fields">
+             <summary>
+            List of source fields to be transferred to target features. At least one field must be specified. (In, Required)</summary>
+        </member>
+        <member name="P:ESRI.ArcGIS.EditingTools.TransferAttributes.search_distance">
+             <summary>
+            The distance used to search for match candidates. 
+            A distance must be specified and it must be greater than zero.
+            You can choose a preferred unit; the default is the feature unit. (In, Required)</summary>
+        </member>
+        <member name="P:ESRI.ArcGIS.EditingTools.TransferAttributes.match_fields">
+             <summary>
+            Lists of fields from source and target features. If specified, each pair of fields are checked for match candidates to help determine the right match. (In, Optional)</summary>
+        </member>
+        <member name="P:ESRI.ArcGIS.EditingTools.TransferAttributes.out_match_table">
+             <summary>
+            The output table containing complete feature matching information. (Out, Optional)</summary>
+        </member>
+        <member name="P:ESRI.ArcGIS.EditingTools.TransferAttributes.out_feature_class">
+            <summary>Output Feature Class (out, Optional)</summary>
+        </member>
+        <member name="P:ESRI.ArcGIS.EditingTools.TransferAttributes.transfer_rule_fields">
+             <summary>
+            Sets rules to control which source feature will be used to transfer attributes from when multiple source features matched target feature(s). The source feature to be used for the transfer is determined by the specified rule fields and the ruling values, which are ranked from high to low priority as they appear in the specified list. If no rules are set, the longest of the multiple matched source features will be used for the transfer. (In, Optional)</summary>
+        </member>
+        <member name="P:ESRI.ArcGIS.EditingTools.TransferAttributes.ToolboxDirectory">
+            <summary>The directory of this tool's toolbox.</summary>
+        </member>
+        <member name="P:ESRI.ArcGIS.EditingTools.TransferAttributes.ToolboxName">
+            <summary>The name of this tool's toolbox.</summary>
+        </member>
+        <member name="P:ESRI.ArcGIS.EditingTools.TransferAttributes.ToolName">
+            <summary>The name of this tool.</summary>
+        </member>
+        <member name="P:ESRI.ArcGIS.EditingTools.TransferAttributes.Alias">
+            <summary>The alias for this tool's toolbox.</summary>
+        </member>
+        <member name="P:ESRI.ArcGIS.EditingTools.TransferAttributes.ParameterInfo">
+            <summary>The parameters used by this tool. For internal use only.</summary>
+        </member>
+        <member name="T:ESRI.ArcGIS.EditingTools.TransformFeatures">
+             <summary>
+             Converts the coordinates of input features from one location to another through scaling,  
+            shifting, and rotating based on the transformation links between known corresponding control points.</summary>
+        </member>
+        <member name="M:ESRI.ArcGIS.EditingTools.TransformFeatures.#ctor(System.Object,System.Object)">
+             <summary>Constructor that takes all required parameters for geoprocessor execution.</summary>
+             <param name="in_features"><summary>
+            Input features, the coordinates of which are to be transformed. (In, Required)</summary></param>
+             <param name="in_link_features"><summary>
+            Input link features that link known control points for the transformation. (In, Required)</summary></param>
+        </member>
+        <member name="P:ESRI.ArcGIS.EditingTools.TransformFeatures.in_features">
+             <summary>
+            Input features, the coordinates of which are to be transformed. (In, Required)</summary>
+        </member>
+        <member name="P:ESRI.ArcGIS.EditingTools.TransformFeatures.in_link_features">
+             <summary>
+            Input link features that link known control points for the transformation. (In, Required)</summary>
+        </member>
+        <member name="P:ESRI.ArcGIS.EditingTools.TransformFeatures.method">
+             <summary>
+            Transformation method to use to convert input feature coordinates. (In, Optional)</summary>
+        </member>
+        <member name="P:ESRI.ArcGIS.EditingTools.TransformFeatures.out_link_table">
+             <summary>
+            The output table containing input links and their residual
+             errors. (Out, Optional)</summary>
+        </member>
+        <member name="P:ESRI.ArcGIS.EditingTools.TransformFeatures.out_rmse">
+            <summary>Output RMSE (out, Optional)</summary>
+        </member>
+        <member name="P:ESRI.ArcGIS.EditingTools.TransformFeatures.out_feature_class">
+            <summary>Output Feature Class (out, Optional)</summary>
+        </member>
+        <member name="P:ESRI.ArcGIS.EditingTools.TransformFeatures.ToolboxDirectory">
+            <summary>The directory of this tool's toolbox.</summary>
+        </member>
+        <member name="P:ESRI.ArcGIS.EditingTools.TransformFeatures.ToolboxName">
+            <summary>The name of this tool's toolbox.</summary>
+        </member>
+        <member name="P:ESRI.ArcGIS.EditingTools.TransformFeatures.ToolName">
+            <summary>The name of this tool.</summary>
+        </member>
+        <member name="P:ESRI.ArcGIS.EditingTools.TransformFeatures.Alias">
+            <summary>The alias for this tool's toolbox.</summary>
+        </member>
+        <member name="P:ESRI.ArcGIS.EditingTools.TransformFeatures.ParameterInfo">
+            <summary>The parameters used by this tool. For internal use only.</summary>
+        </member>
+        <member name="T:ESRI.ArcGIS.EditingTools.AlignFeatures">
+             <summary>
+            Identifies inconsistent portions of the input features against target features within a search distance and aligns them with the target features.</summary>
+        </member>
+        <member name="M:ESRI.ArcGIS.EditingTools.AlignFeatures.#ctor(System.Object,System.Object,System.Object)">
+             <summary>Constructor that takes all required parameters for geoprocessor execution.</summary>
+             <param name="in_features"><summary>
+            Input line or polygon features to be adjusted. (In, Required)</summary></param>
+             <param name="target_features"><summary>
+            Input lines or polygons as target features. (In, Required)</summary></param>
+             <param name="search_distance"><summary>
+            The distance used to search for match candidates. 
+            A distance must be specified and it must be greater than zero.
+            You can choose a preferred unit; the default is the feature unit. (In, Required)</summary></param>
+        </member>
+        <member name="P:ESRI.ArcGIS.EditingTools.AlignFeatures.in_features">
+             <summary>
+            Input line or polygon features to be adjusted. (In, Required)</summary>
+        </member>
+        <member name="P:ESRI.ArcGIS.EditingTools.AlignFeatures.target_features">
+             <summary>
+            Input lines or polygons as target features. (In, Required)</summary>
+        </member>
+        <member name="P:ESRI.ArcGIS.EditingTools.AlignFeatures.search_distance">
+             <summary>
+            The distance used to search for match candidates. 
+            A distance must be specified and it must be greater than zero.
+            You can choose a preferred unit; the default is the feature unit. (In, Required)</summary>
+        </member>
+        <member name="P:ESRI.ArcGIS.EditingTools.AlignFeatures.match_fields">
+            <summary>Fields from input and target features. If specified, each pair of fields are checked for match candidates to help determine the right match. (In, Optional)</summary>
+        </member>
+        <member name="P:ESRI.ArcGIS.EditingTools.AlignFeatures.out_feature_class">
+            <summary>Output Features (out, Optional)</summary>
+        </member>
+        <member name="P:ESRI.ArcGIS.EditingTools.AlignFeatures.ToolboxDirectory">
+            <summary>The directory of this tool's toolbox.</summary>
+        </member>
+        <member name="P:ESRI.ArcGIS.EditingTools.AlignFeatures.ToolboxName">
+            <summary>The name of this tool's toolbox.</summary>
+        </member>
+        <member name="P:ESRI.ArcGIS.EditingTools.AlignFeatures.ToolName">
+            <summary>The name of this tool.</summary>
+        </member>
+        <member name="P:ESRI.ArcGIS.EditingTools.AlignFeatures.Alias">
+            <summary>The alias for this tool's toolbox.</summary>
+        </member>
+        <member name="P:ESRI.ArcGIS.EditingTools.AlignFeatures.ParameterInfo">
+            <summary>The parameters used by this tool. For internal use only.</summary>
+        </member>
+        <member name="T:ESRI.ArcGIS.EditingTools.CalculateTransformationErrors">
+            <summary>
+            Calculates residue errors and root mean square error (RMSE) based on the coordinates of the input links between known control points to be used for spatial data transformation.</summary>
+        </member>
+        <member name="M:ESRI.ArcGIS.EditingTools.CalculateTransformationErrors.#ctor(System.Object,System.Object)">
+             <summary>Constructor that takes all required parameters for geoprocessor execution.</summary>
+             <param name="in_link_features"><summary>
+            Input link features that link known control points for spatial transformation. (In, Required)</summary></param>
+             <param name="out_link_table"><summary>
+            The output table containing input links feature IDs and their residual
+             errors. The residual errors for input links are written to the specified output table that contains the following fields: (Out, Required)</summary></param>
+        </member>
+        <member name="P:ESRI.ArcGIS.EditingTools.CalculateTransformationErrors.in_link_features">
+             <summary>
+            Input link features that link known control points for spatial transformation. (In, Required)</summary>
+        </member>
+        <member name="P:ESRI.ArcGIS.EditingTools.CalculateTransformationErrors.out_link_table">
+             <summary>
+            The output table containing input links feature IDs and their residual
+             errors. The residual errors for input links are written to the specified output table that contains the following fields: (Out, Required)</summary>
+        </member>
+        <member name="P:ESRI.ArcGIS.EditingTools.CalculateTransformationErrors.method">
+             <summary>
+            Transformation method to use to convert input feature coordinates. (In, Optional)</summary>
+        </member>
+        <member name="P:ESRI.ArcGIS.EditingTools.CalculateTransformationErrors.out_rmse">
+            <summary>Output RMSE (out, Optional)</summary>
+        </member>
+        <member name="P:ESRI.ArcGIS.EditingTools.CalculateTransformationErrors.ToolboxDirectory">
+            <summary>The directory of this tool's toolbox.</summary>
+        </member>
+        <member name="P:ESRI.ArcGIS.EditingTools.CalculateTransformationErrors.ToolboxName">
+            <summary>The name of this tool's toolbox.</summary>
+        </member>
+        <member name="P:ESRI.ArcGIS.EditingTools.CalculateTransformationErrors.ToolName">
+            <summary>The name of this tool.</summary>
+        </member>
+        <member name="P:ESRI.ArcGIS.EditingTools.CalculateTransformationErrors.Alias">
+            <summary>The alias for this tool's toolbox.</summary>
+        </member>
+        <member name="P:ESRI.ArcGIS.EditingTools.CalculateTransformationErrors.ParameterInfo">
+            <summary>The parameters used by this tool. For internal use only.</summary>
+        </member>
+        <member name="T:ESRI.ArcGIS.EditingTools.SplitLineByMatch">
+            <summary>Splits input features based on matching relationships to obtain better corresponding line segmentation.</summary>
+        </member>
+        <member name="M:ESRI.ArcGIS.EditingTools.SplitLineByMatch.#ctor(System.Object,System.Object,System.Object,System.Object,System.Object)">
+             <summary>Constructor that takes all required parameters for geoprocessor execution.</summary>
+             <param name="in_features">The input line features to be split. They must be prematched with the matched features. (In, Required)</param>
+             <param name="matched_features"><summary>
+            Matched features are used as reference when splitting the input features. They must be prematched with the input features. (In, Required)</summary></param>
+             <param name="in_match_table"><summary>
+            A table that includes matching information between input and matched features. (In, Required)</summary></param>
+             <param name="out_feature_class"><summary>
+            The output feature class containing split lines and original lines that are not split. (Out, Required)</summary></param>
+             <param name="search_distance"><summary>
+            The distance value used to determine split locations. The value must be greater than 0. If units are not specified, the units of the input will be used. (In, Required)</summary></param>
+        </member>
+        <member name="P:ESRI.ArcGIS.EditingTools.SplitLineByMatch.in_features">
+            <summary>The input line features to be split. They must be prematched with the matched features. (In, Required)</summary>
+        </member>
+        <member name="P:ESRI.ArcGIS.EditingTools.SplitLineByMatch.matched_features">
+             <summary>
+            Matched features are used as reference when splitting the input features. They must be prematched with the input features. (In, Required)</summary>
+        </member>
+        <member name="P:ESRI.ArcGIS.EditingTools.SplitLineByMatch.in_match_table">
+             <summary>
+            A table that includes matching information between input and matched features. (In, Required)</summary>
+        </member>
+        <member name="P:ESRI.ArcGIS.EditingTools.SplitLineByMatch.out_feature_class">
+             <summary>
+            The output feature class containing split lines and original lines that are not split. (Out, Required)</summary>
+        </member>
+        <member name="P:ESRI.ArcGIS.EditingTools.SplitLineByMatch.search_distance">
+             <summary>
+            The distance value used to determine split locations. The value must be greater than 0. If units are not specified, the units of the input will be used. (In, Required)</summary>
+        </member>
+        <member name="P:ESRI.ArcGIS.EditingTools.SplitLineByMatch.in_features_as">
+             <summary>
+            Specifies whether the input features in the match table are source features or target features, so the correct features will be split. (In, Optional)</summary>
+        </member>
+        <member name="P:ESRI.ArcGIS.EditingTools.SplitLineByMatch.out_point_feature_class">
+             <summary>
+            The output point feature class
+            containing points that represent split locations.
+             (Out, Optional)</summary>
+        </member>
+        <member name="P:ESRI.ArcGIS.EditingTools.SplitLineByMatch.split_dangle">
+            <summary>Specifies whether dangling lines will be split.
+            (In, Optional)</summary>
+        </member>
+        <member name="P:ESRI.ArcGIS.EditingTools.SplitLineByMatch.min_match_group_length">
+            <summary>A given match group will only participate in the splitting process if either the total length of the input features or the total length of the matched features are greater than the specified value. (In, Optional)</summary>
+        </member>
+        <member name="P:ESRI.ArcGIS.EditingTools.SplitLineByMatch.min_split_length">
+            <summary>If a split will result in one or both of the split pieces being shorter than the specified value, the split will not occur. (In, Optional)</summary>
+        </member>
+        <member name="P:ESRI.ArcGIS.EditingTools.SplitLineByMatch.split_fields">
+             <summary>
+            A list of numeric fields from input features. Their field values will be based on the proportions of the split lines. (In, Optional)</summary>
+        </member>
+        <member name="P:ESRI.ArcGIS.EditingTools.SplitLineByMatch.ToolboxDirectory">
+            <summary>The directory of this tool's toolbox.</summary>
+        </member>
+        <member name="P:ESRI.ArcGIS.EditingTools.SplitLineByMatch.ToolboxName">
+            <summary>The name of this tool's toolbox.</summary>
+        </member>
+        <member name="P:ESRI.ArcGIS.EditingTools.SplitLineByMatch.ToolName">
+            <summary>The name of this tool.</summary>
+        </member>
+        <member name="P:ESRI.ArcGIS.EditingTools.SplitLineByMatch.Alias">
+            <summary>The alias for this tool's toolbox.</summary>
+        </member>
+        <member name="P:ESRI.ArcGIS.EditingTools.SplitLineByMatch.ParameterInfo">
+            <summary>The parameters used by this tool. For internal use only.</summary>
+        </member>
+    </members>
+</doc>
