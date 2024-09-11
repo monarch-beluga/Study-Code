@@ -4,40 +4,35 @@
 # @File    : temp.py
 # @Software: PyChar
 
-from selenium import webdriver
-from selenium.webdriver.common.by import By
-import requests
 import os
-import time
+import rasterio
+import numpy as np
+import pandas as pd
 
+cut_fill_file = r"D:\Work\Problem\CutFill.tif"
+out_file = os.path.splitext(cut_fill_file)[0] + '.csv'
 
-def get(img):
-    src = img.get_attribute('src').split('@')[0]
-    name = img.get_attribute('alt').strip('[]-').split('_')[-1] + '.png'
-    image = requests.get(src).content
-    with open(outpath + name, 'wb') as fp:
-        fp.write(image)
-    print(name, "爬取成功！！！")
+with rasterio.open(cut_fill_file) as src:
+    profile = src.profile
+    data = src.read(1)
 
+scale = profile['transform'][0]
+data[data == profile['nodata']] = np.nan
+cut_count = data[data < 0].shape[0]
+fill_count = data[data > 0].shape[0]
+zero_count = data[data == 0].shape[0]
 
-headers = {
-    'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) '
-                  'Chrome/86.0.4240.111 Safari/537.36 '
-}
+cut_area = cut_count * scale * scale
+fill_area = fill_count * scale * scale
+zero_area = zero_count * scale * scale
 
-outpath = 'E:/images/'
-if not os.path.exists(outpath):
-    os.makedirs(outpath)
-# e_path = r'msedgedriver'
-master = webdriver.Chrome()
+cut_v = -(data[data < 0] * scale * scale).sum()
+fill_v = (data[data > 0] * scale * scale).sum()
 
-url = r'https://www.bilibili.com/opus/945372132325457943?spm_id_from=333.999.0.0'
-
-master.get(url)
-
-time.sleep(1)
-imgs = master.find_elements(By.XPATH, '//*[@id="app"]/div[4]/div[1]/div[2]/p/img')
-for i in imgs[1, -1]:
-    get(i)
-master.quit()
-
+df = pd.DataFrame({
+    "类型": ["不变", "挖方", "填方"],
+    "像元数": [zero_count, cut_count, fill_count],
+    "面积(平方米)": [zero_area, cut_area, fill_area],
+    "体积(立方米)": [0, cut_v, fill_v]
+})
+df.to_csv(out_file, sep=',', index=False)

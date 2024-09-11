@@ -41,7 +41,7 @@ data_address = r'D:\Work\Problem\JX.shp'
 # 需要下载的最高级行政区名
 keywords = '江西'
 # 高德地图API的Key
-key_file = r'D:\System_Path\高德地图Key\Key.txt'
+key_file = r'D:\System\高德地图Key\Key.txt'
 with open(key_file) as fp:
     key = fp.readline()
 # 返回下几级行政区
