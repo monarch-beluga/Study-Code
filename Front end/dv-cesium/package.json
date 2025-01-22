@@ -1,0 +1,28 @@
+{
+  "name": "dv-cesium",
+  "private": false,
+  "version": "0.0.0",
+  "type": "module",
+  "scripts": {
+    "dev": "vite --open",
+    "build": "vite build",
+    "preview": "vite preview --open"
+  },
+  "dependencies": {
+    "@fortawesome/fontawesome-svg-core": "^6.7.2",
+    "@fortawesome/free-solid-svg-icons": "^6.7.2",
+    "@fortawesome/vue-fontawesome": "^3.0.0-5",
+    "axios": "^1.7.9",
+    "copy-webpack-plugin": "^12.0.2",
+    "element-plus": "^2.9.2",
+    "vue": "^3.5.13",
+    "vue-router": "^4.5.0"
+  },
+  "devDependencies": {
+    "@dvgis/dc-sdk": "^4.1.1",
+    "@dvgis/dc-sdk-types": "^1.0.0",
+    "@dvgis/vite-plugin-dc": "^4.0.1",
+    "@vitejs/plugin-vue": "^5.2.1",
+    "vite": "^6.0.7"
+  }
+}

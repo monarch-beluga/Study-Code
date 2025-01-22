@@ -1,0 +1,55 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Vite App</title>
+  </head>
+  <body>
+    <div id="map"></div>
+
+    <div class="toolbar left" >
+      <div class="buttons">
+        <button class="layui-btn" lay-on="">全图</button>
+      </div>
+      <div class="buttons">
+        <button class="layui-btn">绘制</button>
+      </div>
+      <div class="buttons">
+        <button class="layui-btn">清除</button>
+      </div>
+      <div class="buttons">
+        <button class="layui-btn">截图</button>
+      </div>
+    </div>
+
+    <div id="switchBaseMap" title="切换底图" style="background-image: url('/topo.jpg');"></div>
+
+    <div class="top-status-bar">
+      <form
+              class="layui-form areabox"
+              action="#"
+              lay-filter="example"
+              onsubmit="return false;"
+      >
+        <div class="layui-inline">
+          <div class="layui-input-inline">
+            <input
+                    type="text"
+                    name="modules"
+                    lay-verify="required"
+                    id="dropdown"
+                    placeholder="搜索或直接选择"
+                    readonly
+                    class="layui-input"
+                    style="width: 200px"
+            />
+          </div>
+        </div>
+      </form>
+    </div>
+
+    <script type="module" src="/src/main.js"></script>
+  </body>
+</html>

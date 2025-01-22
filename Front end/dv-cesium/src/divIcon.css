@@ -1,0 +1,97 @@
+
+
+.public-map-popup{
+    position: absolute;
+    bottom: 80px;
+    pointer-events: all;
+    display: block;
+    transform-origin: left bottom;
+    transform: translate(-50%);
+    border-radius: 5px;
+    z-index: auto;
+}
+.public-map-popup .map-name {
+    width: 112px;
+    line-height: 24px;
+    text-align: center;
+    color: #ffeb3b;
+    word-wrap: break-word;
+    font-size: 14px;
+    font-weight: 700;
+}
+.public-map-popup .map-icon img{
+    width: 20px;
+    height: 20px;
+}
+.public-map-popup .map-icon {
+    margin: auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 36px;
+    height: 36px;
+    background: radial-gradient(circle at center, #ffffff4d 20%, #ffb300e6);
+    border-radius: 50%;
+    box-shadow: 0 0 10px #ffb300;
+}
+
+.public-map-popup:after{
+    content: "";
+    position: absolute;
+    bottom: -80px;
+    left: calc(50% - 3px);
+    display: block;
+    width: 3px;
+    height: 80px;
+    background: linear-gradient(to bottom, #ffb300cc, #ffb30033);
+}
+.div-icon {
+    padding: 0 !important;
+}
+.yjc-box .map-icon {
+    background: radial-gradient(circle at center, #ffffff4d 20%, #0ffe47e6);
+    box-shadow: 0 0 10px #0ffe47;
+}
+.yjc-box:after {
+    background: linear-gradient(to bottom, #0ffe47cc, #0ffe4733);
+}
+.public-map-popup-two {
+    position: absolute;
+    bottom: 160px;
+    pointer-events: all;
+    display: block;
+    transform-origin: left bottom;
+    transform: translate(-50%);
+    border-radius: 5px;
+    z-index: auto;
+}
+.public-map-popup-two .marsBlueGradientPnl {
+    padding: 2px 6px;
+    margin: 0;
+    color: #fff;
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    border-radius: 5px;
+    line-height: 28px;
+    width: 260px;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    word-wrap: break-word;
+    font-size: 14px;
+    box-shadow: inset 0 0 40px #409eff;
+}
+.qyfb-box .map-icon {
+    background: radial-gradient(circle at center, #ffffff4d 20%, #0088ffe6);
+    box-shadow: 0 0 10px #08f;
+}
+.qyfb-box:after {
+    background: linear-gradient(to bottom, #08fc, #08f3);
+}
+.popup-img{
+    width: 100%;
+    height: 100%;
+}
+
+

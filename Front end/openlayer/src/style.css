@@ -1,0 +1,258 @@
+html,
+body,
+#map {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    width: 100%;
+}
+
+#switchBaseMap{
+    display: block;
+    position: fixed;
+    right: 20px;
+    top: 66px;
+    background-color: white;
+    background-size: cover;
+    width: 55px;
+    height: 55px;
+    cursor: pointer;
+    border-radius: 4px;
+}
+
+.toolbar{
+    position: fixed;
+    left: 0;
+    top: 66px;
+}
+
+.buttons{
+    margin: 10px 0 0 10px;
+}
+
+.buttons .layui-btn{
+    color: #000;
+    border-radius: 6px;
+    background-color: #fff;
+}
+
+.top-status-bar{
+    position: fixed;
+    left: 0;
+    top: 0;
+    right: 0;
+    height: 56px;
+    align-items: center;
+    padding: 0 16px;
+    display: flex;
+    box-shadow: 0 1px 1px rgba(0, 0, 0, 0.02), 0 2px 6px rgba(0, 0, 0, 0.03);
+    background: linear-gradient(to bottom, rgba(255, 255, 255, 0.75), rgba(255, 255, 255, 0.6));
+}
+
+.areabox {
+    width: 320px;
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    justify-content: center;
+}
+
+.areabox .layui-inline {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.areabox .layui-input-inline {
+    width: calc(100% - 44px) !important;
+}
+
+.areabox .layui-input {
+    height: 36px;
+    line-height: 36px;
+    background-color: rgba(255, 255, 255, 0.75);
+    border: none;
+    border-radius: 18px;
+    padding: 0 20px;
+    width: 100%;
+    font-size: 14px;
+    color: rgba(0, 0, 0, 0.85);
+    transition: all 0.2s ease;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+    text-align: center;
+}
+
+.areabox .layui-input::placeholder {
+    text-align: center;
+    color: rgba(0, 0, 0, 0.35);
+}
+
+.areabox .layui-input:hover,
+.areabox .layui-input:focus {
+    background-color: rgba(255, 255, 255, 0.85);
+    transform: translateY(-1px);
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.08);
+}
+
+/* 弹窗样式 */
+
+.search-popup {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    background: transparent;
+}
+
+.search-popup .layui-form {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+}
+
+.select-container {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    padding: 20px 25px;
+}
+
+.search-popup .layui-form-select .layui-input {
+    height: 46px;
+    line-height: 46px;
+    font-size: 16px;
+    padding: 0 15px;
+    border: 1px solid rgba(255, 255, 255, 0.5);
+    border-radius: 12px;
+    background-color: rgba(255, 255, 255, 0.5);
+    transition: all 0.3s;
+    backdrop-filter: blur(5px);
+    -webkit-backdrop-filter: blur(5px);
+}
+
+.search-popup .layui-form-select .layui-input:hover {
+    background-color: rgba(255, 255, 255, 0.6);
+    border-color: rgba(255, 255, 255, 0.7);
+}
+
+.search-popup .layui-form-select .layui-input:focus {
+    background-color: rgba(255, 255, 255, 0.7);
+    border-color: rgba(30, 159, 255, 0.8);
+}
+
+/* 下拉列表样式 */
+.search-popup .layui-form-select dl {
+    max-height: 300px;
+    top: 47px;
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    background: rgba(255, 255, 255, 0.9);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.5);
+    z-index: 99999999 !important;
+    position: absolute;
+    width: 100%;
+}
+
+.search-popup .layui-form-select dl dd {
+    height: 42px;
+    line-height: 42px;
+    padding: 0 15px;
+    font-size: 15px;
+    color: rgba(0, 0, 0, 0.75);
+}
+
+.search-popup .layui-form-select dl dd:hover {
+    background-color: rgba(30, 159, 255, 0.1);
+}
+
+.search-popup .layui-form-select dl dd.layui-this {
+    background-color: rgba(30, 159, 255, 0.8);
+    color: #fff;
+}
+
+/* 按钮样式 */
+.button-container {
+    padding: 18px;
+    text-align: center;
+    background: rgba(255, 255, 255, 0.5);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border-top: 1px solid rgba(255, 255, 255, 0.3);
+    border-radius: 0 0 16px 16px;
+    margin: 0 -1px -1px -1px;
+}
+
+
+.button-container .layui-btn {
+    width: 45%;
+    height: 45px;
+    line-height: 45px;
+    font-size: 16px;
+    border-radius: 12px;
+    transition: all 0.3s;
+}
+
+.button-container .layui-btn-normal {
+    background: linear-gradient(135deg, #4f46e5, #3b82f6);
+    box-shadow: 0 4px 12px rgba(59, 130, 246, 0.3);
+}
+
+.button-container .layui-btn-primary {
+    background: rgba(255, 255, 255, 0.5);
+    border: 1px solid rgba(255, 255, 255, 0.5);
+    color: rgba(0, 0, 0, 0.75);
+    backdrop-filter: blur(5px);
+    -webkit-backdrop-filter: blur(5px);
+}
+
+.button-container .layui-btn-primary:hover{
+    border: 1px solid rgb(0, 150, 136);
+    color: rgba(0, 0, 0);
+}
+
+.button-container .layui-btn + .layui-btn {
+    margin-left: 4%;
+}
+
+/* 弹窗样式 */
+.layui-layer {
+    border-radius: 16px !important;
+    background: linear-gradient(
+            to bottom,
+            rgba(255, 255, 255, 0.75),
+            rgba(255, 255, 255, 0.6)
+    ) !important;
+    backdrop-filter: blur(10px) !important;
+    -webkit-backdrop-filter: blur(10px) !important;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1) !important;
+    border: 1px solid rgba(255, 255, 255, 0.3) !important;
+}
+
+/* 标题栏样式 */
+.layui-layer-title {
+    height: 56px !important;
+    line-height: 56px !important;
+    font-size: 18px !important;
+    color: rgba(0, 0, 0, 0.85) !important;
+    background: rgba(255, 255, 255, 0.95) !important;
+    backdrop-filter: blur(10px) !important;
+    -webkit-backdrop-filter: blur(10px) !important;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.3) !important;
+    padding: 0 25px !important;
+    font-weight: 500;
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.02) !important;
+    border-radius: 16px 16px 0 0 !important;
+}
+
+/* 内容区域样式 */
+.layui-layer-content {
+    background: transparent !important;
+    overflow: visible !important;
+}
+
+
