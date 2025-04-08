@@ -1,5 +1,7 @@
 <script setup>
 import {inject, ref, toRefs} from "vue";
+import YjzyPage from "./YjzyPage.vue";
+import JydwPage from "./JydwPage.vue";
 
 const staticData = inject("staticData")
 let title = staticData.title
@@ -10,14 +12,17 @@ const {info} = toRefs(props)
 
 const currentTab = ref(info.value)
 const tabs = [
-    "应急空间",
-    "三级防控",
-    "360全景",
-    "应急物资",
-    "救援队伍",
-    "作战图"
+  "应急空间",
+  "三级防控",
+  "360全景",
+  "应急物资",
+  "救援队伍",
+  "作战图"
 ]
-
+const tab1s = {
+  "应急物资": YjzyPage,
+  "救援队伍": JydwPage
+}
 const changePage = inject("changePage")
 function funClick(index) {
   changePage(index)
@@ -32,11 +37,9 @@ function funClick(index) {
     <div class="main-container">
       <div class="container page-container">
         <div class="w100 h100 img-box">
-          <el-image
-              :preview-src-list="['zzt.png']"
-              :initial-index="0"
-              :src="'zzt.png'">
-          </el-image>
+          <div class="content">
+            <component :is="tab1s[currentTab]"></component>
+          </div>
         </div>
       </div>
     </div>
@@ -51,10 +54,13 @@ function funClick(index) {
       </div>
     </div>
   </div>
-
 </template>
 
 <style scoped>
+.content{
+  padding: 20px 0;
+  height: calc(100% - 32px);
+}
 .main-content .main-container{
   position: absolute;
   inset: 54px 40px;
@@ -73,6 +79,8 @@ function funClick(index) {
   position: absolute;
   width: 100%;
   height: 100%;
+  pointer-events: auto;
+  background: #1c73c333
 }
 .main-header{
   position: absolute;

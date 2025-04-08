@@ -50,10 +50,16 @@ function pageFun(index) {
   }
 }
 
-const changePage = inject("changePage")
-function zztClick() {
-  changePage("作战图")
+const tab1s = {
+  "应急物资": "应急物资",
+  "救援队伍": "救援队伍",
+  "作战图": "作战图"
 }
+const changePage = inject("changePage")
+function funClick(index) {
+  changePage(index)
+}
+
 
 </script>
 
@@ -74,11 +80,14 @@ function zztClick() {
       {{index}}
     </div>
     <div
-        :class="{active: currentTab === '作战图'}"
-        @click="currentTab='作战图';zztClick()"
+        v-for="(tab, index) in tab1s"
+        :key="index"
+        :class="{active: currentTab === index}"
+        @click="currentTab=index;funClick(index)"
     >
-      作战图
+      {{index}}
     </div>
+
   </div>
 </template>
 

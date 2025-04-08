@@ -114,6 +114,11 @@ const staticData = {
     "yjkjJson": "/jsonData/anyi_yjkj.json",
     "htmlLayerParam": htmlLayerParam,
     "sjfkLayerName": sjfkLayerName,
+    "yjwzJson": "/jsonData/anyi_yjwz.json",
+    "jydwJson":{
+        "园区救援队伍": "/jsonData/anyi_yqjy.json",
+        "企业救援队伍": "/jsonData/anyi_qyjy.json",
+    }
 }
 
 const app = createApp(App)

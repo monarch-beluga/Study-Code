@@ -14,7 +14,7 @@ import "layui/dist/layui.js"
 
 const staticData = {
     "center": [115.01998901367189, 28.324127197265625],
-    "map": "./map.json",
+    "map": "/jsonData/map.json",
     "tdtKey": "8899fd3e86aa994f71465b1c56a98727",
 }
 
