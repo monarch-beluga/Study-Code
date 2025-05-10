@@ -5,17 +5,18 @@ import DC from '@dvgis/vite-plugin-dc'
 // https://vite.dev/config/
 export default defineConfig({
   server: {
-    proxy: {
-      "/api": {
-        target: "http://localhost:8080/zhyq",
-        changeOrigin: true,
-        rewrite:(path) => path.replace(/^\/api/, "/api")
-      },
-    },
+    // proxy: {
+    //   "/api": {
+    //     target: "http://localhost:8080/zhyq",
+    //     changeOrigin: true,
+    //     rewrite:(path) => path.replace(/^\/api/, "/api")
+    //   },
+    // },
   },
   plugins: [vue(), DC()],
   base: "./",
   build:{
+    assetsInlineLimit: 4096,
     rollupOptions:{
       output:{
         manualChunks(id) {

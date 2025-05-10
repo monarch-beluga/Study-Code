@@ -5,23 +5,26 @@
 # @Software: PyChar
 
 import os
+import geopandas as gpd
 import pandas as pd
+from glob import glob
 
-os.chdir(r"D:\Work\安义数据采集\安义化工集中区VR数据采集")
 
-in_file = r"安义化工集中区-救援队伍信息导入模板.xls"
-df = pd.read_excel(in_file)
-ds = {
-    "firmName": "企业名称",
-    "responsiblePersonName": "负责人",
-    "contactNumber": "负责人电话",
-    "responsiblePersonName2": "负责人2",
-    "contactNumber2": "负责人电话2",
-}
-df2 = df.loc[df['类型'] == '企业', :]
-df1 = pd.DataFrame()
-for i in ds:
-    df1[i] = df2[ds[i]]
-df1.to_json("anyi_qyjy.json", indent=2, orient='records', force_ascii=False)
+def polygon_to_coords_str(polygon):
+    # 获取外环坐标
+    return ";".join([f"{x},{y},120" for x, y, z in polygon.exterior.coords])
 
+
+os.chdir(r"D:\Work\安义数据采集\企业")
+
+gdf = gpd.read_file("化工集中区企业分布_shape_pro.shp")
+
+gdf["feature"] = gdf.geometry.apply(polygon_to_coords_str)
+
+gdf["area"] = gdf.geometry.area
+
+df = gdf[["feature", "area", "O_Name"]]
+df["area"] /= 10000
+
+df.to_json("anyi_qyfw.json", double_precision=6, indent=2, orient='records', force_ascii=False)
 

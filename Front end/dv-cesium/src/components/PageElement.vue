@@ -1,10 +1,14 @@
 <script setup>
-import {inject, ref, toRefs} from 'vue'
-import YjkjPage from "./YjkjPage.vue";
-import SjfkPage from "./SjfkPage.vue";
-import KzqjPage from "./KzqjPage.vue";
+import {inject, provide, ref, toRefs} from 'vue'
+import YjkjPage from "./yjkj/YjkjPage.vue";
+import SjfkPage from "./sjfk/SjfkPage.vue";
+import YqgkPage from "./yqgk/YqgkPage.vue";
+import rsPage from "./fxy/rsPage.vue";
+import QjmnPage from "./qjmn/QjmnPage.vue";
 
 const staticData = inject("staticData")
+const stopSpeak = inject("stopSpeak")
+const initViewrPs = inject("initViewrPs")
 
 const props = defineProps({
   info: String
@@ -14,41 +18,58 @@ const {info} = toRefs(props)
 const currentTab = ref(info.value)
 const mapTreeChange = inject("mapTreeChange")
 const showSjfkLayer = inject("showSjfkLayer")
+const initQjmnLayer = inject("initQjmnLayer")
 let title = staticData.title
 
 const tabs = {
+  "园区概况": YqgkPage,
+  "风险源": rsPage,
   "应急空间": YjkjPage,
-  "三级防控": SjfkPage,
-  "360全景": KzqjPage,
+  "多级防控": SjfkPage,
+  "情景模拟": QjmnPage,
 }
 
 function sjfkLayerClose() {
-  let l = ['1', '2', '3'];
+  let l = ['1', '2', '3', '4'];
   l.forEach((item) => {
     showSjfkLayer(item, false)
   })
 }
 
-function yjkjLayerClose() {
-  for (let i=6; i <= 14; i++)
-    mapTreeChange(i, false)
-}
-
 function pageFun(index) {
-  if (index === "应急空间"){
+  if (currentTab.value !== index){
+    currentTab.value = index
+    stopSpeak()
+    initViewrPs()
+    for (let i=5; i <= 13; i++)
+      mapTreeChange(i, false)
+    mapTreeChange(15, false)
+    mapTreeChange(16, false)
+    mapTreeChange(17, false)
+    mapTreeChange(18, false)
     sjfkLayerClose()
-    yjkjLayerClose()
-    mapTreeChange(6, true)
-  }
-  else if (index === "三级防控"){
-    yjkjLayerClose()
-    showSjfkLayer("1", true)
-  }
-  else {
-    sjfkLayerClose()
-    yjkjLayerClose()
+    initQjmnLayer()
+
+    if (index === "应急空间"){
+      mapTreeChange(6, true)
+    }
+    else if (index === "多级防控"){
+      showSjfkLayer("1", true)
+    }
+    else if (index === "园区概况"){
+      mapTreeChange(5, true)
+    }
+    else if (index === "风险源"){
+      mapTreeChange(15, true)
+      mapTreeChange(16, true)
+    }
+    else if (index === "情景模拟"){
+      mapTreeChange(18, true)
+
+    }
   }
 }
+provide("pageFun", pageFun)
 
 const tab1s = {
   "应急物资": "应急物资",
@@ -75,7 +96,7 @@ function funClick(index) {
         v-for="(tab, index) in tabs"
         :key="index"
         :class="{active: currentTab === index}"
-        @click="currentTab=index;pageFun(index)"
+        @click="pageFun(index)"
       >
       {{index}}
     </div>

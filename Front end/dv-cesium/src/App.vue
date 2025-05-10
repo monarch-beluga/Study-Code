@@ -2,18 +2,18 @@
 import MapPage from "./components/MapPage.vue";
 import './divIcon.css'
 import {provide, ref} from "vue";
-import ZztPage from "./components/ZztPage.vue";
-import TablePage from "./components/TablePage.vue";
+import ZztPage from "./components/zzt/ZztPage.vue";
+import TablePage from "./components/table/TablePage.vue";
 
-let currTab = ref("应急空间")
+let currTab = ref("园区概况")
 const tabs = {
   "园区概况": MapPage,
-  "风险源": ZztPage,
+  "风险源": MapPage,
   "应急空间": MapPage,
-  "应急物资": TablePage,
-  "三级防控": MapPage,
-  "360全景": MapPage,
+  "多级防控": MapPage,
+  "情景模拟": MapPage,
   "突发事件模拟": MapPage,
+  "应急物资": TablePage,
   "救援队伍": TablePage,
   "作战图": ZztPage,
 }

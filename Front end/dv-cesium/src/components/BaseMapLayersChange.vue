@@ -12,16 +12,16 @@ const layers = {
   "高德影像": 3,
 }
 const img_src = {
-  0: "/images/vecBaseLayer.png",
-  1: "/images/imgBaseLayer.png",
-  2: "/images/vecBaseLayer.png",
-  3: "/images/imgBaseLayer.png",
+  0: "./images/vecBaseLayer.png",
+  1: "./images/imgBaseLayer.png",
+  2: "./images/vecBaseLayer.png",
+  3: "./images/imgBaseLayer.png",
 }
 
-let isTer = false
+let isTer = ref(false)
 function terChange(){
-  setTer(isTer)
-  isTer = !isTer
+  isTer.value = !isTer.value
+  setTer(isTer.value)
 }
 
 </script>
@@ -43,7 +43,7 @@ function terChange(){
     </ul>
   </div>
   <div class="show-terrain" style="margin-left: 10px; color: rgb(255, 255, 255);">
-    <el-checkbox @change="terChange" label="显示地形" checked></el-checkbox>
+    <el-checkbox @change="terChange" label="显示地形" :checked="isTer"></el-checkbox>
   </div>
 </template>
 

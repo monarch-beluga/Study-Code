@@ -1,6 +1,7 @@
 import { createApp } from 'vue'
 import "element-plus/dist/index.css"
 import Element from "element-plus";
+import * as ElementPlusIconsVue from '@element-plus/icons-vue'
 import './style.css'
 import App from './App.vue'
 
@@ -29,81 +30,97 @@ const htmlLayerParam = {
         "jsonPath": "/jsonData/anyi_yjkj.json",
         "class_name": "public-map-popup yjc-box",
         "img_src": "./img/mapicon/yjc.png",
-        "type": "1",
         "layer": "yjc-yq",
     },
     7: {
         "jsonPath": "/jsonData/anyi_yjkj.json",
-        "class_name": "public-map-popup ysf-box",
-        "img_src": "./img/mapicon/ysf.png",
-        "type": "2",
-        "layer": "fm-yq",
+        "class_name": "public-map-popup yjc-box",
+        "img_src": "./img/mapicon/yjc.png",
+        "layer": "ysc-yq",
     },
     8: {
         "jsonPath": "/jsonData/anyi_yjkj.json",
-        "class_name": "public-map-popup sk-box",
-        "img_src": "./img/mapicon/sk.png",
-        "type": "5",
-        "layer": "sk-yq",
+        "class_name": "public-map-popup ysf-box",
+        "img_src": "./img/mapicon/ysf.png",
+        "layer": "chz-yq",
     },
     9: {
         "jsonPath": "/jsonData/anyi_yjkj.json",
         "class_name": "public-map-popup sk-box",
         "img_src": "./img/mapicon/kt.png",
         "layer": "kt-yq",
-        "type": "6"
+        "vLayer": "vkt-yq",
     },
     10: {
-        "jsonPath": "/jsonData/anyi_yjkj.json",
-        "class_name": "public-map-popup xfs-box",
-        "img_src": "./img/mapicon/gouqu.png",
-        "layer": "gq-yq",
-        "type": "7"
-    },
-    11: {
-        "jsonPath": "/jsonData/anyi_yjkj.json",
-        "class_name": "public-map-popup xfs-box",
-        "img_src": "./img/mapicon/ql.png",
-        "layer": "ql-yq",
-        "type": "8"
-    },
-    12: {
-        "jsonPath": "/jsonData/anyi_yjkj.json",
-        "class_name": "public-map-popup xfs-box",
-        "img_src": "./img/mapicon/sd.png",
-        "layer": "sd-yq",
-        "type": "9"
-    },
-    13: {
-        "jsonPath": "/jsonData/anyi_yjkj.json",
-        "class_name": "public-map-popup xsf-box",
-        "img_src": "./img/mapicon/wd.png",
-        "layer": "wd-yq",
-        "type": "10"
-    },
-    14: {
         "jsonPath": "/jsonData/anyi_yjkj.json",
         "class_name": "public-map-popup sk-box",
         "img_src": "./img/mapicon/zb.png",
         "layer": "zb-yq",
-        "type": "11"
+    },
+    11: {
+        "jsonPath": "/jsonData/anyi_yjkj.json",
+        "class_name": "public-map-popup xfs-box",
+        "img_src": "./img/mapicon/gouqu.png",
+        "layer": "gouqu-yq",
+        "vLayer": "vgouqu-yq"
+    },
+    12: {
+        "jsonPath": "/jsonData/anyi_yjkj.json",
+        "class_name": "public-map-popup sk-box",
+        "img_src": "./img/mapicon/sk.png",
+        "layer": "sk-yq",
+        "vLayer": "vsk-yq",
+    },
+    13: {
+        "jsonPath": "/jsonData/anyi_yjkj.json",
+        "class_name": "public-map-popup xfs-box",
+        "img_src": "./img/mapicon/ql.png",
+        "layer": "ql-yq",
+    },
+    17: {
+        "jsonPath": "/jsonData/anyi_yjkj.json",
+        "class_name": "public-map-popup xfs-box",
+        "img_src": "./img/mapicon/sd.png",
+        "layer": "sd-yq",
+    },
+    18: {
+        "jsonPath": "/jsonData/anyi_yjkj.json",
+        "layer": "sg-yq",
+    },
+    15: {
+        "jsonPath": "/jsonData/anyi_rs.json",
+        "layer": "rs-yb",
+        "class_name": "public-map-popup fxy-ordinary",
+        "img_src": "./img/mapicon/fxy-yb.png",
+        "type": "一般",
+    },
+    16: {
+        "jsonPath": "/jsonData/anyi_rs.json",
+        "layer": "rs-jd",
+        "class_name": "public-map-popup fxy-larger-b",
+        "img_src": "./img/mapicon/fxy-zd-b.png",
+        "type": "较大",
     },
 }
 
 const sjfkLayerName = {
-    "1": "一级防控",
-    "2": "二级防控",
-    "3": "三级防控",
+    "1": ["djfk1", "djfkv1"],
+    "2": ["djfk2", "djfkv2"],
+    "3": ["djfk3", "djfkv3"],
+    "4": ["djfk4", "djfkv4"]
 }
 
 const staticData = {
     "title": "安义化工园区“一园一策一图”VR平台",
     "tilePath": [
+        // "/gouqu_3dtiles/tileset.json",
         "/3dtiles/1/tileset.json",
         "/3dtiles/2/tileset.json",
         "/3dtiles/3/tileset.json",
         "/3dtiles/4/tileset.json",
         "/3dtiles/5/tileset.json",
+        "/3dtiles/6/tileset.json",
+
     ],
     // "tilePath": "http://182.109.88.42:10010/xinganTileset/tileset.json",
     "tdtKey": "8899fd3e86aa994f71465b1c56a98727",
@@ -118,10 +135,19 @@ const staticData = {
     "jydwJson":{
         "园区救援队伍": "/jsonData/anyi_yqjy.json",
         "企业救援队伍": "/jsonData/anyi_qyjy.json",
+    },
+    "qjmn": {
+        1: "/jsonData/anyi_qjmn1.json",
+        2: "/jsonData/anyi_qjmn1.json",
+        3: "/jsonData/anyi_qjmn3.json",
+        4: "/jsonData/anyi_qjmn1.json",
     }
 }
 
 const app = createApp(App)
+for (const [key, component] of Object.entries(ElementPlusIconsVue)) {
+    app.component(key, component)
+}
 app.use(Element)
 app.provide('staticData', staticData)
 app.mount("#app")
