@@ -1,5 +1,6 @@
 <script setup>
 import {inject, ref, toRefs} from "vue";
+import {useRouter} from "vue-router";
 
 const staticData = inject("staticData")
 let title = staticData.title
@@ -8,17 +9,18 @@ const props = defineProps({
 })
 const {info} = toRefs(props)
 
-const currentTab = ref(info.value)
-const tabs = [
-    "园区概况",
-    "风险源",
-    "应急空间",
-    "多级防控",
-    "情景模拟",
-    "应急物资",
-    "救援队伍",
-    "作战图"
-]
+const uRouter = useRouter()
+
+const tabs = {
+  "/map/main/survey":  "园区概况",
+  "/map/main/rs":  "风险源",
+  "/map/main/space":  "应急空间",
+  "/map/main/pac": "多级防控",
+  "/map/main/pd": "情景模拟",
+  "/table/supplies": "应急物资",
+  "/table/rt": "救援队伍",
+  "/zzt": "作战图"
+}
 
 const changePage = inject("changePage")
 function funClick(index) {
@@ -46,10 +48,10 @@ function funClick(index) {
     </div>
     <div class="page-mode">
       <div
-          v-for="tab in tabs"
+          v-for="(tab, index) in tabs"
           :key="tab"
-          :class="{active: currentTab === tab}"
-          @click="currentTab=tab;funClick(tab)"
+          :class="{active: uRouter.currentRoute.value.path === index}"
+          @click="uRouter.push(index)"
       >
         {{tab}}
       </div>

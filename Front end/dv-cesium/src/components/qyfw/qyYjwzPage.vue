@@ -1,7 +1,8 @@
 <script setup>
 
-import {inject, ref, toRefs} from "vue";
+import {inject, onMounted, provide, ref, toRefs} from "vue";
 import axios from "axios";
+import PanContainer from "../PanContainer.vue";
 
 const props = defineProps({
   info: String
@@ -12,6 +13,8 @@ const staticData = inject("staticData");
 
 let key = ref(true)
 let tableData = []
+const showQyYjwzLayer = inject("showQyYjwzLayer")
+const yjwzPan = ref()
 
 function getYjwzData(index) {
   let url = staticData.api + staticData.yjwzJson + `?firmName=${index}`
@@ -29,9 +32,13 @@ function getYjwzData(index) {
     })
     key.value = !key.value
   })
-
 }
-getYjwzData(info.value)
+
+onMounted(()=>{
+  getYjwzData(info.value)
+  showQyYjwzLayer(info.value, yjwzPan.value)
+})
+
 
 </script>
 
@@ -55,6 +62,7 @@ getYjwzData(info.value)
               <el-table-column prop="quantity" label="数量"/>
             </el-table>
           </div>
+          <PanContainer ref="yjwzPan"></PanContainer>
         </div>
       </div>
     </div>

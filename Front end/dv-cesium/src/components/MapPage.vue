@@ -7,6 +7,7 @@ import ToolBarRight from "./ToolBarRight.vue"
 import PanContainer from "./PanContainer.vue"
 import {inject, onMounted, provide, ref, render, toRefs} from 'vue'
 import qyPageElement from "./qyfw/qyPageElement.vue";
+import {useRouter} from "vue-router";
 
 const staticData = inject("staticData")
 
@@ -42,27 +43,31 @@ function getDivIconPopupHtml(class_name, map_name, img_src){
         `
 }
 
-function getDivPopupHtml(name, mainFuncName, facilityImg){
+function getDivPopupHtml(name, mainFuncName, facilityImg, capacity){
 
-  /*
-  <div class="public-map-popup-two">
+  if (capacity !== "\\")
+    return `
+          <div class="public-map-popup-two">
             <div class="marsBlueGradientPnl">
-              <div>企业名称：${name}</div>
+              <div>所属单位：${name}</div>
               <div>作用：${mainFuncName}</div>
+              <div>容量：${capacity}立方米</div>
               <img class="popup-img" src='${facilityImg}'/>
             </div>
           </div>
-  */
-
-  return `
+        `
+  else
+    return `
           <div class="public-map-popup-two">
             <div class="marsBlueGradientPnl">
-              <div>企业名称：${name}</div>
+              <div>所属单位：${name}</div>
               <div>作用：${mainFuncName}</div>
               <img class="popup-img" src='${facilityImg}'/>
             </div>
           </div>
         `
+
+
 }
 
 function getQjmnDivPopupHtml(content){
@@ -78,14 +83,14 @@ function getQjmnDivPopupHtml(content){
         `
 }
 
-function getRsDivPopupHtml(name, riskSourcesName, riskLevel){
+function getRsDivPopupHtml(materialName, riskSourcesName, riskLevel){
   return `
           <div class="public-map-popup-three">
             <div></div>
             <div class="marsBlueGradientPnl">
-              <li>企业名称：${name}</li>
+              <li>行业类别：${materialName}</li>
               <li>风险等级: ${riskLevel}</li>
-              <li>行业类别：${riskSourcesName}</div>
+              <li>风险物质：${riskSourcesName}</div>
             </div>
           </div>
         `
@@ -101,13 +106,14 @@ function getYjkjLayer(layer, type){
           let position = new DC.Position(record.lng, record.lat)
           let divIcon = new DC.DivIcon(position, getDivIconPopupHtml(param.class_name, record.name, param.img_src))
           divIcon.on(DC.MouseEventType.CLICK, e=>{
-            if (viewer.getLayer('popup'))
-              viewer.getLayer('popup').remove()
-            let popupLayer = new DC.HtmlLayer("popup").addTo(viewer)
+            let popupLayer = viewer.getLayer('popup')
+            viewer.removeLayer(popupLayer)
+            viewer.addLayer(popupLayer)
+            popupLayer.clear()
             let popupDivIcon = new DC.DivIcon(position, getDivPopupHtml(record.firmName, record.mainFuncName,
-                staticData.api + '/' + record.facilityImg))
+                staticData.api + '/' + record.facilityImg, record.capacity))
             popupDivIcon.on(DC.MouseEventType.CLICK, e=>{
-              viewer.getLayer('popup').remove()
+              popupLayer.clear()
             })
             popupDivIcon.addTo(popupLayer)
           })
@@ -117,8 +123,44 @@ function getYjkjLayer(layer, type){
   })
 }
 
-function getQyYjkjLayer(layer, name){
+function getQyYjwzLayer(layer, name, pan){
+  let param = staticData.htmlLayerParam[21]
+  axios.get(staticData.api + param.jsonPath).then((response) => {
+    let data = response.data
+    data.forEach((record) => {
+      if (name === record.Name || record.Name === "园区"){
+        let position = new DC.Position(record.lng, record.lat)
+        let divIcon = new DC.DivIcon(position, getDivIconPopupHtml(param.class_name, "应急物资", param.img_src))
+        divIcon.on(DC.MouseEventType.CLICK, e=>{
+          pan.title_text.innerHTML = record.Name
+          pan.iframe.setAttribute('src', record.url)
+          pan.panShow = true
+        })
+        divIcon.addTo(layer)
+      }
+    })
+  })
 
+}
+
+function initQyYjwzLayer(){
+  let layer = viewer.getLayer('qy_yjwz');
+  if (layer)
+    layer.clear()
+  else{
+    layer = new DC.HtmlLayer('qy_yjwz')
+    viewer.addLayer(layer)
+  }
+}
+provide("initQyYjwzLayer", initQyYjwzLayer)
+function showQyYjwzLayer(name, pan){
+  initQyYjkjLayer()
+  let layer = viewer.getLayer('qy_yjkj');
+  getQyYjwzLayer(layer, name, pan)
+}
+provide("showQyYjwzLayer", showQyYjwzLayer)
+
+function getQyYjkjLayer(layer, name){
   axios.get("api/jsonData/anyi_yjkj.json").then((response) => {
     let data = response.data
     data.forEach((record, index) => {
@@ -126,6 +168,18 @@ function getQyYjkjLayer(layer, name){
         let param = staticData.htmlLayerParam[record.type]
         let position = new DC.Position(record.lng, record.lat)
         let divIcon = new DC.DivIcon(position, getDivIconPopupHtml(param.class_name, record.name, param.img_src))
+        divIcon.on(DC.MouseEventType.CLICK, e=>{
+          let popupLayer = viewer.getLayer('popup')
+          viewer.removeLayer(popupLayer)
+          viewer.addLayer(popupLayer)
+          popupLayer.clear()
+          let popupDivIcon = new DC.DivIcon(position, getDivPopupHtml(record.firmName, record.mainFuncName,
+              staticData.api + '/' + record.facilityImg, record.capacity))
+          popupDivIcon.on(DC.MouseEventType.CLICK, e=>{
+            popupLayer.clear()
+          })
+          popupDivIcon.addTo(popupLayer)
+        })
         divIcon.addTo(layer)
       }
     })
@@ -157,14 +211,15 @@ function getRsLayer(layer, type){
     data.forEach((record, index) => {
       if (record.riskLevel === param.type){
         let position = new DC.Position(record.lon, record.lat)
-        let divIcon = new DC.DivIcon(position, getDivIconPopupHtml(param.class_name, record.materialName, param.img_src))
+        let divIcon = new DC.DivIcon(position, getDivIconPopupHtml(param.class_name, record.name, param.img_src))
         divIcon.on(DC.MouseEventType.CLICK, e=>{
-          if (viewer.getLayer('popup'))
-            viewer.getLayer('popup').remove()
-          let popupLayer = new DC.HtmlLayer("popup").addTo(viewer)
-          let popupDivIcon = new DC.DivIcon(position, getRsDivPopupHtml(record.name, record.riskSourcesName, record.riskLevel))
+          let popupLayer = viewer.getLayer('popup')
+          viewer.removeLayer(popupLayer)
+          viewer.addLayer(popupLayer)
+          popupLayer.clear()
+          let popupDivIcon = new DC.DivIcon(position, getRsDivPopupHtml(record.materialName, record.riskSourcesName, record.riskLevel))
           popupDivIcon.on(DC.MouseEventType.CLICK, e=>{
-            viewer.getLayer('popup').remove()
+            popupLayer.clear()
           })
           popupDivIcon.addTo(popupLayer)
         })
@@ -189,6 +244,7 @@ function getQyfbLayer(layer, type){
   })
 }
 
+const kzPan = ref(null)
 function getKzqjLayer(layer, type){
   let param = staticData.htmlLayerParam[type]
   axios.get(staticData.api + param.jsonPath).then((response) => {
@@ -197,16 +253,11 @@ function getKzqjLayer(layer, type){
       let position = new DC.Position(record.lng, record.lat, record.ele)
       let divIcon = new DC.DivIcon(position, getDivIconPopupHtml(param.class_name, record.name, param.img_src))
       divIcon.on(DC.MouseEventType.CLICK, e=>{
-        let pc = document.querySelector(".panorama-container")
-        pc.setAttribute("style", "")
-
-        let title = document.querySelector(".panorama-container .title div")
-        title.innerHTML = record.name
-
-        let iframe = document.querySelector(".panorama-container .content iframe")
-        if (!iframe.getAttribute('src'))
-          iframe.setAttribute('src', record.url)
-      })
+        kzPan.value.title_text.innerHTML = record.name
+        if (kzPan.value.iframe.getAttribute("src") !== record.url + "?startscene=" + record.scene_name)
+          kzPan.value.iframe.setAttribute('src', record.url + "?startscene=" + record.scene_name)
+        kzPan.value.panShow = true
+        })
       divIcon.addTo(layer)
     })
   })
@@ -216,7 +267,7 @@ function getSjfkLayer(htmlLayer, vLayer, level){
   axios.get(staticData.api + staticData.yjkjJson + `?preLevel=${level}`).then((response) => {
     let data = response.data
     data.forEach(record => {
-      if (record.preLevel === level){
+      if (record.preLevel.search(level) !== -1){
         if (record.type === 18){
           addSgLayer(vLayer, record)
         }
@@ -224,6 +275,18 @@ function getSjfkLayer(htmlLayer, vLayer, level){
           let param = staticData.htmlLayerParam[record.type]
           let position = new DC.Position(record.lng, record.lat, record.ele)
           let divIcon = new DC.DivIcon(position, getDivIconPopupHtml(param.class_name, record.name, param.img_src))
+          divIcon.on(DC.MouseEventType.CLICK, e=>{
+            let popupLayer = viewer.getLayer('popup')
+            viewer.removeLayer(popupLayer)
+            viewer.addLayer(popupLayer)
+            popupLayer.clear()
+            let popupDivIcon = new DC.DivIcon(position, getDivPopupHtml(record.firmName, record.mainFuncName,
+                staticData.api + '/' + record.facilityImg, record.capacity))
+            popupDivIcon.on(DC.MouseEventType.CLICK, e=>{
+              popupLayer.clear()
+            })
+            popupDivIcon.addTo(popupLayer)
+          })
           divIcon.addTo(htmlLayer)
           if (record.type === 9 || record.type === 12){
             if (record.feature !== null){
@@ -249,6 +312,36 @@ function getSjfkLayer(htmlLayer, vLayer, level){
     })
   })
 }
+
+function getLineLayer(layer, type){
+  let param = staticData.htmlLayerParam[type]
+  axios.get(staticData.api + param.jsonPath).then((response) => {
+    let data = response.data
+    data.forEach(record => {
+      let polyline = new DC.Polyline(record.feature)
+      polyline.setStyle({
+        width: param.width,
+        material: DC.Color.fromCssColorString(param.color),
+      })
+      layer.addOverlay(polyline)
+    })
+  })
+}
+
+function showLineLayer(type, check){
+  let param = staticData.htmlLayerParam[type]
+  let layer  = viewer.getLayer(param.layer);
+  if (layer){
+    layer.show = check
+  }
+  else {
+    if (check){
+      layer = new DC.VectorLayer(param.layer).addTo(viewer)
+      getLineLayer(layer, type)
+    }
+  }
+}
+provide("showLineLayer", showLineLayer)
 
 function showRsLayer(type, check){
   let param = staticData.htmlLayerParam[type]
@@ -319,11 +412,11 @@ function computeCircle(radius) {
 function addSgLayer(layer, item){
   if (item.feature === null)
     return
-  let plc = new DC.PolylineVolume(item.feature, computeCircle(2))
+  let plc = new DC.PolylineVolume(item.feature, computeCircle(1))
   plc.setStyle({
     "cornerType": 1,
     "fill": true,
-    "material": DC.Color.AQUA.withAlpha(0.8)
+    "material": DC.Color.AQUA.withAlpha(0.5)
   })
   let polyline = new DC.Polyline(item.feature)
   polyline.setStyle({
@@ -450,12 +543,14 @@ function showYjkjLayer(type, check){
 function viewFlyToPoint(e){
   let flyP = DC.Position.fromArray(e.position)
   let position = new DC.Position(e.position[0], e.position[1])
-  if (viewer.getLayer('popup'))
-    viewer.getLayer('popup').remove()
-  let popupLayer = new DC.HtmlLayer("popup").addTo(viewer)
-  let popupDivIcon = new DC.DivIcon(position, getDivPopupHtml(e.firmName, e.mainFuncName, staticData.api + '/' + e.facilityImg))
+  let popupLayer = viewer.getLayer('popup')
+  viewer.removeLayer(popupLayer)
+  viewer.addLayer(popupLayer)
+  popupLayer.clear()
+  let popupDivIcon = new DC.DivIcon(position, getDivPopupHtml(e.firmName, e.mainFuncName,
+      staticData.api + '/' + e.facilityImg, e.capacity))
   popupDivIcon.on(DC.MouseEventType.CLICK, e=>{
-    viewer.getLayer('popup').remove()
+    popupLayer.clear()
   })
   popupDivIcon.addTo(popupLayer)
   viewer.flyToPosition(flyP)
@@ -464,12 +559,13 @@ function viewFlyToPoint(e){
 function viewFlyRsToPoint(e){
   let flyP = DC.Position.fromArray(e.position)
   let position = new DC.Position(e.position[0], e.position[1])
-  if (viewer.getLayer('popup'))
-    viewer.getLayer('popup').remove()
-  let popupLayer = new DC.HtmlLayer("popup").addTo(viewer)
-  let popupDivIcon = new DC.DivIcon(position, getRsDivPopupHtml(e.name, e.riskSourcesName, e.riskLevel))
+  let popupLayer = viewer.getLayer('popup')
+  viewer.removeLayer(popupLayer)
+  viewer.addLayer(popupLayer)
+  popupLayer.clear()
+  let popupDivIcon = new DC.DivIcon(position, getRsDivPopupHtml(e.materialName, e.riskSourcesName, e.riskLevel))
   popupDivIcon.on(DC.MouseEventType.CLICK, e=>{
-    viewer.getLayer('popup').remove()
+    popupLayer.clear()
   })
   popupDivIcon.addTo(popupLayer)
   viewer.flyToPosition(flyP)
@@ -550,9 +646,6 @@ const qjmnFun = async (path) => {
           })
         })
         circle.addTo(vLayer)
-      }
-      else if (feature.type === "z"){
-
       }
       else if (feature.type === 'l'){
         let polyline = new DC.Polyline(feature.feature)
@@ -696,7 +789,6 @@ function showQyfwLayer(name){
 }
 
 provide("qjmnFun", qjmnFun)
-provide("getDivPopupHtml", getDivPopupHtml)
 provide("showInitLayer", showInitLayer)
 provide("showGqLayer", showGqLayer)
 provide("showSgLayer", showSgLayer)
@@ -718,7 +810,17 @@ provide("initViewrPs", initViewrPs)
 provide("initQjmnLayer", initQjmnLayer)
 let measure = undefined
 let viewer = undefined
-
+const uRouter = useRouter()
+const tabs = {
+  "/map/main/survey":  "园区概况",
+  "/map/main/rs":  "风险源",
+  "/map/main/space":  "应急空间",
+  "/map/main/pac": "多级防控",
+  "/map/main/pd": "情景模拟",
+  "/table/supplies": "应急物资",
+  "/table/rt": "救援队伍",
+  "/zzt": "作战图"
+}
 function initViewer() {
   viewer = new DC.Viewer('viewer-container')
   measure = new DC.Measure(viewer)
@@ -778,18 +880,20 @@ function initViewer() {
   JsonToWall(areaLayer,staticData.api + staticData.htmlLayerParam[4].jsonPath)
 
   tc = new DC.TrackController(viewer)
+  new DC.HtmlLayer("popup").addTo(viewer)
 
-  if (info.value === "园区概况")
+  if (tabs[uRouter.currentRoute.value.path] === "园区概况")
     mapTreeChange(5, true)
-  if (info.value === "应急空间")
+  if (tabs[uRouter.currentRoute.value.path] === "应急空间")
     mapTreeChange(6, true)
-  else if(info.value === "多级防控")
+  else if(tabs[uRouter.currentRoute.value.path] === "多级防控")
     showSjfkLayer("1", true)
-  else if(info.value === "风险源") {
+  else if(tabs[uRouter.currentRoute.value.path] === "风险源") {
     mapTreeChange(15, true)
     mapTreeChange(16, true)
+    mapTreeChange(19, true)
   }
-  else if (info.value === "情景模拟"){
+  else if (tabs[uRouter.currentRoute.value.path] === "情景模拟"){
     mapTreeChange(18, true)
   }
 }
@@ -817,13 +921,14 @@ function changePage1(i) {
 provide("changePage1", changePage1)
 
 function qyEnter(name){
+  uRouter.push('/map/sub/companyInfo')
   currPageTab.value = "qyPage"
   infos.value.qyPage = name
   for (let i=5; i <= 13; i++)
     mapTreeChange(i, false)
   mapTreeChange(15, false)
   mapTreeChange(16, false)
-  let data = showQyfwLayer(name)
+  showQyfwLayer(name)
 }
 provide("qyEnter", qyEnter)
 
@@ -844,7 +949,7 @@ onMounted(() => {
     <div class="content">
       <div :class="mainClass[currPageTab]" id="MainContent">
         <ToolBarRight ref="toolBar"></ToolBarRight>
-        <PanContainer></PanContainer>
+        <PanContainer ref="kzPan"></PanContainer>
         <div class="w100 h100 relative">
           <component :is="pageElemntTabs[currPageTab]" :info="infos[currPageTab]"></component>
         </div>

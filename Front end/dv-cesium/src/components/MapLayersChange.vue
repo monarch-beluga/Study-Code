@@ -86,8 +86,18 @@ const data = [
         id: 16,
         label: "较大",
         children: []
+      },
+      {
+        id: 19,
+        label: "危化品路线",
+        children: []
       }
     ]
+  },
+  {
+    id: 20,
+    label: "河流水系",
+    children: []
   },
   {
     id: 4,
@@ -121,6 +131,8 @@ const showRsLayer = inject("showRsLayer")
 const showSgLayer = inject("showSgLayer")
 
 const showGqLayer = inject("showGqLayer")
+
+const showLineLayer = inject("showLineLayer")
 
 function layerChangeShow(e, check){
   switch(e.id){
@@ -157,6 +169,10 @@ function layerChangeShow(e, check){
       break
     case 18:
       showSgLayer(e.id, check)
+      break
+    case 19:
+    case 20:
+      showLineLayer(e.id, check)
       break
     case 15:
     case 16:

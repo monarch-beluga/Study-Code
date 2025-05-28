@@ -94,12 +94,12 @@
     height: 100%;
 }
 .fxy-ordinary .map-icon {
-    background: radial-gradient(circle at center, #ffffff4d 20%, #ffc900e6);
-    box-shadow: 0 0 10px #ffc900;
+    background: radial-gradient(circle at center, #ffffff4d 20%, rgba(255, 213, 70, 0.9));
+    box-shadow: 0 0 10px #ffe16e;
 }
 .fxy-larger-b .map-icon {
-    background: radial-gradient(circle at center, #ffffff4d 20%, #ffa500e6);
-    box-shadow: 0 0 10px orange;
+    background: radial-gradient(circle at center, #ffffff4d 20%, rgba(255, 106, 0, 0.9));
+    box-shadow: 0 0 10px #ff6a00;
 }
 .public-map-popup-three {
     position: absolute;

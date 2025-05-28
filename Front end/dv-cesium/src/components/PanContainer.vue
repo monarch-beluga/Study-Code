@@ -1,24 +1,25 @@
 <script setup>
 import {faClose} from "@fortawesome/free-solid-svg-icons";
 import {FontAwesomeIcon} from "@fortawesome/vue-fontawesome";
+import {ref} from "vue";
 
-function panorameClose() {
-  let pc = document.querySelector(".panorama-container")
-  pc.setAttribute("style", "display: none")
-}
+const panShow = ref(false)
+const title_text = ref(null)
+const iframe = ref(null)
+defineExpose({panShow, title_text, iframe})
 
 </script>
 
 <template>
-  <div class="panorama-container" style="display: none">
+  <div class="panorama-container" v-show="panShow">
     <div class="title">
-      <div></div>
-      <div class="close cursor-p" @click="panorameClose">
+      <div ref="title_text"></div>
+      <div class="close cursor-p" @click="panShow=false">
         <font-awesome-icon :icon="faClose" />
       </div>
     </div>
     <div class="content">
-      <iframe class="w100 h100" src></iframe>
+      <iframe ref="iframe" class="w100 h100" src allow="xr-spatial-tracking"></iframe>
     </div>
   </div>
 </template>

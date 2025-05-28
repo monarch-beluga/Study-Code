@@ -2,6 +2,7 @@
 import {inject, ref, toRefs} from "vue";
 import YjzyPage from "./YjzyPage.vue";
 import JydwPage from "./JydwPage.vue";
+import {useRouter} from "vue-router";
 
 const staticData = inject("staticData")
 let title = staticData.title
@@ -9,21 +10,20 @@ const props = defineProps({
   info: String
 })
 const {info} = toRefs(props)
-
-const currentTab = ref(info.value)
-const tabs = [
-  "园区概况",
-  "风险源",
-  "应急空间",
-  "多级防控",
-  "情景模拟",
-  "应急物资",
-  "救援队伍",
-  "作战图"
-]
-const tab1s = {
-  "应急物资": YjzyPage,
-  "救援队伍": JydwPage
+const uRouter = useRouter()
+const tabs = {
+  "/map/main/survey":  "园区概况",
+  "/map/main/rs":  "风险源",
+  "/map/main/space":  "应急空间",
+  "/map/main/pac": "多级防控",
+  "/map/main/pd": "情景模拟",
+  "/table/supplies": "应急物资",
+  "/table/rt": "救援队伍",
+  "/zzt": "作战图"
+}
+const pages = {
+  "/table/supplies": YjzyPage,
+  "/table/rt": JydwPage
 }
 const changePage = inject("changePage")
 function funClick(index) {
@@ -40,17 +40,17 @@ function funClick(index) {
       <div class="container page-container">
         <div class="w100 h100 img-box">
           <div class="content">
-            <component :is="tab1s[currentTab]"></component>
+            <component :is="pages[uRouter.currentRoute.value.path]"></component>
           </div>
         </div>
       </div>
     </div>
     <div class="page-mode">
       <div
-          v-for="tab in tabs"
+          v-for="(tab, index) in tabs"
           :key="tab"
-          :class="{active: currentTab === tab}"
-          @click="currentTab=tab;funClick(tab)"
+          :class="{active: uRouter.currentRoute.value.path === index}"
+          @click="uRouter.push(index)"
       >
         {{tab}}
       </div>

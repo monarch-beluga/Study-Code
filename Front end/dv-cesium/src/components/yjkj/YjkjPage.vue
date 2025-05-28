@@ -1,10 +1,9 @@
 <script setup>
 import YjkjLeftCon from "./YjkjLeftCon.vue";
 import YjkjRightCon from "./YjkjRightCon.vue";
-import {provide, ref, inject} from "vue";
+import {provide, ref, inject, onMounted} from "vue";
 
 const rightCon = ref(null)
-const initViewrPs = inject("initViewrPs")
 function mapDataChange(index){
   rightCon.value.mapDataChange(index)
 }

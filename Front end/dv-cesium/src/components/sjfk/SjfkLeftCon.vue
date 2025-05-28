@@ -9,6 +9,7 @@ const labels = {
   "四级防控": "4",
 }
 const showSjfkLayer = inject("showSjfkLayer")
+const mapTreeChange = inject("mapTreeChange")
 const changeData = inject("changeData")
 function labelFun(index, i) {
   if (index !== i) {
@@ -16,6 +17,10 @@ function labelFun(index, i) {
     showSjfkLayer(index, true)
     changeData(index)
   }
+  if(index !== "4")
+    mapTreeChange(20, false)
+  else
+    mapTreeChange(20, true)
 }
 
 </script>

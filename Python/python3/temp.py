@@ -4,27 +4,19 @@
 # @File    : temp.py
 # @Software: PyChar
 
-import os
-import geopandas as gpd
 import pandas as pd
-from glob import glob
+from sqlalchemy import create_engine
+import os
 
+os.chdir(r"D:\Work\PCB行业化学品")
 
-def polygon_to_coords_str(polygon):
-    # 获取外环坐标
-    return ";".join([f"{x},{y},120" for x, y, z in polygon.exterior.coords])
+engine = create_engine('mysql+pymysql://root:123456@localhost:3306/esocs')
 
+df = pd.read_excel("PCB行业企业清单 - 副本.xlsx", sheet_name="Sheet1")
 
-os.chdir(r"D:\Work\安义数据采集\企业")
-
-gdf = gpd.read_file("化工集中区企业分布_shape_pro.shp")
-
-gdf["feature"] = gdf.geometry.apply(polygon_to_coords_str)
-
-gdf["area"] = gdf.geometry.area
-
-df = gdf[["feature", "area", "O_Name"]]
-df["area"] /= 10000
-
-df.to_json("anyi_qyfw.json", double_precision=6, indent=2, orient='records', force_ascii=False)
+df1 = pd.DataFrame()
+df1['name'] = df['企业名称']
+df1['pwd'] = "123456"
+df1['permissions'] = 'ordinary'
+df1.to_sql(name='users', con=engine, if_exists='append', index=False)
 

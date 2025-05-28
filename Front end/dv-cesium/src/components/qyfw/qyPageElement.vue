@@ -4,6 +4,7 @@ import qyxxPage from "./qyxxPage.vue";
 import qyYjwzPage from "./qyYjwzPage.vue";
 import qyYjkjPage from "./qyYjkjPage.vue";
 import qyJydwPage from "./qyJydwPage.vue";
+import {useRouter} from "vue-router";
 
 const props = defineProps({
   info: String
@@ -16,8 +17,11 @@ const initViewrPs = inject("initViewrPs")
 const initQjmnLayer = inject("initQjmnLayer")
 const initQyfwLayer = inject("initQyfwLayer")
 const initQyYjkjLayer = inject("initQyYjkjLayer")
+const initQyYjwzLayer = inject("initQyYjwzLayer")
 
+const uRouter = useRouter()
 function backHome(){
+  uRouter.push("/map/main/survey")
   changePage1("page")
   initViewrPs()
   for (let i=6; i <= 13; i++)
@@ -27,6 +31,7 @@ function backHome(){
   initQjmnLayer()
   initQyfwLayer()
   initQyYjkjLayer()
+  initQyYjwzLayer()
   mapTreeChange(5, true)
 }
 

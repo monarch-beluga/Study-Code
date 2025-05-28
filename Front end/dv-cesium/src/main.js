@@ -4,6 +4,7 @@ import Element from "element-plus";
 import * as ElementPlusIconsVue from '@element-plus/icons-vue'
 import './style.css'
 import App from './App.vue'
+import router from './router'
 
 const htmlLayerParam = {
     1: {
@@ -87,6 +88,23 @@ const htmlLayerParam = {
         "jsonPath": "/jsonData/anyi_yjkj.json",
         "layer": "sg-yq",
     },
+    19: {
+        "jsonPath": "/jsonData/anyi_whlx.json",
+        "color": "#ff8000",
+        "width": 5,
+        "layer": "whlx-yq",
+    },
+    20: {
+        "jsonPath": "/jsonData/anyi_hl.json",
+        "color": "#0033ff",
+        "width": 3,
+        "layer": "hl-yq",
+    },
+    21: {
+        "jsonPath": "/jsonData/anyi_yjwzqj.json",
+        "class_name": "public-map-popup qyfb-box",
+        "img_src": "./img/mapicon/yjwz.png"
+    },
     15: {
         "jsonPath": "/jsonData/anyi_rs.json",
         "layer": "rs-yb",
@@ -138,9 +156,9 @@ const staticData = {
     },
     "qjmn": {
         1: "/jsonData/anyi_qjmn1.json",
-        2: "/jsonData/anyi_qjmn1.json",
+        2: "/jsonData/anyi_qjmn2.json",
         3: "/jsonData/anyi_qjmn3.json",
-        4: "/jsonData/anyi_qjmn1.json",
+        4: "/jsonData/anyi_qjmn4.json",
     }
 }
 
@@ -149,5 +167,6 @@ for (const [key, component] of Object.entries(ElementPlusIconsVue)) {
     app.component(key, component)
 }
 app.use(Element)
+app.use(router)
 app.provide('staticData', staticData)
 app.mount("#app")

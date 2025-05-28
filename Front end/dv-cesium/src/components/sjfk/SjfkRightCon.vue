@@ -44,12 +44,12 @@ defineExpose({changeData})
           <template v-for="(item, index) in contents">
             <div v-if="curr === index">
               <div>
-                <el-image
-                    :key="curr"
-                    :preview-src-list="[item.img_src]"
-                    :initial-index="0"
-                    :src="item.img_src">
-                </el-image>
+<!--                <el-image-->
+<!--                    :key="curr"-->
+<!--                    :preview-src-list="[item.img_src]"-->
+<!--                    :initial-index="0"-->
+<!--                    :src="item.img_src">-->
+<!--                </el-image>-->
               </div>
               <div class="content_text_box">
                 <div

@@ -1,34 +1,45 @@
 <script setup>
-import {inject, provide, ref, toRefs} from 'vue'
+import {inject, onMounted, provide, ref, toRefs} from 'vue'
 import YjkjPage from "./yjkj/YjkjPage.vue";
 import SjfkPage from "./sjfk/SjfkPage.vue";
 import YqgkPage from "./yqgk/YqgkPage.vue";
 import rsPage from "./fxy/rsPage.vue";
 import QjmnPage from "./qjmn/QjmnPage.vue";
+import {useRouter} from "vue-router";
 
 const staticData = inject("staticData")
 const stopSpeak = inject("stopSpeak")
 const initViewrPs = inject("initViewrPs")
+
+const mapTreeChange = inject("mapTreeChange")
+const showSjfkLayer = inject("showSjfkLayer")
+const initQjmnLayer = inject("initQjmnLayer")
+let title = staticData.title
+const uRouter = useRouter()
 
 const props = defineProps({
   info: String
 })
 const {info} = toRefs(props)
 
-const currentTab = ref(info.value)
-const mapTreeChange = inject("mapTreeChange")
-const showSjfkLayer = inject("showSjfkLayer")
-const initQjmnLayer = inject("initQjmnLayer")
-let title = staticData.title
-
-const tabs = {
-  "园区概况": YqgkPage,
-  "风险源": rsPage,
-  "应急空间": YjkjPage,
-  "多级防控": SjfkPage,
-  "情景模拟": QjmnPage,
+const pages = {
+  "/map/main/survey": YqgkPage,
+  "/map/main/rs": rsPage,
+  "/map/main/space": YjkjPage,
+  "/map/main/pac": SjfkPage,
+  "/map/main/pd": QjmnPage
 }
 
+const tabs = {
+  "/map/main/survey":  "园区概况",
+  "/map/main/rs":  "风险源",
+  "/map/main/space":  "应急空间",
+  "/map/main/pac": "多级防控",
+  "/map/main/pd": "情景模拟",
+  "/table/supplies": "应急物资",
+  "/table/rt": "救援队伍",
+  "/zzt": "作战图"
+}
 function sjfkLayerClose() {
   let l = ['1', '2', '3', '4'];
   l.forEach((item) => {
@@ -36,17 +47,15 @@ function sjfkLayerClose() {
   })
 }
 
-function pageFun(index) {
-  if (currentTab.value !== index){
-    currentTab.value = index
+function pageFun(tab) {
+  uRouter.push(tab)
+  const currentTab = tabs[uRouter.currentRoute.value.path]
+  const index = tabs[tab]
+  if (currentTab !== index){
     stopSpeak()
     initViewrPs()
-    for (let i=5; i <= 13; i++)
+    for (let i=5; i <= 20; i++)
       mapTreeChange(i, false)
-    mapTreeChange(15, false)
-    mapTreeChange(16, false)
-    mapTreeChange(17, false)
-    mapTreeChange(18, false)
     sjfkLayerClose()
     initQjmnLayer()
 
@@ -62,25 +71,14 @@ function pageFun(index) {
     else if (index === "风险源"){
       mapTreeChange(15, true)
       mapTreeChange(16, true)
+      mapTreeChange(19, true)
     }
     else if (index === "情景模拟"){
       mapTreeChange(18, true)
-
     }
   }
 }
 provide("pageFun", pageFun)
-
-const tab1s = {
-  "应急物资": "应急物资",
-  "救援队伍": "救援队伍",
-  "作战图": "作战图"
-}
-const changePage = inject("changePage")
-function funClick(index) {
-  changePage(index)
-}
-
 
 </script>
 
@@ -89,24 +87,16 @@ function funClick(index) {
     <div class="title">{{title}}</div>
   </div>
   <div class="main-container">
-    <component :is="tabs[currentTab]"></component>
+    <component :is="pages[uRouter.currentRoute.value.path]"></component>
   </div>
   <div class="page-mode">
     <div
         v-for="(tab, index) in tabs"
-        :key="index"
-        :class="{active: currentTab === index}"
+        :key="tab"
+        :class="{active: uRouter.currentRoute.value.path === index}"
         @click="pageFun(index)"
       >
-      {{index}}
-    </div>
-    <div
-        v-for="(tab, index) in tab1s"
-        :key="index"
-        :class="{active: currentTab === index}"
-        @click="currentTab=index;funClick(index)"
-    >
-      {{index}}
+      {{tab}}
     </div>
 
   </div>

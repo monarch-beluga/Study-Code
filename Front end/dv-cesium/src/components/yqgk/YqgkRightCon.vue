@@ -2,32 +2,17 @@
 
 import QymlBox from "./QymlBox.vue";
 
-const yqjj_data = [
-  {
-    title: "2.83",
-    text: "(平方公里)",
-    content: "园区规划面积",
-    img: "./img/yqmj.png"
-  },
-  {
-    title: "21",
-    text: "(人)",
-    content: "救援人员数量",
-    img: "./img/jyrs.png"
-  },
-  {
-    title: "118",
-    text: "",
-    content: "应急空间数量",
-    img: "./img/yjkj.png"
-  },
-  {
-    title: "15",
-    text: "",
-    content: "企业数量",
-    img: "./img/qysl.png"
-  }
-]
+import axios from "axios";
+import {onMounted, ref} from "vue";
+
+const yqjj_data = ref()
+
+
+onMounted(async () => {
+  await axios.get("./api/jsonData/anyi_yqjj.json").then((res) => {
+    yqjj_data.value = res.data
+  })
+})
 
 </script>
 

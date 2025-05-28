@@ -28,6 +28,7 @@ function getYjkjData(type){
           "firmName": record.firmName,
           "name": record.name,
           "mainFuncName": record.mainFuncName,
+          "capacity": record.capacity,
         })
       }
     })
@@ -57,6 +58,7 @@ function getYjkjDataByName(name){
           "firmName": record.firmName,
           "name": record.name,
           "mainFuncName": record.mainFuncName,
+          "capacity": record.capacity
         })
       }
     })

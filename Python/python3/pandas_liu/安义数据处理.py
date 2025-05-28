@@ -6,6 +6,7 @@
 
 import os
 import geopandas as gpd
+import pandas
 import pandas as pd
 from glob import glob
 
@@ -110,7 +111,7 @@ ds1 = {
     "金德锂有限公司": "江西金德锂新能源科技有限公司",
     "金德锂技有限公司": "江西金德锂新能源科技有限公司",
     "安德力有限公司": "江西安德力高新科技有限公司",
-    "万华环保有限公司": "万华环保有限公司",
+    "万华环保有限公司": "江西万华环保材料有限公司",
     "中迅农化有限公司": "江西中迅农化有限公司",
     "华晟化工有限公司": "江西华晟化工有限公司",
     "亚龙美氟有限公司": "江西亚龙美氟科技有限公司",
@@ -128,7 +129,12 @@ df1.loc[df1["preLevel"] == "二级防控", "preLevel"] = "2"
 df1.loc[df1["preLevel"] == "三级防控", "preLevel"] = "3"
 df1.loc[df1["preLevel"] == "四级防控", "preLevel"] = "4"
 
-df2 = df1[(df1['type'] == 9) | (df1['type'] == 12)]
+df2 = pd.read_json("anyi_yjkj.json")
+df3 = df2.loc[:90]
+df1["feature"] = df3["feature"]
+df1["facilityImg"] = df3["facilityImg"]
+
+df1.to_json("anyi_yjkj1.json", indent=2, orient='records', force_ascii=False)
 
 # os.chdir(r"D:\Work\安义数据采集\安义数据采集\安义化工集中区VR数据采集")
 
