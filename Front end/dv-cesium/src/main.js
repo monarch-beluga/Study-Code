@@ -132,13 +132,7 @@ const staticData = {
     "title": "安义化工园区“一园一策一图”VR平台",
     "tilePath": [
         // "/gouqu_3dtiles/tileset.json",
-        "/3dtiles/1/tileset.json",
-        "/3dtiles/2/tileset.json",
-        "/3dtiles/3/tileset.json",
-        "/3dtiles/4/tileset.json",
-        "/3dtiles/5/tileset.json",
-        "/3dtiles/6/tileset.json",
-
+        "/3dtiles/tileset.json"
     ],
     // "tilePath": "http://182.109.88.42:10010/xinganTileset/tileset.json",
     "tdtKey": "8899fd3e86aa994f71465b1c56a98727",

@@ -1,7 +1,6 @@
 <script setup>
 import {onMounted, ref} from "vue";
 import axios from "axios";
-import {ElMessage } from 'element-plus'
 
 const firmName = ref("")
 const name = ref("")

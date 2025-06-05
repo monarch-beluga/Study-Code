@@ -1,5 +1,6 @@
 <script setup>
 import rsRightCon from './rsRightCon.vue'
+
 </script>
 
 <template>

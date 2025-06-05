@@ -1,0 +1,75 @@
+html, body, #app {
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+}
+* {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    box-sizing: border-box;
+    scrollbar-color: #BFBFBF rgb(255, 255, 255);
+}
+div{
+    display: block;
+    unicode-bidi: isolate;
+}
+
+.relative{
+    position: relative;
+}
+.h100{
+    height: 100%;
+}
+.w100{
+    width: 100%;
+}
+.cursor-p{
+    cursor: pointer;
+}
+
+.map-switch{
+    z-index: -1;
+}
+
+/*el-table样式修改*/
+.el-table--border .el-table__inner-wrapper:after, .el-table--border:after, .el-table--border:before, .el-table__inner-wrapper:before, .el-table__border-bottom-patch, .el-table__border-left-patch {
+    background: #6787d6 !important;
+}
+.el-table .el-table__header-wrapper tr {
+    height: 38px;
+    background: #23355ccc !important;
+    box-sizing: border-box;
+}
+.el-table .el-table__body-wrapper tr {
+    height: 38px;
+    background: #24396e33;
+    box-sizing: border-box;
+    cursor: pointer;
+}
+
+.el-table .el-table__body-wrapper tr td {
+    padding: 0;
+    height: 38px;
+    line-height: 38px;
+    color: #d4e8f8;
+    border-color: #6e87c552;
+    box-sizing: border-box;
+}
+
+.el-table--enable-row-hover .el-table__body tr:hover>td{
+    color: #4acfff;
+    background-color: transparent !important;
+}
+
+.el-table .el-table__header-wrapper tr th .cell {
+    color: #afbed8;
+}
+.el-table .el-table__cell.is-center {
+    text-align: center;
+}
+.el-table .el-table__header-wrapper tr th {
+    background: transparent !important;
+    border-color: #6787d6 !important;
+}
+

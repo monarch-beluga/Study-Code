@@ -116,8 +116,7 @@ function pageFun() {
   right: 30px;
 }
 .back-home .center-info{
-  display: flex
-;
+  display: flex;
   align-items: center;
   justify-content: center;
   color: #fff;

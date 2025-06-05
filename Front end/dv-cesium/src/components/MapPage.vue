@@ -653,7 +653,7 @@ const qjmnFun = async (path) => {
           width: 20,
           material: new DC.PolylineImageTrailMaterialProperty({
             color: feature.color !== "" ? DC.Color.fromCssColorString(feature.color) : DC.Color.fromRandom(),
-            speed: 10,
+            speed: 20,
             image: './img/mapicon/arrow.png',
             repeat: { x: feature.size, y: 1 }
           }),

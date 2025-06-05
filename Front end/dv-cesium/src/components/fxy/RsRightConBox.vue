@@ -20,6 +20,7 @@ function getRsData(){
       tableData.push({
         "id": id,
         "position": position,
+        "materialName": record.materialName,
         "riskSourcesName": record.riskSourcesName,
         "name": record.name,
         "riskLevel": record.riskLevel,

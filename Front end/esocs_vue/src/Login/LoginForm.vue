@@ -2,10 +2,11 @@
 import axios from "axios";
 import {ref} from "vue";
 import {useRouter} from "vue-router";
-import {ElMessage } from 'element-plus'
 import {storage} from "../store/storage.js"
+import {Lock, User} from "@element-plus/icons-vue";
 
 const currTab = ref('ordinary')
+const formRef = ref()
 const tabs = {
   'root': '机构用户',
   "ordinary": "企业用户"
@@ -17,8 +18,18 @@ const formData = ref({
   permissions: 'ordinary'
 })
 
+const rules = {
+  name: [
+    {required: true, message: "该项不能为空", trigger: 'blur'}
+  ],
+  pwd: [
+    {required: true, message: "该项不能为空", trigger: 'blur'}
+  ]
+}
+
 const uRouter = useRouter()
-const btnSubmit = async function () {
+
+const loginFun = async function() {
   const baseURL = import.meta.env.VITE_API_BASEURL;
   try {
     const res = await axios.post(baseURL + '/auth/login', formData.value);
@@ -47,6 +58,16 @@ const btnSubmit = async function () {
       type: 'error',
       duration: 1000
     })
+  }
+}
+
+const btnSubmit = async function () {
+  try{
+    await formRef.value.validate()
+    await loginFun()
+  }
+  catch (err){
+    ElMessage.error('用户账号密码为空');
   }
 }
 </script>
@@ -79,15 +100,23 @@ const btnSubmit = async function () {
           </ul>
       </div>
       <div class="mainin1">
-        <el-form>
-          <el-form-item label="用户名：" label-position='top'>
-            <input v-model="formData.name" class="loginuser" placeholder="登录名"/>
+        <el-form :model="formData"  :rules="rules" ref="formRef">
+          <el-form-item label="用户名：" label-position='top' prop="name">
+            <el-input size="large" clearable v-model="formData.name" class="loginuser" placeholder="登录名">
+              <template #prefix>
+                <el-icon><User /></el-icon>
+              </template>
+            </el-input>
           </el-form-item>
-          <el-form-item label="密码：" label-position='top'>
-            <input v-model="formData.pwd" type="password" class="loginpwd" placeholder="登录密码"/>
+          <el-form-item label="密码：" label-position='top' prop="pwd">
+            <el-input size="large" show-password v-model="formData.pwd" type="password" class="loginpwd" placeholder="登录密码">
+              <template #prefix>
+                <el-icon><Lock /></el-icon>
+              </template>
+            </el-input>
           </el-form-item>
         </el-form>
-        <el-button class="tijiao" @click="btnSubmit">提交</el-button>
+        <el-button class="tijiao" @click="btnSubmit">登录</el-button>
       </div>
     </div>
   </div>
@@ -225,7 +254,7 @@ nav.navbar .navbar-header a, nav.navbar .navbar-nav a {
 .mainin1 {
   margin: 0 auto 0 auto;
   width: 320px;
-  height: 300px;
+  height: 320px;
   background-color: rgb(255, 255, 255);
   border-radius: 0 0 2px 2px;
 }
@@ -240,48 +269,27 @@ nav.navbar .navbar-header a, nav.navbar .navbar-nav a {
   float: left;
   width: 100%;
   overflow: hidden;
-  padding-bottom: 10px;
+  padding-bottom: 16px;
   clear: both;
   font-family: "Microsoft YaHei";
   font-size: 14px;
   line-height: 37px;
 }
+.el-input :deep(.el-input__wrapper) {
+  background-color: #ecf5fa !important;
+}
 
-.loginuser {
-  border: 0px none;
-  color: #999 !important;
-  font-size: 14px;
-  line-height: 35px;
-  background: #fff url(/images/loginuser.png) no-repeat !important;
-  height: 35px;
-  width: 280px;
-  padding-left: 44px;
-  box-sizing: border-box;
-}
-.loginpwd {
-  border: 0px none;
-  color: #999;
-  font-size: 14px;
-  line-height: 35px;
-  background: url(/images/loginpassword.png) no-repeat;
-  height: 35px;
-  width: 280px;
-  padding-left: 44px;
-  box-sizing: border-box;
-}
 .tijiao {
   display: block;
   margin: 12px auto;
   height: 42px;
   width: 190px;
-  background: none;
   border: none;
   background: url(/images/dl.png) no-repeat;
   font-weight: bold;
   text-align: center;
   color: #fff;
   font-size: 20px;
-  font-family: "Microsoft YaHei";
   cursor: pointer;
 }
 

@@ -1,5 +1,10 @@
 <script setup>
 
+import {storage} from "../../store/storage.js";
+
+function quitUser(){
+  storage.set("token", "");
+}
 
 </script>
 
@@ -10,7 +15,7 @@
         江西省化学品生产使用环境信息管理系统--线路板行业新污染物治理试点
         <div class="quit">
           <router-link to="/login">
-            <el-button type="primary">退出</el-button>
+            <el-button type="primary" @click="quitUser">退出</el-button>
           </router-link>
         </div>
       </el-header>
