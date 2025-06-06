@@ -5,6 +5,9 @@ import {ref, provide, watch} from "vue";
 import BaseLayerChange from "./BaseLayerChange.vue";
 import { useRoute } from 'vue-router'
 import MapLayersTree from "./MapLayersTree.vue";
+import ToolListBox from "./ToolListBox.vue";
+import CalculationOnTheGraph from "./CalculationOnTheGraph.vue";
+import CoordinatePosition from "./CoordinatePosition.vue";
 const route = useRoute()
 
 
@@ -15,14 +18,14 @@ function MapLayerTreeChange(index, check){
 }
 defineExpose({MapLayerTreeChange})
 
-function toolClose(){
-  currTool.value = ""
+function changeBarTool(tool){
+  currTool.value = tool
 }
-provide("toolClose", toolClose)
+provide("changeBarTool", changeBarTool)
 watch(
     () => route.path, // 监听特定属性，如 path, query, params 等
     (newPath, oldPath) => {
-      toolClose()
+      changeBarTool("")
     }
 )
 const tools = {
@@ -46,6 +49,9 @@ const tools = {
   </div>
   <BaseLayerChange v-show="currTool==='底图'"></BaseLayerChange>
   <MapLayersTree v-show="currTool==='图层'" ref="mapLayerTree"></MapLayersTree>
+  <ToolListBox v-show="currTool==='工具'"></ToolListBox>
+  <CalculationOnTheGraph v-if="currTool==='图上量算'"></CalculationOnTheGraph>
+  <CoordinatePosition v-if="currTool==='坐标定位'"></CoordinatePosition>
 </template>
 
 <style scoped>
@@ -82,5 +88,8 @@ const tools = {
 .toolBarRight .toolBarRight-btn:last-child {
   border-right: none;
   border-radius: 0 4px 4px 0;
+}
+:deep(.svg-inline--fa){
+  margin-right: 3px;
 }
 </style>

@@ -3,14 +3,14 @@
 import {faClose} from "@fortawesome/free-solid-svg-icons";
 import {FontAwesomeIcon} from "@fortawesome/vue-fontawesome";
 import {inject} from "vue";
-const toolClose = inject("toolClose");
+const changeBarTool = inject("changeBarTool");
 </script>
 
 <template>
   <div class="map-layers-change-box">
     <div class="title">
       <slot name="title"></slot>
-      <div class="close cursor-p" @click="toolClose">
+      <div class="close cursor-p" @click="changeBarTool('')">
         <font-awesome-icon :icon="faClose" />
       </div>
     </div>

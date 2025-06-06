@@ -224,5 +224,7 @@ async function layerChangeShow(e, checked){
 :deep(.el-tree .el-tree-node:focus>.el-tree-node__content){
   background-color: #0074b7 !important;
 }
-
+:deep(.svg-inline--fa){
+  margin-right: 5px;
+}
 </style>

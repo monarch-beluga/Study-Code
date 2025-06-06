@@ -110,4 +110,7 @@ const layers = {
 .show-terrain .el-checkbox :deep(.el-checkbox__label){
   color: #fff;
 }
+:deep(.svg-inline--fa){
+  margin-right: 5px;
+}
 </style>

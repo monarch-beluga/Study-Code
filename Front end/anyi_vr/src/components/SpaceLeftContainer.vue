@@ -48,11 +48,13 @@ function labelClick(index){
 <style scoped>
 .label{
   background: transparent;
+  width: auto;
 }
 .tablist {
   display: flex;
   flex-direction: column;
   pointer-events: all;
+  width: 100%;
 }
 .tablist>div.on {
   position: relative;

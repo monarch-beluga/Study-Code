@@ -48,6 +48,7 @@ function labelClick(index){
 <style scoped>
 .label{
   background: transparent;
+  width: auto;
 }
 .tablist {
   display: flex;
