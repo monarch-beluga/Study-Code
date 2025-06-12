@@ -72,6 +72,8 @@ function getSpaceHtmlLayer(item, layer){
     let divHtml = getDivIconPopupHtml(param.class_name, item.name, param.img_src)
     let divIcon = new DC.DivIcon(position, divHtml).addTo(layer)
     divIcon.on(DC.MouseEventType.CLICK, (e) => {
+        if ($viewer.getLayer("popup"))
+            $viewer.getLayer("popup").remove()
         let popupLayer = new DC.HtmlLayer("popup").addTo($viewer)
         let popupDivHtml = getDivPopupHtml(item.firmName, item.mainFuncName, "./api/"+item.facilityImg, item.capacity)
         let popupDivIcon = new DC.DivIcon(position, popupDivHtml)

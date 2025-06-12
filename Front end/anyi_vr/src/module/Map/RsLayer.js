@@ -34,6 +34,8 @@ function getRsLayer(data, layer, type){
         let divHtml = getDivIconPopupHtml(param.class_name, item.name, param.img_src)
         let divIcon = new DC.DivIcon(position, divHtml).addTo(layer)
         divIcon.on(DC.MouseEventType.CLICK, (e) => {
+            if ($viewer.getLayer("popup"))
+                $viewer.getLayer("popup").remove()
             let popupLayer = new DC.HtmlLayer("popup").addTo($viewer)
             let popupDivHtml = getRsDivPopupHtml(item.materialName, item.riskSourcesName,  item.riskLevel)
             let popupDivIcon = new DC.DivIcon(position, popupDivHtml)

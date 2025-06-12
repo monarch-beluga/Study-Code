@@ -28,6 +28,8 @@ function refreshFun(){
 function viewFlyPoint(e){
   let flyP = DC.Position.fromArray([e.lon, e.lat, 1000, 360, -90, 0])
   let position = new DC.Position(e.lon, e.lat)
+  if ($viewer.getLayer("popup"))
+    $viewer.getLayer("popup").remove()
   let popupLayer = new DC.HtmlLayer("popup").addTo($viewer)
   let popupDivHtml = getRsDivPopupHtml(e.materialName, e.riskSourcesName,  e.riskLevel)
   let popupDivIcon = new DC.DivIcon(position, popupDivHtml)

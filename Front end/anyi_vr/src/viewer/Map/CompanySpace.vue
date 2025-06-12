@@ -25,6 +25,8 @@ onMounted(async ()=>{
 onUnmounted(() => {
   $viewer.getLayer(layerName).remove()
   $viewer.getLayer(vLayerName).remove()
+  if ($viewer.getLayer("popup"))
+    $viewer.getLayer("popup").remove()
 })
 
 </script>

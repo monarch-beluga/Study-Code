@@ -35,6 +35,8 @@ function refreshFun(){
 function viewFlyPoint(e){
   let flyP = DC.Position.fromArray([e.lng, e.lat, 1000, 360, -90, 0])
   let position = new DC.Position(e.lng, e.lat)
+  if ($viewer.getLayer("popup"))
+    $viewer.getLayer("popup").remove()
   let popupLayer = new DC.HtmlLayer("popup").addTo($viewer)
   let popupDivHtml = getDivPopupHtml(e.firmName, e.mainFuncName, "./api/"+e.facilityImg, e.capacity)
   let popupDivIcon = new DC.DivIcon(position, popupDivHtml)

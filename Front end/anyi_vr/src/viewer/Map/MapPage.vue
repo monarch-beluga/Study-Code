@@ -21,6 +21,8 @@ function initMainMapLayer(){
       continue
     MapLayerTreeChange(i, false)
   }
+  if ($viewer.getLayer("popup"))
+    $viewer.getLayer("popup").remove()
   stopSpeak()
 }
 provide("initMainMapLayer", initMainMapLayer)
