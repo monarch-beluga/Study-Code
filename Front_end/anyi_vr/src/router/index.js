@@ -1,15 +1,26 @@
 import {createRouter, createWebHashHistory} from "vue-router";
 import Map  from "../viewer/Map.vue";
+import Login from "../viewer/Login.vue";
+import {storage} from "../store/storage.js";
+import axios from "axios";
 
 const routes = [
     {
         path: '/',
         redirect: "/map",
+        meta: { requiresAuth: false }
+    },
+    {
+        path: "/login",
+        name: "login",
+        component: Login,
+        meta: { requiresAuth: false }
     },
     {
         path:'/map',
         component: Map,
         redirect: "/map/main",
+        meta: { requiresAuth: true },
         children: [
             {
                 path:"main",
@@ -66,6 +77,7 @@ const routes = [
     {
         path:'/table',
         component: () => import("../viewer/Table.vue"),
+        meta: { requiresAuth: true },
         children: [
             {
                 path:"supplies",
@@ -86,6 +98,29 @@ const routes = [
 const router = createRouter({
     history: createWebHashHistory(),
     routes,
+})
+
+router.beforeEach((to, from, next) => {
+    if (to.meta.requiresAuth){
+        const authUser = storage.get("login")
+        const authToken = storage.get("token")
+
+        if (authUser !== "activate"){
+            return next({
+                name: 'login',
+            })
+        }
+        else{
+            axios("./api/tokens.json").then((res) => {
+                const token = res.data.token;
+                if (token !== authToken)
+                    return next({
+                        name: 'login',
+                    })
+            })
+        }
+    }
+    next()
 })
 
 export default router

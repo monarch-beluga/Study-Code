@@ -1,5 +1,6 @@
 <script setup>
 import {useRouter} from "vue-router";
+import {storage} from "../store/storage.js";
 
 const router = useRouter();
 const title = "安义化工园区“一园一策一图”VR平台"
@@ -37,11 +38,24 @@ const routes = [
     name: "作战图"
   }
 ]
+
+function loginOut(){
+  storage.set("login", "")
+  storage.set("token", "")
+  router.push("/login")
+}
+
 </script>
 
 <template>
   <div class="main-header">
     <div class="title">{{title}}</div>
+    <div class="login-out">
+      <div class="center-info cursor-p" @click="loginOut">
+        <img src="/login/login-out.png" class="img" alt>
+        <span>返回</span>
+      </div>
+    </div>
   </div>
   <div class="main-container">
     <router-view/>
@@ -83,6 +97,37 @@ const routes = [
   background: linear-gradient(to bottom, #e2eaf0, #aed1f1);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
+}
+.main-header .login-out{
+  position: absolute;
+  top: 10px;
+  right: 40px;
+  height: 36px;
+  color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 10px;
+  cursor: pointer;
+}
+.login-out .center-info{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #fff;
+  font-size: 13px;
+}
+.main-header .login-out:hover{
+  background: #266894;
+  border-radius: 18px;
+}
+.main-header .login-out .img{
+  width: 16px;
+  height: 16px;
+  margin-right: 5px;
+}
+.main-header .login-out span{
+  font-size: 13px;
 }
 .main-container{
   position: absolute;
