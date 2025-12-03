@@ -1,0 +1,1 @@
+import e from"./MainContent-BnDsHXfo.js";import{_ as t,i as a,b as o,a as n}from"./index-DgFRefxB.js";const s={class:"w100 h100 relative main-content",id:"MainContent"},c={__name:"Table",setup(_){return(r,i)=>(n(),a("div",s,[o(e)]))}},m=t(c,[["__scopeId","data-v-e41ee546"]]);export{m as default};

@@ -9,12 +9,12 @@ import arcpy
 from arcpy import env
 from glob import glob
 
-os.chdir(r"D:\Work\lsg\dom")
-env.workspace = r"D:\Work\lsg\dom"
+os.chdir(r"D:\Work\gaofen2")
+env.workspace = r"D:\Work\gaofen2"
 
-files = glob("snic/*.tif")
+files = glob("snic_out_label/*.tif")
 
 for inRaster in files:
-    outPolygons = "snic_shp/" + os.path.basename(inRaster).split(".")[0] + ".shp"
+    outPolygons = "snic_out_shp/" + os.path.basename(inRaster).split(".")[0] + ".shp"
     field = "VALUE"
     arcpy.RasterToPolygon_conversion(inRaster, outPolygons, "NO_SIMPLIFY", field)

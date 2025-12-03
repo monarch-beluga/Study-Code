@@ -1,0 +1,195 @@
+.public-map-popup{
+    position: absolute;
+    bottom: 80px;
+    pointer-events: all;
+    display: block;
+    transform-origin: left bottom;
+    transform: translate(-50%);
+    border-radius: 5px;
+    z-index: auto;
+}
+.public-map-popup .map-name {
+    width: 112px;
+    line-height: 24px;
+    text-align: center;
+    color: #ffeb3b;
+    word-wrap: break-word;
+    font-size: 14px;
+    font-weight: 700;
+}
+.public-map-popup .map-icon img{
+    width: 20px;
+    height: 20px;
+}
+.public-map-popup .map-icon {
+    margin: auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 36px;
+    height: 36px;
+    background: radial-gradient(circle at center, #ffffff4d 20%, #ffb300e6);
+    border-radius: 50%;
+    box-shadow: 0 0 10px #ffb300;
+}
+
+.public-map-popup:after{
+    content: "";
+    position: absolute;
+    bottom: -80px;
+    left: calc(50% - 3px);
+    display: block;
+    width: 3px;
+    height: 80px;
+    background: linear-gradient(to bottom, #ffb300cc, #ffb30033);
+}
+.div-icon {
+    padding: 0 !important;
+}
+.yjc-box .map-icon {
+    background: radial-gradient(circle at center, #ffffff4d 20%, #0ffe47e6);
+    box-shadow: 0 0 10px #0ffe47;
+}
+.yjc-box:after {
+    background: linear-gradient(to bottom, #0ffe47cc, #0ffe4733);
+}
+.public-map-popup-two {
+    position: absolute;
+    bottom: 160px;
+    pointer-events: all;
+    display: block;
+    transform-origin: left bottom;
+    transform: translate(-50%);
+    border-radius: 5px;
+    z-index: auto;
+}
+.public-map-popup-two .marsBlueGradientPnl {
+    padding: 2px 6px;
+    margin: 0;
+    color: #fff;
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    border-radius: 5px;
+    line-height: 28px;
+    width: 260px;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    word-wrap: break-word;
+    font-size: 14px;
+    box-shadow: inset 0 0 40px #409eff;
+}
+.qyfb-box .map-icon {
+    background: radial-gradient(circle at center, #ffffff4d 20%, #0088ffe6);
+    box-shadow: 0 0 10px #08f;
+}
+.qyfb-box:after {
+    background: linear-gradient(to bottom, #08fc, #08f3);
+}
+.popup-img{
+    width: 100%;
+    height: 100%;
+}
+.fxy-ordinary .map-icon {
+    background: radial-gradient(circle at center, #ffffff4d 20%, rgba(255, 213, 70, 0.9));
+    box-shadow: 0 0 10px #ffe16e;
+}
+.fxy-ordinary:after{
+    background: linear-gradient(to bottom,  rgba(255, 213, 70, 0.9), rgba(255, 213, 70, 0.7));
+}
+
+.fxy-larger-b .map-icon {
+    background: radial-gradient(circle at center, #ffffff4d 20%, rgba(255, 106, 0, 0.9));
+    box-shadow: 0 0 10px #ff6a00;
+}
+
+.fxy-larger-a .map-icon {
+    background: radial-gradient(circle at center, #ffffff4d 20%, #adadade6);
+    box-shadow: 0 0 10px #adadad;
+}
+
+.fxy-larger-a:after{
+    background: radial-gradient(circle at center, #ffffff4d 20%, #adadade6);
+}
+
+.public-map-popup-three {
+    position: absolute;
+    bottom: 160px;
+    pointer-events: all;
+    display: block;
+    transform-origin: left bottom;
+    transform: translate(-50%);
+    border-radius: 5px;
+    z-index: auto;
+}
+.public-map-popup-three .marsBlueGradientPnl {
+    padding: 2px 6px;
+    margin: 0;
+    color: #fff;
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    border-radius: 5px;
+    line-height: 28px;
+    width: 260px;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    word-wrap: break-word;
+    font-size: 14px;
+    font-weight: 700;
+    box-shadow: inset 0 0 40px #409eff;
+}
+.dynamic-map-popup {
+    padding: 32px 30px;
+    position: absolute;
+    right: 100%;
+    bottom: 0;
+    width: 320px;
+    font-weight: 700;
+    font-style: italic;
+}
+.dynamic-map-popup .content-wrap {
+    position: relative;
+    color: #fff;
+    background: #f003;
+}
+.dynamic-map-popup .content-wrap .content {
+    text-indent: 2em;
+    line-height: 28px;
+}
+.dynamic-map-popup .arrow {
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    width: 45px;
+    height: 2px;
+    transform: rotate(45deg);
+    background: red;
+    transform-origin: right bottom;
+}
+.dynamic-map-popup .content-wrap:before {
+    content: "";
+    position: absolute;
+    top: calc(100% - .8px);
+    left: 0;
+    right: 0;
+    bottom: -.8px;
+    background: #fff;
+    box-shadow: 0 0 8px red, inset 0 0 8px red;
+    animation: pulse-glow 3s infinite;
+}
+.dynamic-map-popup .content-wrap:after {
+    content: "";
+    position: absolute;
+    top: -.8px;
+    left: 0;
+    right: 0;
+    bottom: calc(100% - .8px);
+    background: #fff;
+    box-shadow: 0 0 8px red, inset 0 0 8px red;
+    animation: pulse-glow 3s infinite;
+}
+
+

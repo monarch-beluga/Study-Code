@@ -1,0 +1,1 @@
+import{_ as t,a as n,i as o,J as s}from"./index-DgFRefxB.js";const c={},r={class:"left-container"};function a(e,_){return n(),o("div",r,[s(e.$slots,"content",{},void 0,!0)])}const f=t(c,[["render",a],["__scopeId","data-v-dd43fa4b"]]);export{f as L};

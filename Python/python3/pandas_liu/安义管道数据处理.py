@@ -34,7 +34,7 @@ gdf1["lat"] = "\\"
 gdf1["feature"] = gdf['coords_str']
 gdf1["capacity"] = "\\"
 gdf1["备注"] = ""
-gdf1["type"] = 18
+gdf1["type"] = 13
 gdf1["范围数据（管道等提供）"] = ""
 gdf1["speed"] = 8
 gdf1.to_json("anyi_sjgd1.json", indent=2, orient='records', force_ascii=False)

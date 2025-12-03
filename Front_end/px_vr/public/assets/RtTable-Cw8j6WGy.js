@@ -1,0 +1,1 @@
+import{f as n}from"./index-DgFRefxB.js";const o={园区救援队伍:"./api/jsonData/yqjy.json",企业救援队伍:"./api/jsonData/qyjy.json"};async function e(a){const t=o[a];return(await n.get(t)).data}function i(a,t){return a.filter(s=>s.firmName===t)}export{i as a,e as g};
