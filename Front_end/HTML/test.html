@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>Cesium Flood Simulation</title>
+
+    <script src="https://cesium.com/downloads/cesiumjs/releases/1.114/Build/Cesium/Cesium.js"></script>
+    <link href="https://cesium.com/downloads/cesiumjs/releases/1.114/Build/Cesium/Widgets/widgets.css" rel="stylesheet">
+
+    <style>
+        html,body,#cesiumContainer{
+            width:100%;
+            height:100%;
+            margin:0;
+            padding:0;
+        }
+    </style>
+</head>
+
+<body>
+
+<div id="cesiumContainer"></div>
+
+<script>
+
+    // 初始化 viewer
+    const viewer = new Cesium.Viewer("cesiumContainer",{
+        terrainProvider: Cesium.Terrain.fromWorldTerrain({
+            requestVertexNormals: true, // 开启地形法线，用于产生光照阴影效果
+            // requestWaterMask: true      // 开启水面特效
+        })
+    });
+
+    // 模拟区域
+    const west = 116.38
+    const east = 116.40
+    const south = 39.88
+    const north = 39.90
+
+    // 网格尺寸
+    const gridSize = 40
+
+    // DEM高度
+    let terrain = []
+
+    // 水深
+    let water = []
+
+    // 初始化网格
+    for(let i=0;i<gridSize;i++){
+        terrain[i] = []
+        water[i] = []
+        for(let j=0;j<gridSize;j++){
+
+            // 模拟地形
+            terrain[i][j] = Math.random()*2
+
+            // 初始水深
+            water[i][j] = 0
+        }
+    }
+
+    // 设置水源
+    water[20][20] = 5
+
+    // 洪水扩散算法
+    function simulateFlood(){
+
+        let newWater = JSON.parse(JSON.stringify(water))
+
+        for(let i=1;i<gridSize-1;i++){
+            for(let j=1;j<gridSize-1;j++){
+
+                const currentHeight = terrain[i][j] + water[i][j]
+
+                const neighbors = [
+                    [i+1,j],
+                    [i-1,j],
+                    [i,j+1],
+                    [i,j-1]
+                ]
+
+                neighbors.forEach(n=>{
+
+                    const ni = n[0]
+                    const nj = n[1]
+
+                    const neighborHeight = terrain[ni][nj] + water[ni][nj]
+
+                    const diff = currentHeight - neighborHeight
+
+                    if(diff > 0.05){
+
+                        const flow = diff * 0.25
+
+                        newWater[i][j] -= flow
+                        newWater[ni][nj] += flow
+
+                    }
+
+                })
+            }
+        }
+
+        water = newWater
+    }
+
+    // 创建 Cesium 实体
+    let waterEntities = []
+
+    function createWater(){
+
+        const dx = (east-west)/gridSize
+        const dy = (north-south)/gridSize
+
+        for(let i=0;i<gridSize;i++){
+            for(let j=0;j<gridSize;j++){
+
+                const x = west + i*dx
+                const y = south + j*dy
+
+                const entity = viewer.entities.add({
+                    polygon:{
+                        hierarchy: Cesium.Cartesian3.fromDegreesArray([
+                            x,y,
+                            x+dx,y,
+                            x+dx,y+dy,
+                            x,y+dy
+                        ]),
+                        height:0,
+                        extrudedHeight:0,
+                        material: Cesium.Color.BLUE.withAlpha(0.6)
+                    }
+                })
+
+                waterEntities.push({
+                    entity:entity,
+                    i:i,
+                    j:j
+                })
+            }
+        }
+
+    }
+
+    createWater()
+
+    // 更新水面
+    function updateWater(){
+
+        waterEntities.forEach(w=>{
+
+            const depth = water[w.i][w.j]
+
+            if(depth < 0.01){
+
+                w.entity.polygon.extrudedHeight = 0
+                return
+            }
+
+            w.entity.polygon.extrudedHeight = depth*2
+
+        })
+    }
+
+    // 动画循环
+    viewer.clock.onTick.addEventListener(function(){
+
+        simulateFlood()
+        updateWater()
+
+    })
+
+    viewer.camera.flyTo({
+        destination: Cesium.Cartesian3.fromDegrees(116.39,39.89,2000)
+    })
+
+</script>
+
+</body>
+</html>

@@ -3,7 +3,8 @@ import {storage} from "../../store/storage.js";
 import * as DC from '@dvgis/dc-sdk'
 import {getDivIconPopupHtml} from "./IconHtml.js";
 
-const path = "./api/jsonData/anyi_qyfb.json"
+const baseUrl = import.meta.env.VITE_API_BASE_URL;
+const path = "/data/businesses"
 const layerName = "qyfb"
 const className = "public-map-popup qyfb-box"
 const img = "./img/mapicon/qy.png"
@@ -14,7 +15,13 @@ function changeBusiness(name){
 }
 
 async function getBusinesses(){
-    const res = await axios.get(path)
+    const res = await axios.get(baseUrl + path)
+    return res.data
+}
+
+async function getBusinessesByName(name){
+    const res = await axios.get(baseUrl + path, {
+        params: {name: name}})
     return res.data
 }
 
@@ -23,9 +30,9 @@ function getCurrBusiness(){
 }
 
 async function getBusinessDetail(){
-    const data = await getBusinesses()
     const currBusiness = getCurrBusiness()
-    return data.filter(item => item.name === currBusiness)[0]
+    const data = await getBusinessesByName(currBusiness)
+    return data[0]
 }
 
 async function getBusinessesLayer(){

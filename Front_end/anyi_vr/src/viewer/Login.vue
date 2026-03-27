@@ -5,26 +5,57 @@ import axios from "axios";
 import {storage} from "../store/storage.js";
 import {useRouter} from "vue-router";
 
-const username = ref("")
-const password = ref("")
+const formData = ref({
+  username: "",
+  password: ""
+})
+const formRef = ref()
+const rules = {
+  username:[
+    {required: true, message: "该项不能为空", trigger: "blur"}
+  ],
+  password:[
+    {required: true, message: "该项不能为空", trigger: "blur"}
+  ]
+}
 const router = useRouter();
 
 async function login() {
-  const res = await axios("./api/users.json")
-  const data = res.data
-  if (username.value === data.user && password.value === data.password) {
-    storage.set("login", "activate")
-    const r = await axios("./api/tokens.json")
-    const token = r.data.token
-    storage.set("token", token)
-    await router.push("/map")
-  }
-  else {
+  const baseUrl = import.meta.env.VITE_API_BASE_URL;
+  try {
+    const res = await axios.post(baseUrl + "/auth/login", formData.value)
+
+    const { status, type, message, data } = res.data;
+    if (status === 200){
+      storage.set("username", data.username)
+      console.log(data.username)
+      storage.set("token", data.token)
+      storage.set("role", data.role)
+      await router.push("/map")
+    }
     ElMessage({
-      message: "用户密码错误",
+      message: message,
+      type: type,
+      duration: 3000
+    })
+
+  }
+  catch(error){
+    ElMessage({
+      message: error.message,
       type: 'error',
       duration: 3000
     })
+  }
+}
+
+const btnLogin = async function () {
+  try{
+    await formRef.value.validate()
+    await login()
+  }
+  catch (err){
+    ElMessage.error('用户账号密码为空');
   }
 }
 
@@ -35,9 +66,19 @@ async function login() {
     <div class="login-title">江西安义化工园区</div>
     <div class="get-ingo">
       <p class="title">用户登录</p>
-      <el-input v-model="username" class="username input"></el-input>
-      <el-input v-model="password" class="password input" type="password"></el-input>
-      <el-button type="primary" class="login-to" @click="login">登录</el-button>
+      <div class="content">
+        <el-form :model="formData"  :rules="rules" ref="formRef">
+          <el-form-item label-position='top' prop="username">
+            <el-input size="default" clearable v-model="formData.username" class="username input" placeholder="登录名">
+            </el-input>
+          </el-form-item>
+          <el-form-item label-position='top' prop="password">
+            <el-input size="default" show-password v-model="formData.password" type="password" class="password input" placeholder="登录密码">
+            </el-input>
+          </el-form-item>
+        </el-form>
+      </div>
+      <el-button type="primary" class="login-to" @click="btnLogin">登录</el-button>
     </div>
   </div>
 </template>
@@ -74,12 +115,17 @@ async function login() {
 .get-ingo .title{
   font-size: 20px;
 }
+.get-ingo .content{
+  margin: 0 auto;
+  width: 300px;
+  justify-content: center;
+}
 .get-ingo .username{
   background: url(/login/login-input.png) no-repeat, url(/login/login-user.png) no-repeat 10px center;
   background-size: 100% 100%, 20px;
 }
 .get-ingo .input{
-  margin: 30px 0;
+  margin: 20px 0;
   width: 300px;
   padding: 10px 10px 10px 40px;
   background-color: #0000;

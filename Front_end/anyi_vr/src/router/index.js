@@ -8,7 +8,7 @@ const routes = [
     {
         path: '/',
         redirect: "/map",
-        meta: { requiresAuth: false }
+        meta: { requiresAuth: true }
     },
     {
         path: "/login",
@@ -100,25 +100,37 @@ const router = createRouter({
     routes,
 })
 
-router.beforeEach((to, from, next) => {
-    if (to.meta.requiresAuth){
-        const authUser = storage.get("login")
-        const authToken = storage.get("token")
+let lastVerifyTime = 0;
+const VERIFY_GAP = 60000; // 30秒内不重复向后端请求验证
+router.beforeEach(async (to, from, next) => {
 
-        if (authUser !== "activate"){
-            return next({
-                name: 'login',
-            })
-        }
-        else{
-            axios("./api/tokens.json").then((res) => {
-                const token = res.data.token;
-                if (token !== authToken)
-                    return next({
-                        name: 'login',
-                    })
-            })
-        }
+    if (from.path === '/login') {
+        return next();
+    }
+
+    if (to.path === "/login") {
+        return next();
+    }
+
+    const authUser = storage.get("username")
+    const authToken = storage.get("token")
+
+    const now = Date.now();
+    if (now - lastVerifyTime < VERIFY_GAP) {
+        return next();
+    }
+    lastVerifyTime = now
+    const baseUrl = import.meta.env.VITE_API_BASE_URL;
+
+    const res = await axios.post(baseUrl + "/auth/verify", {"username": authUser, "token": authToken})
+    const {status, type, message} = res.data;
+    if (status !== 200) {
+        ElMessage({
+            message: message,
+            type: type,
+            duration: 3000
+        })
+        return next("/login")
     }
     next()
 })

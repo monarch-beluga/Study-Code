@@ -10,7 +10,8 @@ import RightContainer from "../common/RightContainer.vue";
 const data = ref()
 
 onMounted(async () => {
-  const res = await axios.get("./api/jsonData/anyi_yqjj.json")
+  const baseUrl = import.meta.env.VITE_API_BASE_URL;
+  const res = await axios.get(baseUrl + "/data/introduction")
   data.value = res.data
 })
 

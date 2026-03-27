@@ -1,12 +1,13 @@
 import axios from "axios";
 import * as DC from '@dvgis/dc-sdk'
 
-const path = "./api/jsonData/anyi_whlx.json"
+const baseUrl = import.meta.env.VITE_API_BASE_URL;
+const path = "/data/whlx"
 const layerName = "whlx-yq"
 
 async function getHCRLayer(){
     let layer = new DC.VectorLayer(layerName).addTo($viewer)
-    const res = await axios.get(path)
+    const res = await axios.get(baseUrl + path)
     const data = res.data
     data.forEach(item => {
         let polyline = new DC.Polyline(item.feature)

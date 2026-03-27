@@ -6,6 +6,7 @@ const {mysqlQuery, mysqlExecute} = require("../config/db")
 router.post("/login", async function(req, res){
 
     const data = req.body
+    console.log(data)
     let sql = "SELECT * FROM `users` WHERE `name`=? AND `permissions`=?"
     let sql_list = [data.name, data.permissions]
     const rows = await mysqlQuery(sql, sql_list)
